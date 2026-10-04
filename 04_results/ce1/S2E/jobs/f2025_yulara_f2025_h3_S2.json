@@ -1,0 +1,30 @@
+{
+ "ok": true,
+ "smoke": false,
+ "checks": {
+  "miss_rows_have_forecasts": true,
+  "rows_present": true,
+  "point_rmse_plausible": true
+ },
+ "msg": "(calib 36765, test 30424, missing-target rows 3915)",
+ "outputs": {
+  "std": "feab0828bec48f486948e539b013afd7",
+  "miss": "8245f7cb5e7a96e2ff2ffec674ffe76c"
+ },
+ "summary": {
+  "job": "f2025_yulara_f2025_h3_S2",
+  "kind": "f2025",
+  "site": "yulara",
+  "fold": 2025,
+  "h": 3,
+  "levels": "S2",
+  "n_calib": 36765,
+  "n_test": 30424,
+  "n_miss_calib": 1685,
+  "n_miss_test": 2230,
+  "test_rmse_point": 93.48594633561598,
+  "seconds": 459.3,
+  "ok": true
+ },
+ "reproduction": null
+}

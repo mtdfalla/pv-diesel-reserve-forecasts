@@ -1,0 +1,32 @@
+{
+ "n_cp": 48,
+ "met_cp": 0,
+ "met_cp_by_year": {
+  "2019": 0,
+  "2020": 0,
+  "2021": 0,
+  "2022": 0,
+  "2023": 0,
+  "2024": 0
+ },
+ "median_saving_cp": 0.4801194592488792,
+ "median_saving_by_policy": {
+  "cqr": 0.5121660146267513,
+  "icp": 0.4133991030577199,
+  "mondrian": 0.3918937807245588,
+  "mondrian_cqr": 0.5155583382432317
+ },
+ "xfit_median_by_policy": {
+  "icp": 0.0,
+  "mondrian": 0.0,
+  "cqr": 0.26038258058874164,
+  "mondrian_cqr": 0.27526070626787136
+ },
+ "met_quantile": 0,
+ "n_quantile": 24,
+ "median_saving_quantile": 0.5155583382432317,
+ "days_at_limit_median_quantile": 27.5,
+ "cond_i": false,
+ "cond_ii": true,
+ "fires": false
+}

@@ -1,0 +1,70 @@
+{
+ "yulara_grid": {
+  "slots": 920451,
+  "valid": 855483,
+  "day_slots": 433845,
+  "day_valid": 402218,
+  "first": "2016-04-01 23:45:00",
+  "last": "2024-12-31 23:55:00",
+  "first_hour_share": 0.015220008782414996
+ },
+ "asp_grid": {
+  "slots": 526176,
+  "valid": 513425,
+  "day_slots": 248988,
+  "day_valid": 242563,
+  "first": "2020-01-01 00:00:00",
+  "last": "2024-12-31 23:55:00",
+  "first_hour_share": 0.016981563916816447
+ },
+ "regime_share_test_15min": {
+  "yulara": {
+   "clear": 0.60004594436555,
+   "transitional": 0.3327458023556929,
+   "cloudy": 0.067208253278757
+  },
+  "yulara_n": 239420,
+  "asp": {
+   "clear": 0.5438661110983218,
+   "transitional": 0.3646032367227606,
+   "cloudy": 0.09153065217891757
+  },
+  "asp_n": 43439
+ },
+ "v_undefined_rows": {
+  "yulara_h3_all_folds": 0,
+  "asp_h3": 0
+ },
+ "carried_share_yulara_f2024_test": {
+  "5": 0.13423605928137328,
+  "15": 0.1375764993880049,
+  "30": 0.140996554911352,
+  "60": 0.14586242757391174
+ },
+ "scalar_range_yulara": [
+  1.0431590868070113,
+  1.048031909399386
+ ],
+ "n_taus": 63,
+ "es_block_yulara_f2024_h3": {
+  "n_train": 279083,
+  "n_val": 27908,
+  "val_first": "2022-04-27 12:25:00",
+  "val_share": 0.0999989250509705
+ },
+ "distance_km": 335.0582932281292,
+ "inputs_md5": {
+  "S1/yulara_geo_5min.parquet": "369fe944a33416b4c61a12e8f4afd46d",
+  "S1/asp_geo_5min.parquet": "7a47a3467fe3a1f8ce3a85b3364b3022",
+  "S2/yulara_f2019_h3.parquet": "7f27009c4f3811848aca857ee04aac72",
+  "S2/yulara_f2020_h3.parquet": "79a8eaa4110bf946855505cf2c513534",
+  "S2/yulara_f2021_h3.parquet": "0368aef8335e1ae62b81d649c39d7295",
+  "S2/yulara_f2022_h3.parquet": "1e2e29f12c4e6c2fbc1b80c90dc35360",
+  "S2/yulara_f2023_h3.parquet": "13fb0635d26c485576642b2c6c73f994",
+  "S2/yulara_f2024_h3.parquet": "227179896a3203fd6338de2b835a4734",
+  "S2/asp_f2024_h3.parquet": "f5b2e5dcf4e40f3d09011818df821051",
+  "S1/retained_counts.csv": "b655d5f5b0d5811b997d95e3f618dfce",
+  "S1/scalars.json": "0c09ebfb55cccd216e58f939923bf475",
+  "S2/yulara_f2024_h3.json": "483990184bdc8b13f5cda5e6eeb4e98d"
+ }
+}

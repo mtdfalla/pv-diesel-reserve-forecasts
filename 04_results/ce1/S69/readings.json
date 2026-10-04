@@ -1,0 +1,178 @@
+{
+ "table3_plain_reproduced": true,
+ "N1A-1": {
+  "cases": 36,
+  "median_saving_pct_vs_n1a_handbook": 4.606346492950397,
+  "threshold": 0.1,
+  "fires": true,
+  "min_saving_pct": 3.9105646579850495,
+  "max_saving_pct": 5.443525676867744,
+  "cases_saving_ge_0_1": 36,
+  "cases_negative": 0,
+  "consequence": "article: the forecast keeps a fuel role under an additive N-1 reserve; 'rarely sets the reserve' scoped to the two-term construction",
+  "context_median_saving_plain": 0.263520506068432,
+  "context_median_saving_s56": 0.4075396410357812
+ },
+ "N1A-2": {
+  "met": {
+   "A-R|conformal": "48 of 48",
+   "A-R|quantile": "36 of 36",
+   "XF|conformal": "48 of 48",
+   "XF|quantile": "36 of 36",
+   "PF|conformal": "48 of 48",
+   "PF|quantile": "36 of 36",
+   "H2|conformal": "48 of 48",
+   "H2|quantile": "36 of 36",
+   "XH|conformal": "48 of 48",
+   "XH|quantile": "36 of 36",
+   "PH|conformal": "48 of 48",
+   "PH|quantile": "36 of 36",
+   "A-D|conformal": "48 of 48",
+   "A-D|quantile": "36 of 36"
+  },
+  "xh_quantile_met": 36,
+  "shortfall_finding": false
+ },
+ "anchors_kL_per_yr": {
+  "2019|A": {
+   "n1a": 4507.937,
+   "plain": 4113.902,
+   "s56": 4283.305
+  },
+  "2019|B": {
+   "n1a": 4475.023,
+   "plain": 4109.621,
+   "s56": 4283.154
+  },
+  "2020|A": {
+   "n1a": 4692.596,
+   "plain": 4295.77,
+   "s56": 4474.766
+  },
+  "2020|B": {
+   "n1a": 4640.25,
+   "plain": 4276.251,
+   "s56": 4455.221
+  },
+  "2021|A": {
+   "n1a": 4664.968,
+   "plain": 4268.878,
+   "s56": 4447.339
+  },
+  "2021|B": {
+   "n1a": 4611.584,
+   "plain": 4249.531,
+   "s56": 4428.849
+  },
+  "2022|A": {
+   "n1a": 4611.956,
+   "plain": 4229.922,
+   "s56": 4409.538
+  },
+  "2022|B": {
+   "n1a": 4569.103,
+   "plain": 4223.764,
+   "s56": 4401.69
+  },
+  "2023|A": {
+   "n1a": 4416.318,
+   "plain": 4048.332,
+   "s56": 4221.679
+  },
+  "2023|B": {
+   "n1a": 4398.623,
+   "plain": 4057.161,
+   "s56": 4232.34
+  },
+  "2024|A": {
+   "n1a": 4414.264,
+   "plain": 4058.293,
+   "s56": 4236.654
+  },
+  "2024|B": {
+   "n1a": 4402.09,
+   "plain": 4072.333,
+   "s56": 4247.431
+  }
+ },
+ "anchors_median_kL": {
+  "n1a": 4538.519964578976,
+  "plain": 4168.833027850533,
+  "s56": 4342.497814243591
+ },
+ "anchors_median_increase_pct": {
+  "s56": 4.22116333144813,
+  "n1a": 8.831413088068873
+ },
+ "n1a_handbook_infeasible_steps_max": 539,
+ "PFR-1": {
+  "pfr_met": 12,
+  "pfr_median_saving_pct": 0.0,
+  "pfr_levels_f": [
+   0.0,
+   0.06,
+   0.14,
+   0.16,
+   0.18
+  ],
+  "quantile_policies": [
+   {
+    "policy": "raw_q",
+    "met": 12,
+    "median_saving_pct": 0.27831872528679136
+   },
+   {
+    "policy": "cqr",
+    "met": 12,
+    "median_saving_pct": 0.26038258058875274
+   },
+   {
+    "policy": "mondrian_cqr",
+    "met": 12,
+    "median_saving_pct": 0.27526070626787136
+   }
+  ],
+  "best": {
+   "policy": "raw_q",
+   "met": 12,
+   "median_saving_pct": 0.27831872528679136
+  },
+  "difference_pct": -0.27831872528679136,
+  "fires": false,
+  "consequence": "3.4 states the quantile policies' lead over the persistence fraction with its count"
+ },
+ "PFR_all_rules": {
+  "A-R": {
+   "met": "12 of 12",
+   "median_saving_pct": 0.0
+  },
+  "XF": {
+   "met": "12 of 12",
+   "median_saving_pct": 0.0
+  },
+  "PF": {
+   "met": "12 of 12",
+   "median_saving_pct": 0.0
+  },
+  "H2": {
+   "met": "12 of 12",
+   "median_saving_pct": 0.0
+  },
+  "XH": {
+   "met": "12 of 12",
+   "median_saving_pct": 0.0
+  },
+  "PH": {
+   "met": "12 of 12",
+   "median_saving_pct": 0.0
+  },
+  "A-D": {
+   "met": "12 of 12",
+   "median_saving_pct": -0.4265057846636777
+  }
+ },
+ "PFR_context_fixed_fraction_XH": {
+  "met": 11,
+  "median_saving_pct": 0.24731049040158104
+ }
+}

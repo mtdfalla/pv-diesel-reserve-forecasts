@@ -1,0 +1,8 @@
+{
+ "CL01_02_robust": true,
+ "CL03_robust": false,
+ "n_status_changes": 13,
+ "icp_below_cells_base": 12,
+ "mcqr_not_below_cells_base": 9,
+ "not_evaluable": 0
+}

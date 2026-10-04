@@ -1,0 +1,6 @@
+scenario,policy,selection
+shapeB,cqr,"AW_clip,A_D,A_R,a_half_H2,b_xfit_0.001,b_xfit_0.002,c_prior_0.001,c_prior_0.002"
+shapeB,mondrian,AW_clip
+shapeB,mondrian_cqr,"AW_clip,A_D,A_R,a_half_H2,b_xfit_0.001,b_xfit_0.002,c_prior_0.001,c_prior_0.002"
+shapeB,nicp_var,"AW_clip,A_D"
+shapeB,raw_q,"AW_clip,A_D,A_R,a_half_H2,b_xfit_0.001,b_xfit_0.002,c_prior_0.001,c_prior_0.002"

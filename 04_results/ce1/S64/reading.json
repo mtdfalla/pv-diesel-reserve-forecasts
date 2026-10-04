@@ -1,0 +1,224 @@
+{
+ "1_spill": {
+  "summary": [
+   {
+    "selection": "AW_clip",
+    "met_conformal": 0.0,
+    "met_quantile": 0.0,
+    "med_saving_conformal": 4.327160020327326,
+    "med_saving_quantile": 4.633633487830469,
+    "med_net_high_quantile": 4.500631225626676
+   },
+   {
+    "selection": "A_D",
+    "met_conformal": 48.0,
+    "met_quantile": 36.0,
+    "med_saving_conformal": 0.5997168921231977,
+    "med_saving_quantile": 0.9257952918226953,
+    "med_net_high_quantile": 0.8847236466337136
+   },
+   {
+    "selection": "A_R",
+    "met_conformal": 25.0,
+    "met_quantile": 17.0,
+    "med_saving_conformal": 3.519109282243332,
+    "med_saving_quantile": 4.378692152920927,
+    "med_net_high_quantile": 4.220514527832105
+   },
+   {
+    "selection": "a_half_H2",
+    "met_conformal": 39.0,
+    "met_quantile": 30.0,
+    "med_saving_conformal": 2.3781342612907705,
+    "med_saving_quantile": 3.991889586963626,
+    "med_net_high_quantile": 3.8061210885138115
+   },
+   {
+    "selection": "b_xfit_0.001",
+    "met_conformal": 47.0,
+    "met_quantile": 35.0,
+    "med_saving_conformal": 2.565260903286448,
+    "med_saving_quantile": 4.038465343006803,
+    "med_net_high_quantile": 3.8676611845507938
+   },
+   {
+    "selection": "b_xfit_0.002",
+    "met_conformal": 29.0,
+    "met_quantile": 21.0,
+    "med_saving_conformal": 3.525448983880647,
+    "med_saving_quantile": 4.382116962142346,
+    "med_net_high_quantile": 4.21021521128293
+   },
+   {
+    "selection": "c_prior_0.001",
+    "met_conformal": 44.0,
+    "met_quantile": 31.0,
+    "med_saving_conformal": 2.586198301415077,
+    "med_saving_quantile": 3.884742314208089,
+    "med_net_high_quantile": 3.7160760454599933
+   },
+   {
+    "selection": "c_prior_0.002",
+    "met_conformal": 30.0,
+    "met_quantile": 23.0,
+    "med_saving_conformal": 3.565051191538066,
+    "med_saving_quantile": 4.320762356393365,
+    "med_net_high_quantile": 4.147825659049748
+   }
+  ],
+  "per_quantile_policy": {
+   "raw_q": {
+    "static_met": 11,
+    "ad_met": 12,
+    "n": 12
+   },
+   "cqr": {
+    "static_met": 12,
+    "ad_met": 12,
+    "n": 12
+   },
+   "mondrian_cqr": {
+    "static_met": 12,
+    "ad_met": 12,
+    "n": 12
+   }
+  },
+  "trigger_fires_any_policy": false,
+  "pooled_static_met_of_36": 35,
+  "pooled_ad_met_of_36": 36,
+  "rule": "D-121 trigger fires if, at the spill-matched scale, the static cross-fitted half rule meets the target in fewer than 10 of 12 cases while A-D meets it in at least 11 of 12 (per quantile policy, D-123)"
+ },
+ "2_constraints": {
+  "min_down": {
+   "A_R": {
+    "met_quantile": 13,
+    "n_quantile": 36,
+    "med_saving_quantile": 0.7193964629840011,
+    "med_saving_quantile_unconstrained": 0.45786898174244145,
+    "med_net_central_quantile": 0.6793430773543584,
+    "med_net_high_quantile": 0.476143340017678,
+    "med_d_starts_quantile": 1196.0,
+    "met_conformal": 19,
+    "n_conformal": 48,
+    "med_saving_conformal": 0.5357718047668103
+   },
+   "b_xfit_0.001": {
+    "met_quantile": 33,
+    "n_quantile": 36,
+    "med_saving_quantile": 0.5604924988874271,
+    "med_saving_quantile_unconstrained": 0.26352050606843586,
+    "med_net_central_quantile": 0.49644918553412165,
+    "med_net_high_quantile": 0.2564896387446266,
+    "med_d_starts_quantile": 1106.0,
+    "met_conformal": 46,
+    "n_conformal": 48,
+    "med_saving_conformal": 0.33512132580054144
+   },
+   "A_D": {
+    "met_quantile": 36,
+    "n_quantile": 36,
+    "med_saving_quantile": 0.20822547269211955,
+    "med_saving_quantile_unconstrained": 0.17654771962854204,
+    "med_net_central_quantile": 0.20250199587866463,
+    "med_net_high_quantile": 0.17824193610371372,
+    "med_d_starts_quantile": 206.5,
+    "met_conformal": 48,
+    "n_conformal": 48,
+    "med_saving_conformal": 0.14356973026770636
+   },
+   "handbook": {
+    "starts_median": 3141.5,
+    "ue_kWh_max": 15.87349544868914
+   },
+   "rule_i_saving_conditional": false,
+   "rule_ii_side_by_side": false,
+   "rule_ii_D121_stands": true
+  },
+  "deadband": {
+   "A_R": {
+    "met_quantile": 18,
+    "n_quantile": 36,
+    "med_saving_quantile": 0.6894207214752368,
+    "med_saving_quantile_unconstrained": 0.45786898174244145,
+    "med_net_central_quantile": 0.6453374926186909,
+    "med_net_high_quantile": 0.4690045771925047,
+    "med_d_starts_quantile": 1088.0,
+    "met_conformal": 24,
+    "n_conformal": 48,
+    "med_saving_conformal": 0.31904675094500123
+   },
+   "b_xfit_0.001": {
+    "met_quantile": 36,
+    "n_quantile": 36,
+    "med_saving_quantile": 0.5522242571653291,
+    "med_saving_quantile_unconstrained": 0.26352050606843586,
+    "med_net_central_quantile": 0.5099588539263773,
+    "med_net_high_quantile": 0.34089724097057417,
+    "med_d_starts_quantile": 1098.0,
+    "met_conformal": 48,
+    "n_conformal": 48,
+    "med_saving_conformal": 0.15036496873993
+   },
+   "A_D": {
+    "met_quantile": 36,
+    "n_quantile": 36,
+    "med_saving_quantile": 0.31080539129951235,
+    "med_saving_quantile_unconstrained": 0.17654771962854204,
+    "med_net_central_quantile": 0.290723707082594,
+    "med_net_high_quantile": 0.21477652308156822,
+    "med_d_starts_quantile": 313.0,
+    "met_conformal": 48,
+    "n_conformal": 48,
+    "med_saving_conformal": 0.18642079354480035
+   },
+   "handbook": {
+    "starts_median": 2985.0,
+    "ue_kWh_max": 0.0
+   },
+   "rule_i_saving_conditional": false,
+   "rule_ii_side_by_side": false,
+   "rule_ii_D121_stands": true
+  }
+ },
+ "3_hold": {
+  "met_conformal": 44,
+  "n_conformal": 48,
+  "med_saving_conformal": 0.15068159522025337,
+  "ad_med_saving_conformal": 0.13250678813789718,
+  "met_quantile": 36,
+  "med_saving_quantile": 0.22821571923510864,
+  "N_distribution": {
+   "0.0": 34,
+   "1.0": 4,
+   "2.0": 5,
+   "3.0": 1,
+   "5.0": 10,
+   "7.0": 5,
+   "14.0": 18,
+   "30.0": 16,
+   "60.0": 3
+  },
+  "N_not_found": 0,
+  "controller_to_supplement": false,
+  "pid_trigger_satisfied": false
+ },
+ "4_events": {
+  "met_conformal": 45,
+  "met_conformal_AR": 25,
+  "met_quantile": 36,
+  "met_quantile_AR": 21,
+  "events_per_year_median_conformal": 7.5,
+  "events_per_year_median_conformal_AR": 27.5,
+  "med_saving_conformal": 0.0,
+  "med_saving_conformal_AR": 0.21652741522180663,
+  "med_saving_quantile": 0.20866366050352192,
+  "selections_not_found": 0
+ },
+ "5_battery": {
+  "full_cycles_median_handbook": 30.046710142682542,
+  "full_cycles_median_quantile": 16.52896669846129,
+  "soc_mean_median": 0.24811891057168994,
+  "share_at_floor_max": 0.0960005398162696,
+  "share_at_or_below_band_median": 0.9969787926941713
+ }
+}

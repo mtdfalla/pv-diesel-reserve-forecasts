@@ -1,0 +1,5 @@
+fold,h,n_H2_rows,n_test_rows,summary_scenario,credit_rule,handbook_ue_kWh_max_all_scenarios_sets,missing_test,fallback_test_handbook,handbook_fuel_L,handbook_ue_share,oracle_fuel_L,oracle_ue_kWh,seconds
+2024,1,19100,37512,battery,A4,0.0,7528,7877,4032455.228594697,0.0,4015195.715391749,0.0,97.5
+2024,3,18723,36759,battery,A4,0.0,7528,8630,4029491.098999602,0.0,4012820.868407971,0.0,99.2
+2024,6,18209,35696,battery,A4,0.0,7528,9693,4027815.6141423127,0.0,4012365.82453808,0.0,97.8
+2024,12,17207,33650,battery,A4,0.0,7528,11739,4028472.804835896,0.0,4012521.5990724536,0.0,98.9

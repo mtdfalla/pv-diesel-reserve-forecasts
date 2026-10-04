@@ -1,0 +1,140 @@
+{
+ "checks": {
+  "fold_2019_ok": {
+   "ok": true,
+   "msg": "(104 checks)"
+  },
+  "fold_2019_f2019_totals.parquet_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2019_f2019_cells.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2019_f2019_battery.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2020_ok": {
+   "ok": true,
+   "msg": "(104 checks)"
+  },
+  "fold_2020_f2020_totals.parquet_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2020_f2020_cells.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2020_f2020_battery.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2021_ok": {
+   "ok": true,
+   "msg": "(104 checks)"
+  },
+  "fold_2021_f2021_totals.parquet_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2021_f2021_cells.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2021_f2021_battery.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2022_ok": {
+   "ok": true,
+   "msg": "(104 checks)"
+  },
+  "fold_2022_f2022_totals.parquet_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2022_f2022_cells.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2022_f2022_battery.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2023_ok": {
+   "ok": true,
+   "msg": "(104 checks)"
+  },
+  "fold_2023_f2023_totals.parquet_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2023_f2023_cells.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2023_f2023_battery.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2024_ok": {
+   "ok": true,
+   "msg": "(104 checks)"
+  },
+  "fold_2024_f2024_totals.parquet_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2024_f2024_cells.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "fold_2024_f2024_battery.csv_unchanged": {
+   "ok": true,
+   "msg": ""
+  },
+  "spill_cases": {
+   "ok": true,
+   "msg": "768"
+  },
+  "hold_cases": {
+   "ok": true,
+   "msg": ""
+  }
+ },
+ "outputs": {
+  "battery.csv": "8043c7db121b2911d12f8468da40bf07",
+  "cases.csv": "d5593549438b2b6b55d53fdb597dd8de",
+  "f2019_battery.csv": "d3cf5ccf90b81e64e8c6dc78cafcfe0c",
+  "f2019_cells.csv": "6433795ae3ae2ad7d90f541d66eedfb0",
+  "f2019_checks.json": "6370e767081d9406760ae61284c03337",
+  "f2019_totals.parquet": "d07ab6c90c6da1f196e29fd7f923ecf8",
+  "f2020_battery.csv": "b9304fb1ea28dd94e24ec7236e290f95",
+  "f2020_cells.csv": "1c4b6c98ce74cc46a7ebbfb6e3837427",
+  "f2020_checks.json": "c0acbf5eab291c911acb730120c560c0",
+  "f2020_totals.parquet": "3e54023f086789dd060aa3bdcb991933",
+  "f2021_battery.csv": "edfdf6ff41b9e7a07faba185d9078c85",
+  "f2021_cells.csv": "3309b9dd77773b1e87f7a2d949dd96a1",
+  "f2021_checks.json": "c68b91465da8dc6987db57e9967e23f0",
+  "f2021_totals.parquet": "9be3a5743298d2b03fa5bfdd08088a80",
+  "f2022_battery.csv": "516538d9f10273204ba19089a22337c8",
+  "f2022_cells.csv": "cb1a7519aef473ee6bb22e5e217475fd",
+  "f2022_checks.json": "5596aa29b3c030b14ddb2315296f5e42",
+  "f2022_totals.parquet": "296045f74dcf2f424977937cc76d30e8",
+  "f2023_battery.csv": "0f6279296e409882156ae57e998f6124",
+  "f2023_cells.csv": "bf1b90c538b39096a6f3efc56ca7b917",
+  "f2023_checks.json": "ab631a32e662fea7299a9a0d4e507e67",
+  "f2023_totals.parquet": "2592e1fc06f64928fe525325c18c91d8",
+  "f2024_battery.csv": "495428c5981f9adf592e56eee788c7d8",
+  "f2024_cells.csv": "f4bd73bc1162f5ce2c649aeb1d340493",
+  "f2024_checks.json": "329805ba05104f82fc6de8a208af72c6",
+  "f2024_totals.parquet": "c26619627a2eae149b10531e1a7fcdb2",
+  "reading.json": "33d78bfed24b0452963f4c51d6854c50"
+ },
+ "code": {
+  "ce1_s64.py": "3ce55b672399562109ba1ca99e839500"
+ }
+}

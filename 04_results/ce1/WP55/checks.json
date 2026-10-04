@@ -1,0 +1,141 @@
+{
+ "checks": {
+  "reproduces_S51_f2019_main": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2019_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "constant_equals_S6E_AR_starts_f2019": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2019_shapeB": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2019_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2020_main": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2020_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "constant_equals_S6E_AR_starts_f2020": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2020_shapeB": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2020_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2021_main": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2021_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "constant_equals_S6E_AR_starts_f2021": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2021_shapeB": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2021_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2022_main": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2022_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "constant_equals_S6E_AR_starts_f2022": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2022_shapeB": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2022_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2023_main": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2023_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "constant_equals_S6E_AR_starts_f2023": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2023_shapeB": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2023_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2024_main": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2024_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "constant_equals_S6E_AR_starts_f2024": {
+   "ok": true,
+   "msg": ""
+  },
+  "reproduces_S51_f2024_shapeB": {
+   "ok": true,
+   "msg": "(136 paths, daily fuel and UE bit for bit)"
+  },
+  "record_rows_equal_f2024_shapeB": {
+   "ok": true,
+   "msg": ""
+  }
+ },
+ "inputs": {
+  "S51/f2019_h3_paths.npz": "f985c014ba361895c9fa806c69ae2ed5",
+  "S6E/f2019_h3_select.json": "61a87c99e60e9445b512c5d3c5583db3",
+  "S51/f2020_h3_paths.npz": "a4b67512b7e497d8d3085b73cfc3f90b",
+  "S6E/f2020_h3_select.json": "3e61ccf0522776606efcde1f6325f229",
+  "S51/f2021_h3_paths.npz": "44aae1f9e0ee5ccca953edf4bcc8439d",
+  "S6E/f2021_h3_select.json": "5b8246c08c44090a1aef4b9aaefda649",
+  "S51/f2022_h3_paths.npz": "d384fc24e498d9975bae196c7ae63e4f",
+  "S6E/f2022_h3_select.json": "0de64b51f7705a453fa295ecfc3abf4a",
+  "S51/f2023_h3_paths.npz": "702c45b66d3f6daa45894e0a50ed3950",
+  "S6E/f2023_h3_select.json": "af9222f8b33bf42c34501db1b91bb7bc",
+  "S51/f2024_h3_paths.npz": "9d3bc5342136e16698f91902dae55b09",
+  "S6E/f2024_h3_select.json": "a61551bdc482278b2dab75afe4b0a7bc"
+ },
+ "code": {
+  "ce1_wp55.py": "a876f2f61f981f85cb051d5473e4aad3"
+ }
+}

@@ -1,0 +1,48 @@
+{
+ "settings": {
+  "classical": [
+   "persistence",
+   "smart_persistence",
+   "linear_ar",
+   "gbm"
+  ],
+  "budgets": {
+   "A": {
+    "epochs": 15,
+    "subsample": 150000
+   },
+   "C": {
+    "epochs": 30,
+    "subsample": 0
+   }
+  },
+  "ridge_alpha": 1.0,
+  "window": 12,
+  "seed": 42,
+  "features": [
+   "kt_l0",
+   "kt_l1",
+   "kt_l2",
+   "kt_l3",
+   "kt_l4",
+   "kt_l5",
+   "kt_l6",
+   "kt_l9",
+   "kt_l12",
+   "kt_rmean",
+   "kt_rstd",
+   "cosz",
+   "hod_sin",
+   "hod_cos",
+   "doy_sin",
+   "doy_cos",
+   "in_imp"
+  ],
+  "version": 1
+ },
+ "input_md5": "227179896a3203fd6338de2b835a4734",
+ "rows_equal_cache": true,
+ "n_train": 279083,
+ "n_test": 36765,
+ "seconds": 3.4
+}

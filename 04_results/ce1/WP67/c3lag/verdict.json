@@ -1,0 +1,86 @@
+{
+ "ok": true,
+ "lag": {
+  "rule": "D-129 step 3 item 3",
+  "methods": 18,
+  "fires": true,
+  "changes": [
+   {
+    "horizon_min": 5,
+    "method": "aci",
+    "variant": "delayed_projected",
+    "class_base": "below",
+    "class_lag": "includes"
+   }
+  ]
+ },
+ "c3": {
+  "yulara_a": {
+   "method": "icp",
+   "picp": 0.7975633528265107,
+   "holds": true
+  },
+  "yulara_b": {
+   "method": "mondrian_cqr",
+   "picp": 0.9101364522417154,
+   "holds": true
+  },
+  "asp_a": {
+   "method": "icp",
+   "picp": 0.7724623603691112,
+   "holds": true
+  },
+  "asp_b": {
+   "method": "mondrian_cqr",
+   "picp": 0.893152015541525,
+   "holds": true
+  }
+ },
+ "checks": {
+  "asp_f2024_h1_recomputed_equals_S7": {
+   "ok": true,
+   "msg": "(18 S7 rows, 18 recomputed, mismatches [])"
+  },
+  "asp_f2024_h3_recomputed_equals_S7": {
+   "ok": true,
+   "msg": "(18 S7 rows, 18 recomputed, mismatches [])"
+  },
+  "lag_h1_same_method_set": {
+   "ok": true,
+   "msg": "(18 methods)"
+  },
+  "lag_h3_same_method_set": {
+   "ok": true,
+   "msg": "(18 methods)"
+  },
+  "c3_yulara_icp_equals_S5E_intervals": {
+   "ok": true,
+   "msg": "(0.7976, 0.7975633528265107)"
+  },
+  "c3_yulara_mondrian_cqr_equals_S5E_intervals": {
+   "ok": true,
+   "msg": "(0.9101, 0.9101364522417154)"
+  },
+  "c3_asp_icp_equals_S5E_intervals": {
+   "ok": true,
+   "msg": "(0.7725, 0.7724623603691112)"
+  },
+  "c3_asp_mondrian_cqr_equals_S5E_intervals": {
+   "ok": true,
+   "msg": "(0.8932, 0.893152015541525)"
+  }
+ },
+ "inputs": {
+  "S7/coverage_ci.csv": "b365270a3ad1765735fa01f67925ec0c",
+  "S5/asp_f2024_h1_obs.npz": "1a9df4223f78948850cf823c1b9a0c97",
+  "S5E/lag/asp_f2024_h1_obs.npz": "4151fa4c195ef29d9646271916ed7646",
+  "S5/asp_f2024_h3_obs.npz": "f73e7f1a927f22a2ebdf22f17247ce9b",
+  "S5E/lag/asp_f2024_h3_obs.npz": "feca822e37d21de154315bd6c5502227",
+  "S5E/f2025/yulara_f2025_h1_obs.npz": "c96640e3645c49e7ddc8e42c8dbf7d9a",
+  "S5E/f2025/asp_f2025_h1_obs.npz": "95bf949b67742602d0e46fcfae311176"
+ },
+ "code": {
+  "ce1_wp67_c3lag.py": "48c6047ea27e1fb09878462d393db96d",
+  "ce1_stats.py": "12148a7487cc90de8e6123df1906da35"
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "n_train": 257471,
+ "train_windows_dropped_nan": 145,
+ "test_rows_without_complete_window": 48,
+ "seconds": {
+  "gru": 453.4,
+  "gru_tcn": 605.9
+ },
+ "budget": {
+  "epochs": 30,
+  "subsample": 0
+ },
+ "input_md5": "99a751bd022f1103d45dd95646558537",
+ "module_md5": "992cd39b2f0a4e0e5ff12ed5bcf31589",
+ "torch": "2.12.1+cpu",
+ "total_seconds": 1059.4
+}

@@ -1,0 +1,28 @@
+{
+ "ok": true,
+ "smoke": false,
+ "checks": {
+  "lag_rows_plausible": true,
+  "point_rmse_plausible": true
+ },
+ "msg": "(lagged inputs: calib 41922, test 43077 vs as-run 42285, 43439)",
+ "outputs": {
+  "std": "c44bbaf39ea71d3489e2e9e267925abd"
+ },
+ "summary": {
+  "job": "lag_asp_f2024_h3_S2",
+  "kind": "lag",
+  "site": "asp",
+  "fold": 2024,
+  "h": 3,
+  "levels": "S2",
+  "n_calib": 41922,
+  "n_test": 43077,
+  "n_miss_calib": 0,
+  "n_miss_test": 0,
+  "test_rmse_point": 116.08503533177749,
+  "seconds": 246.1,
+  "ok": true
+ },
+ "reproduction": null
+}

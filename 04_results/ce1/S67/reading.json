@@ -1,0 +1,27 @@
+{
+ "1_pv": {
+  "xh_quantile_met_pv2": 36,
+  "xh_quantile_median_saving_pv2": 3.6380376556430893,
+  "xh_quantile_met_pv3": 36,
+  "xh_quantile_median_saving_pv3": 5.593276034695583,
+  "rule_i_conclusions_state_growth": true,
+  "rule_ii_reselect_at_higher_penetration": false,
+  "rule_iv_title_changes": false,
+  "n1_handbook_pv_binds": {
+   "n1pv2": 0.49403691531799676,
+   "n1pv3": 0.6478782993323825
+  }
+ },
+ "2_sorted": {
+  "xh_quantile_met": 36,
+  "xh_quantile_median_saving": 0.2877642252501811,
+  "as_run_met": 36,
+  "as_run_median_saving": 0.263520506068432,
+  "abstract_carries_both": false
+ },
+ "4_load2022": {
+  "xh_quantile_met": 36,
+  "xh_quantile_median_saving": 0.325241644666896,
+  "main_text": false
+ }
+}

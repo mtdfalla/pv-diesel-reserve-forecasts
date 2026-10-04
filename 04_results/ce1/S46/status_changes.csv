@@ -1,0 +1,14 @@
+definition,fold,horizon_min,method,base,now
+VAR_STABLE=0.075,2019,15,mondrian_cqr,includes,below
+VAR_STABLE=0.125,2019,5,mondrian_cqr,below,includes
+VAR_STABLE=0.125,2020,5,mondrian_cqr,above,includes
+VAR_STABLE=0.125,2020,15,mondrian_cqr,above,includes
+VAR_WIN=6,2019,5,mondrian_cqr,below,above
+VAR_WIN=6,2020,5,mondrian_cqr,above,below
+VAR_WIN=6,2020,15,mondrian_cqr,above,includes
+VAR_WIN=6,2022,15,mondrian,includes,above
+VAR_WIN=24,2019,5,mondrian,includes,above
+VAR_WIN=24,2019,5,mondrian_cqr,below,includes
+VAR_WIN=24,2020,15,mondrian,includes,below
+VAR_WIN=24,2020,15,mondrian_cqr,above,includes
+VAR_WIN=24,2022,5,mondrian,above,includes

@@ -1,0 +1,3 @@
+period,cases,met_covered,median_saving_covered,met_complete,median_saving_complete,met_all,median_saving_all
+six_folds,36,22,0.780293176437119,33,0.3698827362502932,36,0.263520506068432
+2025,6,6,0.7266242918430976,6,0.40868823013908706,6,0.17780890919671943

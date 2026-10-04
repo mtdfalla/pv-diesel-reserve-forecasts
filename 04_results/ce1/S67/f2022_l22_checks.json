@@ -1,0 +1,86 @@
+{
+ "ok": true,
+ "n": 16,
+ "checks": {
+  "l22_shape_B_scale_is_shape_A": {
+   "ok": true,
+   "msg": ""
+  },
+  "l22_rule_on_2023_reproduces_primary": {
+   "ok": true,
+   "msg": "(2274.2705684245925, 2274.2705684245925, 2250.7114463048974)"
+  },
+  "handbook_zero_ue_l22A_f2022_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "oracle_zero_ue_l22A_f2022_H1x": {
+   "ok": true,
+   "msg": "0.0"
+  },
+  "handbook_zero_ue_l22A_f2022_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "oracle_zero_ue_l22A_f2022_H2": {
+   "ok": true,
+   "msg": "0.0"
+  },
+  "handbook_zero_ue_l22A_f2022_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "oracle_zero_ue_l22A_f2022_test": {
+   "ok": true,
+   "msg": "0.0"
+  },
+  "fixed_point_f2022_l22A": {
+   "ok": true,
+   "msg": "(1 passes, 16 row-years)"
+  },
+  "handbook_zero_ue_l22B_f2022_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "oracle_zero_ue_l22B_f2022_H1x": {
+   "ok": true,
+   "msg": "0.0"
+  },
+  "handbook_zero_ue_l22B_f2022_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "oracle_zero_ue_l22B_f2022_H2": {
+   "ok": true,
+   "msg": "0.0"
+  },
+  "handbook_zero_ue_l22B_f2022_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "oracle_zero_ue_l22B_f2022_test": {
+   "ok": true,
+   "msg": "0.0"
+  },
+  "fixed_point_f2022_l22B": {
+   "ok": true,
+   "msg": "(1 passes, 16 row-years)"
+  }
+ },
+ "seconds": 53.33592247962952,
+ "scale_2022_mean_kW": 2250.7114463048974,
+ "code": {
+  "ce1_s67.py": "7393a60991a5851fd7df2a726235fb27",
+  "ce1_s64.py": "3ce55b672399562109ba1ca99e839500",
+  "ce1_load.py": "9e2e45e68ef1e037dbab7b5936713a9a",
+  "ce1_s6.py": "1c79fb1aa65679f56cd9f42e6281eeab",
+  "ce1_wp56.py": "f3b0b683944ad96fd69b1bf7039ddb84",
+  "ce1_wp57.py": "dd230d0258e2852032a0d356e2ab4e6e",
+  "ce1_s63.py": "38265d6a2944dc74241d437020705572"
+ },
+ "env": {
+  "python": "3.11.15",
+  "numpy": "2.4.4",
+  "pandas": "3.0.2"
+ }
+}

@@ -1,0 +1,147 @@
+{
+ "item": "D-129 step 2 item 12",
+ "sources": {
+  "vcr": {
+   "source": "AER, Values of Customer Reliability 2025 Annual Adjustment Summary (Dec 2025), p. 1-2, https://www.aer.gov.au/industry/registers/resources/reviews/values-customer-reliability-2024/2025-vcr-annual-adjustment",
+   "read": "2026-10-01",
+   "effective": "2025-12-18",
+   "unit": "AUD2025 per kWh",
+   "nt_residential": 31.86,
+   "commercial": 35.7,
+   "commercial_large": 32.06,
+   "commercial_small_medium": 54.64,
+   "nem_residential": 43.06
+  },
+  "diesel": {
+   "source": "Australian Institute of Petroleum, terminal gate prices, https://www.aip.com.au/pricing/terminal-gate-prices",
+   "read": "2026-10-01",
+   "date": "2026-09-30",
+   "darwin_diesel_c_per_L_incl_gst": 273.0,
+   "credit_source": "ATO, fuel tax credit rates 1 July 2026 to 30 June 2027, all other business uses, from 3 August 2026",
+   "fuel_tax_credit_c_per_L": 53.7,
+   "registered_price_AUD_per_L": 1.68,
+   "registered_range": [
+    1.2,
+    2.2
+   ],
+   "note": "net = TGP / 1.1 - credit; Darwin terminal, freight to Yulara not included"
+  },
+  "tender": {
+   "source": "Territory Generation tender YUO061-19A 'Yulara Hybrid Power Station Project', published 16 January 2020, closing 28 January 2020, scope 'supply and installation of a new 4 MW / 2 MWh BESS', https://www.australiantenders.com.au/tenders/404759/yulara-hybrid-power-station-project/",
+   "read": "2026-10-01"
+  },
+  "start_sync": {
+   "source": "Caterpillar C32 genset datasheet TSS-EM0745-01 (09/01/2016) lists NFPA 110 among its codes but gives no start or load-acceptance time",
+   "read": "2026-10-01",
+   "status": "NOT READ AT A PRIMARY SOURCE, carried"
+  }
+ },
+ "net_price_c_per_L": 194.48,
+ "price_range_AUD_per_L": [
+  1.68,
+  1.9448181818181813
+ ],
+ "vcr_range_AUD_per_kWh": [
+  31.86,
+  35.7
+ ],
+ "scope": "pop=quantile set (raw q, CQR, M-CQR), h=15 min, shape=both, folds=2019-2024, median case; fuel price from the registered 1.68 AUD/L to the Darwin terminal price net of GST and credit on 30 Sep 2026",
+ "rows": {
+  "A-R": {
+   "kL": 19.05,
+   "aud": [
+    32007,
+    37052
+   ],
+   "ue_kWh": 348.0,
+   "ue_aud": [
+    11088,
+    12424
+   ]
+  },
+  "XF": {
+   "kL": 18.4,
+   "aud": [
+    30910,
+    35782
+   ],
+   "ue_kWh": 313.4,
+   "ue_aud": [
+    9985,
+    11189
+   ]
+  },
+  "PF": {
+   "kL": 18.12,
+   "aud": [
+    30449,
+    35248
+   ],
+   "ue_kWh": 276.5,
+   "ue_aud": [
+    8810,
+    9872
+   ]
+  },
+  "H2": {
+   "kL": 12.28,
+   "aud": [
+    20625,
+    23876
+   ],
+   "ue_kWh": 171.1,
+   "ue_aud": [
+    5452,
+    6109
+   ]
+  },
+  "XH": {
+   "kL": 11.21,
+   "aud": [
+    18837,
+    21806
+   ],
+   "ue_kWh": 160.6,
+   "ue_aud": [
+    5117,
+    5734
+   ]
+  },
+  "PH": {
+   "kL": 13.56,
+   "aud": [
+    22782,
+    26373
+   ],
+   "ue_kWh": 173.1,
+   "ue_aud": [
+    5514,
+    6178
+   ]
+  },
+  "A-D": {
+   "kL": 7.35,
+   "aud": [
+    12355,
+    14302
+   ],
+   "ue_kWh": 203.8,
+   "ue_aud": [
+    6494,
+    7277
+   ]
+  },
+  "CL": {
+   "kL": 21.58,
+   "aud": [
+    36247,
+    41960
+   ],
+   "ue_kWh": 666.0,
+   "ue_aud": [
+    21218,
+    23776
+   ]
+  }
+ }
+}

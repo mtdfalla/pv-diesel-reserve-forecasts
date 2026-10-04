@@ -1,0 +1,357 @@
+{
+ "item": "D-129 step 2 items 4, 5, 7, 13 from ce1_wp67_sim.py (1,218 checks pass)",
+ "scope": "pop=Table 3 rules x {conformal 4, quantile 3}, h=15 min, shape=both, folds=2019-2024; item 5 complete days (S63 item 7 set); item 7 online reserve for the largest unit (S56 cont, contB), N-1 handbook as reference; item 13 steps with a forecast row only",
+ "item4": {
+  "A-R|conformal": {
+   "ev_med": 27.5,
+   "ev_max": 75,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "A-R|quantile": {
+   "ev_med": 24.0,
+   "ev_max": 63,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "XF|conformal": {
+   "ev_med": 18.5,
+   "ev_max": 46,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "XF|quantile": {
+   "ev_med": 23.5,
+   "ev_max": 46,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "PF|conformal": {
+   "ev_med": 23.0,
+   "ev_max": 49,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "PF|quantile": {
+   "ev_med": 23.5,
+   "ev_max": 47,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "H2|conformal": {
+   "ev_med": 14.0,
+   "ev_max": 57,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "H2|quantile": {
+   "ev_med": 14.5,
+   "ev_max": 40,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "XH|conformal": {
+   "ev_med": 7.0,
+   "ev_max": 25,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "XH|quantile": {
+   "ev_med": 14.5,
+   "ev_max": 25,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "PH|conformal": {
+   "ev_med": 14.0,
+   "ev_max": 36,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "PH|quantile": {
+   "ev_med": 16.0,
+   "ev_max": 36,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "A-D|conformal": {
+   "ev_med": 12.0,
+   "ev_max": 25,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "A-D|quantile": {
+   "ev_med": 16.0,
+   "ev_max": 22,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "CL|conformal": {
+   "ev_med": 55.5,
+   "ev_max": 95,
+   "peak_kW": 883.6,
+   "share": 0.884
+  },
+  "CL|quantile": {
+   "ev_med": 52.0,
+   "ev_max": 57,
+   "peak_kW": 883.6,
+   "share": 0.884
+  }
+ },
+ "item5": {
+  "A-R|conformal": {
+   "met": 25,
+   "met_cd": 23,
+   "main": false
+  },
+  "A-R|quantile": {
+   "met": 21,
+   "met_cd": 18,
+   "main": true
+  },
+  "XF|conformal": {
+   "met": 34,
+   "met_cd": 34,
+   "main": false
+  },
+  "XF|quantile": {
+   "met": 21,
+   "met_cd": 21,
+   "main": false
+  },
+  "PF|conformal": {
+   "met": 26,
+   "met_cd": 27,
+   "main": false
+  },
+  "PF|quantile": {
+   "met": 22,
+   "met_cd": 22,
+   "main": false
+  },
+  "H2|conformal": {
+   "met": 42,
+   "met_cd": 42,
+   "main": false
+  },
+  "H2|quantile": {
+   "met": 33,
+   "met_cd": 33,
+   "main": false
+  },
+  "XH|conformal": {
+   "met": 48,
+   "met_cd": 46,
+   "main": false
+  },
+  "XH|quantile": {
+   "met": 36,
+   "met_cd": 33,
+   "main": true
+  },
+  "PH|conformal": {
+   "met": 47,
+   "met_cd": 45,
+   "main": false
+  },
+  "PH|quantile": {
+   "met": 36,
+   "met_cd": 33,
+   "main": true
+  },
+  "A-D|conformal": {
+   "met": 48,
+   "met_cd": 48,
+   "main": false
+  },
+  "A-D|quantile": {
+   "met": 36,
+   "met_cd": 36,
+   "main": false
+  },
+  "CL|conformal": {
+   "met": 0,
+   "met_cd": 0,
+   "main": false
+  },
+  "CL|quantile": {
+   "met": 0,
+   "met_cd": 0,
+   "main": false
+  }
+ },
+ "item5_main_text": [
+  "A-R|quantile",
+  "XH|quantile",
+  "PH|quantile"
+ ],
+ "item7": {
+  "A-R|conformal": {
+   "met": 48,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0
+  },
+  "A-R|quantile": {
+   "met": 36,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0002
+  },
+  "XF|conformal": {
+   "met": 48,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0
+  },
+  "XF|quantile": {
+   "met": 36,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0002
+  },
+  "PF|conformal": {
+   "met": 48,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0
+  },
+  "PF|quantile": {
+   "met": 36,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0002
+  },
+  "H2|conformal": {
+   "met": 48,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0
+  },
+  "H2|quantile": {
+   "met": 36,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0002
+  },
+  "XH|conformal": {
+   "met": 48,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0
+  },
+  "XH|quantile": {
+   "met": 36,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0002
+  },
+  "PH|conformal": {
+   "met": 48,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0
+  },
+  "PH|quantile": {
+   "met": 36,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0002
+  },
+  "A-D|conformal": {
+   "met": 48,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0
+  },
+  "A-D|quantile": {
+   "met": 36,
+   "sav": 0.4075,
+   "ev": 0.0,
+   "binds": 0.0002
+  }
+ },
+ "item13": {
+  "A-R|conformal": {
+   "met_cov": 10,
+   "sav_cov": 0.5811,
+   "sav": 0.2165
+  },
+  "A-R|quantile": {
+   "met_cov": 2,
+   "sav_cov": 1.3139,
+   "sav": 0.4579
+  },
+  "XF|conformal": {
+   "met_cov": 17,
+   "sav_cov": 0.4354,
+   "sav": 0.1634
+  },
+  "XF|quantile": {
+   "met_cov": 4,
+   "sav_cov": 1.2371,
+   "sav": 0.434
+  },
+  "PF|conformal": {
+   "met_cov": 8,
+   "sav_cov": 0.5441,
+   "sav": 0.1807
+  },
+  "PF|quantile": {
+   "met_cov": 1,
+   "sav_cov": 1.2163,
+   "sav": 0.4275
+  },
+  "H2|conformal": {
+   "met_cov": 30,
+   "sav_cov": 0.1198,
+   "sav": 0.0219
+  },
+  "H2|quantile": {
+   "met_cov": 18,
+   "sav_cov": 0.7925,
+   "sav": 0.2955
+  },
+  "XH|conformal": {
+   "met_cov": 37,
+   "sav_cov": 0.1517,
+   "sav": 0.0382
+  },
+  "XH|quantile": {
+   "met_cov": 22,
+   "sav_cov": 0.7803,
+   "sav": 0.2635
+  },
+  "PH|conformal": {
+   "met_cov": 30,
+   "sav_cov": 0.2709,
+   "sav": 0.0834
+  },
+  "PH|quantile": {
+   "met_cov": 17,
+   "sav_cov": 0.8857,
+   "sav": 0.3259
+  },
+  "A-D|conformal": {
+   "met_cov": 0,
+   "sav_cov": 0.3473,
+   "sav": 0.1325
+  },
+  "A-D|quantile": {
+   "met_cov": 0,
+   "sav_cov": 0.4969,
+   "sav": 0.1765
+  },
+  "CL|conformal": {
+   "met_cov": 0,
+   "sav_cov": 1.3046,
+   "sav": 0.4801
+  },
+  "CL|quantile": {
+   "met_cov": 0,
+   "sav_cov": 1.4274,
+   "sav": 0.5175
+  }
+ }
+}

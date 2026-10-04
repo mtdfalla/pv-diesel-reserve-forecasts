@@ -1,0 +1,11 @@
+{
+ "summary": {
+  "fold": 2024,
+  "h": 6,
+  "rows_new": 350,
+  "scenarios": 9,
+  "probe_rows_compared": 72,
+  "probe_max_rel_diff": 0.0,
+  "seconds": 289.9
+ }
+}

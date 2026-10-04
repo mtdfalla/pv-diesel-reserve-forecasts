@@ -1,0 +1,61 @@
+{
+ "ok": true,
+ "checks": {
+  "every selection has 48 conformal cases": {
+   "ok": true,
+   "detail": "{'AW_1.0': 48, 'A_D': 48, 'A_R': 48, 'a_half_H2': 48, 'b_xfit_0.001': 48, 'b_xfit_0.002': 48, 'c_prior_0.001': 48, 'c_prior_0.002': 48}"
+  },
+  "WP57 meets flag equals ue_share <= 0.002%": {
+   "ok": true,
+   "detail": ""
+  },
+  "A-R 25 of 48, A-D 48 of 48, cross-fitted half 48 of 48 (as recorded)": {
+   "ok": true,
+   "detail": ""
+  },
+  "fold 2019: the all-earlier-years rule equals the calibration-year half rule": {
+   "ok": true,
+   "detail": ""
+  },
+  "main A-R conformal 14 of 24 and shapeB 11 of 24 (sum 25 of 48)": {
+   "ok": true,
+   "detail": ""
+  },
+  "WP52 quantile cells at 15 min, shape A: 18": {
+   "ok": true,
+   "detail": "18"
+  },
+  "S61B stamp ok": {
+   "ok": true,
+   "detail": "{'stage': 'S61B', 'ok': True, 'error': '', 'started': '2026-09-30T13:58:05', 'finished': '2026-09-30T14:57:28', 'minutes': 59.4, 'host': 'vm', 'smoke': False, 'n_checks': 243, 'verified': False}"
+  }
+ },
+ "inputs_md5": {
+  "WP57/cases.csv": "9db368ec87dd03f969dc7ea6c33b2aa2",
+  "AW/cells.csv": "bfa6319313fdfd7d7ee0d2d0d53fc971",
+  "S6E/f2019_h3_select.json": "61a87c99e60e9445b512c5d3c5583db3",
+  "S6E/f2020_h3_select.json": "3e61ccf0522776606efcde1f6325f229",
+  "S6E/f2021_h3_select.json": "5b8246c08c44090a1aef4b9aaefda649",
+  "S6E/f2022_h3_select.json": "0de64b51f7705a453fa295ecfc3abf4a",
+  "S6E/f2023_h3_select.json": "af9222f8b33bf42c34501db1b91bb7bc",
+  "S6E/f2024_h3_select.json": "a61551bdc482278b2dab75afe4b0a7bc",
+  "WP52/cells.csv": "9225a34c275dbd7decc60298e1bf1c56",
+  "S7E/dr6.csv": "64437eec8478c92a5ceb83bb1d1f2c58",
+  "S56/ad_cells.csv": "adf26b7e979239fc20efa8eccd1f1b77",
+  "_runs/S61B.json": "a76b948d06cf68d62fe984eaf4750e12",
+  "S61B/f2019_h3_select.json": "e2352f3c8c300038e57d71018be0b23b",
+  "S61B/f2020_h3_select.json": "4f3be1ebb0637a208d88b69a5b38ae2d",
+  "S61B/f2021_h3_select.json": "aed6ea0a0cae3b8592fd177df4274716",
+  "S61B/f2022_h3_select.json": "ad3b5c2f3af2766bbceacf0ff4fbcd64",
+  "S61B/f2023_h3_select.json": "951c9b9799e3d246c640ae5857d609fc",
+  "S61B/f2024_h3_select.json": "363f9d06e74a55f80e77cf14ce99d242",
+  "S61B/ad_cells.csv": "a014d1fabb2dcd329d8a395b7275ee17",
+  "WP61/events.csv": "43d23bff0e01da0a07b79711ded266aa"
+ },
+ "outputs_md5": {
+  "selection.csv": "6acb24236d3b811becaf649e6438532a",
+  "load_scales.csv": "93c5a330cd64301273a35c0167b8965f",
+  "battery_day.csv": "9687e9ed00450b7a0cd8dec2b889a8cc",
+  "reading.json": "31485a46d1ac412d3d55ad7cd319d345"
+ }
+}

@@ -1,0 +1,239 @@
+{
+ "item": "D-129 step 2 item 6",
+ "reproduced_s64_cells": 240,
+ "scope": "pop=Table 3 rules except CL x {conformal 4, quantile 3}, h=15 min, shape=both, folds=2019-2024, constraint alone (min down 1 h, deadband 3 steps), levels reselected under it, PF/PH pool earlier constrained test years (2019: H2), start-up central 1.71 L, high 8.54 L",
+ "xh_rule_i_sign_change": {
+  "min_down": false,
+  "deadband": false
+ },
+ "xh_rule_ii_net_high_positive": {
+  "min_down": true,
+  "deadband": true
+ },
+ "rows": {
+  "min_down|A-R|conformal": {
+   "met": 19,
+   "unc": 25,
+   "sav": 0.5358,
+   "sav_unc": 0.2165,
+   "net_c": 0.4868,
+   "ev": 31.5
+  },
+  "min_down|A-R|quantile": {
+   "met": 13,
+   "unc": 21,
+   "sav": 0.7194,
+   "sav_unc": 0.4579,
+   "net_c": 0.6793,
+   "ev": 34.0
+  },
+  "min_down|XF|conformal": {
+   "met": 28,
+   "unc": 34,
+   "sav": 0.4684,
+   "sav_unc": 0.1634,
+   "net_c": 0.4104,
+   "ev": 25.0
+  },
+  "min_down|XF|quantile": {
+   "met": 23,
+   "unc": 21,
+   "sav": 0.7024,
+   "sav_unc": 0.434,
+   "net_c": 0.648,
+   "ev": 25.0
+  },
+  "min_down|PF|conformal": {
+   "met": 26,
+   "unc": 26,
+   "sav": 0.4945,
+   "sav_unc": 0.1807,
+   "net_c": 0.4574,
+   "ev": 25.5
+  },
+  "min_down|PF|quantile": {
+   "met": 24,
+   "unc": 22,
+   "sav": 0.7057,
+   "sav_unc": 0.4275,
+   "net_c": 0.6688,
+   "ev": 25.5
+  },
+  "min_down|H2|conformal": {
+   "met": 39,
+   "unc": 42,
+   "sav": 0.4395,
+   "sav_unc": 0.0219,
+   "net_c": 0.3818,
+   "ev": 16.0
+  },
+  "min_down|H2|quantile": {
+   "met": 31,
+   "unc": 33,
+   "sav": 0.6253,
+   "sav_unc": 0.2955,
+   "net_c": 0.5918,
+   "ev": 17.5
+  },
+  "min_down|XH|conformal": {
+   "met": 46,
+   "unc": 48,
+   "sav": 0.3351,
+   "sav_unc": 0.0382,
+   "net_c": 0.3063,
+   "ev": 12.5
+  },
+  "min_down|XH|quantile": {
+   "met": 33,
+   "unc": 36,
+   "sav": 0.5605,
+   "sav_unc": 0.2635,
+   "net_c": 0.4964,
+   "ev": 16.0
+  },
+  "min_down|PH|conformal": {
+   "met": 45,
+   "unc": 47,
+   "sav": 0.3906,
+   "sav_unc": 0.0834,
+   "net_c": 0.346,
+   "ev": 13.0
+  },
+  "min_down|PH|quantile": {
+   "met": 35,
+   "unc": 36,
+   "sav": 0.5876,
+   "sav_unc": 0.3259,
+   "net_c": 0.5404,
+   "ev": 14.5
+  },
+  "min_down|A-D|conformal": {
+   "met": 48,
+   "unc": 48,
+   "sav": 0.1436,
+   "sav_unc": 0.1325,
+   "net_c": 0.1368,
+   "ev": 12.0
+  },
+  "min_down|A-D|quantile": {
+   "met": 36,
+   "unc": 36,
+   "sav": 0.2082,
+   "sav_unc": 0.1765,
+   "net_c": 0.2025,
+   "ev": 14.0
+  },
+  "deadband|A-R|conformal": {
+   "met": 24,
+   "unc": 25,
+   "sav": 0.319,
+   "sav_unc": 0.2165,
+   "net_c": 0.2948,
+   "ev": 25.5
+  },
+  "deadband|A-R|quantile": {
+   "met": 18,
+   "unc": 21,
+   "sav": 0.6894,
+   "sav_unc": 0.4579,
+   "net_c": 0.6453,
+   "ev": 26.5
+  },
+  "deadband|XF|conformal": {
+   "met": 37,
+   "unc": 34,
+   "sav": 0.3296,
+   "sav_unc": 0.1634,
+   "net_c": 0.303,
+   "ev": 20.0
+  },
+  "deadband|XF|quantile": {
+   "met": 27,
+   "unc": 21,
+   "sav": 0.6749,
+   "sav_unc": 0.434,
+   "net_c": 0.6322,
+   "ev": 27.5
+  },
+  "deadband|PF|conformal": {
+   "met": 27,
+   "unc": 26,
+   "sav": 0.3217,
+   "sav_unc": 0.1807,
+   "net_c": 0.2821,
+   "ev": 25.5
+  },
+  "deadband|PF|quantile": {
+   "met": 18,
+   "unc": 22,
+   "sav": 0.7089,
+   "sav_unc": 0.4275,
+   "net_c": 0.6666,
+   "ev": 28.0
+  },
+  "deadband|H2|conformal": {
+   "met": 44,
+   "unc": 42,
+   "sav": 0.1681,
+   "sav_unc": 0.0219,
+   "net_c": 0.1223,
+   "ev": 12.0
+  },
+  "deadband|H2|quantile": {
+   "met": 34,
+   "unc": 33,
+   "sav": 0.4917,
+   "sav_unc": 0.2955,
+   "net_c": 0.4388,
+   "ev": 13.5
+  },
+  "deadband|XH|conformal": {
+   "met": 48,
+   "unc": 48,
+   "sav": 0.1504,
+   "sav_unc": 0.0382,
+   "net_c": 0.1128,
+   "ev": 12.0
+  },
+  "deadband|XH|quantile": {
+   "met": 36,
+   "unc": 36,
+   "sav": 0.5522,
+   "sav_unc": 0.2635,
+   "net_c": 0.51,
+   "ev": 15.0
+  },
+  "deadband|PH|conformal": {
+   "met": 46,
+   "unc": 47,
+   "sav": 0.1684,
+   "sav_unc": 0.0834,
+   "net_c": 0.1197,
+   "ev": 12.5
+  },
+  "deadband|PH|quantile": {
+   "met": 36,
+   "unc": 36,
+   "sav": 0.6052,
+   "sav_unc": 0.3259,
+   "net_c": 0.5654,
+   "ev": 15.5
+  },
+  "deadband|A-D|conformal": {
+   "met": 48,
+   "unc": 48,
+   "sav": 0.1864,
+   "sav_unc": 0.1325,
+   "net_c": 0.1723,
+   "ev": 14.5
+  },
+  "deadband|A-D|quantile": {
+   "met": 36,
+   "unc": 36,
+   "sav": 0.3108,
+   "sav_unc": 0.1765,
+   "net_c": 0.2907,
+   "ev": 19.0
+  }
+ }
+}

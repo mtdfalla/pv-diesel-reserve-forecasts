@@ -1,0 +1,9 @@
+numpy==2.3.4
+pandas==3.0.3
+pyarrow==24.0.0
+scikit-learn==1.8.0
+pvlib==0.15.2
+scipy
+statsmodels
+matplotlib==3.10.9
+torch==2.12.1  # CPU build, used only by the deep point benchmark (stage S4)

@@ -1,0 +1,17 @@
+rule,selection,set,cases,met,met_with_saving,met_handbook_level,met_at_limit_every_day,met_saving_below_0_01_not_at_limit,wp63_met_nonzero_gt_0_005
+A-R,A_R,conformal,48,25,16,9,7,2,16
+A-R,A_R,quantile,36,21,21,0,0,0,21
+XF,b_xfit_0.002,conformal,48,34,18,16,14,2,18
+XF,b_xfit_0.002,quantile,36,21,21,0,0,0,21
+PF,c_prior_0.002,conformal,48,26,17,9,6,3,17
+PF,c_prior_0.002,quantile,36,22,22,0,0,0,22
+H2,a_half_H2,conformal,48,42,23,19,14,5,23
+H2,a_half_H2,quantile,36,33,30,3,0,3,30
+XH,b_xfit_0.001,conformal,48,48,26,22,20,2,26
+XH,b_xfit_0.001,quantile,36,36,36,0,0,0,36
+PH,c_prior_0.001,conformal,48,47,28,19,14,5,28
+PH,c_prior_0.001,quantile,36,36,36,0,0,0,36
+A-D,A_D,conformal,48,48,45,3,0,3,46
+A-D,A_D,quantile,36,36,33,3,0,3,33
+CL,AW_clip,conformal,48,0,0,0,0,0,0
+CL,AW_clip,quantile,36,0,0,0,0,0,0

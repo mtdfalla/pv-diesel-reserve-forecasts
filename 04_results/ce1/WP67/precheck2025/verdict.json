@@ -1,0 +1,60 @@
+{
+ "rule": "docs/REGISTERED_RULES.md (written before the first run)",
+ "a_no_exchanged_days": {
+  "ok": true,
+  "classifiable_days_2025": 263,
+  "observed_exchanged": 0,
+  "ratio_median": 0.8568645892259901,
+  "ratio_p99": 1.0980216014315354
+ },
+ "b_ghr_horizontal": {
+  "ok": true,
+  "tilt": 2,
+  "azimuth": 330,
+  "rms": 0.023825144967918495,
+  "n": 15534
+ },
+ "c_p1_tilted_plane": {
+  "ok": true,
+  "tilt": 16,
+  "azimuth": 345,
+  "rms": 0.02308481501614809
+ },
+ "d_monitor": {
+  "ok": true,
+  "counting_days": 172,
+  "share_within_5pct": 1.0,
+  "transition_open_at_end": false,
+  "factor_min": 1.1697814314770272,
+  "factor_max": 1.1965402082158103,
+  "transition_days": 0
+ },
+ "covered": true,
+ "dkasc": {
+  "header_identical": true,
+  "ghi_min": 0.0,
+  "ghi_max": 661657.0,
+  "inside_bounds": false,
+  "reading": "Rule (e) as worded ('GHI inside the bounds') fails on one value: 661,657 W/m2 at 2025-02-04 16:30, the only 2025 value outside (-50, 1600) of 105,393. D-129 says DKASC is checked 'for the header and the bounds only, as in fold 2024', and the bounds of ce1_causal are a cleaning rule that sets out-of-bounds values missing. Read (before any 2025 forecast number, D-131): the coded bounds rule removes this value; it is not a sensor-state change; DKASC 2025 proceeds. 's maxima (DKASC 1,453.4, Yulara Pyranometer_1 1,391.5 W/m2) are the maxima inside the bounds; the raw files also hold this one DKASC value and 8,463 Yulara 99999.9 sentinels, which the coded cleaning removes.",
+  "out_of_bounds": [
+   {
+    "timestamp": "2025-02-04 16:30:00",
+    "value": 661657.0
+   }
+  ],
+  "proceeds": true
+ },
+ "sources": {
+  "Yulara_2016.csv": "5715aac266e9ed8180207d12e3922cc2",
+  "Yulara_2017.csv": "dae6019d096d1dd37a9aad091885bf62",
+  "Yulara_2018.csv": "b23fe92b2e3600262df05f88db5f4f6c",
+  "Yulara_2019.csv": "3aa3cac59a64ba454306ba7dbf249217",
+  "Yulara_2020.csv": "7b7d59d23f837d07cb81fbcb6683142f",
+  "Yulara_2021.csv": "a4924941d519a181717082480e985b5f",
+  "Yulara_2022.csv": "a5b2518990ff6d5a27ed5703ad7e134a",
+  "Yulara_2023.csv": "0e3d9febb56251ce885f744b0d2f0473",
+  "Yulara_2024.csv": "ea8a6b56172af550c34e0133ea0b3ab5",
+  "Yulara_2025.csv": "2421499169acb1cfe62bb94fa7aa66b3"
+ },
+ "script_md5": "9d646bf786bad47685995d2673de4afe"
+}

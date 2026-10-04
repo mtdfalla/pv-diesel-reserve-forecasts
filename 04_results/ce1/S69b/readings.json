@@ -1,0 +1,71 @@
+{
+ "reading": "PFR-N1A (D-137)",
+ "pfr_met": 12,
+ "pfr_median_saving_pct": 4.373767784829369,
+ "pfr_min_saving_pct": 3.7508582053063066,
+ "pfr_max_saving_pct": 5.207259635628891,
+ "pfr_levels_f": [
+  1.0
+ ],
+ "quantile_policies": [
+  {
+   "policy": "raw_q",
+   "met": 12,
+   "median_saving_pct": 4.603001917653443
+  },
+  {
+   "policy": "cqr",
+   "met": 12,
+   "median_saving_pct": 4.6040451961657185
+  },
+  {
+   "policy": "mondrian_cqr",
+   "met": 12,
+   "median_saving_pct": 4.607239072335817
+  }
+ ],
+ "best": {
+  "policy": "mondrian_cqr",
+  "met": 12,
+  "median_saving_pct": 4.607239072335817
+ },
+ "difference_pct": -0.23347128750644863,
+ "fires": false,
+ "consequence": "the N1A sentence states the quantile policies' lead under N1A with its count",
+ "deterministic_anchor": {
+  "met": 12,
+  "cases": 12,
+  "median_saving_pct": 4.59077690357681,
+  "min_saving_pct": 3.8919370730535197
+ },
+ "pfr_all_rules": {
+  "A-R": {
+   "met": 12,
+   "median_saving_pct": 4.373767784829369
+  },
+  "XF": {
+   "met": 12,
+   "median_saving_pct": 4.373767784829369
+  },
+  "PF": {
+   "met": 12,
+   "median_saving_pct": 4.373767784829369
+  },
+  "H2": {
+   "met": 12,
+   "median_saving_pct": 4.373767784829369
+  },
+  "XH": {
+   "met": 12,
+   "median_saving_pct": 4.373767784829369
+  },
+  "PH": {
+   "met": 12,
+   "median_saving_pct": 4.373767784829369
+  },
+  "A-D": {
+   "met": 12,
+   "median_saving_pct": 4.373767784829369
+  }
+ }
+}

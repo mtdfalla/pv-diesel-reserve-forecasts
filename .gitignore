@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+02_data/
+*.parquet
+*.npz
+04_results/ce1/_runs/
+04_results/ce1/figs/
+04_results/ce1/*_smoke/
+04_results/figures/
+04_results/metrics/
+04_results/tables/

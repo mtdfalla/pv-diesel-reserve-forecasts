@@ -1,0 +1,66 @@
+{
+ "ok": true,
+ "n": 9,
+ "checks": {
+  "H1x_target_basis": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_main_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_main_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_main_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "fuelstep_sums_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_shapeB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_shapeB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_shapeB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "fuelstep_sums_shapeB": {
+   "ok": true,
+   "msg": ""
+  }
+ },
+ "seconds": 388.7921824455261,
+ "inputs": {
+  "S2E/f2025/yulara_f2025_h3.parquet": "feab0828bec48f486948e539b013afd7",
+  "S2E/f2025x/yulara_f2025_h3.parquet": "dcea883fbbb11c34903f327f507ee3cd",
+  "S1E/yulara_geo_5min.parquet": "f7c884c0f2a8b49880bae9a18dad2107",
+  "S1M/available_pv_map.npz": "a23e95b8680c9d64dd1db2af702f3895",
+  "S1L/load_profile.npz": "eddb352813fc8c0923fc84134388d1cf",
+  "S1L/load_scales.json": "952756850b20ea4e6fd36ceef3c33b69",
+  "S6E/f2019_h3_totals.parquet": "3a61a3e5fa524133f802fa640a496ae6",
+  "S6E/f2020_h3_totals.parquet": "84de095f7abf006e9d080fd63933e176",
+  "S6E/f2021_h3_totals.parquet": "73bac8dbfb20968339dcacc4dd0ccc13",
+  "S6E/f2022_h3_totals.parquet": "26d263308d88801b977028c627cefa5c",
+  "S6E/f2023_h3_totals.parquet": "a7f18ec9768e614bf12d5fdccc5d65ab",
+  "S6E/f2024_h3_totals.parquet": "6bce1d43cfb5264af8797f7dda44fc99",
+  "S56/f2019_h3_totals.parquet": "0eda8408175cf462498ca90dcd22cbb3",
+  "S56/f2020_h3_totals.parquet": "548154ce0a5190accd6c15bc1e325c65",
+  "S56/f2021_h3_totals.parquet": "f741a1117f0dd47843505915a23e639b",
+  "S56/f2022_h3_totals.parquet": "1f53a3a37c4fe544e5e99e1fd99332dc",
+  "S56/f2023_h3_totals.parquet": "786b78e63ca52a41237abdc3877f375e",
+  "S56/f2024_h3_totals.parquet": "e1cfb8a19a14fae9f8a58e5d9b4b4fe8"
+ },
+ "code": {
+  "ce1_wp67_f2025.py": "175108db2adfa16890d48bec27a4cef2"
+ }
+}

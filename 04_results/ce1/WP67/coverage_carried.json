@@ -1,0 +1,230 @@
+{
+ "item": "D-129 step 2 item 10",
+ "scope": "pop=Yulara fold 2024 test rows, h=5 and 15 min, 90 % two-sided, static methods, by in_imp and issue-time regime",
+ "per_horizon": [
+  {
+   "horizon_min": 5,
+   "carried_share": 0.13423605928137328,
+   "mondrian_fallback_groups": [],
+   "mondrian_fallback_share": 0.0,
+   "calib_regime_counts": {
+    "clear": 22487,
+    "transitional": 13281,
+    "cloudy": 2303
+   }
+  },
+  {
+   "horizon_min": 15,
+   "carried_share": 0.1375764993880049,
+   "mondrian_fallback_groups": [],
+   "mondrian_fallback_share": 0.0,
+   "calib_regime_counts": {
+    "clear": 22400,
+    "transitional": 12659,
+    "cloudy": 2259
+   }
+  }
+ ],
+ "cells": 64,
+ "over_0_02_all_scope": [
+  [
+   5,
+   "icp",
+   -0.0507
+  ],
+  [
+   5,
+   "mondrian",
+   -0.0668
+  ],
+  [
+   5,
+   "tod",
+   -0.0374
+  ],
+  [
+   5,
+   "nicp_var",
+   -0.0209
+  ],
+  [
+   15,
+   "icp",
+   -0.0547
+  ],
+  [
+   15,
+   "mondrian",
+   -0.0597
+  ],
+  [
+   15,
+   "tod",
+   -0.0476
+  ]
+ ],
+ "over_0_02_regime_scope": [
+  [
+   5,
+   "icp",
+   "transitional",
+   -0.1004,
+   1989
+  ],
+  [
+   5,
+   "icp",
+   "cloudy",
+   -0.0215,
+   340
+  ],
+  [
+   5,
+   "mondrian",
+   "clear",
+   -0.0785,
+   2707
+  ],
+  [
+   5,
+   "mondrian",
+   "transitional",
+   -0.0535,
+   1989
+  ],
+  [
+   5,
+   "mondrian",
+   "cloudy",
+   -0.0468,
+   340
+  ],
+  [
+   5,
+   "cqr",
+   "clear",
+   -0.0406,
+   2707
+  ],
+  [
+   5,
+   "raw_q",
+   "clear",
+   -0.0278,
+   2707
+  ],
+  [
+   5,
+   "tod",
+   "transitional",
+   -0.0623,
+   1989
+  ],
+  [
+   5,
+   "tod",
+   "cloudy",
+   -0.0392,
+   340
+  ],
+  [
+   5,
+   "nicp_var",
+   "clear",
+   -0.0331,
+   2707
+  ],
+  [
+   15,
+   "icp",
+   "clear",
+   -0.0245,
+   2749
+  ],
+  [
+   15,
+   "icp",
+   "transitional",
+   -0.093,
+   1965
+  ],
+  [
+   15,
+   "icp",
+   "cloudy",
+   -0.0588,
+   344
+  ],
+  [
+   15,
+   "icp_norm",
+   "transitional",
+   -0.0205,
+   1965
+  ],
+  [
+   15,
+   "icp_norm",
+   "cloudy",
+   -0.0284,
+   344
+  ],
+  [
+   15,
+   "mondrian",
+   "clear",
+   -0.0634,
+   2749
+  ],
+  [
+   15,
+   "mondrian",
+   "transitional",
+   -0.0547,
+   1965
+  ],
+  [
+   15,
+   "mondrian",
+   "cloudy",
+   -0.0557,
+   344
+  ],
+  [
+   15,
+   "cqr",
+   "clear",
+   -0.0243,
+   2749
+  ],
+  [
+   15,
+   "tod",
+   "clear",
+   -0.0213,
+   2749
+  ],
+  [
+   15,
+   "tod",
+   "transitional",
+   -0.0811,
+   1965
+  ],
+  [
+   15,
+   "tod",
+   "cloudy",
+   -0.0531,
+   344
+  ],
+  [
+   15,
+   "nicp_var",
+   "clear",
+   -0.0332,
+   2749
+  ]
+ ],
+ "reading": "stated in the Limitations"
+}

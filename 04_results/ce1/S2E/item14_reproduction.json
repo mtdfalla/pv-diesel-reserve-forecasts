@@ -1,0 +1,86 @@
+{
+ "item14_yulara_f2019_h3_S2": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 64
+ },
+ "item14_yulara_f2019_h3_S2X": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 50
+ },
+ "item14_yulara_f2020_h3_S2": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 64
+ },
+ "item14_yulara_f2020_h3_S2X": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 50
+ },
+ "item14_yulara_f2021_h3_S2": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 64
+ },
+ "item14_yulara_f2021_h3_S2X": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 50
+ },
+ "item14_yulara_f2022_h3_S2": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 64
+ },
+ "item14_yulara_f2022_h3_S2X": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 50
+ },
+ "item14_yulara_f2023_h3_S2": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 64
+ },
+ "item14_yulara_f2023_h3_S2X": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 50
+ },
+ "item14_yulara_f2024_h3_S2": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 64
+ },
+ "item14_yulara_f2024_h3_S2X": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 50
+ }
+}

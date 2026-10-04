@@ -1,0 +1,83 @@
+{
+ "ok": false,
+ "rule": "D-118",
+ "summary": {
+  "asp": {
+   "days": 6,
+   "median_delta_min": 4.375,
+   "quantiles_min": {
+    "0.1": 0.875,
+    "0.25": 2.062,
+    "0.75": 5.375,
+    "0.9": 5.5
+   },
+   "by_year_median_min": {
+    "2020": 3.75,
+    "2021": 5.25,
+    "2024": 1.5
+   },
+   "at_grid_edge": 0,
+   "reading": "inconclusive"
+  },
+  "yulara": {
+   "days": 59,
+   "median_delta_min": -3.25,
+   "quantiles_min": {
+    "0.1": -4.25,
+    "0.25": -3.75,
+    "0.75": -2.75,
+    "0.9": -2.5
+   },
+   "by_year_median_min": {
+    "2016": -2.375,
+    "2017": -3.25,
+    "2018": -3.5,
+    "2019": -4.0,
+    "2020": -3.5,
+    "2021": -3.75,
+    "2022": -2.5,
+    "2023": -4.0,
+    "2024": -2.875
+   },
+   "at_grid_edge": 0,
+   "reading": "average over the 5 min ending at the stamp (causal)"
+  }
+ },
+ "checks": {
+  "selftest: synthetic clear days shifted by -150, 0, +150 s are recovered within 15 s": {
+   "ok": true,
+   "detail": "{-150: -150, 0: 0, 150: 150}"
+  },
+  "yulara: stored zenith equals pvlib at the stamp (tz Australia/Darwin)": {
+   "ok": true,
+   "detail": "8.526512829121202e-14"
+  },
+  "asp: stored zenith equals pvlib at the stamp (tz Australia/Darwin)": {
+   "ok": true,
+   "detail": "5.684341886080802e-14"
+  },
+  "asp: no day at the edge of the search grid": {
+   "ok": true,
+   "detail": "0"
+  },
+  "asp: at least 30 clear days": {
+   "ok": false,
+   "detail": "6"
+  },
+  "yulara: no day at the edge of the search grid": {
+   "ok": true,
+   "detail": "0"
+  },
+  "yulara: at least 30 clear days": {
+   "ok": true,
+   "detail": "59"
+  }
+ },
+ "inputs_md5": {
+  "S1/yulara_geo_5min.parquet": "369fe944a33416b4c61a12e8f4afd46d",
+  "S1/asp_geo_5min.parquet": "7a47a3467fe3a1f8ce3a85b3364b3022"
+ },
+ "outputs_md5": {
+  "timestamp_days.csv": "26b246d4f7783b418f4035a4f9a4d222"
+ }
+}

@@ -1,0 +1,5 @@
+n_calib,n_test,n_days_test,nicp_var_beta,anticipative_equals_event_rule_h1,delayed_equals_anticipative_at_h1,seconds,site,fold,h
+38071,37516,344,0.025542779173043585,True,True,47.3,yulara,2024,1
+37318,36765,344,0.023685069088028664,True,,60.6,yulara,2024,3
+36260,35703,344,0.021463604446320395,True,,69.0,yulara,2024,6
+34236,33655,343,0.017355666929465326,True,,54.5,yulara,2024,12

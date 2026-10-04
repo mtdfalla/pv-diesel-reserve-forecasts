@@ -1,0 +1,135 @@
+{
+ "fold": 2024,
+ "shape": "B",
+ "start": "2024-09-20 14:50:00",
+ "steps": 2,
+ "peak_kW": 883.5990780086893,
+ "online_kW": 1000.0,
+ "largest_online_kW": 1000.0,
+ "cases_with_this_event": 21,
+ "cases_in_fold_shape": 35,
+ "rules": [
+  "A_D",
+  "A_R",
+  "a_half_H2",
+  "b_xfit_0.001",
+  "b_xfit_0.002",
+  "c_prior_0.001",
+  "c_prior_0.002"
+ ],
+ "policies": [
+  "cqr",
+  "mondrian_cqr",
+  "raw_q"
+ ],
+ "window": [
+  {
+   "t": "2024-09-20 14:20:00",
+   "ghi": 859.7134935029472,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:05:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 860.4333261237576
+  },
+  {
+   "t": "2024-09-20 14:25:00",
+   "ghi": 848.5204077410357,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:10:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 849.8689091030159
+  },
+  {
+   "t": "2024-09-20 14:30:00",
+   "ghi": 839.1096310883834,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:15:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 838.8321954288525
+  },
+  {
+   "t": "2024-09-20 14:35:00",
+   "ghi": 825.9292560985878,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:20:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 827.3289628703886
+  },
+  {
+   "t": "2024-09-20 14:40:00",
+   "ghi": 815.0455538412775,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:25:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 815.365251228033
+  },
+  {
+   "t": "2024-09-20 14:45:00",
+   "ghi": 809.0590555716558,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:30:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 803.5253858072886
+  },
+  {
+   "t": "2024-09-20 14:50:00",
+   "ghi": 707.6820767847505,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:35:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 791.1248954427037
+  },
+  {
+   "t": "2024-09-20 14:55:00",
+   "ghi": 154.19674865858389,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:40:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 777.8011465969712
+  },
+  {
+   "t": "2024-09-20 15:00:00",
+   "ghi": 742.0083020449945,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:45:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 765.2058607632686
+  },
+  {
+   "t": "2024-09-20 15:05:00",
+   "ghi": 756.071905506293,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:50:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "clear",
+   "point_forecast": 706.0802090139823
+  },
+  {
+   "t": "2024-09-20 15:10:00",
+   "ghi": 740.5096638001455,
+   "forecast_row": true,
+   "issue": "2024-09-20 14:55:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "transitional",
+   "point_forecast": 604.3225596088013
+  },
+  {
+   "t": "2024-09-20 15:15:00",
+   "ghi": 726.2266215022635,
+   "forecast_row": true,
+   "issue": "2024-09-20 15:00:00",
+   "in_imp": 0.0,
+   "regime_at_issue": "transitional",
+   "point_forecast": 682.5647247959818
+  }
+ ]
+}

@@ -1,0 +1,105 @@
+{
+ "item": "D-129 step 2 item 1",
+ "scope": "pop=Table 3 rules x {conformal 4 policies, quantile 3 policies}, h=15 min, shape=both, folds=2019-2024, unit=test year (a year is met when every case of the set meets 0.002 %), CP one-sided 95 %, sign test one-sided exact on the per-year median saving, no multiplicity adjustment",
+ "cp_6_of_6": 0.607,
+ "cp_5_of_6": 0.4182,
+ "sign_p_6_of_6": 0.015625,
+ "rows": {
+  "A-R|conformal": {
+   "years_met": 1,
+   "cp": 0.0085,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "A-R|quantile": {
+   "years_met": 3,
+   "cp": 0.1532,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "XF|conformal": {
+   "years_met": 1,
+   "cp": 0.0085,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "XF|quantile": {
+   "years_met": 3,
+   "cp": 0.1532,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "PF|conformal": {
+   "years_met": 0,
+   "cp": 0.0,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "PF|quantile": {
+   "years_met": 3,
+   "cp": 0.1532,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "H2|conformal": {
+   "years_met": 3,
+   "cp": 0.1532,
+   "pos": 5,
+   "p": 0.109375
+  },
+  "H2|quantile": {
+   "years_met": 5,
+   "cp": 0.4182,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "XH|conformal": {
+   "years_met": 6,
+   "cp": 0.607,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "XH|quantile": {
+   "years_met": 6,
+   "cp": 0.607,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "PH|conformal": {
+   "years_met": 5,
+   "cp": 0.4182,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "PH|quantile": {
+   "years_met": 6,
+   "cp": 0.607,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "A-D|conformal": {
+   "years_met": 6,
+   "cp": 0.607,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "A-D|quantile": {
+   "years_met": 6,
+   "cp": 0.607,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "CL|conformal": {
+   "years_met": 0,
+   "cp": 0.0,
+   "pos": 6,
+   "p": 0.015625
+  },
+  "CL|quantile": {
+   "years_met": 0,
+   "cp": 0.0,
+   "pos": 6,
+   "p": 0.015625
+  }
+ }
+}

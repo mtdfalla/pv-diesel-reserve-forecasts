@@ -1,0 +1,13 @@
+h_min,variant,same_as_reset,reset,variant_order
+5,carry,False,nicp_var > raw_q > mondrian_cqr > cqr > mondrian > frac_pv > icp > tod_q,mondrian_cqr > nicp_var > raw_q > cqr > mondrian > frac_pv > tod_q > icp
+5,settle,False,nicp_var > raw_q > mondrian_cqr > cqr > mondrian > frac_pv > icp > tod_q,raw_q > cqr > mondrian_cqr > nicp_var > mondrian > icp > frac_pv > tod_q
+5,strict,False,nicp_var > raw_q > mondrian_cqr > cqr > mondrian > frac_pv > icp > tod_q,raw_q > cqr > mondrian_cqr > nicp_var > mondrian > icp > frac_pv > tod_q
+15,carry,False,cqr > mondrian_cqr > raw_q > mondrian > nicp_var > icp > frac_pv > tod_q,mondrian_cqr > cqr > raw_q > nicp_var > mondrian > tod_q > icp > frac_pv
+15,settle,False,cqr > mondrian_cqr > raw_q > mondrian > nicp_var > icp > frac_pv > tod_q,cqr > mondrian_cqr > raw_q > nicp_var > mondrian > icp > frac_pv > tod_q
+15,strict,False,cqr > mondrian_cqr > raw_q > mondrian > nicp_var > icp > frac_pv > tod_q,cqr > mondrian_cqr > raw_q > nicp_var > mondrian > icp > frac_pv > tod_q
+30,carry,False,cqr > mondrian_cqr > raw_q > mondrian > nicp_var > frac_pv > icp > tod_q,cqr > raw_q > mondrian_cqr > nicp_var > mondrian > icp > tod_q > frac_pv
+30,settle,False,cqr > mondrian_cqr > raw_q > mondrian > nicp_var > frac_pv > icp > tod_q,raw_q > cqr > mondrian_cqr > mondrian > nicp_var > frac_pv > icp > tod_q
+30,strict,False,cqr > mondrian_cqr > raw_q > mondrian > nicp_var > frac_pv > icp > tod_q,cqr > raw_q > mondrian_cqr > mondrian > nicp_var > icp > frac_pv > tod_q
+60,carry,False,raw_q > cqr > mondrian_cqr > mondrian > nicp_var > icp > frac_pv > tod_q,raw_q > mondrian_cqr > cqr > mondrian > nicp_var > icp > tod_q > frac_pv
+60,settle,True,raw_q > cqr > mondrian_cqr > mondrian > nicp_var > icp > frac_pv > tod_q,raw_q > cqr > mondrian_cqr > mondrian > nicp_var > icp > frac_pv > tod_q
+60,strict,False,raw_q > cqr > mondrian_cqr > mondrian > nicp_var > icp > frac_pv > tod_q,raw_q > mondrian_cqr > cqr > mondrian > nicp_var > icp > frac_pv > tod_q

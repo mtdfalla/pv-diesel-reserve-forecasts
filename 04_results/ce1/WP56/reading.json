@@ -1,0 +1,22 @@
+{
+ "per_scenario_quantile": {
+  "cont": 0.3888009222839828,
+  "contB": 0.44868322712425246,
+  "nl2": 0.3962633884766753,
+  "nl2eq": 0.42163905413925007,
+  "min30": 0.2010457658522924,
+  "min50": 0.34489008986797187
+ },
+ "per_scenario_conformal": {
+  "cont": 0.3888009222839828,
+  "contB": 0.44868322712425246,
+  "nl2": 0.23673610005313095,
+  "nl2eq": 0.2506146200315085,
+  "min30": 0.12193800584671677,
+  "min50": 0.1587456900275952
+ },
+ "contingency_both_shapes_quantile": 0.4075396410357812,
+ "contingency_both_shapes_conformal": 0.4075396410357812,
+ "fires": false,
+ "rule": "D-112 WP-56 reading, scope clarified in D-113 (quantile or conformal; fires if either)"
+}

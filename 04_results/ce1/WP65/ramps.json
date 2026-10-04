@@ -1,0 +1,20 @@
+{
+ "rule": "docs/REGISTERED_RULES.md (written before any number)",
+ "arrays": [
+  "LD",
+  "SS",
+  "SD"
+ ],
+ "rated_kW": 661.1000000000001,
+ "elevation_min_deg": 5.0,
+ "verdict": {
+  "5": "overstates",
+  "15": "overstates"
+ },
+ "sources": {
+  "02_data/Original Dataset/Yulara_2023.csv": "0e3d9febb56251ce885f744b0d2f0473",
+  "02_data/Original Dataset/Yulara_2024.csv": "ea8a6b56172af550c34e0133ea0b3ab5",
+  "04_results/ce1/S1M/available_pv_map.npz": "a23e95b8680c9d64dd1db2af702f3895"
+ },
+ "script_md5": "7eefc86aff9704309a56285f355d1850"
+}

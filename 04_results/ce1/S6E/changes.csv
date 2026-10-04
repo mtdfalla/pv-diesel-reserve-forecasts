@@ -1,0 +1,13 @@
+fold,h,scenario,policy,item,record,extended
+2020,1,batteryB,cqr,fuel_at_target_test_0.003pct,,4230531.250980934
+2020,1,batteryB,mondrian_cqr,fuel_at_target_test_0.003pct,,4230669.836719855
+2020,1,batteryB,raw_q,fuel_at_target_test_0.003pct,,4230506.786529327
+2021,1,batteryB,cqr,A_R_target_0.003pct,0.765,0.715
+2021,1,batteryB,mondrian_cqr,A_R_target_0.003pct,0.77,0.715
+2021,1,batteryB,raw_q,A_R_target_0.003pct,0.765,0.715
+2022,1,batteryB,cqr,fuel_at_target_test_0.003pct,,4187848.589033785
+2022,1,batteryB,mondrian_cqr,fuel_at_target_test_0.003pct,,4187802.0840715347
+2022,1,batteryB,raw_q,fuel_at_target_test_0.003pct,,4187583.855690769
+2023,1,batteryB,cqr,fuel_at_target_H2,,2077746.020555488
+2023,1,batteryB,mondrian_cqr,fuel_at_target_H2,,2077585.3314845595
+2023,1,batteryB,raw_q,fuel_at_target_H2,,2077716.2482336967

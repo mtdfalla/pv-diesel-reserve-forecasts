@@ -1,0 +1,118 @@
+{
+ "method": "GHI (horizontal sensor record) to array-plane irradiance (Erbs, Hay-Davies, plane fitted on the fit year), pooled specific power of uncurtailed arrays, 25 W/m2 binned median, running maximum, x rated total",
+ "plane": {
+  "tilt": 15,
+  "azimuth": 0
+ },
+ "selection_rule": {
+  "band_Wm2": [
+   900.0,
+   1000.0
+  ],
+  "cv_max": 0.2,
+  "p5_p95_min": 0.6
+ },
+ "arrays": [
+  "LD",
+  "SS",
+  "SD"
+ ],
+ "rated_kW": {
+  "DG": 1058.4,
+  "LD": 327.6,
+  "SS": 226.8,
+  "SD": 106.7,
+  "CA": 105.9
+ },
+ "rated_total_kW": 1825.4,
+ "fit_year": 2023,
+ "n_fit": 39956,
+ "n_bins": 50,
+ "cap_specific": 0.7706,
+ "cap_plant_kW": 1406.7,
+ "validation": {
+  "2023->2024": {
+   "DG": {
+    "n": 45992,
+    "R2": -3.1306,
+    "RMSE_frac": 0.289,
+    "MBE_frac": -0.1826
+   },
+   "DG_lowG_MBE_frac": 0.0077,
+   "LD": {
+    "n": 45934,
+    "R2": 0.8761,
+    "RMSE_frac": 0.0937,
+    "MBE_frac": 0.0271
+   },
+   "SS": {
+    "n": 43501,
+    "R2": 0.8739,
+    "RMSE_frac": 0.0882,
+    "MBE_frac": -0.0003
+   },
+   "SD": {
+    "n": 43912,
+    "R2": 0.8836,
+    "RMSE_frac": 0.0953,
+    "MBE_frac": 0.0235
+   },
+   "CA": {
+    "n": 45684,
+    "R2": 0.7016,
+    "RMSE_frac": 0.1457,
+    "MBE_frac": -0.008
+   },
+   "pooled_selected": {
+    "n": 41292,
+    "R2": 0.9147,
+    "RMSE_frac": 0.0754,
+    "MBE_frac": 0.0167
+   },
+   "site_total_spill_share": 0.2731,
+   "DG_spill_share": 0.4986
+  },
+  "2024->2023": {
+   "DG": {
+    "n": 45782,
+    "R2": -1.2034,
+    "RMSE_frac": 0.261,
+    "MBE_frac": -0.1595
+   },
+   "DG_lowG_MBE_frac": 0.0042,
+   "LD": {
+    "n": 41623,
+    "R2": 0.8625,
+    "RMSE_frac": 0.0953,
+    "MBE_frac": -0.0239
+   },
+   "SS": {
+    "n": 44734,
+    "R2": 0.9073,
+    "RMSE_frac": 0.0775,
+    "MBE_frac": -0.0265
+   },
+   "SD": {
+    "n": 45047,
+    "R2": 0.9454,
+    "RMSE_frac": 0.0654,
+    "MBE_frac": 0.0052
+   },
+   "CA": {
+    "n": 45696,
+    "R2": 0.843,
+    "RMSE_frac": 0.108,
+    "MBE_frac": -0.0039
+   },
+   "pooled_selected": {
+    "n": 39956,
+    "R2": 0.9145,
+    "RMSE_frac": 0.0747,
+    "MBE_frac": -0.021
+   },
+   "site_total_spill_share": 0.2431,
+   "DG_spill_share": 0.39
+  }
+ },
+ "swap_cap_specific": 0.7751
+}

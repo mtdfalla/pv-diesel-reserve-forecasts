@@ -1,0 +1,376 @@
+{
+ "ok": true,
+ "checks": {
+  "f2019 S5 records align with the S2 test rows (regime, forecast)": {
+   "ok": true,
+   "detail": "6.10032466283883e-05"
+  },
+  "f2019 calibration year is 2018": {
+   "ok": true,
+   "detail": "2018"
+  },
+  "f2019 icp all S5 flags aggregate to intervals.csv PICP (0.9215) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9215178113004572"
+  },
+  "f2019 icp transitional S5 flags aggregate to intervals.csv PICP (0.7488) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.7487589630446774"
+  },
+  "f2019 mondrian all S5 flags aggregate to intervals.csv PICP (0.9006) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9006381262071832"
+  },
+  "f2019 mondrian transitional S5 flags aggregate to intervals.csv PICP (0.908) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.907979407979408"
+  },
+  "f2019 mondrian_cqr all S5 flags aggregate to intervals.csv PICP (0.8935) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8934989364563214"
+  },
+  "f2019 mondrian_cqr transitional S5 flags aggregate to intervals.csv PICP (0.8854) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8853649567935282"
+  },
+  "f2019 reproduced ICP coverage equals S5 per observation": {
+   "ok": true,
+   "detail": "1.0"
+  },
+  "f2019 reproduced ICP width 2q equals S5 maximum width": {
+   "ok": true,
+   "detail": "(177.31773878587546, 177.31773376464844)"
+  },
+  "f2020 S5 records align with the S2 test rows (regime, forecast)": {
+   "ok": true,
+   "detail": "6.099676966186962e-05"
+  },
+  "f2020 calibration year is 2019": {
+   "ok": true,
+   "detail": "2019"
+  },
+  "f2020 icp all S5 flags aggregate to intervals.csv PICP (0.8756) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8756441958817683"
+  },
+  "f2020 icp transitional S5 flags aggregate to intervals.csv PICP (0.6601) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.6600872329415244"
+  },
+  "f2020 mondrian all S5 flags aggregate to intervals.csv PICP (0.8943) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8942709898084167"
+  },
+  "f2020 mondrian transitional S5 flags aggregate to intervals.csv PICP (0.8918) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8918459377541214"
+  },
+  "f2020 mondrian_cqr all S5 flags aggregate to intervals.csv PICP (0.9018) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9017586836449354"
+  },
+  "f2020 mondrian_cqr transitional S5 flags aggregate to intervals.csv PICP (0.915) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9149848451245657"
+  },
+  "f2020 reproduced ICP coverage equals S5 per observation": {
+   "ok": true,
+   "detail": "1.0"
+  },
+  "f2020 reproduced ICP width 2q equals S5 maximum width": {
+   "ok": true,
+   "detail": "(139.30420107550344, 139.30419921875)"
+  },
+  "f2021 S5 records align with the S2 test rows (regime, forecast)": {
+   "ok": true,
+   "detail": "6.1025563127259375e-05"
+  },
+  "f2021 calibration year is 2020": {
+   "ok": true,
+   "detail": "2020"
+  },
+  "f2021 icp all S5 flags aggregate to intervals.csv PICP (0.8784) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8783866129183463"
+  },
+  "f2021 icp transitional S5 flags aggregate to intervals.csv PICP (0.698) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.6979958082263558"
+  },
+  "f2021 mondrian all S5 flags aggregate to intervals.csv PICP (0.8897) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8897065716696353"
+  },
+  "f2021 mondrian transitional S5 flags aggregate to intervals.csv PICP (0.8843) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8842677495415248"
+  },
+  "f2021 mondrian_cqr all S5 flags aggregate to intervals.csv PICP (0.895) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8950032811474642"
+  },
+  "f2021 mondrian_cqr transitional S5 flags aggregate to intervals.csv PICP (0.8859) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8859051611212995"
+  },
+  "f2021 reproduced ICP coverage equals S5 per observation": {
+   "ok": true,
+   "detail": "1.0"
+  },
+  "f2021 reproduced ICP width 2q equals S5 maximum width": {
+   "ok": true,
+   "detail": "(175.2457513904248, 175.24575805664062)"
+  },
+  "f2022 S5 records align with the S2 test rows (regime, forecast)": {
+   "ok": true,
+   "detail": "6.1030133792883134e-05"
+  },
+  "f2022 calibration year is 2021": {
+   "ok": true,
+   "detail": "2021"
+  },
+  "f2022 icp all S5 flags aggregate to intervals.csv PICP (0.8962) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.896242342385799"
+  },
+  "f2022 icp transitional S5 flags aggregate to intervals.csv PICP (0.7622) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.7622443235128542"
+  },
+  "f2022 mondrian all S5 flags aggregate to intervals.csv PICP (0.8967) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8967247117842844"
+  },
+  "f2022 mondrian transitional S5 flags aggregate to intervals.csv PICP (0.9134) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.91342966160005"
+  },
+  "f2022 mondrian_cqr all S5 flags aggregate to intervals.csv PICP (0.8991) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8990642033669384"
+  },
+  "f2022 mondrian_cqr transitional S5 flags aggregate to intervals.csv PICP (0.9018) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9017952086069931"
+  },
+  "f2022 reproduced ICP coverage equals S5 per observation": {
+   "ok": true,
+   "detail": "1.0"
+  },
+  "f2022 reproduced ICP width 2q equals S5 maximum width": {
+   "ok": true,
+   "detail": "(212.28376817246954, 212.2837677001953)"
+  },
+  "f2023 S5 records align with the S2 test rows (regime, forecast)": {
+   "ok": true,
+   "detail": "6.1027825495330035e-05"
+  },
+  "f2023 calibration year is 2022": {
+   "ok": true,
+   "detail": "2022"
+  },
+  "f2023 icp all S5 flags aggregate to intervals.csv PICP (0.9139) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9138714507105146"
+  },
+  "f2023 icp transitional S5 flags aggregate to intervals.csv PICP (0.7806) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.7805630834086119"
+  },
+  "f2023 mondrian all S5 flags aggregate to intervals.csv PICP (0.9119) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9119277140080376"
+  },
+  "f2023 mondrian transitional S5 flags aggregate to intervals.csv PICP (0.9021) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9021379102679916"
+  },
+  "f2023 mondrian_cqr all S5 flags aggregate to intervals.csv PICP (0.9006) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9006067610517191"
+  },
+  "f2023 mondrian_cqr transitional S5 flags aggregate to intervals.csv PICP (0.9006) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9005570611261668"
+  },
+  "f2023 reproduced ICP coverage equals S5 per observation": {
+   "ok": true,
+   "detail": "1.0"
+  },
+  "f2023 reproduced ICP width 2q equals S5 maximum width": {
+   "ok": true,
+   "detail": "(218.2435473707768, 218.24354553222656)"
+  },
+  "f2024 S5 records align with the S2 test rows (regime, forecast)": {
+   "ok": true,
+   "detail": "6.103455939410196e-05"
+  },
+  "f2024 calibration year is 2023": {
+   "ok": true,
+   "detail": "2023"
+  },
+  "f2024 icp all S5 flags aggregate to intervals.csv PICP (0.8743) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8743469453033372"
+  },
+  "f2024 icp transitional S5 flags aggregate to intervals.csv PICP (0.7141) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.7141389934953783"
+  },
+  "f2024 mondrian all S5 flags aggregate to intervals.csv PICP (0.8906) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8906333297792942"
+  },
+  "f2024 mondrian transitional S5 flags aggregate to intervals.csv PICP (0.8783) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.8782608695652174"
+  },
+  "f2024 mondrian_cqr all S5 flags aggregate to intervals.csv PICP (0.9052) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9051871201620642"
+  },
+  "f2024 mondrian_cqr transitional S5 flags aggregate to intervals.csv PICP (0.901) [aggregation identity]": {
+   "ok": true,
+   "detail": "0.9009928106812736"
+  },
+  "f2024 reproduced ICP coverage equals S5 per observation": {
+   "ok": true,
+   "detail": "1.0"
+  },
+  "f2024 reproduced ICP width 2q equals S5 maximum width": {
+   "ok": true,
+   "detail": "(189.22148019056237, 189.2214813232422)"
+  },
+  "yulara f2019 every scored test issue time is a daytime step of the S1 grid": {
+   "ok": true,
+   "detail": ""
+  },
+  "yulara f2020 every scored test issue time is a daytime step of the S1 grid": {
+   "ok": true,
+   "detail": ""
+  },
+  "yulara f2021 every scored test issue time is a daytime step of the S1 grid": {
+   "ok": true,
+   "detail": ""
+  },
+  "yulara f2022 every scored test issue time is a daytime step of the S1 grid": {
+   "ok": true,
+   "detail": ""
+  },
+  "yulara f2023 every scored test issue time is a daytime step of the S1 grid": {
+   "ok": true,
+   "detail": ""
+  },
+  "yulara f2024 every scored test issue time is a daytime step of the S1 grid": {
+   "ok": true,
+   "detail": ""
+  },
+  "asp f2024 every scored test issue time is a daytime step of the S1 grid": {
+   "ok": true,
+   "detail": ""
+  },
+  "asp f2024 labelled daytime steps cover the scored S2 test issue times": {
+   "ok": true,
+   "detail": "(44593, 44163)"
+  },
+  "yulara f2019 labelled daytime steps cover the scored S2 test issue times": {
+   "ok": true,
+   "detail": "(41983, 40901)"
+  },
+  "yulara f2020 labelled daytime steps cover the scored S2 test issue times": {
+   "ok": true,
+   "detail": "(44369, 43271)"
+  },
+  "yulara f2021 labelled daytime steps cover the scored S2 test issue times": {
+   "ok": true,
+   "detail": "(43877, 42668)"
+  },
+  "yulara f2022 labelled daytime steps cover the scored S2 test issue times": {
+   "ok": true,
+   "detail": "(43105, 41462)"
+  },
+  "yulara f2023 labelled daytime steps cover the scored S2 test issue times": {
+   "ok": true,
+   "detail": "(40983, 38071)"
+  },
+  "yulara f2024 labelled daytime steps cover the scored S2 test issue times": {
+   "ok": true,
+   "detail": "(39835, 37516)"
+  },
+  "trigger (a regime's missing share differs from another's by more than a factor of two) fires": {
+   "ok": true,
+   "detail": "{('asp', 2024): 3.27, ('yulara', 2019): 2.44, ('yulara', 2020): 2.07, ('yulara', 2021): 3.35, ('yulara', 2022): 7.0, ('yulara', 2023): 1.78, ('yulara', 2024): 1.68}"
+  },
+  "labelled missing shares at most 6.9% in any regime, test year and site": {
+   "ok": true,
+   "detail": "0.06895985551268369"
+  },
+  "f2019 seasonal counts equal the S5 intervals.csv n [aggregation identity]": {
+   "ok": true,
+   "detail": "40901"
+  },
+  "f2020 seasonal counts equal the S5 intervals.csv n [aggregation identity]": {
+   "ok": true,
+   "detail": "43271"
+  },
+  "f2021 seasonal counts equal the S5 intervals.csv n [aggregation identity]": {
+   "ok": true,
+   "detail": "42668"
+  },
+  "f2022 seasonal counts equal the S5 intervals.csv n [aggregation identity]": {
+   "ok": true,
+   "detail": "41462"
+  },
+  "f2023 seasonal counts equal the S5 intervals.csv n [aggregation identity]": {
+   "ok": true,
+   "detail": "38071"
+  },
+  "f2024 seasonal counts equal the S5 intervals.csv n [aggregation identity]": {
+   "ok": true,
+   "detail": "37516"
+  },
+  "2020 has the lowest ICP transitional coverage (0.660)": {
+   "ok": true,
+   "detail": ""
+  },
+  "its calibration year 2019 has the lowest transitional and cloudy shares of the six calibration years": {
+   "ok": true,
+   "detail": ""
+  },
+  "2020 has the smallest ICP quantile": {
+   "ok": true,
+   "detail": ""
+  },
+  "2020's transitional error quantile lies inside the range of the other test years": {
+   "ok": true,
+   "detail": ""
+  },
+  "reweighting raises 2020's coverage but it stays lowest among the reweighted years (explains part)": {
+   "ok": true,
+   "detail": "{2019: 0.706, 2020: 0.702, 2021: 0.725, 2022: 0.776, 2023: 0.764, 2024: 0.738}"
+  }
+ },
+ "inputs_md5": {
+  "S5/intervals.csv": "eaa1586723c9c225c050a27883a74a5e",
+  "S2/yulara_f2019_h1.parquet": "20da61f566e0346b15a2f07222981ed8",
+  "S5/yulara_f2019_h1_obs.npz": "3ff1f8ceb36f2a486127ab901d12889e",
+  "S2/yulara_f2020_h1.parquet": "e96c08bce9ca93aeec48dead70f02886",
+  "S5/yulara_f2020_h1_obs.npz": "5de300862c51af9ca11c03fed9261a8f",
+  "S2/yulara_f2021_h1.parquet": "0d9bd5fac484b05b958499b76852384a",
+  "S5/yulara_f2021_h1_obs.npz": "ef24e97646e678997fc2c96794bf5df3",
+  "S2/yulara_f2022_h1.parquet": "73410e8efc115dbec08f7a9dc86d9afb",
+  "S5/yulara_f2022_h1_obs.npz": "cd5d07033949bdf5afdfdc755ca4a5a3",
+  "S2/yulara_f2023_h1.parquet": "49236da6843217b99ecfd1dc6fe44822",
+  "S5/yulara_f2023_h1_obs.npz": "9c6f94c8fcddf94d5ef24f93d3a3ab28",
+  "S2/yulara_f2024_h1.parquet": "4cab3363086b2972e113868b5513ae11",
+  "S5/yulara_f2024_h1_obs.npz": "fe95fb61ee92bd930178cf1341c68b44",
+  "S1/yulara_geo_5min.parquet": "369fe944a33416b4c61a12e8f4afd46d",
+  "S1/asp_geo_5min.parquet": "7a47a3467fe3a1f8ce3a85b3364b3022",
+  "S2/asp_f2024_h1.parquet": "f8a9ba7faecf055da3c370e5b97ac9d3"
+ },
+ "outputs_md5": {
+  "seasonal.csv": "8fa076aecd2d84468e12c3742ec1ad68",
+  "icp_dip.csv": "6b6a86371415db73ac193c014f3bdd5e",
+  "missing.csv": "a9c05e19103667f7635be0e07cd21d4a"
+ }
+}

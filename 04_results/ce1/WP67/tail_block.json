@@ -1,0 +1,241 @@
+{
+ "item": "D-129 step 2 items 8 and 9",
+ "scope": "pop=Yulara six folds, h=15 min, theta policies (ICP, Mondrian, CQR, M-CQR, raw q, ToD, VN-ICP), issue-time regime; item 9 blocks=1 day primary, 7 days check, B 10,000, seed 42",
+ "kupiec_reproduces_S63": true,
+ "reliable_kupiec": {
+  "icp": false,
+  "mondrian": false,
+  "cqr": false,
+  "mondrian_cqr": false,
+  "raw_q": false,
+  "tod_q": false,
+  "nicp_var": false
+ },
+ "reliable_block1": {
+  "icp": false,
+  "mondrian": true,
+  "cqr": true,
+  "mondrian_cqr": false,
+  "raw_q": false,
+  "tod_q": false,
+  "nicp_var": false
+ },
+ "reliable_block7": {
+  "icp": false,
+  "mondrian": true,
+  "cqr": true,
+  "mondrian_cqr": false,
+  "raw_q": false,
+  "tod_q": false,
+  "nicp_var": false
+ },
+ "verdicts_differ": [
+  "mondrian",
+  "cqr"
+ ],
+ "detail": {
+  "kupiec_reject": {
+   "icp": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 0,
+     "0.99": 0
+    }
+   },
+   "mondrian": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 2,
+     "0.95": 3,
+     "0.975": 0,
+     "0.99": 3
+    }
+   },
+   "cqr": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 3,
+     "0.975": 2,
+     "0.99": 3
+    }
+   },
+   "mondrian_cqr": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 1,
+     "0.95": 1,
+     "0.975": 2,
+     "0.99": 3
+    }
+   },
+   "raw_q": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 1,
+     "0.95": 2,
+     "0.975": 1,
+     "0.99": 1
+    }
+   },
+   "tod_q": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 0,
+     "0.99": 0
+    }
+   },
+   "nicp_var": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 0,
+     "0.99": 1
+    }
+   }
+  },
+  "block1_reject": {
+   "icp": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 0,
+     "0.99": 0
+    }
+   },
+   "mondrian": {
+    "reliable": true,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 4,
+     "0.95": 5,
+     "0.975": 4,
+     "0.99": 5
+    }
+   },
+   "cqr": {
+    "reliable": true,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 4,
+     "0.95": 4,
+     "0.975": 4,
+     "0.99": 4
+    }
+   },
+   "mondrian_cqr": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 2,
+     "0.95": 4,
+     "0.975": 4,
+     "0.99": 5
+    }
+   },
+   "raw_q": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 4,
+     "0.95": 5,
+     "0.975": 4,
+     "0.99": 2
+    }
+   },
+   "tod_q": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 0,
+     "0.99": 0
+    }
+   },
+   "nicp_var": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 2,
+     "0.99": 1
+    }
+   }
+  },
+  "block7_reject": {
+   "icp": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 0,
+     "0.99": 0
+    }
+   },
+   "mondrian": {
+    "reliable": true,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 5,
+     "0.95": 6,
+     "0.975": 5,
+     "0.99": 5
+    }
+   },
+   "cqr": {
+    "reliable": true,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 4,
+     "0.95": 4,
+     "0.975": 4,
+     "0.99": 4
+    }
+   },
+   "mondrian_cqr": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 3,
+     "0.95": 4,
+     "0.975": 5,
+     "0.99": 5
+    }
+   },
+   "raw_q": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 4,
+     "0.95": 5,
+     "0.975": 4,
+     "0.99": 3
+    }
+   },
+   "tod_q": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 0,
+     "0.99": 0
+    }
+   },
+   "nicp_var": {
+    "reliable": false,
+    "folds_2_of_3_not_rejected": {
+     "0.9": 0,
+     "0.95": 0,
+     "0.975": 1,
+     "0.99": 2
+    }
+   }
+  }
+ },
+ "cells_reject": {
+  "kupiec": 641,
+  "block1": 530,
+  "block7": 506,
+  "n": 882
+ },
+ "item8_cases_at_limit": 52,
+ "item8_cases": 168
+}

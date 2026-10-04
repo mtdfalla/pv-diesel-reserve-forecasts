@@ -1,0 +1,154 @@
+{
+ "source": {
+  "source": "comstock_tmy3_maricopa_largehotel",
+  "url": "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/comstock_tmy3_release_1/timeseries_aggregates/by_county/state=AZ/g0400130-largehotel.csv",
+  "doi": "10.25984/1876417",
+  "columns": [
+   "timestamp",
+   "out.electricity.total.energy_consumption"
+  ],
+  "file": "load_source.csv",
+  "md5": "a4d00288df5291a694b10d0cab72cf4e",
+  "bytes": 7687502,
+  "retrieved": "2026-09-27T15:38:55"
+ },
+ "conversion": {
+  "timestamps": "EST interval end -> Phoenix MST interval start",
+  "shift_days": 182,
+  "feb29": "uses 28 February"
+ },
+ "profile_minimum_hour": 2.75,
+ "profile_maximum_hour": 10.0,
+ "measured_spill_2023": 0.1987,
+ "scales": {
+  "A": {
+   "primary": {
+    "mean_kW": 2274.3,
+    "peak_kW": 4283.3,
+    "load_factor": 0.531,
+    "energy_MWh_2023": 19922.6,
+    "extra_units_assumed": false
+   },
+   "peak6MW": {
+    "mean_kW": 3185.8,
+    "peak_kW": 6000.0,
+    "load_factor": 0.531,
+    "energy_MWh_2023": 27907.3,
+    "extra_units_assumed": false
+   },
+   "spill_matched": {
+    "mean_kW": 1479.9,
+    "peak_kW": 2787.2,
+    "load_factor": 0.531,
+    "energy_MWh_2023": 12964.0,
+    "extra_units_assumed": false
+   }
+  },
+  "B": {
+   "primary": {
+    "mean_kW": 2274.3,
+    "peak_kW": 3278.8,
+    "load_factor": 0.6936,
+    "energy_MWh_2023": 19922.6,
+    "extra_units_assumed": false
+   },
+   "peak6MW": {
+    "mean_kW": 3185.8,
+    "peak_kW": 4592.9,
+    "load_factor": 0.6936,
+    "energy_MWh_2023": 27907.3,
+    "extra_units_assumed": false
+   },
+   "spill_matched": {
+    "mean_kW": 1479.9,
+    "peak_kW": 2133.6,
+    "load_factor": 0.6936,
+    "energy_MWh_2023": 12964.0,
+    "extra_units_assumed": false
+   }
+  }
+ },
+ "plausibility_handbook": {
+  "A_2023": {
+   "handbook_curtailment_share": 0.0271,
+   "handbook_ue_kWh": 0.0,
+   "handbook_fuel_L": 4048332.0,
+   "peak_kW": 4283.3,
+   "mean_kW": 2274.3,
+   "load_factor": 0.531,
+   "energy_MWh": 19922.6,
+   "missing_daytime_steps": 6729,
+   "extra_units": false
+  },
+  "A_2024": {
+   "handbook_curtailment_share": 0.0242,
+   "handbook_ue_kWh": 0.0,
+   "handbook_fuel_L": 4058293.0,
+   "peak_kW": 4283.3,
+   "mean_kW": 2275.2,
+   "load_factor": 0.5312,
+   "energy_MWh": 19985.5,
+   "missing_daytime_steps": 7511,
+   "extra_units": false
+  },
+  "B_2023": {
+   "handbook_curtailment_share": 0.0147,
+   "handbook_ue_kWh": 0.0,
+   "handbook_fuel_L": 4057161.0,
+   "peak_kW": 3278.8,
+   "mean_kW": 2274.3,
+   "load_factor": 0.6936,
+   "energy_MWh": 19922.6,
+   "missing_daytime_steps": 6729,
+   "extra_units": false
+  },
+  "B_2024": {
+   "handbook_curtailment_share": 0.014,
+   "handbook_ue_kWh": 0.0,
+   "handbook_fuel_L": 4072333.0,
+   "peak_kW": 3278.8,
+   "mean_kW": 2274.7,
+   "load_factor": 0.6938,
+   "energy_MWh": 19981.4,
+   "missing_daytime_steps": 7511,
+   "extra_units": false
+  }
+ },
+ "arena_spill": 0.28,
+ "pav_energy_MWh": {
+  "2023": 2751.1,
+  "2024": 2566.0
+ },
+ "daytime_missing_steps": {
+  "2023": 6729,
+  "2024": 7511
+ },
+ "parameters": {
+  "units": [
+   2500.0,
+   1000.0,
+   1000.0,
+   1000.0,
+   1000.0
+  ],
+  "min_load": 0.4,
+  "fuel": {
+   "cat_c32": [
+    0.0205,
+    0.23
+   ],
+   "skarstein_uhlen": [
+    0.08415,
+    0.246
+   ]
+  },
+  "min_up_steps": 12,
+  "battery": [
+   4000.0,
+   2000.0
+  ],
+  "ue_target": 2e-05,
+  "fuel_price": 1.68,
+  "voll": 34.39
+ }
+}

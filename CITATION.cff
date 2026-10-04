@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "pv-diesel-reserve-forecasts"
+abstract: "Code and result tables for 'Can probabilistic irradiance forecasts replace the full-PV spinning-reserve rule? A six-year evaluation for a remote PV-diesel mini-grid'."
+version: 2.0.0
+doi: 10.5281/zenodo.23125766
+date-released: 2026-10-03
+authors:
+  - family-names: Abdelmagid
+    given-names: Mohamed
+  - family-names: El-Fouly
+    given-names: Tarek H. M.
+  - family-names: Maalouf
+    given-names: Maher
+repository-code: "https://github.com/mtdfalla/pv-diesel-reserve-forecasts"
+license: MIT
+keywords:
+  - solar forecasting
+  - conformal prediction
+  - spinning reserve
+  - PV-diesel mini-grid

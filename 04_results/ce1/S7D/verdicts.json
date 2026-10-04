@@ -1,0 +1,111 @@
+{
+ "DR1": {
+  "icp": {
+   "folds_passing_both_shapes": 0,
+   "holds": false
+  },
+  "mondrian": {
+   "folds_passing_both_shapes": 0,
+   "holds": false
+  },
+  "cqr": {
+   "folds_passing_both_shapes": 3,
+   "holds": false
+  },
+  "mondrian_cqr": {
+   "folds_passing_both_shapes": 3,
+   "holds": false
+  },
+  "raw_q": {
+   "folds_passing_both_shapes": 3,
+   "holds": false
+  },
+  "tod_q": {
+   "folds_passing_both_shapes": 0,
+   "holds": false
+  },
+  "nicp_var": {
+   "folds_passing_both_shapes": 2,
+   "holds": false
+  },
+  "frac_pv": {
+   "folds_passing_both_shapes": 3,
+   "holds": false
+  }
+ },
+ "DR2": {
+  "folds_gain": 0,
+  "folds_cost": 0,
+  "credited": false,
+  "costs_fuel": false,
+  "best_cp_by_fold": [
+   "best_cp=cqr",
+   "best_cp=cqr",
+   "best_cp=mondrian_cqr",
+   "best_cp=cqr",
+   "best_cp=cqr",
+   "best_cp=cqr"
+  ]
+ },
+ "DR3_mcqr_vs_cqr": {
+  "folds_gain": 0,
+  "folds_cost": 0,
+  "credited": false,
+  "costs_fuel": false,
+  "best_cp_by_fold": null
+ },
+ "DR3_mondrian_vs_icp": {
+  "folds_gain": 0,
+  "folds_cost": 1,
+  "credited": false,
+  "costs_fuel": false,
+  "best_cp_by_fold": null
+ },
+ "DR3_mondrian_vs_nicp_var": {
+  "folds_gain": 0,
+  "folds_cost": 6,
+  "credited": false,
+  "costs_fuel": true,
+  "best_cp_by_fold": null
+ },
+ "limit_bracket_trigger": {
+  "fired": false,
+  "cases": [],
+  "at_limit_cases": [
+   [
+    2022,
+    "mondrian"
+   ],
+   [
+    2024,
+    "icp"
+   ],
+   [
+    2024,
+    "mondrian"
+   ]
+  ]
+ },
+ "DR4": {
+  "folds_passing": {
+   "icp": 0,
+   "mondrian": 0,
+   "cqr": 0,
+   "mondrian_cqr": 0
+  },
+  "outcome": "DROPPED",
+  "baselines": {
+   "raw_q": 0,
+   "tod_q": 0,
+   "nicp_var": 0,
+   "frac_pv": 0
+  }
+ },
+ "DR5": {
+  "differs_any": true,
+  "top_agree": 0,
+  "n": 24,
+  "note": "load model governs the main text either way"
+ },
+ "undefined_share_max_primary": 0.0
+}

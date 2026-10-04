@@ -1,0 +1,3 @@
+n_calib,n_test,n_days_test,nicp_var_beta,anticipative_equals_event_rule_h1,delayed_equals_anticipative_at_h1,seconds,site,fold,h
+42643,43801,362,0.024945269393401043,True,True,44.1,asp,2024,1
+41922,43077,362,0.02391529053601011,True,,55.4,asp,2024,3

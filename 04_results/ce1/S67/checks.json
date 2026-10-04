@@ -1,0 +1,172 @@
+{
+ "ok": true,
+ "checks": {
+  "srt_frac_pv_reproduces_WP63_every_rule": {
+   "ok": true,
+   "n": 96,
+   "worst": 2.220446049250313e-16
+  },
+  "stage_f2019_pv2": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2020_pv2": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2021_pv2": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2022_pv2": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2023_pv2": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2024_pv2": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2019_pv3": {
+   "ok": true,
+   "n": 14
+  },
+  "stage_f2020_pv3": {
+   "ok": true,
+   "n": 14
+  },
+  "stage_f2021_pv3": {
+   "ok": true,
+   "n": 14
+  },
+  "stage_f2022_pv3": {
+   "ok": true,
+   "n": 14
+  },
+  "stage_f2023_pv3": {
+   "ok": true,
+   "n": 14
+  },
+  "stage_f2024_pv3": {
+   "ok": true,
+   "n": 14
+  },
+  "stage_f2019_n1pv2": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2020_n1pv2": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2021_n1pv2": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2022_n1pv2": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2023_n1pv2": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2024_n1pv2": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2019_n1pv3": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2020_n1pv3": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2021_n1pv3": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2022_n1pv3": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2023_n1pv3": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2024_n1pv3": {
+   "ok": true,
+   "n": 8
+  },
+  "stage_f2019_l22": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2020_l22": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2021_l22": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2022_l22": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2023_l22": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2024_l22": {
+   "ok": true,
+   "n": 16
+  },
+  "stage_f2019_srt": {
+   "ok": true,
+   "n": 20
+  },
+  "stage_f2020_srt": {
+   "ok": true,
+   "n": 20
+  },
+  "stage_f2021_srt": {
+   "ok": true,
+   "n": 20
+  },
+  "stage_f2022_srt": {
+   "ok": true,
+   "n": 20
+  },
+  "stage_f2023_srt": {
+   "ok": true,
+   "n": 20
+  },
+  "stage_f2024_srt": {
+   "ok": true,
+   "n": 20
+  },
+  "n1factor1_f2019": {
+   "ok": true
+  },
+  "n1factor1_f2020": {
+   "ok": true
+  },
+  "n1factor1_f2021": {
+   "ok": true
+  },
+  "n1factor1_f2022": {
+   "ok": true
+  },
+  "n1factor1_f2023": {
+   "ok": true
+  },
+  "n1factor1_f2024": {
+   "ok": true
+  }
+ }
+}

@@ -1,0 +1,743 @@
+{
+ "checks": {
+  "S56_stamp_ok": {
+   "ok": true,
+   "msg": "(569 stage checks)"
+  },
+  "S56_outputs_match_stamp": {
+   "ok": true,
+   "msg": "(19 files)"
+  },
+  "handbook_fuel_consistent_f2019_cont_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_cont_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_cont_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_cont_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_cont_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_contB_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_contB_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_contB_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_contB_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_contB_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2eq_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2eq_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2eq_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2eq_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_nl2eq_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min30_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min30_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min30_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min30_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min30_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min50_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min50_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min50_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min50_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2019_min50_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_cont_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_cont_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_cont_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_cont_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_cont_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_contB_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_contB_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_contB_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_contB_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_contB_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2eq_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2eq_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2eq_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2eq_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_nl2eq_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min30_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min30_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min30_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min30_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min30_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min50_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min50_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min50_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min50_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2020_min50_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_cont_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_cont_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_cont_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_cont_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_cont_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_contB_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_contB_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_contB_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_contB_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_contB_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2eq_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2eq_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2eq_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2eq_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_nl2eq_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min30_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min30_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min30_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min30_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min30_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min50_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min50_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min50_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min50_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2021_min50_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_cont_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_cont_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_cont_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_cont_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_cont_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_contB_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_contB_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_contB_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_contB_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_contB_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2eq_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2eq_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2eq_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2eq_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_nl2eq_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min30_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min30_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min30_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min30_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min30_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min50_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min50_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min50_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min50_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2022_min50_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_cont_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_cont_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_cont_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_cont_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_cont_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_contB_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_contB_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_contB_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_contB_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_contB_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2eq_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2eq_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2eq_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2eq_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_nl2eq_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min30_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min30_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min30_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min30_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min30_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min50_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min50_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min50_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min50_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2023_min50_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_cont_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_cont_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_cont_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_cont_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_cont_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_contB_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_contB_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_contB_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_contB_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_contB_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2eq_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2eq_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2eq_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2eq_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_nl2eq_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min30_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min30_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min30_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min30_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min30_raw_q": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min50_icp": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min50_mondrian": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min50_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min50_mondrian_cqr": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_fuel_consistent_f2024_min50_raw_q": {
+   "ok": true,
+   "msg": ""
+  }
+ },
+ "inputs": {
+  "S56/ad_cells.csv": "adf26b7e979239fc20efa8eccd1f1b77"
+ },
+ "outputs": {
+  "cells.csv": "e0b0c42e42f11e7e9444e4ef704b5efe",
+  "reading.json": "5a76bbb4ae1d9f6c3d497ab7a3b5d9dd",
+  "scenario_summary.csv": "803c9c9b55c2de382b4c2770d57616b8"
+ },
+ "code": {
+  "ce1_wp56_read.py": "ca10b596dc8e7f0cfbbe122dc7314e7e"
+ }
+}

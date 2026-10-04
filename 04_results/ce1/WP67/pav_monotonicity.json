@@ -1,0 +1,36 @@
+{
+ "item": "D-129 step 2 item 11",
+ "scope": "S1M map, every daytime step of 2019-2024, GHI grid 0-1500 W/m2 step 5, no temperature input in the map",
+ "exactness_points_checked": 1200,
+ "daytime_steps": 317155,
+ "steps_with_fall": 8910,
+ "share": 0.028093518941842317,
+ "largest_fall_kW": -11.42864165186152,
+ "largest_fall_at": "2021-11-09 18:50:00",
+ "per_year": {
+  "2019": {
+   "daytime_steps": 52806,
+   "steps_with_fall": 1478
+  },
+  "2020": {
+   "daytime_steps": 52963,
+   "steps_with_fall": 1497
+  },
+  "2021": {
+   "daytime_steps": 52805,
+   "steps_with_fall": 1481
+  },
+  "2022": {
+   "daytime_steps": 52809,
+   "steps_with_fall": 1478
+  },
+  "2023": {
+   "daytime_steps": 52807,
+   "steps_with_fall": 1479
+  },
+  "2024": {
+   "daytime_steps": 52965,
+   "steps_with_fall": 1497
+  }
+ }
+}

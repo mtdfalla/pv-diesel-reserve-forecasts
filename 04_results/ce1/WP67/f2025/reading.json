@@ -1,0 +1,82 @@
+{
+ "scope": "pop=Yulara fold 2025 (test 2025, calibration 2024, training 2016-2023), h=15 min, shape=both, selection rules frozen (D-129), reported as a separate confirmatory row, never pooled",
+ "C1": {
+  "rule": "XH, quantile policies, both shapes, 6 cases: all meet 0.002% and each saves >= 0.01% of handbook fuel",
+  "met": 6,
+  "cases": 6,
+  "saving_min_pct": 0.05993931020484844,
+  "saving_median_pct": 0.17780890919671943,
+  "saving_max_pct": 0.3797931599626825,
+  "ue_share_max": 5.898836312187877e-06,
+  "confirmed": true
+ },
+ "C2": {
+  "rule": "XH median saving over the C1 cases exceeds A-D's over the same cases",
+  "xh_median_pct": 0.17780890919671943,
+  "ad_median_pct": 0.11389219621849578,
+  "confirmed": true
+ },
+ "year_level": {
+  "rule": "D-129 general rule 4, XH quantile set",
+  "six_fold_years_met": 6,
+  "years_met": 7,
+  "years": 7,
+  "cp_lower_95_one_sided": 0.6518
+ },
+ "C3": {
+  "yulara_a": {
+   "method": "icp",
+   "picp": 0.7975633528265107,
+   "holds": true
+  },
+  "yulara_b": {
+   "method": "mondrian_cqr",
+   "picp": 0.9101364522417154,
+   "holds": true
+  },
+  "asp_a": {
+   "method": "icp",
+   "picp": 0.7724623603691112,
+   "holds": true
+  },
+  "asp_b": {
+   "method": "mondrian_cqr",
+   "picp": 0.893152015541525,
+   "holds": true
+  }
+ },
+ "C4": {
+  "rule": "A-R met counts 2025, DR1 not re-evaluated",
+  "conformal_met": 8,
+  "conformal_cases": 8,
+  "quantile_met": 6,
+  "quantile_cases": 6
+ },
+ "lag": {
+  "rule": "D-129 step 3 item 3",
+  "methods": 18,
+  "fires": true,
+  "changes": [
+   {
+    "horizon_min": 5,
+    "method": "aci",
+    "variant": "delayed_projected",
+    "class_base": "below",
+    "class_lag": "includes"
+   }
+  ]
+ },
+ "context": {
+  "note": "every static rule and A-D meet the target in every 2025 case of both sets",
+  "all_static_and_AD_met": true
+ },
+ "inputs": {
+  "WP67/f2025/f2025_cases.csv": "3631f85dc3fec436c59170dd9944803b",
+  "WP67/f2025/f2025_n1.csv": "7c5d5f08f58c283e6dc752baef29680a",
+  "WP67/year_level.csv": "48e795d5966031b28179f5775c9b3237",
+  "WP67/c3lag/verdict.json": "6bc4da3bfb485f392d58e11b2e82494e"
+ },
+ "code": {
+  "ce1_wp67_f2025_read.py": "1f3836729586e90df6c1de59386d6283"
+ }
+}

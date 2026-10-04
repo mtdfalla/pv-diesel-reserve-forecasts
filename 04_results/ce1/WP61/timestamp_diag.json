@@ -1,0 +1,59 @@
+{
+ "label": "POST-HOC diagnostic, not the D-118 rule",
+ "results": {
+  "yulara": {
+   "days": 108,
+   "clear_days_found": 463,
+   "horizontal": {
+    "median_delta_min": -3.5,
+    "iqr_min": [
+     -4.0,
+     -3.0
+    ]
+   },
+   "best_plane": {
+    "tilt": 3,
+    "azimuth": 0,
+    "median_delta_min": -3.5,
+    "iqr_min": [
+     -4.0,
+     -3.0
+    ],
+    "residual_ratio_to_horizontal": 0.7906150880258702
+   },
+   "north_planes": {
+    "0deg_az0": -3.5,
+    "3deg_az0": -3.5,
+    "6deg_az0": -3.5,
+    "9deg_az0": -3.5
+   }
+  },
+  "asp": {
+   "days": 32,
+   "clear_days_found": 32,
+   "horizontal": {
+    "median_delta_min": 3.5,
+    "iqr_min": [
+     1.5,
+     5.0
+    ]
+   },
+   "best_plane": {
+    "tilt": 3,
+    "azimuth": 45,
+    "median_delta_min": -3.0,
+    "iqr_min": [
+     -5.0,
+     -1.5
+    ],
+    "residual_ratio_to_horizontal": 0.7308290888902441
+   },
+   "north_planes": {
+    "0deg_az0": 3.5,
+    "3deg_az0": 3.5,
+    "6deg_az0": 3.5,
+    "9deg_az0": 3.5
+   }
+  }
+ }
+}

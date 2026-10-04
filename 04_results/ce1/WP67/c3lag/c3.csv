@@ -1,0 +1,5 @@
+site,part,method,n,picp,picp_4dp,ci_lo,ci_hi,class_1day,holds
+yulara,a,icp,10260,0.7975633528265107,0.7976,0.7804,0.8159,below,True
+yulara,b,mondrian_cqr,10260,0.9101364522417154,0.9101,0.9022,0.9175,above,True
+asp,a,icp,12354,0.7724623603691112,0.7725,0.7548,0.7914,below,True
+asp,b,mondrian_cqr,12354,0.893152015541525,0.8932,0.8858,0.9006,includes,True

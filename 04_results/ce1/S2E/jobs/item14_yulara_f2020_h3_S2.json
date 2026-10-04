@@ -1,0 +1,35 @@
+{
+ "ok": true,
+ "smoke": false,
+ "checks": {
+  "non_forecast_columns_equal": true,
+  "miss_rows_have_forecasts": true,
+  "point_rmse_plausible": true
+ },
+ "msg": "(82725 measured rows reproduce S2/yulara_f2020_h3.parquet exactly, 64 models with the recorded iterations; 1263 missing-target rows)",
+ "outputs": {
+  "miss": "1097f94f221eee9965481378ee3dc09f"
+ },
+ "summary": {
+  "job": "item14_yulara_f2020_h3_S2",
+  "kind": "item14",
+  "site": "yulara",
+  "fold": 2020,
+  "h": 3,
+  "levels": "S2",
+  "n_calib": 40193,
+  "n_test": 42532,
+  "n_miss_calib": 641,
+  "n_miss_test": 622,
+  "test_rmse_point": 91.98417025108158,
+  "seconds": 377.6,
+  "ok": true
+ },
+ "reproduction": {
+  "exact": true,
+  "other_columns_equal": true,
+  "levels_differing": {},
+  "iterations_differing": {},
+  "n_models": 64
+ }
+}

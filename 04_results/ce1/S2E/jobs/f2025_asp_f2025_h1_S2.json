@@ -1,0 +1,30 @@
+{
+ "ok": true,
+ "smoke": false,
+ "checks": {
+  "miss_rows_have_forecasts": true,
+  "rows_present": true,
+  "point_rmse_plausible": true
+ },
+ "msg": "(calib 44163, test 41994, missing-target rows 144)",
+ "outputs": {
+  "std": "194ef139b694ce462494a0129b6b7b33",
+  "miss": "4bf57000ca80e6e4b836afd586d82181"
+ },
+ "summary": {
+  "job": "f2025_asp_f2025_h1_S2",
+  "kind": "f2025",
+  "site": "asp",
+  "fold": 2025,
+  "h": 1,
+  "levels": "S2",
+  "n_calib": 44163,
+  "n_test": 41994,
+  "n_miss_calib": 60,
+  "n_miss_test": 84,
+  "test_rmse_point": 72.22329529432845,
+  "seconds": 312.5,
+  "ok": true
+ },
+ "reproduction": null
+}

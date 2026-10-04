@@ -1,0 +1,23 @@
+{
+ "tolerance": 1e-09,
+ "bit_exact": {
+  "yulara_geo_ghi": true,
+  "yulara_geo_zenith": true,
+  "yulara_geo_ghi_cs_raw": true,
+  "sensor_days_q": true,
+  "sensor_days_factor": true,
+  "precheck_q": false,
+  "precheck_factor": false,
+  "rebuild_scalar_yulara_2019": true,
+  "rebuild_scalar_yulara_2020": true,
+  "rebuild_scalar_yulara_2021": true,
+  "rebuild_scalar_yulara_2022": true,
+  "rebuild_scalar_yulara_2023": true,
+  "rebuild_scalar_yulara_2024": true,
+  "asp_geo_ghi": true,
+  "asp_geo_zenith": true,
+  "asp_geo_ghi_cs_raw": true,
+  "rebuild_scalar_asp_2024": true
+ },
+ "all_bit_exact": false
+}
