@@ -10,6 +10,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+import ce1_literal as LT
+
 FOLDS = [2019, 2020, 2021, 2022, 2023, 2024]
 CP = ["icp", "mondrian", "cqr", "mondrian_cqr"]
 QP = ["raw_q", "cqr", "mondrian_cqr"]
@@ -35,6 +37,7 @@ def main():
     out = R / "WP61"
     out.mkdir(parents=True, exist_ok=True)
     checks, inputs, rd = {}, {}, {}
+    LIT = LT.Literal(out, "ce1_wp61read.py")
 
     def check(name, ok, detail=""):
         checks[name] = dict(ok=bool(ok), detail=str(detail))
@@ -69,15 +72,17 @@ def main():
     T = pd.DataFrame(rows)
     T.to_csv(out / "selection.csv", index=False)
     t = T.set_index("selection")
-    check("A-R 25 of 48, A-D 48 of 48, cross-fitted half 48 of 48 (as recorded)",
-          (t.loc["A_R", "met"], t.loc["A_D", "met"], t.loc["b_xfit_0.001", "met"]) == (25, 48, 48))
+    check("A-R, A-D and cross-fitted half met counts (v2.0.0: 25, 48 and 48 of 48, as recorded)",
+          LIT("selection_met_AR_AD_xfit_half", (int(t.loc["A_R", "met"]), int(t.loc["A_D", "met"]), int(t.loc["b_xfit_0.001", "met"])),
+              (25, 48, 48)))
     # paired: static cross-fitted half allowance against A-D, per case
     p1 = c[c.selection == "b_xfit_0.001"].set_index(["fold", "scenario", "policy"]).saving_pct
     p2 = c[c.selection == "A_D"].set_index(["fold", "scenario", "policy"]).saving_pct
     d = (p1 - p2.reindex(p1.index))
     rd["xfit_vs_AD_static_more"] = int((d > 0).sum())
     rd["xfit_vs_AD_median_diff_by_policy"] = d.groupby(level="policy").median().round(4).to_dict()
-    rd["xfit_vs_AD_ties_by_year_met"] = "8 of 8 each in every year for both"
+    yb = {k: [int(t.loc[k, f"met_{yr}"]) for yr in FOLDS] for k in ("A_D", "b_xfit_0.001")}
+    rd["xfit_vs_AD_ties_by_year_met"] = ("8 of 8 each in every year for both" if all(m == 8 for v_ in yb.values() for m in v_) else yb)
     # fold 2019 of the all-earlier-years rule falls back to the calibration-year half (no earlier test year)
     s19 = c[(c.fold == 2019) & c.selection.isin(["a_half_H2", "c_prior_0.001"])].pivot_table(
         index=["scenario", "policy"], columns="selection", values="param")
@@ -110,8 +115,8 @@ def main():
                         pv_share_min=float(g.pv_share_load.min()), pv_share_max=float(g.pv_share_load.max()),
                         curt_min=float(g.curt_share_handbook.min()), curt_max=float(g.curt_share_handbook.max()))
     rd["load_scales"] = summ
-    check("main A-R conformal 14 of 24 and shapeB 11 of 24 (sum 25 of 48)",
-          (summ["main"]["cp_met"], summ["shapeB"]["cp_met"]) == (14, 11))
+    check("main and shapeB A-R conformal met counts (v2.0.0: 14 and 11 of 24)",
+          LIT("AR_conformal_met_main_shapeB", (int(summ["main"]["cp_met"]), int(summ["shapeB"]["cp_met"])), (14, 11)))
 
     # ---------------------------------------------------------------- 3. forecast-alone median and interaction
     w = pd.read_csv(inp("WP52/cells.csv"))

@@ -583,7 +583,7 @@ def main():
     check("oracle_no_ue_and_least_fuel", bool(len(sm)) and (sm["oracle_ue_kWh"] < 1e-6).all()
           and (sm["oracle_fuel_L"] <= sm["handbook_fuel_L"] + 1e-6).all())
     ok = all(c["ok"] for c in checks.values())
-    detail = dict(stage=a.stage, smoke=a.smoke, ok=ok, seconds=round(time.time() - t0, 1), checks=checks,
+    detail = dict(simulator=LM.sim_defaults(), stage=a.stage, smoke=a.smoke, ok=ok, seconds=round(time.time() - t0, 1), checks=checks,
                   jobs=len(jobs), scenarios=list(scen) + (["arrays"] if arrays is not None else []),
                   credit_rule=LM.CREDIT_RULE,
                   outputs={p.name: md5(p) for p in sorted(out.glob("*")) if p.is_file()},
@@ -646,7 +646,7 @@ def main_x(a, jobs, s2, out, runs, m, checks, check, t0, load, rows, geo, unit96
     check("probe_rows_equal_stored_record", bool(len(sm)) and (sm["probe_max_rel_diff"] <= 1e-9).all(),
           f"(max relative difference {sm['probe_max_rel_diff'].max():.1e}; S6 without battery, S6B with)")
     ok = all(c["ok"] for c in checks.values())
-    detail = dict(stage=a.stage, smoke=a.smoke, ok=ok, seconds=round(time.time() - t0, 1), checks=checks,
+    detail = dict(simulator=LM.sim_defaults(), stage=a.stage, smoke=a.smoke, ok=ok, seconds=round(time.time() - t0, 1), checks=checks,
                   jobs=len(jobs), credit_rule=LM.CREDIT_RULE,
                   scenarios=list(scen) + (["arrays"] if arrays is not None else []),
                   theta_low=[float(D.THETA_LOW.min()), float(D.THETA_LOW.max())],
@@ -700,7 +700,7 @@ def main_proxy(a, jobs, s2, out, runs, m, checks, check, t0, load):
         log(f"choices (reference or Protocol A) at the lower edge theta = {sm['theta_low'].min()}: "
             f"{int(sm['choices_at_lower_edge'].sum())} (reported as censored)")
     ok = all(c["ok"] for c in checks.values())
-    detail = dict(stage=a.stage, smoke=a.smoke, ok=ok, seconds=round(time.time() - t0, 1), checks=checks,
+    detail = dict(simulator=LM.sim_defaults(), stage=a.stage, smoke=a.smoke, ok=ok, seconds=round(time.time() - t0, 1), checks=checks,
                   jobs=len(jobs), outputs={p.name: md5(p) for p in sorted(out.glob("*")) if p.is_file()},
                   inputs={p.name: md5(p) for p in sorted(s2.glob("yulara_*.parquet"))}
                   | ({"S2X/" + p.name: md5(p) for p in sorted((s2.parent / "S2X").glob("yulara_*.parquet"))}

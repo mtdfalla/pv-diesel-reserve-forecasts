@@ -1,19 +1,19 @@
 {
  "1_order_stats": {
-  "met_interpolated": 25,
-  "met_order_stat": 25,
+  "met_interpolated": 21,
+  "met_order_stat": 21,
   "n": 48,
-  "median_saving_interpolated": 0.21652741522181218,
-  "median_saving_order_stat": 0.21798820845550515,
+  "median_saving_interpolated": 0.7047718400272462,
+  "median_saving_order_stat": 0.7006459621998973,
   "beyond_support_cells": 0,
   "main_text": false,
   "rule": "main text beside the interpolated result if met changes by more than 2 of 48 or the median conformal saving by more than 0.05 points, else one Supplement sentence"
  },
  "2_support": {
-  "flags_calib_one_expected": 0,
-  "flags_calib_order_stat": 0,
-  "flags_H1_one_expected": 2,
-  "flags_H1_order_stat": 2,
+  "flags_calib_one_expected": 2,
+  "flags_calib_order_stat": 2,
+  "flags_H1_one_expected": 9,
+  "flags_H1_order_stat": 9,
   "min_calib_cloudy_issue_times": 896,
   "min_calib_cloudy_days": 61
  },
@@ -122,7 +122,7 @@
     "pv_kW_pair_share": 0.0014219911846708132,
     "pv_kW_rise_p99": 0.22964024857512125,
     "pv_kW_rise_max": 0.407339475436693,
-    "pv_kW_sorted_gap_max": 5.667342110832706,
+    "pv_kW_sorted_gap_max": 5.667342110832692,
     "ghi_Wm2_pair_share": 0.0,
     "ghi_Wm2_rise_p99": 0.0,
     "ghi_Wm2_rise_max": 0.0,
@@ -130,9 +130,9 @@
    },
    "mondrian": {
     "pv_kW_pair_share": 0.0015104743416313846,
-    "pv_kW_rise_p99": 0.2936311648013054,
+    "pv_kW_rise_p99": 0.29363116480131074,
     "pv_kW_rise_max": 0.7430857861290505,
-    "pv_kW_sorted_gap_max": 6.503224251766078,
+    "pv_kW_sorted_gap_max": 6.503224251766312,
     "ghi_Wm2_pair_share": 0.0,
     "ghi_Wm2_rise_p99": 0.0,
     "ghi_Wm2_rise_max": 0.0,
@@ -150,8 +150,8 @@
    },
    "mondrian_cqr": {
     "pv_kW_pair_share": 0.3739433690448395,
-    "pv_kW_rise_p99": 51.17464147295139,
-    "pv_kW_rise_max": 341.97023188650905,
+    "pv_kW_rise_p99": 51.17464147295141,
+    "pv_kW_rise_max": 341.97023188650917,
     "pv_kW_sorted_gap_max": 339.5928592946357,
     "ghi_Wm2_pair_share": 0.4027649116564501,
     "ghi_Wm2_rise_p99": 34.77223420087393,
@@ -160,9 +160,9 @@
    },
    "raw_q": {
     "pv_kW_pair_share": 0.3726773927855991,
-    "pv_kW_rise_p99": 51.28853048393299,
-    "pv_kW_rise_max": 342.4089318798134,
-    "pv_kW_sorted_gap_max": 340.0212363156703,
+    "pv_kW_rise_p99": 51.288530483933016,
+    "pv_kW_rise_max": 342.40893187981345,
+    "pv_kW_sorted_gap_max": 340.02123631567025,
     "ghi_Wm2_pair_share": 0.40253794726737396,
     "ghi_Wm2_rise_p99": 34.795,
     "ghi_Wm2_rise_max": 249.42000000000002,
@@ -170,7 +170,7 @@
    },
    "tod_q": {
     "pv_kW_pair_share": 0.0014416534379265182,
-    "pv_kW_rise_p99": 0.15284535050480008,
+    "pv_kW_rise_p99": 0.1528453505047988,
     "pv_kW_rise_max": 0.23445753039875683,
     "pv_kW_sorted_gap_max": 7.045019668942672,
     "ghi_Wm2_pair_share": 0.0,
@@ -180,7 +180,7 @@
    },
    "nicp_var": {
     "pv_kW_pair_share": 0.0017549672381511408,
-    "pv_kW_rise_p99": 0.12988865698756716,
+    "pv_kW_rise_p99": 0.1298886569875874,
     "pv_kW_rise_max": 0.23974033322951271,
     "pv_kW_sorted_gap_max": 5.058958203300556,
     "ghi_Wm2_pair_share": 0.0,
@@ -199,15 +199,15 @@
    "nicp_var"
   ],
   "rearranged": {
-   "met_rearranged": 46,
-   "met_original": 52,
+   "met_rearranged": 39,
+   "met_original": 38,
    "n": 84,
-   "median_saving_rearranged": 0.23334633535289084,
-   "median_saving_original": 0.23334633535289084
+   "median_saving_rearranged": 0.6787782669870845,
+   "median_saving_original": 0.6667591766511216
   }
  },
  "7_complete_days": {
-  "headline_cells": 38,
+  "headline_cells": 34,
   "max_abs_change": 0.01822925992575264,
   "cells_over_0_01": [
    {
@@ -292,9 +292,9 @@
     "change": -0.010153352522559556
    }
   ],
-  "AR_met_all_conformal": 25,
-  "AR_met_complete_conformal": 23,
-  "AR_met_all_quantile": 21,
+  "AR_met_all_conformal": 21,
+  "AR_met_complete_conformal": 21,
+  "AR_met_all_quantile": 18,
   "AR_met_complete_quantile": 18,
   "complete_day_share_median": 0.8095890410958904
  },
@@ -1244,16 +1244,16 @@
  "9_events": {
   "event_share_by_protocol": {
    "A-D": {
-    "clear": 0.41430412371134023,
-    "cloudy": 0.02577319587628866,
+    "clear": 0.4019867549668874,
+    "cloudy": 0.02913907284768212,
     "fallback": 0.0,
-    "transitional": 0.5599226804123711
+    "transitional": 0.5688741721854305
    },
    "A-R": {
-    "clear": 0.5762987012987013,
-    "cloudy": 0.020698051948051948,
+    "clear": 0.5640686922060766,
+    "cloudy": 0.019484808454425365,
     "fallback": 0.0,
-    "transitional": 0.4030032467532468
+    "transitional": 0.416446499339498
    }
   },
   "scored_step_share": {

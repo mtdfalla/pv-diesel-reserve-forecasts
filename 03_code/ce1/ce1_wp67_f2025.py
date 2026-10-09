@@ -249,11 +249,12 @@ def run(yr: int, R: Path, out: Path, validate: bool) -> bool:
                                        "H1x": (gridx, pavx, Cx, dayx), "test": (grid, pav, P["C"], day)}.items():
             L_ = S6.load_for(G, unit96, scales, sc)
             rat = LM.fleet_for_peak(L_.max())
-            Ce, binds, _ = W56.effective_counted(L_, C, C[det], rat, True)
-            r = sim_chunked(L_, PAV, Ce, DAY, dict(ratings=rat, min_load=sc["min_load"], fuel=sc["fuel"], battery=False))
+            _, binds, _ = W56.effective_counted(L_, C, C[det], rat, True)
+            Ce, _, n1kw = W56.n1_setup("s56", L_, C, C[det], rat)  # v2.1: inside simulate (D-161)
+            r = sim_chunked(L_, PAV, Ce, DAY, dict(ratings=rat, min_load=sc["min_load"], fuel=sc["fuel"], battery=False, **n1kw))
             tabs[part] = totals_df(r, rows, sname, part)
             if part == "test":
-                Ce_test, binds_test, rt = Ce, binds, r
+                Ce_test, binds_test, rt, n1kw_test = Ce, binds, r, n1kw
             else:
                 del Ce, binds
             if validate and part != "H1x":
@@ -264,7 +265,7 @@ def run(yr: int, R: Path, out: Path, validate: bool) -> bool:
         prior = [p_[(p_.scenario == sname) & (p_.set == "test")].reset_index(drop=True) for p_ in prior56.values()]
         L = S6.load_for(grid, unit96, scales, sc)
         ratings = np.asarray(LM.fleet_for_peak(L.max()), float)
-        sim_kw = dict(ratings=list(ratings), min_load=sc["min_load"], fuel=sc["fuel"], battery=False)
+        sim_kw = dict(ratings=list(ratings), min_load=sc["min_load"], fuel=sc["fuel"], battery=False, **n1kw_test)
         load_d = rt["daily"]["load_kWh"][hb]
         abar = A.h2_mean_daily_load(prep["H2"], unit96, scales, sc)
         pc56, ru56, sp56 = {}, {}, []

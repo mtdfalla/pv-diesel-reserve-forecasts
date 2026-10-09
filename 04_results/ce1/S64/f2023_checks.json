@@ -1,9 +1,17 @@
 {
  "fold": 2023,
  "ok": true,
- "seconds": 627.4,
+ "seconds": 3187.5,
  "checks": {
   "selftest_loop_copy_equals_simulate": {
+   "ok": true,
+   "msg": ""
+  },
+  "selftest_loop_copy_equals_simulate_v21": {
+   "ok": true,
+   "msg": ""
+  },
+  "selftest_v21_minfeas_av_all_available_equals_ce1_load": {
    "ok": true,
    "msg": ""
   },
@@ -19,7 +27,15 @@
    "ok": true,
    "msg": ""
   },
+  "selftest_events_equal_wp55_v21": {
+   "ok": true,
+   "msg": ""
+  },
   "selftest_constraints_equal_plain_reference": {
+   "ok": true,
+   "msg": ""
+  },
+  "selftest_v21_constraints_equal_plain_reference": {
    "ok": true,
    "msg": ""
   },
@@ -45,7 +61,7 @@
   },
   "spillA_reproduces_S6E_spill_f2023_H2": {
    "ok": true,
-   "msg": "(worst 1.1e-15)"
+   "msg": "(worst 0.0e+00)"
   },
   "handbook_zero_ue_spillA_f2023_H2": {
    "ok": true,
@@ -53,7 +69,7 @@
   },
   "spillA_reproduces_S6E_spill_f2023_test": {
    "ok": true,
-   "msg": "(worst 3.8e-16)"
+   "msg": "(worst 0.0e+00)"
   },
   "handbook_zero_ue_spillA_f2023_test": {
    "ok": true,
@@ -85,11 +101,11 @@
   },
   "loop_copy_reproduces_S6E_H2_all_rows_f2023_main": {
    "ok": true,
-   "msg": "(824 rows, worst 4.3e-16)"
+   "msg": "(824 rows, worst 0.0e+00)"
   },
   "loop_copy_reproduces_S6E_H2_all_rows_f2023_shapeB": {
    "ok": true,
-   "msg": "(824 rows, worst 3.9e-16)"
+   "msg": "(824 rows, worst 0.0e+00)"
   },
   "events_test_row_equals_S6E_f2023_main_icp_A_R_events": {
    "ok": true,
@@ -293,7 +309,7 @@
   },
   "constrained_handbook_ue_min_down_f2023_main": {
    "ok": true,
-   "msg": "(handbook UE 15.873 kWh, starts 3829)"
+   "msg": "(handbook UE 15.873 kWh, starts 3610)"
   },
   "fixed_point_min_down_f2023_main": {
    "ok": true,
@@ -301,7 +317,7 @@
   },
   "constrained_handbook_ue_min_down_f2023_shapeB": {
    "ok": true,
-   "msg": "(handbook UE 0.000 kWh, starts 2431)"
+   "msg": "(handbook UE 0.000 kWh, starts 2340)"
   },
   "fixed_point_min_down_f2023_shapeB": {
    "ok": true,
@@ -309,7 +325,7 @@
   },
   "constrained_handbook_ue_deadband_f2023_main": {
    "ok": true,
-   "msg": "(handbook UE 0.000 kWh, starts 3590)"
+   "msg": "(handbook UE 0.000 kWh, starts 3568)"
   },
   "fixed_point_deadband_f2023_main": {
    "ok": true,
@@ -317,7 +333,7 @@
   },
   "constrained_handbook_ue_deadband_f2023_shapeB": {
    "ok": true,
-   "msg": "(handbook UE 0.000 kWh, starts 2346)"
+   "msg": "(handbook UE 0.000 kWh, starts 2301)"
   },
   "fixed_point_deadband_f2023_shapeB": {
    "ok": true,
@@ -361,7 +377,7 @@
   },
   "fixed_point_battery_f2023_battery_day": {
    "ok": true,
-   "msg": "(17 passes, 78 row-years)"
+   "msg": "(21 passes, 83 row-years)"
   },
   "battery_AD_reproduces_S61B_f2023_battery_day": {
    "ok": true,
@@ -405,7 +421,7 @@
   },
   "fixed_point_battery_f2023_batteryB_day": {
    "ok": true,
-   "msg": "(12 passes, 62 row-years)"
+   "msg": "(17 passes, 91 row-years)"
   },
   "battery_AD_reproduces_S61B_f2023_batteryB_day": {
    "ok": true,
@@ -427,25 +443,25 @@
   "S1L/load_scales.json": "952756850b20ea4e6fd36ceef3c33b69",
   "S2/yulara_f2023_h3.parquet": "13fb0635d26c485576642b2c6c73f994",
   "S2X/yulara_f2023_h3.parquet": "3a23b2c844733e596a72d6a875cb0a7e",
-  "S6E/f2023_h3_totals.parquet": "a7f18ec9768e614bf12d5fdccc5d65ab",
-  "S6E/f2023_h3_select.json": "af9222f8b33bf42c34501db1b91bb7bc",
-  "S57/f2023_h3_H1x.parquet": "aa6215f3aeb5e292442d84dc79e4aa01",
-  "S61B/f2023_h3_totals.parquet": "a0047d1565d2f942471845e221114159",
-  "S61B/ad_cells.csv": "a014d1fabb2dcd329d8a395b7275ee17",
-  "S61B/f2023_h3_select.json": "951c9b9799e3d246c640ae5857d609fc"
+  "S6E/f2023_h3_totals.parquet": "39acf4a80f993ffd91a2e3aadbdd238c",
+  "S6E/f2023_h3_select.json": "3a33ef04407aaaef4ee707ef6f591d03",
+  "S57/f2023_h3_H1x.parquet": "5731bd5b09a349f63b9ad756fc53e6b7",
+  "S61B/f2023_h3_totals.parquet": "fb049221eedd947eb76cef40ff565022",
+  "S61B/ad_cells.csv": "0ade05cd7161c05611c06df3f9edabe0",
+  "S61B/f2023_h3_select.json": "e6f40036e436fae009487e9840754690"
  },
  "outputs": {
-  "f2023_totals.parquet": "2592e1fc06f64928fe525325c18c91d8",
-  "f2023_cells.csv": "bf1b90c538b39096a6f3efc56ca7b917",
-  "f2023_battery.csv": "0f6279296e409882156ae57e998f6124"
+  "f2023_totals.parquet": "6c10efd8cf01438eeee04ea4c294e90a",
+  "f2023_cells.csv": "3d9b8a51d1d8e2e46ff60d40ec34f43f",
+  "f2023_battery.csv": "4e2a68759e2ec2de3d51611bd69651fd"
  },
  "code": {
-  "ce1_s64.py": "3ce55b672399562109ba1ca99e839500",
-  "ce1_load.py": "9e2e45e68ef1e037dbab7b5936713a9a",
-  "ce1_s6.py": "f29e8758c77e8bd45a99bd55572a78b7",
-  "ce1_adaptive.py": "b46bbcb33a2d08a987a729e2e56c87f9",
-  "ce1_wp57.py": "dd230d0258e2852032a0d356e2ab4e6e",
-  "ce1_wp61b.py": "14d0c447f362c540c91ca299d21a05f5",
+  "ce1_s64.py": "332c98ee0379f84064e25b9927581e6c",
+  "ce1_load.py": "88d0d16b815401cef43128bc6bd80a55",
+  "ce1_s6.py": "2ea79342422bfb5bbe55f71e9cfa421f",
+  "ce1_adaptive.py": "cb430b52c10aa11c6dcb19b24340e480",
+  "ce1_wp57.py": "1308f63e1513fc3b17ec83493f4d3d8f",
+  "ce1_wp61b.py": "34b94a2d799d3fd7d7357d7b4cffba7f",
   "ce1_dispatch.py": "17642502de89994cdf31f6f1f5948226"
  }
 }

@@ -1,9 +1,9 @@
 {
  "reading": "PFR-N1A (D-137)",
  "pfr_met": 12,
- "pfr_median_saving_pct": 4.373767784829369,
- "pfr_min_saving_pct": 3.7508582053063066,
- "pfr_max_saving_pct": 5.207259635628891,
+ "pfr_median_saving_pct": 4.3522846415854355,
+ "pfr_min_saving_pct": 3.7183839787907624,
+ "pfr_max_saving_pct": 5.2621390010562985,
  "pfr_levels_f": [
   1.0
  ],
@@ -11,61 +11,61 @@
   {
    "policy": "raw_q",
    "met": 12,
-   "median_saving_pct": 4.603001917653443
+   "median_saving_pct": 4.514022610809793
   },
   {
    "policy": "cqr",
    "met": 12,
-   "median_saving_pct": 4.6040451961657185
+   "median_saving_pct": 4.515268508311599
   },
   {
    "policy": "mondrian_cqr",
    "met": 12,
-   "median_saving_pct": 4.607239072335817
+   "median_saving_pct": 4.517470495721232
   }
  ],
  "best": {
   "policy": "mondrian_cqr",
   "met": 12,
-  "median_saving_pct": 4.607239072335817
+  "median_saving_pct": 4.517470495721232
  },
- "difference_pct": -0.23347128750644863,
+ "difference_pct": -0.1651858541357969,
  "fires": false,
  "consequence": "the N1A sentence states the quantile policies' lead under N1A with its count",
  "deterministic_anchor": {
   "met": 12,
   "cases": 12,
-  "median_saving_pct": 4.59077690357681,
-  "min_saving_pct": 3.8919370730535197
+  "median_saving_pct": 4.503556330633013,
+  "min_saving_pct": 3.8462531444240278
  },
  "pfr_all_rules": {
   "A-R": {
    "met": 12,
-   "median_saving_pct": 4.373767784829369
+   "median_saving_pct": 4.3522846415854355
   },
   "XF": {
    "met": 12,
-   "median_saving_pct": 4.373767784829369
+   "median_saving_pct": 4.3522846415854355
   },
   "PF": {
    "met": 12,
-   "median_saving_pct": 4.373767784829369
+   "median_saving_pct": 4.3522846415854355
   },
   "H2": {
    "met": 12,
-   "median_saving_pct": 4.373767784829369
+   "median_saving_pct": 4.3522846415854355
   },
   "XH": {
    "met": 12,
-   "median_saving_pct": 4.373767784829369
+   "median_saving_pct": 4.3522846415854355
   },
   "PH": {
    "met": 12,
-   "median_saving_pct": 4.373767784829369
+   "median_saving_pct": 4.3522846415854355
   },
   "A-D": {
    "met": 12,
-   "median_saving_pct": 4.373767784829369
+   "median_saving_pct": 4.3522846415854355
   }
  }
 }

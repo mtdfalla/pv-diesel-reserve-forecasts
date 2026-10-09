@@ -108,6 +108,46 @@ def effective_counted(L, C, phat, ratings, contingency=True):
     return Ce, binds, infeas
 
 
+# ---------------------------------------------------------------- v2.1: the N-1 constructions inside simulate (D-161)
+def n1_registered() -> bool:
+    """True when simulate's defaults are the registered v2.0.0 simulator: then the N-1 constructions use the
+    registered transform (counted PV = load - k_min). Under v2.1 they run inside simulate (n1=..., p_hat).
+    """
+    return (LM.DEFAULT_COMMIT, LM.DEFAULT_GAP) == ("greedy", "hold")
+
+
+def n1_infeasible(constr, L, C, phat, ratings):
+    """Steps where no unit set meets the construction (the whole fleet dominates every set in capacity and in
+    capacity minus the largest unit, so feasibility is the whole fleet's). As ce1_wp87._infeasible.
+    """
+    r = np.asarray(ratings, float)
+    tot, n1 = r.sum(), r.sum() - r.max()
+    pcz = np.nan_to_num(C)
+    k1 = np.maximum(L[None, :] - pcz, r.min())
+    need = (L[None, :] - pcz) if constr == "n1a" else np.broadcast_to(L - np.nan_to_num(phat), C.shape)
+    return (k1 > tot + 1e-9) | (need > n1 + 1e-9)
+
+
+def n1_setup(constr, L, C, phat, ratings):
+    """(counted PV passed to simulate, infeasible-step mask, extra simulate keywords) of a construction:
+    plain -> (C, none, {}); registered simulator -> the registered transform, {}; v2.1 -> C unchanged and
+    n1=constr (p_hat = the point forecast's available PV for s56).
+    """
+    if constr in (None, "plain"):
+        return C, np.zeros(C.shape, bool), {}
+    assert constr in ("s56", "n1a"), constr
+    if n1_registered():
+        if constr == "s56":
+            Ce, _, inf_ = effective_counted(L, C, phat, ratings, True)
+            return Ce, inf_, {}
+        import ce1_s69 as S69
+        return S69.effective_n1a(L, C, ratings) + ({},)
+    kw = dict(n1=constr)
+    if constr == "s56":
+        kw["p_hat"] = np.asarray(phat, float)
+    return C, n1_infeasible(constr, L, C, phat, ratings), kw
+
+
 def fallback_counts(C, pav):
     """Daytime scored steps without a forecast row, per row (what simulate counts)."""
     sc = np.isfinite(pav) & (pav > 0)
@@ -129,7 +169,7 @@ def run_fold(yr, R, geo, m, unit96, scales, rows, scen, smoke, check):
     s6e = pd.read_parquet(R / "S6E" / f"f{yr}_h{H}_totals.parquet")
     tables, sel, cells = [], {}, []
     for sname, sc in scen.items():
-        res, ce_test = {}, None
+        res, ce_test, n1kw_test = {}, None, {}
         for part in ("H2", "test"):
             P = prep[part]
             L = S6.load_for(P["grid"], unit96, scales, sc)
@@ -138,7 +178,9 @@ def run_fold(yr, R, geo, m, unit96, scales, rows, scen, smoke, check):
             fb = fallback_counts(P["C"], P["pav"])
             if sc.get("contingency"):
                 phat = P["C"][det]
-                Ce, binds, infeas = effective_counted(L, P["C"], phat, ratings, True)
+                _, binds, infeas_t = effective_counted(L, P["C"], phat, ratings, True)
+                Ce, infeas, n1kw = n1_setup("s56", L, P["C"], phat, ratings)
+                check(f"n1_infeasible_equals_transform_f{yr}_{sname}_{part}", np.array_equal(infeas, infeas_t))
                 dayt = np.isfinite(P["pav"]) & (P["pav"] > 0)
                 share = binds[:, dayt].mean(axis=1)
                 ninf = infeas[:, np.isfinite(P["pav"])].sum(axis=1)
@@ -151,10 +193,10 @@ def run_fold(yr, R, geo, m, unit96, scales, rows, scen, smoke, check):
                     check(f"machinery_without_term_equals_plain_f{yr}_{sname}",
                           all(np.array_equal(a0[k], b0[k]) for k in ("fuel_L", "ue_kWh", "starts", "curt_kWh")))
             else:
-                Ce, share, ninf = P["C"], np.full(len(rows), np.nan), np.zeros(len(rows), int)
+                Ce, share, ninf, n1kw = P["C"], np.full(len(rows), np.nan), np.zeros(len(rows), int), {}
             if part == "test" and sc.get("contingency"):
-                ce_test = Ce
-            r = LM.simulate(L, P["pav"], Ce, P["day"], H, **sim_kw)
+                ce_test, n1kw_test = Ce, n1kw
+            r = LM.simulate(L, P["pav"], Ce, P["day"], H, **sim_kw, **n1kw)
             tot = r["total"]
             tot["fallback_steps"] = fb.astype(float)
             res[part] = r
@@ -172,7 +214,7 @@ def run_fold(yr, R, geo, m, unit96, scales, rows, scen, smoke, check):
                   float(tot["fuel_L"][orc]) <= float(tot["fuel_L"][hb]) + 1e-6)
             if sc.get("contingency") and part == "test":
                 # N-1 holds on every recorded step where a feasible set exists
-                rr = LM.simulate(L, P["pav"], Ce[[hb, orc]], P["day"], H, record=True, **sim_kw)
+                rr = LM.simulate(L, P["pav"], Ce[[hb, orc]], P["day"], H, record=True, **sim_kw, **n1kw)
                 fleet = np.asarray(ratings, float)
                 on = rr["rec_on"]  # (2, n, U)
                 lg = np.where(on, fleet[None, None, :], 0).max(axis=2)
@@ -192,7 +234,7 @@ def run_fold(yr, R, geo, m, unit96, scales, rows, scen, smoke, check):
         # ---- A-D, primary and constant variants, from this scenario's own record
         P = prep["test"]
         Ct = ce_test if ce_test is not None else P["C"]
-        cells += ad_block(yr, sname, sc, prep, rows, Ct, res["test"], s, unit96, scales, check, hb, orc)
+        cells += ad_block(yr, sname, sc, prep, rows, Ct, res["test"], s, unit96, scales, check, hb, orc, n1kw_test)
         hb_fuel = float(res["test"]["total"]["fuel_L"][hb])
         totT = res["test"]["total"]
         log(f"fold {yr} {sname}: handbook {hb_fuel:,.0f} L, oracle ceiling "
@@ -216,7 +258,7 @@ def run_fold(yr, R, geo, m, unit96, scales, rows, scen, smoke, check):
     return pd.concat(tables, ignore_index=True), sel, cells
 
 
-def ad_block(yr, sname, sc, prep, rows, Ct, rtest, s, unit96, scales, check, hb, orc):
+def ad_block(yr, sname, sc, prep, rows, Ct, rtest, s, unit96, scales, check, hb, orc, n1kw=None):
     """A-D (primary) and the constant variant for one scenario, from its own test-year record
     (rtest: simulate output of every row) and its own A-R levels (s: select record).
     """
@@ -225,7 +267,7 @@ def ad_block(yr, sname, sc, prep, rows, Ct, rtest, s, unit96, scales, check, hb,
     P = prep["test"]
     L = S6.load_for(P["grid"], unit96, scales, sc)
     ratings = LM.fleet_for_peak(L.max())
-    sim_kw = dict(ratings=ratings, min_load=sc["min_load"], fuel=sc["fuel"], battery=False)
+    sim_kw = dict(ratings=ratings, min_load=sc["min_load"], fuel=sc["fuel"], battery=False, **(n1kw or {}))
     daily, totT = rtest["daily"], rtest["total"]
     load_d = daily["load_kWh"][hb]
     abar = A.h2_mean_daily_load(prep["H2"], unit96, scales, sc)
@@ -283,6 +325,12 @@ def ad_main_reference(yr, R, prep, rows, unit96, scales, check, hb, orc):
 
 # ================================================================ self-test
 def selftest(verbose=True):
+    """Registered self-tests under the v2.0.0 simulator; the v2.1 tests set their own simulator (D-161)."""
+    with LM.registered_v200():
+        return _selftest(verbose)
+
+
+def _selftest(verbose=True):
     res = {}
 
     def ok(name, cond, msg=""):
@@ -332,6 +380,19 @@ def selftest(verbose=True):
     need = (Lt - ph)[None, :]
     viol = (r["rec"]["KU"] - lg < need - 1e-6) & sc[None, :] & feas_t
     ok("n1_holds_after_min_up_time", int(viol.sum()) == 0, f"({int(viol.sum())} violations)")
+    # v2.1: the construction inside simulate (minimum feasible commitment, elapsed clocks): N-1 holds on every
+    #    scored feasible step, the infeasible mask equals the transform's, online capacity >= k_min
+    with LM.primary_v21():
+        Ci, inf_i, kw = n1_setup("s56", Lt, C, ph, LM.UNITS_BASE)
+        ri = LM.simulate(Lt, pav, Ci, dd, 3, record=True, **kw)
+    ok("v21_n1_setup_is_internal", Ci is C and kw.get("n1") == "s56" and np.array_equal(inf_i, inf_))
+    lgi = np.where(ri["rec_on"], fleet[None, None, :], 0).max(axis=2)
+    vi = (ri["rec"]["KU"] - lgi < need - 1e-6) & sc[None, :] & feas_t
+    ok("v21_n1_holds_internal", int(vi.sum()) == 0, f"({int(vi.sum())} violations)")
+    ok("v21_online_capacity_at_least_k_min", (ri["rec"]["KU"][:, sc] >= km_t[:, sc] - 1e-6).all())
+    with LM.registered_v200():
+        Cr, inf_r, kwr = n1_setup("s56", Lt, C, ph, LM.UNITS_BASE)
+    ok("registered_n1_setup_is_transform", kwr == {} and np.array_equal(Cr, Ce) and np.array_equal(inf_r, inf_))
     C0, _, _ = effective_counted(Lt, C, ph, LM.UNITS_BASE, False)
     a = LM.simulate(Lt, pav, C0, dd, 3)["total"]
     b = LM.simulate(Lt, pav, C, dd, 3)["total"]
@@ -413,7 +474,7 @@ def main():
     ac.to_csv(out / "ad_cells.csv", index=False)
     outputs["ad_cells.csv"] = md5(out / "ad_cells.csv")
     ok = all(c["ok"] for c in checks.values())
-    detail = dict(stage="S56", ok=ok, smoke=a.smoke, seconds=round(time.time() - t0, 1), checks=checks,
+    detail = dict(simulator=LM.sim_defaults(), stage="S56", ok=ok, smoke=a.smoke, seconds=round(time.time() - t0, 1), checks=checks,
                   inputs=inputs, outputs=outputs, code={"ce1_wp56.py": md5(Path(__file__))},
                   env=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__))
     json.dump(detail, open(runs / ("S56_smoke.detail.json" if a.smoke else "S56.detail.json"), "w"), indent=1)

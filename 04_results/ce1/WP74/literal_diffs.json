@@ -1,0 +1,48 @@
+{
+ "ce1_wp74_trace.py": {
+  "diff_of_medians_plain_raw_q": {
+   "old": 0.28,
+   "new": 0.3,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "diff_of_medians_n1a_mcqr": {
+   "old": 0.23,
+   "new": 0.17,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "peak_event_peak_kW": {
+   "old": 883.599078,
+   "new": 883.599078,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "peak_event_scenario": {
+   "old": "shapeB",
+   "new": "shapeB",
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "allowance_per_event_kWh": {
+   "old": 25,
+   "new": 28,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "peak_event_steps_energy_online": {
+   "old": [
+    2,
+    77.9,
+    1000.0
+   ],
+   "new": [
+    2,
+    77.9,
+    1000.0
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  }
+ }
+}

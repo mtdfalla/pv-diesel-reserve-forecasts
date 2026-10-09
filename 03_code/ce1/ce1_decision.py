@@ -401,7 +401,7 @@ def main():
                     outcome=("KEPT" if (cp4 >= FOLD_MIN).all() else "REVISED" if (cp4 >= FOLD_MIN).any() else "DROPPED"),
                     baselines={p: int(DD4[DD4.policy == p].passes.sum()) for p in POLICIES if p not in CP})
     V["DR5"] = dict(differs_any=bool((DD5.kendall_tau < 1).any()), top_agree=int((DD5.top_proxy == DD5.top_load).sum()),
-                    n=len(DD5), note="load model governs the main text either way")
+                    n=len(DD5), note="load model governs the result either way")
     V["undefined_share_max_primary"] = undef_max
     check("undefined_share_within_rule", undef_max <= UNDEF_MAX, f"(max {undef_max:.4f})")
 

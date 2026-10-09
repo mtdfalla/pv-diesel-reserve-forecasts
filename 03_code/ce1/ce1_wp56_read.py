@@ -1,4 +1,4 @@
-"""Reading of stage S56 under D-112 and D-113: oracle ceiling, A-R and A-D savings, target met,
+"""Reading of stage S56 under D-112 and D-113: oracle saving, A-R and A-D savings, target met,
 and the share of steps where the PV term binds.
 
 Usage (from the repository root unless the path starts at ce1/, then from 03_code):

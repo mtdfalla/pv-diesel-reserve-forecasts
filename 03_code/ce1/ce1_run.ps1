@@ -46,6 +46,7 @@ $Stages = [ordered]@{
     "S6P" = "ce1\ce1_s6.py"
     "S6B" = "ce1\ce1_s6.py"
     "S48" = "ce1\ce1_wp48.py"   # WP-48: fold-2024 target sensitivities SF and B, records then S2/S5/S6/S6B (D-090)
+    "S48D" = "ce1\ce1_wp48.py"   # WP-88: S48's dispatch substeps S6/S6B only, v2.1 simulator, on the kept records (D-161)
     "S2X" = "ce1\ce1_folds.py"   # WP-50: extra GBM quantiles tau 0.255-0.500 for theta 0.500-0.745, Yulara folds (D-092)
     "S6X" = "ce1\ce1_s6.py"   # WP-50: load model on the new low theta levels, every scenario, plus probe rows (D-092)
     "S6P2" = "ce1\ce1_s6.py"   # WP-50: proxy rerun on the extended theta set (D-092)

@@ -1,0 +1,50 @@
+{
+ "ce1_wp55.py": {
+  "median_pct": {
+   "old": 0.18,
+   "new": 0.31,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "range_pct": {
+   "old": [
+    0.34,
+    0.79
+   ],
+   "new": [
+    0.75,
+    1.07
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sweep_met_AD_AR_conformal_all": {
+   "old": [
+    48,
+    25,
+    96,
+    58
+   ],
+   "new": [
+    48,
+    21,
+    96,
+    45
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "kappa1_gamma0005_met": {
+   "old": 14,
+   "new": 8,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "block1_AR_above_zero": {
+   "old": 30,
+   "new": 36,
+   "equal": false,
+   "simulator": "v2.1"
+  }
+ }
+}

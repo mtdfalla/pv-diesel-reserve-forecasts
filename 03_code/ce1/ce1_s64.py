@@ -125,11 +125,39 @@ def fleet_c(ratings):
 
 
 # ================================================================ the dispatch loop copy
-def simulate_c(L, P_av, P_cnt, day_id, h_steps, ratings=LM.UNITS_BASE, min_load=LM.MIN_LOAD, fuel="cat_c32",
-               min_down=0, deadband=0):
-    """ce1_load.simulate without the battery branch, plus the two commitment constraints and a
-    UE event count. With min_down = deadband = 0 it must equal ce1_load.simulate (checked).
+def _minfeas_av(fl, kreq, on_m, forced_m, avail_m):
+    """v2.1 minimum feasible commitment among available units: the least total rating at least kreq
+    among sets x with forced <= x <= avail (ties: fewer units, fewer starts, lowest index); none: every available
+    unit. avail_m = all units reproduces ce1_load.VariantTables.minfeas without N-1.
     """
+    U = fl.U
+    M = 1 << U
+    x = np.arange(M, dtype=np.int64)
+    capx = fl.cap_of
+    popx = fl.pop
+    valid = ((x[None, :] & forced_m[:, None]) == forced_m[:, None]) & ((x[None, :] & ~avail_m[:, None]) == 0) \
+        & (capx[None, :] >= kreq[:, None] - 1e-9) & (x[None, :] > 0)
+    starts = fl.pop[x[None, :] & ~on_m[:, None]]
+    caprank = np.searchsorted(np.unique(capx), capx)
+    key = ((caprank[None, :] * (U + 1) + popx[None, :]) * (U + 1) + starts) * M + x[None, :]
+    key = np.where(valid, key, np.iinfo(np.int64).max)
+    j = np.argmin(key, axis=1)
+    return np.where(valid.any(axis=1), x[j], avail_m).astype(np.int64)
+
+
+def simulate_c(L, P_av, P_cnt, day_id, h_steps, ratings=LM.UNITS_BASE, min_load=LM.MIN_LOAD, fuel="cat_c32",
+               min_down=0, deadband=0, commit=None, gap=None):
+    """ce1_load.simulate without the battery branch, plus the two commitment constraints and a
+    UE event count. With min_down = deadband = 0 it must equal ce1_load.simulate (checked) under either
+    simulator: commit and gap take ce1_load's defaults (v2.1: minimum feasible commitment, elapsed clocks).
+    v2.1 port: under commit="minfeas" the choice is the least-capacity set containing the forced units
+    among the available ones (none: every available unit). Under gap="elapsed" a step without measured GHI
+    commits as a scored step with counted PV 0 (minimum down time and deadband included), the clocks and the
+    stop times advance, and nothing is scored or counted there (starts, events).
+    """
+    commit = LM.DEFAULT_COMMIT if commit is None else commit
+    gap = LM.DEFAULT_GAP if gap is None else gap
+    assert commit in LM.COMMITS and gap in LM.GAPS, (commit, gap)
     fl = fleet_c(ratings)
     a_f, b_f = LM.FUEL[fuel]
     P_cnt = np.atleast_2d(np.asarray(P_cnt, float))
@@ -157,6 +185,29 @@ def simulate_c(L, P_av, P_cnt, day_id, h_steps, ratings=LM.UNITS_BASE, min_load=
     prev_pos = np.zeros(K, bool)
     nC = len(fl.cap)
     cur_day = int(day_id[0]) if n else 0
+    full = (1 << U) - 1
+
+    def _commit(kreq, s, on_m, on, up, db, last_stop):
+        forced_m = ((up < LM.MIN_UP) & on) @ fl.bits
+        if commit == "minfeas":
+            avail_m = (on_m | (((s - last_stop) >= min_down) @ fl.bits)) if min_down else np.full(K, full, np.int64)
+            new_m = _minfeas_av(fl, kreq, on_m, forced_m, avail_m)
+        else:
+            ci = np.minimum(np.searchsorted(fl.cap, kreq - 1e-9, side="left"), nC - 1)
+            if min_down:
+                avail_m = on_m | (((s - last_stop) >= min_down) @ fl.bits)
+                cj = fl.first[avail_m, ci]
+                new_m = np.where(cj >= 0, fl.table_av[np.maximum(cj, 0), on_m, forced_m, avail_m], on_m)
+            else:
+                new_m = fl.table[ci, on_m, forced_m]
+        if deadband:
+            db = np.where(fl.cap_of[on_m] - kreq >= fl.smallest, db + 1, 0)
+            block = ((on_m & ~new_m) != 0) & (db < deadband)
+            new_m = np.where(block, new_m | on_m, new_m)
+        if min_down:
+            last_stop = np.where(bitsU[on_m & ~new_m], s, last_stop)
+        return new_m, db, last_stop
+
     for s in range(n):
         d = int(day_id[s])
         if d != cur_day:
@@ -165,11 +216,17 @@ def simulate_c(L, P_av, P_cnt, day_id, h_steps, ratings=LM.UNITS_BASE, min_load=
             cur_day = d
             prev_pos[:] = False
         pav = P_av[s]
+        Ls = L2[:, s] if L2 is not None else L[s]
         if pav != pav:
             missing += 1
             prev_pos[:] = False
+            if gap == "elapsed":  # v2.1: handbook commitment, clocks advance
+                kreq = np.maximum(np.broadcast_to(np.asarray(Ls, float), (K,)) - 0.0, fl.smallest)
+                new_m, db, last_stop = _commit(kreq, s, on_m, on, up, db, last_stop)
+                new = bitsU[new_m]
+                up = np.where(new, np.where(on, np.minimum(up + 1, LM.MIN_UP), 1), 0).astype(np.int16)
+                on, on_m = new, new_m
             continue
-        Ls = L2[:, s] if L2 is not None else L[s]
         pc = P_cnt[:, s]
         fb = pc != pc
         if fb.any():
@@ -177,20 +234,7 @@ def simulate_c(L, P_av, P_cnt, day_id, h_steps, ratings=LM.UNITS_BASE, min_load=
             if pav > 0:
                 a_fb += fb
         kreq = np.maximum(Ls - pc, fl.smallest)
-        forced_m = ((up < LM.MIN_UP) & on) @ fl.bits
-        ci = np.minimum(np.searchsorted(fl.cap, kreq - 1e-9, side="left"), nC - 1)
-        if min_down:
-            avail_m = on_m | (((s - last_stop) >= min_down) @ fl.bits)
-            cj = fl.first[avail_m, ci]
-            new_m = np.where(cj >= 0, fl.table_av[np.maximum(cj, 0), on_m, forced_m, avail_m], on_m)
-        else:
-            new_m = fl.table[ci, on_m, forced_m]
-        if deadband:
-            db = np.where(fl.cap_of[on_m] - kreq >= fl.smallest, db + 1, 0)
-            block = ((on_m & ~new_m) != 0) & (db < deadband)
-            new_m = np.where(block, new_m | on_m, new_m)
-        if min_down:
-            last_stop = np.where(bitsU[on_m & ~new_m], s, last_stop)
+        new_m, db, last_stop = _commit(kreq, s, on_m, on, up, db, last_stop)
         a_st += fl.pop[new_m & ~on_m]
         new = bitsU[new_m]
         up = np.where(new, np.where(on, np.minimum(up + 1, LM.MIN_UP), 1), 0).astype(np.int16)
@@ -243,9 +287,12 @@ def simulate_c(L, P_av, P_cnt, day_id, h_steps, ratings=LM.UNITS_BASE, min_load=
     return dict(total=tot, daily=daily, run_h=run_steps * LM.DT, missing_steps=missing, ratings=fl.r)
 
 
-def ref_constrained(L, P_av, pc, day_id, ratings, min_load, fuel, min_down, deadband):
+def ref_constrained(L, P_av, pc, day_id, ratings, min_load, fuel, min_down, deadband, commit="greedy", gap="hold"):
     """Plain per-row reference of simulate_c (one policy), written independently: list-based unit
     choice, explicit availability and deadband counters. Returns fuel, UE, starts, events.
+    commit="minfeas": enumerate every unit set within the available units that contains the forced units and pick
+    the least (capacity, units, starts, mask index) meeting the requirement, else every available unit.
+    gap="elapsed": a step without measured GHI commits with counted PV 0 and is not scored or counted.
     """
     r = list(map(float, ratings))
     U = len(r)
@@ -265,22 +312,37 @@ def ref_constrained(L, P_av, pc, day_id, ratings, min_load, fuel, min_down, dead
     for s in range(len(L)):
         if s > 0 and day_id[s] != day_id[s - 1]:
             prev = False
-        if np.isnan(P_av[s]):
+        gapstep = bool(np.isnan(P_av[s]))
+        if gapstep:
             prev = False
-            continue
-        p = 0.0 if np.isnan(pc[s]) else pc[s]
+            if gap == "hold":
+                continue
+        p = 0.0 if (gapstep or np.isnan(pc[s])) else pc[s]
         kreq = max(L[s] - p, small)
         avail = [on[u] or (s - last[u]) >= min_down if min_down else True for u in range(U)]
-        feas = [c for c in combos if all(c[2][j] <= sum(1 for u in members[cl] if avail[u]) for j, cl in enumerate(classes))]
-        big = [c for c in feas if c[0] >= kreq - 1e-9]
-        cnt = big[0][2] if big else max(feas, key=lambda c: c[0])[2]
         forced = [on[u] and up[u] < LM.MIN_UP for u in range(U)]
-        new = [False] * U
-        for j, cl in enumerate(classes):
-            pref = sorted([u for u in members[cl] if avail[u]], key=lambda u: (-(forced[u] * 2 + on[u]), u))
-            for u in pref[:cnt[j]]:
-                new[u] = True
-        new = [new[u] or forced[u] for u in range(U)]
+        if commit == "minfeas":
+            best = None
+            for bits in itertools.product([False, True], repeat=U):
+                if not any(bits) or any(bits[u] and not avail[u] for u in range(U)) or any(forced[u] and not bits[u] for u in range(U)):
+                    continue
+                cap = sum(r[u] for u in range(U) if bits[u])
+                if cap < kreq - 1e-9:
+                    continue
+                key = (cap, sum(bits), sum(1 for u in range(U) if bits[u] and not on[u]), sum(1 << u for u in range(U) if bits[u]))
+                if best is None or key < best[0]:
+                    best = (key, list(bits))
+            new = best[1] if best is not None else list(avail)
+        else:
+            feas = [c for c in combos if all(c[2][j] <= sum(1 for u in members[cl] if avail[u]) for j, cl in enumerate(classes))]
+            big = [c for c in feas if c[0] >= kreq - 1e-9]
+            cnt = big[0][2] if big else max(feas, key=lambda c: c[0])[2]
+            new = [False] * U
+            for j, cl in enumerate(classes):
+                pref = sorted([u for u in members[cl] if avail[u]], key=lambda u: (-(forced[u] * 2 + on[u]), u))
+                for u in pref[:cnt[j]]:
+                    new[u] = True
+            new = [new[u] or forced[u] for u in range(U)]
         if deadband:
             cap_in = sum(r[u] for u in range(U) if on[u])
             dbc = dbc + 1 if cap_in - kreq >= small else 0
@@ -289,9 +351,12 @@ def ref_constrained(L, P_av, pc, day_id, ratings, min_load, fuel, min_down, dead
         for u in range(U):
             if on[u] and not new[u]:
                 last[u] = s
-        starts += sum(1 for u in range(U) if new[u] and not on[u])
+        if not gapstep:
+            starts += sum(1 for u in range(U) if new[u] and not on[u])
         up = [(min(up[u] + 1, LM.MIN_UP) if on[u] else 1) if new[u] else 0 for u in range(U)]
         on = new
+        if gapstep:
+            continue
         KU = sum(r[u] for u in range(U) if on[u])
         MU = min_load * KU
         net = L[s] - P_av[s]
@@ -396,11 +461,22 @@ def selftest(verbose=True):
     dd = LM.day_ids(grid)
     rng = np.random.default_rng(7)
     C = LM._counted(pav, cs, rng)
-    a = LM.simulate(Lt, pav, C, dd, 3)
-    b = simulate_c(Lt, pav, C, dd, 3)
-    same = all(np.array_equal(a["total"][k], b["total"][k]) for k in LM.DAY_KEYS + ("co2_t", "ue_share", "curt_share"))
-    same &= all(np.array_equal(a["daily"][k], b["daily"][k]) for k in LM.DAY_KEYS)
-    ok("loop_copy_equals_simulate", same)
+    for tag, mode in (("", LM.registered_v200()), ("_v21", LM.primary_v21())):
+        with mode:
+            a = LM.simulate(Lt, pav, C, dd, 3)
+            b = simulate_c(Lt, pav, C, dd, 3)
+        same = all(np.array_equal(a["total"][k], b["total"][k]) for k in LM.DAY_KEYS + ("co2_t", "ue_share", "curt_share"))
+        same &= all(np.array_equal(a["daily"][k], b["daily"][k]) for k in LM.DAY_KEYS)
+        ok(f"loop_copy_equals_simulate{tag}", same)
+    # v2.1 availability choice equals ce1_load's minimum feasible table when every unit is available
+    fl5 = fleet_c(LM.UNITS_BASE)
+    vt = LM.variant_tables(LM.UNITS_BASE)
+    rng2 = np.random.default_rng(64)
+    o = rng2.integers(0, 32, 3000)
+    f = o & rng2.integers(0, 32, 3000)
+    kq = rng2.uniform(500, 7000, 3000)
+    ok("v21_minfeas_av_all_available_equals_ce1_load", np.array_equal(
+        _minfeas_av(fl5, kq, o, f, np.full(3000, 31, np.int64)), vt.minfeas(kq, None, o, f)))
     fl = fleet_c(LM.UNITS_BASE)
     full = (1 << fl.U) - 1
     nm = 1 << fl.U
@@ -411,19 +487,31 @@ def selftest(verbose=True):
        all(np.array_equal(fl.table_av[c, om, fm, full], fl.table[c, om, fm]) for c in range(len(fl.cap))))
     # events equal ce1_wp55.events_of on the recorded UE steps
     from ce1_wp55 import events_of
-    rr = LM.simulate(Lt, pav, C, dd, 3, record=True)
-    ev, _, _ = events_of(np.nan_to_num(rr["rec"]["ue"], nan=0.0), dd)
-    ok("events_equal_wp55", np.array_equal(ev, b["total"]["events"]), f"({ev.tolist()})")
+    for tag, mode in (("", LM.registered_v200()), ("_v21", LM.primary_v21())):
+        with mode:
+            rr = LM.simulate(Lt, pav, C, dd, 3, record=True)
+            b = simulate_c(Lt, pav, C, dd, 3)
+        ev, _, _ = events_of(np.nan_to_num(rr["rec"]["ue"], nan=0.0), dd)
+        ok(f"events_equal_wp55{tag}", np.array_equal(ev, b["total"]["events"]), f"({ev.tolist()})")
     # constrained loop against the plain reference, each constraint, every row of the toy batch
     good = True
     worst = 0.0
     for kw in ({"min_down": 12, "deadband": 0}, {"min_down": 0, "deadband": 3}, {"min_down": 0, "deadband": 0}):
-        s_ = simulate_c(Lt, pav, C, dd, 3, **kw)
+        s_ = simulate_c(Lt, pav, C, dd, 3, commit="greedy", gap="hold", **kw)
         for k in range(C.shape[0]):
             f_, u_, st_, e_ = ref_constrained(Lt, pav, C[k], dd, LM.UNITS_BASE, LM.MIN_LOAD, "cat_c32", kw["min_down"], kw["deadband"])
             worst = max(worst, abs(f_ - s_["total"]["fuel_L"][k]) / f_, abs(u_ - s_["total"]["ue_kWh"][k]) / max(u_, 1.0))
             good &= int(st_) == int(s_["total"]["starts"][k]) and int(e_) == int(s_["total"]["events"][k])
     ok("constraints_equal_plain_reference", good and worst < 1e-9, f"(worst relative {worst:.1e})")
+    good, worst = True, 0.0
+    for kw in ({"min_down": 12, "deadband": 0}, {"min_down": 0, "deadband": 3}, {"min_down": 0, "deadband": 0}):
+        s_ = simulate_c(Lt, pav, C, dd, 3, commit="minfeas", gap="elapsed", **kw)
+        for k in range(C.shape[0]):
+            f_, u_, st_, e_ = ref_constrained(Lt, pav, C[k], dd, LM.UNITS_BASE, LM.MIN_LOAD, "cat_c32", kw["min_down"], kw["deadband"],
+                                              commit="minfeas", gap="elapsed")
+            worst = max(worst, abs(f_ - s_["total"]["fuel_L"][k]) / f_, abs(u_ - s_["total"]["ue_kWh"][k]) / max(u_, 1.0))
+            good &= int(st_) == int(s_["total"]["starts"][k]) and int(e_) == int(s_["total"]["events"][k])
+    ok("v21_constraints_equal_plain_reference", good and worst < 1e-9, f"(worst relative {worst:.1e})")
     # the constraints change something on the toy (they are not inert) and never lower starts' floor
     m0 = simulate_c(Lt, pav, C, dd, 3)["total"]
     m1 = simulate_c(Lt, pav, C, dd, 3, min_down=12)["total"]

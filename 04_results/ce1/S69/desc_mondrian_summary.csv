@@ -1,7 +1,7 @@
 policy,group,n_group_min,n_group_max,tail_min,tail_max,own_scores_all
-mondrian,clear,21416,29075,50,240,True
-mondrian,cloudy,896,3970,2,29,True
-mondrian,transitional,10222,15315,21,116,True
-mondrian_cqr,clear,21416,29075,43,798,True
-mondrian_cqr,cloudy,896,3970,6,100,True
-mondrian_cqr,transitional,10222,15315,31,386,True
+mondrian,clear,21416,29075,22,240,True
+mondrian,cloudy,896,3970,1,29,True
+mondrian,transitional,10222,15315,11,116,True
+mondrian_cqr,clear,21416,29075,43,665,True
+mondrian_cqr,cloudy,896,3970,3,78,True
+mondrian_cqr,transitional,10222,15315,31,322,True

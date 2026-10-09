@@ -259,7 +259,9 @@ def main():
     import ce1_causal as K
     t0 = time.time()
     R = C.RESULTS / "ce1"
-    root = Path(a.root) if a.root else R / (a.stage + ("_smoke" if a.smoke else ""))
+    # S48D: the dispatch substeps only on the kept records, S2 and S5 of S48, into S48/<v>/
+    dispatch_only = a.stage == "S48D"
+    root = Path(a.root) if a.root else R / (("S48" if dispatch_only else a.stage) + ("_smoke" if a.smoke else ""))
     runs = R / "_runs" if not a.root else root / "_runs"
     root.mkdir(parents=True, exist_ok=True); runs.mkdir(parents=True, exist_ok=True)
     hs = [int(x) for x in a.hs.split(",")] if a.hs else ([3] if a.smoke else HORIZONS)
@@ -363,6 +365,11 @@ def main():
                             "--s2", str(d / "S2"), "--out", str(d / "S6"), "--scenarios", S6_SCEN] + sm),
                     ("S6B", [py, "ce1/ce1_wp48.py", "--s6-wrapper", str(d / "S1"), "--stage", "S6B", "--only",
                              only6, "--s2", str(d / "S2"), "--out", str(d / "S6B")] + sm)]
+            if dispatch_only:
+                for name in ("S2", "S5"):
+                    det0 = d / name / "_runs" / f"{name}{'_smoke' if a.smoke else ''}.detail.json"
+                    check(f"{v}_{name}_kept_ok", det0.exists() and json.load(open(det0)).get("ok", False))
+                plan = [x for x in plan if x[0] in ("S6", "S6B")]
             for name, cmd in plan:
                 ts = time.time()
                 log(f"=== {v} {name} ===")

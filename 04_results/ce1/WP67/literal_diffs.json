@@ -1,0 +1,510 @@
+{
+ "ce1_wp67.py item1": {
+  "years_met_A-R_conformal": {
+   "old": 1,
+   "new": 1,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_A-R_conformal": {
+   "old": 25,
+   "new": 21,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_A-R_quantile": {
+   "old": 3,
+   "new": 3,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_A-R_quantile": {
+   "old": 21,
+   "new": 18,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_XF_conformal": {
+   "old": 1,
+   "new": 0,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_XF_conformal": {
+   "old": 34,
+   "new": 31,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_XF_quantile": {
+   "old": 3,
+   "new": 3,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_XF_quantile": {
+   "old": 21,
+   "new": 27,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_PF_conformal": {
+   "old": 0,
+   "new": 1,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_PF_conformal": {
+   "old": 26,
+   "new": 24,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_PF_quantile": {
+   "old": 3,
+   "new": 3,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_PF_quantile": {
+   "old": 22,
+   "new": 23,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_H2_conformal": {
+   "old": 3,
+   "new": 3,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_H2_conformal": {
+   "old": 42,
+   "new": 42,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "years_met_H2_quantile": {
+   "old": 5,
+   "new": 5,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_H2_quantile": {
+   "old": 33,
+   "new": 35,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_XH_conformal": {
+   "old": 6,
+   "new": 6,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_XH_conformal": {
+   "old": 48,
+   "new": 48,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "years_met_XH_quantile": {
+   "old": 6,
+   "new": 6,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_XH_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "years_met_PH_conformal": {
+   "old": 5,
+   "new": 6,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_PH_conformal": {
+   "old": 47,
+   "new": 48,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_PH_quantile": {
+   "old": 6,
+   "new": 6,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_PH_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "years_met_A-D_conformal": {
+   "old": 6,
+   "new": 6,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_A-D_conformal": {
+   "old": 48,
+   "new": 48,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "years_met_A-D_quantile": {
+   "old": 6,
+   "new": 6,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_A-D_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "years_met_CL_conformal": {
+   "old": 0,
+   "new": 0,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_CL_conformal": {
+   "old": 0,
+   "new": 2,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "years_met_CL_quantile": {
+   "old": 0,
+   "new": 0,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_CL_quantile": {
+   "old": 0,
+   "new": 3,
+   "equal": false,
+   "simulator": "v2.1"
+  }
+ },
+ "ce1_wp67.py item3": {
+  "cases_met_A-R_conformal": {
+   "old": 25,
+   "new": 21,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_A-R_quantile": {
+   "old": 21,
+   "new": 18,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_XF_conformal": {
+   "old": 34,
+   "new": 31,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_XF_quantile": {
+   "old": 21,
+   "new": 27,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_PF_conformal": {
+   "old": 26,
+   "new": 24,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_PF_quantile": {
+   "old": 22,
+   "new": 23,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_H2_conformal": {
+   "old": 42,
+   "new": 42,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_H2_quantile": {
+   "old": 33,
+   "new": 35,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_XH_conformal": {
+   "old": 48,
+   "new": 48,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_XH_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_PH_conformal": {
+   "old": 47,
+   "new": 48,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_PH_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_A-D_conformal": {
+   "old": 48,
+   "new": 48,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_A-D_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "cases_met_CL_conformal": {
+   "old": 0,
+   "new": 2,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "cases_met_CL_quantile": {
+   "old": 0,
+   "new": 3,
+   "equal": false,
+   "simulator": "v2.1"
+  }
+ },
+ "ce1_wp67.py items_sim": {
+  "sim_cases_met_A-R_conformal": {
+   "old": 25,
+   "new": 21,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_A-R_quantile": {
+   "old": 21,
+   "new": 18,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_XF_conformal": {
+   "old": 34,
+   "new": 31,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_XF_quantile": {
+   "old": 21,
+   "new": 27,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_PF_conformal": {
+   "old": 26,
+   "new": 24,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_PF_quantile": {
+   "old": 22,
+   "new": 23,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_H2_conformal": {
+   "old": 42,
+   "new": 42,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_H2_quantile": {
+   "old": 33,
+   "new": 35,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_XH_conformal": {
+   "old": 48,
+   "new": 48,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_XH_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_PH_conformal": {
+   "old": 47,
+   "new": 48,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_PH_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_A-D_conformal": {
+   "old": 48,
+   "new": 48,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_A-D_quantile": {
+   "old": 36,
+   "new": 36,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_CL_conformal": {
+   "old": 0,
+   "new": 2,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "sim_cases_met_CL_quantile": {
+   "old": 0,
+   "new": 3,
+   "equal": false,
+   "simulator": "v2.1"
+  }
+ },
+ "ce1_wp67.py item2": {
+  "DR1_max_folds_and_any_holds": {
+   "old": [
+    3,
+    false
+   ],
+   "new": [
+    4,
+    true
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "DR2_folds_gain_and_credited": {
+   "old": [
+    0,
+    false
+   ],
+   "new": [
+    0,
+    false
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "DR3_folds_gain": {
+   "old": [
+    0,
+    0,
+    0
+   ],
+   "new": [
+    0,
+    0,
+    0
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "DR3_folds_cost": {
+   "old": [
+    0,
+    1,
+    6
+   ],
+   "new": [
+    0,
+    0,
+    6
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "DR4_outcome_and_max_folds": {
+   "old": [
+    "DROPPED",
+    0
+   ],
+   "new": [
+    "DROPPED",
+    0
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "DR5_top_agree": {
+   "old": 0,
+   "new": 5,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "PR2_H2_conformal_met": {
+   "old": 42,
+   "new": 42,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "AD_AR_conformal_met": {
+   "old": [
+    48,
+    25
+   ],
+   "new": [
+    48,
+    21
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "S63_order_stats_met": {
+   "old": 25,
+   "new": 21,
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "S64_hold_met_conformal_and_triggers": {
+   "old": [
+    44,
+    false,
+    false
+   ],
+   "new": [
+    42,
+    false,
+    false
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  }
+ },
+ "ce1_wp67.py item12": {
+  "XH_quantile_saving_kL_median": {
+   "old": 11.212420506531839,
+   "new": 31.432667160537793,
+   "equal": false,
+   "simulator": "v2.1"
+  }
+ }
+}

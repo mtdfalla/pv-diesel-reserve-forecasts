@@ -3,8 +3,12 @@
 1. Representative load: NREL ComStock End-Use Load Profiles, LargeHotel aggregate for
    Maricopa County AZ, TMY3 weather, moved from EST interval end to Phoenix local standard
    time interval start and shifted by 182 days to southern seasons.
-2. Diesel fleet, greedy unit commitment at the 5-min step, minimum loading, linear fuel
-   curve, curtailment and unserved energy.
+2. Diesel fleet at the 5-min step: minimum feasible unit commitment (the set of least total
+   rating that covers the requirement and keeps every unit inside its minimum up time), minimum
+   loading, linear fuel curve, curtailment and unserved energy. A daytime step without measured
+   GHI is not scored, while the commitment follows the handbook rule and the minimum-up clocks
+   advance. The simulator of release 2.0.0 (greedy commitment, state held over missing GHI)
+   stays available through the registered_v200 context manager.
 3. Selection protocols and the frontier value at the reliability target.
 Rules: D-080, D-084.
 
@@ -266,6 +270,109 @@ class Fleet:
         return new
 
 
+COMMITS = ("greedy", "minfeas")
+GAPS = ("hold", "elapsed")
+SIM_VERSION = "v2.1"
+DEFAULT_COMMIT = "minfeas"
+DEFAULT_GAP = "elapsed"
+_VT = {}
+
+
+class sim_mode:
+    """Context manager: inside it, simulate's defaults are the given simulator."""
+
+    def __init__(self, commit, gap, version):
+        self.new = (commit, gap, version)
+
+    def __enter__(self):
+        global DEFAULT_COMMIT, DEFAULT_GAP, SIM_VERSION
+        self._old = (DEFAULT_COMMIT, DEFAULT_GAP, SIM_VERSION)
+        DEFAULT_COMMIT, DEFAULT_GAP, SIM_VERSION = self.new
+        return self
+
+    def __exit__(self, *exc):
+        global DEFAULT_COMMIT, DEFAULT_GAP, SIM_VERSION
+        DEFAULT_COMMIT, DEFAULT_GAP, SIM_VERSION = self._old
+        return False
+
+
+def registered_v200():
+    """Inside it, simulate's defaults are the registered v2.0.0 simulator (greedy, hold)."""
+    return sim_mode("greedy", "hold", "v2.0.0")
+
+
+def primary_v21():
+    """Inside it, simulate's defaults are the v2.1 primary simulator (minfeas, elapsed)."""
+    return sim_mode("minfeas", "elapsed", "v2.1")
+
+
+def sim_defaults() -> dict:
+    return dict(version=SIM_VERSION, commit=DEFAULT_COMMIT, gap=DEFAULT_GAP)
+
+
+class VariantTables:
+    """Lookup tables for the minimum feasible commitment and the internal N-1 k_min of one fleet."""
+
+    def __init__(self, ratings):
+        r = np.asarray(ratings, float)
+        U = len(r)
+        M = 1 << U
+        masks = np.arange(M)
+        mb = ((masks[:, None] >> np.arange(U)) & 1).astype(bool)
+        self.cap = mb @ r
+        lg = np.where(mb, r[None, :], 0.0).max(axis=1)
+        self.capn1 = np.where(masks > 0, self.cap - lg, -np.inf)
+        pop = mb.sum(axis=1)
+        self.caps_u = np.unique(self.cap[1:])
+        self.n1_u = np.concatenate([[-np.inf], np.unique(self.capn1[1:])])
+        nci, ncj = len(self.caps_u), len(self.n1_u)
+        full = M - 1
+        T = np.full((nci + 1, ncj + 1, M, M), full, dtype=np.uint8 if M <= 256 else np.int64)
+        popc = np.array([bin(x).count("1") for x in range(M)])
+        for o in range(M):
+            starts = popc[masks & ~o]
+            order = np.lexsort((masks, starts, pop, self.cap))  # cap, units, starts, index
+            f = o
+            while True:  # every forced subset f of o
+                cand = order[(order & f) == f]
+                cand = cand[cand > 0]
+                fe = (self.cap[cand][None, None, :] >= self.caps_u[:, None, None] - 1e-9) & \
+                     (self.capn1[cand][None, None, :] >= self.n1_u[None, :, None] - 1e-9)
+                anyf = fe.any(axis=2)
+                first = cand[np.argmax(fe, axis=2)]
+                T[:nci, :ncj, o, f] = np.where(anyf, first, full)
+                if f == 0:
+                    break
+                f = (f - 1) & o
+        self.T = T
+        # greedy N-1 k_min over the count vectors of Fleet (the order ce1_wp56.combo_table uses)
+        fl = Fleet(ratings)
+        cls = np.asarray(fl.classes, float)
+        clg = np.array([cls[np.flatnonzero(c)].max() for c in fl.counts])
+        self.ccap = fl.cap.astype(float)
+        self.ccapn1 = (fl.cap - clg).astype(float)
+
+    def minfeas(self, kreq, need, on_m, forced_m):
+        ci = np.searchsorted(self.caps_u, kreq - 1e-9, side="left")
+        cj = np.zeros(len(kreq), np.int64) if need is None else np.searchsorted(self.n1_u, need - 1e-9, side="left")
+        return self.T[ci, cj, on_m, forced_m].astype(np.int64)
+
+    def kmin_greedy(self, k1, k2):
+        """As ce1_wp56.k_min / ce1_s69.kmin_n1a: least count-vector capacity with cap >= k1 and cap - largest >= k2,
+        else the whole fleet.
+        """
+        ok = (self.ccap[None, :] >= k1[:, None] - 1e-9) & (self.ccapn1[None, :] >= k2[:, None] - 1e-9)
+        j = np.argmax(ok, axis=1)
+        return np.where(ok.any(axis=1), self.ccap[j], self.ccap[-1])
+
+
+def variant_tables(ratings):
+    key = tuple(float(x) for x in ratings)
+    if key not in _VT:
+        _VT[key] = VariantTables(key)
+    return _VT[key]
+
+
 DAY_KEYS = ("fuel_L", "ue_kWh", "curt_kWh", "dump_kWh", "thermal_kWh", "pv_load_kWh", "chg_kWh",
             "dis_kWh", "pav_kWh", "load_kWh", "starts", "ue_steps", "online_kW_h", "fallback_steps",
             "scored_steps")
@@ -289,10 +396,11 @@ def _credit(rule, E_issue, cring, e_lo, e_fl, Pb, h_steps):
 
 def simulate(L, P_av, P_cnt, day_id, h_steps, ratings=UNITS_BASE, min_load=MIN_LOAD,
              fuel="cat_c32", battery=False, batt_p=BATT_P, batt_e=BATT_E, record=False,
-             credit=CREDIT_RULE, credit_cap=None):
+             credit=CREDIT_RULE, credit_cap=None, commit=None, gap=None, n1=None, p_hat=None):
     """Load-based dispatch of K policies along a contiguous 5-min grid of target steps.
 
-    L (n) or (K, n) load kW; P_av (n) available PV kW (NaN = not scored, state held);
+    L (n) or (K, n) load kW; P_av (n) available PV kW (NaN = not scored; with gap="hold" the state is held, with gap="elapsed" the
+    commitment follows the handbook rule and the minimum-up clocks advance);
     P_cnt (K, n) counted PV for the target step, issued h steps earlier (NaN = no forecast
     row, handbook fallback); min_load scalar or (K); day_id (n) int from 0, non-decreasing;
     h_steps lead time in steps. Rows of a batch may differ in policy, level, load shape and
@@ -300,9 +408,19 @@ def simulate(L, P_av, P_cnt, day_id, h_steps, ratings=UNITS_BASE, min_load=MIN_L
     credit_cap (n) optional upper limit of the battery reserve credit per target step, known
     at issue time (WP-61 sensitivity: the PV measured at issue time, so the battery counts only
     as reserve for PV and never in place of diesel capacity for load). None: unchanged (D-088).
+    commit, gap: None takes the module defaults (v2.1: "minfeas", "elapsed"; see registered_v200 for v2.0.0).
+    n1: None, "n1a" or "s56", an N-1 construction applied inside simulate from the counted PV; p_hat is the
+    forecast that "s56" needs.
     Returns totals, per-day arrays (K, n_days) and, if record, per-step arrays (K, n).
     """
     fl = Fleet(ratings)
+    commit = DEFAULT_COMMIT if commit is None else commit  # v2.1 defaults (module constants, D-161)
+    gap = DEFAULT_GAP if gap is None else gap
+    assert commit in COMMITS and gap in GAPS and n1 in (None, "n1a", "s56"), (commit, gap, n1)
+    assert not (n1 and battery), "the N-1 constructions run without battery"
+    variant = commit != "greedy" or gap != "hold" or n1 is not None
+    vt = variant_tables(fl.r) if (commit == "minfeas" or n1) else None
+    phz = np.nan_to_num(np.asarray(p_hat, float)) if n1 == "s56" else None
     a_f, b_f = FUEL[fuel]
     P_cnt = np.atleast_2d(np.asarray(P_cnt, float))
     K, n = P_cnt.shape
@@ -336,6 +454,24 @@ def simulate(L, P_av, P_cnt, day_id, h_steps, ratings=UNITS_BASE, min_load=MIN_L
     rec_on = np.zeros((K, n, U), bool) if record else None
     rec_up = np.zeros((K, n, U), np.int16) if record else None
     cur_day = int(day_id[0]) if n else 0
+
+    def _commit_step(Ls, pcz, rb, s):
+        """Simulator variants: online mask for step s from counted PV pcz (NaN already 0) and battery credit rb."""
+        Lk = np.broadcast_to(np.asarray(Ls, float), (K,))
+        k1 = np.maximum(Lk - pcz - rb, fl.smallest)
+        need = None
+        if n1 == "n1a":
+            need = Lk - pcz
+        elif n1 == "s56":
+            need = Lk - phz[s]
+        forced = ((up < MIN_UP) & on) @ fl.bits
+        if commit == "minfeas":
+            return vt.minfeas(k1, need, on_m, forced)
+        if need is not None:  # greedy N-1 as registered: request k_min
+            km = vt.kmin_greedy(k1, need)
+            k1 = np.maximum(Lk - (Lk - km), fl.smallest)
+        return fl.choose_mask(k1, on_m, forced)
+
     for s in range(n):
         ring[s % (h_steps + 1)] = E  # energy at the start of step s
         d = int(day_id[s])
@@ -347,6 +483,15 @@ def simulate(L, P_av, P_cnt, day_id, h_steps, ratings=UNITS_BASE, min_load=MIN_L
         if pav != pav:  # NaN: not scored, state held
             missing += 1
             cring[s % cring.shape[0]] = 0.0  # no discharge, no credit
+            if gap == "elapsed":
+                Ls = L2[:, s] if L2 is not None else L[s]
+                new_m = _commit_step(Ls, np.zeros(K), 0.0, s)
+                new = bitsU[new_m]
+                up = np.where(new, np.where(on, np.minimum(up + 1, MIN_UP), 1), 0).astype(np.int16)
+                on, on_m = new, new_m
+                if record:  # v2.1: the unit state of a gap step is recorded
+                    rec_on[:, s, :] = on  # (the numeric records stay NaN: not scored)
+                    rec_up[:, s, :] = up
             continue
         Ls = L2[:, s] if L2 is not None else L[s]
         pc = P_cnt[:, s]
@@ -363,9 +508,13 @@ def simulate(L, P_av, P_cnt, day_id, h_steps, ratings=UNITS_BASE, min_load=MIN_L
             cring[s % cring.shape[0]] = rb
             kreq = np.maximum(Ls - pc - rb, fl.smallest)
         else:
+            rb = 0.0
             kreq = np.maximum(Ls - pc, fl.smallest)
-        forced_m = ((up < MIN_UP) & on) @ fl.bits
-        new_m = fl.choose_mask(kreq, on_m, forced_m)
+        if variant:
+            new_m = _commit_step(Ls, pc, rb, s)
+        else:
+            forced_m = ((up < MIN_UP) & on) @ fl.bits
+            new_m = fl.choose_mask(kreq, on_m, forced_m)
         a_st += fl.pop[new_m & ~on_m]
         new = bitsU[new_m]
         up = np.where(new, np.where(on, np.minimum(up + 1, MIN_UP), 1), 0).astype(np.int16)
@@ -652,7 +801,8 @@ def _counted(pav, cs, rng, K=5):
     return C
 
 
-def selftest(verbose=True) -> dict:
+def _selftest_registered(verbose=True) -> dict:
+    """The registered self-tests (v2.0.0 simulator; run inside registered_v200 by selftest)."""
     res = {}
 
     def ok(name, cond, msg=""):
@@ -825,6 +975,119 @@ def selftest(verbose=True) -> dict:
     pAR2, met2 = select_AR(dict(tot, ue_share=np.full(4, 1e-3)), np.array([0.8, 0.85, 0.9, 0.95]), "cqr")
     ok("x_select_AR_conservative_when_none_meets", pAR2 == 0.95 and not met2)
     ok("x_fuel_at_target_interpolates", abs(fuel_at_target(tot, 1e-5) - 11.0) < 1e-9)
+    return res
+
+
+def _selftest_v21(verbose=True) -> dict:
+    """v2.1 simulator (minimum feasible commitment, elapsed clocks), with and without the battery."""
+    res = {}
+
+    def ok(name, cond, msg=""):
+        res[name] = bool(cond)
+        if verbose:
+            print(f"  [{'PASS' if cond else 'FAIL'}] {name} {msg}")
+
+    with primary_v21():
+        return _selftest_v21_body(ok, res)
+
+
+def _selftest_v21_body(ok, res):
+    rng = np.random.default_rng(7)
+    grid, L, pav, cs = _toy(1)
+    dd = day_ids(grid)
+    h = 3
+    C = _counted(pav, cs, rng)
+    handbook = np.zeros((1, len(grid)))
+    oracle = np.nan_to_num(pav)[None, :]
+    C_all = np.vstack([C, handbook, oracle])
+    sc = ~np.isnan(pav)
+    for batt in (False, True):
+        tag = "batt" if batt else "nobatt"
+        for rule in ((CREDIT_RULE,) if not batt else CREDIT_RULES):
+            r = simulate(L, pav, C_all, dd, h, battery=batt, record=True, credit=rule)
+            R, on = r["rec"], r["rec_on"]
+            t2 = f"{tag}_{rule}" if batt else tag
+            bal = R["D"] + R["pv_load"] + R["dis"] + R["ue"] - R["dump"] - L[None, :]
+            ok(f"v21_1_energy_balance_every_step_{t2}", np.nanmax(np.abs(bal[:, sc])) < 1e-9)
+            ok(f"v21_2_min_load_and_one_unit_online_{t2}",
+               np.nanmin(np.where(np.isnan(R["D"]), np.inf, R["D"] - R["MU"])) >= -1e-9 and on[:, sc, :].any(axis=2).all())
+            ok(f"v21_8_curtailment_nonneg_pv_used_le_available_{t2}",
+               (R["pv_load"][:, sc] <= pav[sc][None, :] + 1e-9).all() and (R["curt"][:, sc] >= -1e-12).all()
+               and (R["pv_load"][:, sc] + R["chg"][:, sc] + R["curt"][:, sc] - pav[sc][None, :] <= 1e-9).all())
+            # 6 in calendar time: gap steps carry the recorded unit state, so a run is measured in elapsed steps
+            viol = 0
+            for k in range(on.shape[0]):
+                for u in range(on.shape[2]):
+                    x = on[k, :, u].astype(int)
+                    runs = np.diff(np.r_[0, x, 0])
+                    st, en = np.flatnonzero(runs == 1), np.flatnonzero(runs == -1)
+                    viol += int((((en - st) < MIN_UP) & (en < len(x))).sum())
+            ok(f"v21_6_min_up_time_respected_in_elapsed_time_{t2}", viol == 0, f"({viol} short runs)")
+            a_f, b_f = FUEL["cat_c32"]
+            lit = (a_f * R["KU"] + b_f * R["D"]) * DT
+            ok(f"v21_9_fuel_identity_{t2}", abs(np.nansum(lit, axis=1) - r["total"]["fuel_L"]).max() < 1e-6)
+            if batt:
+                E = R["E"][:, sc]
+                ok(f"v21_battery_energy_within_bounds_{t2}", (E >= E_LO * BATT_E - 1e-6).all() and (E <= E_HI * BATT_E + 1e-6).all())
+                ok(f"v21_battery_no_simultaneous_charge_discharge_{t2}",
+                   not ((R["chg"][:, sc] > 1e-9) & (R["dis"][:, sc] > 1e-9)).any())
+    # 3, 4: handbook and oracle
+    r0 = simulate(L, pav, handbook, dd, h)
+    ok("v21_3_handbook_no_UE", r0["total"]["ue_kWh"][0] == 0.0)
+    r1 = simulate(L, pav, np.vstack([handbook, oracle]), dd, h)
+    ok("v21_4_oracle_no_UE_and_fuel_le_handbook", r1["total"]["ue_kWh"][1] == 0.0
+       and r1["total"]["fuel_L"][1] <= r1["total"]["fuel_L"][0] + 1e-9)
+    # 7: zero-power battery = no battery
+    rb0 = simulate(L, pav, C_all, dd, h, battery=True, batt_p=0.0)
+    rnb = simulate(L, pav, C_all, dd, h, battery=False)
+    ok("v21_7_zero_power_battery_equals_no_battery", all(np.array_equal(rb0["daily"][k], rnb["daily"][k]) for k in rnb["daily"]))
+    # 11 (invariant part): once every policy is in the same unit state at a night step, outcomes coincide until
+    #    daylight. Merging within each night is a property of the registered tie-break and is reported, not required.
+    r = simulate(L, pav, C_all, dd, h, record=True)
+    R, on_, up_ = r["rec"], r["rec_on"], r["rec_up"]
+    night = pav == 0
+    same_state = (on_ == on_[:1]).all(axis=(0, 2)) & (up_ == up_[:1]).all(axis=(0, 2))
+    agree = np.ones(len(grid), bool)
+    for k in ("D", "KU", "curt", "ue"):
+        agree &= np.isclose(R[k], R[k][:1]).all(axis=0)
+    viol, merged, nights, s_ = 0, 0, 0, 0
+    while s_ < len(grid):
+        if not night[s_]:
+            s_ += 1
+            continue
+        e_ = s_
+        while e_ < len(grid) and night[e_]:
+            e_ += 1
+        nights += 1
+        hit = np.flatnonzero(same_state[s_:e_])
+        if len(hit):
+            merged += 1
+            viol += int((~agree[s_ + hit[0]:e_]).sum())
+        s_ = e_
+    ok("v21_11_night_outcomes_identical_once_states_merge", viol == 0 and merged >= 1,
+       f"({merged}/{nights} nights merge, {viol} disagreeing steps after merging)")
+    # 12: battery reserve credit deliverable under the v2.1 commitment (handbook rule + battery, A4, every lead)
+    g3, L3, pav3, cs3 = _toy(11, n_days=8, pv_scale=900.0)
+    hod3 = (g3.hour + g3.minute / 60).values
+    L3 = L3 + 1800.0 * np.exp(-0.5 * ((hod3 - 20.0) / 1.5) ** 2)
+    dd3 = day_ids(g3)
+    hb = np.zeros((1, len(g3)))
+    ue4 = {hh: simulate(L3, pav3, hb, dd3, hh, battery=True, credit="A4")["total"]["ue_kWh"][0] for hh in (1, 3, 6, 12)}
+    ok("v21_12_handbook_battery_no_UE_every_lead_A4", all(v == 0.0 for v in ue4.values()),
+       f"(A4 UE {[float(round(v, 3)) for v in ue4.values()]} kWh at 5/15/30/60 min)")
+    # greedy commitment with held state, passed explicitly, reproduces the release 2.0.0 run exactly:
+    with registered_v200():
+        ref = simulate(L, pav, C_all, dd, h, battery=True)
+    exp = simulate(L, pav, C_all, dd, h, battery=True, commit="greedy", gap="hold")
+    ok("v21_explicit_greedy_hold_equals_registered", all(np.array_equal(ref["daily"][k], exp["daily"][k]) for k in ref["daily"]))
+    return res
+
+
+def selftest(verbose=True) -> dict:
+    """Registered self-tests under the v2.0.0 simulator, then the v2.1 self-tests under the primary defaults."""
+    with registered_v200():
+        res = _selftest_registered(verbose)
+    res.update(_selftest_v21(verbose))
     return res
 
 

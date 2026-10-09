@@ -160,7 +160,7 @@ def stage_s57(root: Path, smoke=False):
         outputs[f_out.name] = md5(f_out)
         log(f"fold {yr}: {time.time() - t1:.0f} s")
     ok = all(c["ok"] for c in checks.values())
-    detail = dict(stage="S57", ok=ok, smoke=smoke, seconds=round(time.time() - t0, 1), checks=checks,
+    detail = dict(simulator=LM.sim_defaults(), stage="S57", ok=ok, smoke=smoke, seconds=round(time.time() - t0, 1), checks=checks,
                   inputs=inputs, outputs=outputs, code={"ce1_wp57.py": md5(Path(__file__))},
                   env=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__))
     json.dump(detail, open(runs / ("S57_smoke.detail.json" if smoke else "S57.detail.json"), "w"), indent=1)

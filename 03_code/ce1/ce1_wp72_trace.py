@@ -81,7 +81,7 @@ def main():
     if abs(a["peak_kW"] - a["recorded_peak_kW"]) >= 0.1:
         bad.append(f"check 3 {a['peak_kW']} vs {a['recorded_peak_kW']}")
     if bad:
-        print("CHECK FAIL, nothing written:\n  " + "\n  ".join(bad))
+        print("GATE FAIL, nothing written:\n  " + "\n  ".join(bad))
         sys.exit(1)
     OUT.mkdir(parents=True, exist_ok=True)
     for name, rows in (("record_counts.csv", rc), ("firm_capacity.csv", fc)):

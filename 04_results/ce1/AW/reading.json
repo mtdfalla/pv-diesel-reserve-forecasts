@@ -1,31 +1,31 @@
 {
  "n_cp": 48,
- "met_cp": 0,
+ "met_cp": 2,
  "met_cp_by_year": {
   "2019": 0,
   "2020": 0,
   "2021": 0,
-  "2022": 0,
+  "2022": 2,
   "2023": 0,
   "2024": 0
  },
- "median_saving_cp": 0.4801194592488792,
+ "median_saving_cp": 0.774652869377124,
  "median_saving_by_policy": {
-  "cqr": 0.5121660146267513,
-  "icp": 0.4133991030577199,
-  "mondrian": 0.3918937807245588,
-  "mondrian_cqr": 0.5155583382432317
+  "cqr": 0.8496752449292855,
+  "icp": 0.6515833523303647,
+  "mondrian": 0.7499572017997623,
+  "mondrian_cqr": 0.85663078506011
  },
  "xfit_median_by_policy": {
-  "icp": 0.0,
-  "mondrian": 0.0,
-  "cqr": 0.26038258058874164,
-  "mondrian_cqr": 0.27526070626787136
+  "icp": 0.40268850807529954,
+  "mondrian": 0.3571894259786823,
+  "cqr": 0.7565193384918623,
+  "mondrian_cqr": 0.7874437071628548
  },
- "met_quantile": 0,
+ "met_quantile": 2,
  "n_quantile": 24,
- "median_saving_quantile": 0.5155583382432317,
- "days_at_limit_median_quantile": 27.5,
+ "median_saving_quantile": 0.852385707824493,
+ "days_at_limit_median_quantile": 26.5,
  "cond_i": false,
  "cond_ii": true,
  "fires": false

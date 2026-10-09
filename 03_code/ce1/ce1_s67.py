@@ -156,18 +156,21 @@ def run_fold(R: Path, yr: int, only=None) -> bool:
                         if pol == "frac_pv":
                             check(f"srt_frac_pv_unchanged_f{yr}_{shp}_{part}", np.array_equal(Cs, C[ix], equal_nan=True))
                         C[ix] = Cs
-                binds = None
+                binds, n1kw = None, {}
                 if G.get("n1"):
-                    C, binds, infeas = W56.effective_counted(L, C, C[det], ratings, True)
+                    Ce_t, binds, infeas = W56.effective_counted(L, C, C[det], ratings, True)
                     del infeas
+                    # v2.1 (D-161): the construction inside simulate; registered v2.0.0: the transform
+                    C, _, n1kw = (Ce_t, None, {}) if W56.n1_registered() else W56.n1_setup("s56", L, C, C[det], ratings)
+                    del Ce_t
                 res[part] = LM.simulate(L, pav, C, P["day"], H, ratings=ratings, min_load=sc["min_load"], fuel=sc["fuel"],
-                                        battery=False)
+                                        battery=False, **n1kw)
                 t = S64.tab_of(res[part], rows, part, sname)
                 if binds is not None:
                     dayt = np.isfinite(pav) & (pav > 0)
                     t["pv_binds_share"] = binds[:, dayt].mean(axis=1)
                 if part == "test":
-                    Cpart[part] = (L, pav, C, ratings, binds)  # only the test record feeds A-D and CL
+                    Cpart[part] = (L, pav, C, ratings, binds, n1kw)  # only the test record feeds A-D and CL
                 else:
                     del C, binds
                     import gc
@@ -192,7 +195,7 @@ def run_fold(R: Path, yr: int, only=None) -> bool:
                                       starts=rr["starts"], fuel_handbook=hbT, handbook_starts=hbS,
                                       pv_binds_share=rr.get("pv_binds_share", np.nan)))
             # A-D and CL from the scenario's own daily record (S64 ad_block construction)
-            L, pav, Ct, ratings, binds = Cpart["test"]
+            L, pav, Ct, ratings, binds, n1kw = Cpart["test"]
             P = prep["test"]
             if G.get("scale") == "y2022":
                 abar = A.h2_mean_daily_load(prep["H2"], unit96, scales22, sc)
@@ -214,7 +217,7 @@ def run_fold(R: Path, yr: int, only=None) -> bool:
                     specs.append((Ct[ix], init, ctrl))
                     meta.append((pol, kind, t0_, ix))
             r, idxp, passes, work = S64.fixed_point(LM.simulate, dict(ratings=ratings, min_load=sc["min_load"], fuel=sc["fuel"],
-                                                                      battery=False), L, pav, P["day"], H, specs)
+                                                                      battery=False, **n1kw), L, pav, P["day"], H, specs)
             check(f"fixed_point_f{yr}_{sname}", 1 <= passes < 400, f"({passes} passes, {work} row-years)")
             dayt = np.isfinite(pav) & (pav > 0)
             for k, (pol, kind, t0_, ix) in enumerate(meta):
@@ -263,8 +266,9 @@ def n1_factor1_check(R: Path, yr: int) -> bool:
         sc = S6.SCENARIOS[base]
         L = S6.load_for(P["grid"], unit96, scales, sc)
         ratings = list(np.asarray(LM.fleet_for_peak(L.max()), float))
-        C, binds, _ = W56.effective_counted(L, P["C"] * 1.0, P["C"][det] * 1.0, ratings, True)
-        r = LM.simulate(L, P["pav"] * 1.0, C, P["day"], H, ratings=ratings, min_load=sc["min_load"], fuel=sc["fuel"], battery=False)
+        C, _, n1kw = W56.n1_setup("s56", L, P["C"] * 1.0, P["C"][det] * 1.0, ratings)  # N-1 construction s56
+        r = LM.simulate(L, P["pav"] * 1.0, C, P["day"], H, ratings=ratings, min_load=sc["min_load"], fuel=sc["fuel"], battery=False,
+                        **n1kw)
         t = S64.tab_of(r, rows, "test", name)
         ref = s56[(s56.scenario == name) & (s56.set == "test")]
         mm = t.merge(ref, on=["policy", "param"], suffixes=("", "_ref"))

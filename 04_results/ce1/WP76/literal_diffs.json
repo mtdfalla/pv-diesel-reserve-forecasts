@@ -1,0 +1,34 @@
+{
+ "ce1_wp76_trace.py": {
+  "peak_event_peak_kW": {
+   "old": 883.599078,
+   "new": 883.599078,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "peak_event_scenario": {
+   "old": "shapeB",
+   "new": "shapeB",
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "XH_ratio_min_max": {
+   "old": [
+    3.0,
+    3.6
+   ],
+   "new": [
+    2.8,
+    3.2
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "peak_event_online_kW": {
+   "old": 1000.0,
+   "new": 1000.0,
+   "equal": true,
+   "simulator": "v2.1"
+  }
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "ce1_wp61read.py": {
+  "selection_met_AR_AD_xfit_half": {
+   "old": [
+    25,
+    48,
+    48
+   ],
+   "new": [
+    21,
+    48,
+    48
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "AR_conformal_met_main_shapeB": {
+   "old": [
+    14,
+    11
+   ],
+   "new": [
+    11,
+    10
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  }
+ }
+}

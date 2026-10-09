@@ -20,8 +20,10 @@ from matplotlib import font_manager
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Rectangle
 from PIL import Image
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ce1_paths as PATHS  # noqa: E402  (result paths)
 ROOT = Path.cwd()
-R = ROOT / "04_results" / "ce1"
+R = PATHS.results(ROOT)
 OUT = ROOT / "04_results" / "ce1" / "figs"
 MM = 1 / 25.4
 W1, W2 = 85.0, 177.0  # single and double column widths, mm
@@ -88,6 +90,7 @@ def check(label, ok, detail=""):
 
 
 MIN_PT = 6.0  # smallest text at print size: checked for every figure except the pixel-sized abstract
+GA_MIN_PT = 8.0  # graphical abstract text when shown 13 cm wide
 
 
 def save(fig, name, width_mm, alt, px=None):
@@ -179,11 +182,11 @@ def fig1():
          "Two-part icon figure. Part (a) shows the modelled Yulara mini-grid on one AC bus: PV arrays under a sun and "
          "a cloud, a pyranometer, a diesel station with one large and four small generator sets (some drawn online in "
          "orange, some offline in grey), a hypothetical battery drawn with a dashed outline, and hotel buildings as "
-         "the load, with arrows for the direction of power flow. Part (b) is a chain of six numbered cards: the "
-         "measured irradiance of one broken-cloud day, its 90% forecast interval and lower bound, coverage in "
-         "transitional periods of 0.714 for marginal ICP and 0.901 for Mondrian-CQR against a 90% target, the reserve "
-         "rule comparing diesel online under the handbook rule and with forecast PV counted, fewer diesel sets online, "
-         "and outcomes of fuel and unserved energy. A dashed arrow below shows protocol A-R and the static "
+         "the load, with arrows for the direction of power flow. Part (b) is a chain of six numbered cards: (1) the "
+         "measured irradiance of one broken-cloud day, (2) its 90% forecast interval and lower bound, (3) coverage in "
+         "transitional periods of 0.714 for marginal ICP and 0.901 for Mondrian-CQR against a 90% target, (4) the reserve "
+         "rule comparing diesel online under the handbook rule and with forecast PV counted, (5) fewer diesel sets online, "
+         "and (6) outcomes of fuel and unserved energy. A dashed arrow below shows protocol A-R and the static "
          "margin rules fixing the level before the test year, and a separate loop shows protocol A-D, the only rule that "
          "updates it daily from observed unserved energy.")
 
@@ -269,9 +272,10 @@ def fig2():
          "Three panels of dot-and-interval plots of transitional-period coverage at 90% nominal for five "
          "calibration methods, with a dashed line at 0.9. Panel (a), Yulara fold 2024 by horizon: marginal ICP "
          "and the time-of-day rule sit near 0.70 to 0.73, CQR near 0.84 to 0.89, Mondrian near 0.88 to 0.89, "
-         "and Mondrian-CQR at 0.896 to 0.901 with intervals containing 0.9. Panel (b), six test years at 5 min: "
-         "marginal ICP ranges 0.66 to 0.78 while Mondrian-CQR ranges 0.885 to 0.915. Panel (c), DKASC: the "
-         "same ordering, with Mondrian at 0.893 to 0.898.")
+         "and Mondrian-CQR at 0.896 to 0.901 with bootstrap intervals containing 0.9. Panel (b), six test years at 5 min: "
+         "marginal ICP ranges 0.66 to 0.78 while Mondrian-CQR ranges 0.885 to 0.915. Panel (c), DKASC, fold 2024: "
+         "marginal ICP and the time-of-day rule again sit far below 0.9, and Mondrian (0.893 to 0.898) and "
+         "Mondrian-CQR sit closest to 0.9, with CQR just below them.")
 
 
 ACI = [("anticipative", "Anticipative", "#777777", "o", "--"),
@@ -334,6 +338,8 @@ def fig4():
     dr1 = dr1[(dr1.fold == fold) & (dr1.h == 3) & (dr1.scenario == "main") & (dr1.protocol == "A_R")].set_index("policy")
     s51 = pd.read_csv(src("S51/cells.csv"))
     s51 = s51[(s51.primary) & (s51.fold == fold) & (s51.h == 3) & (s51.scenario == "main")].set_index("policy")
+    xh = pd.read_csv(src("WP63/cases.csv"))
+    xh = xh[(xh.fold == fold) & (xh.scenario == "main") & (xh.selection == "b_xfit_0.001")].set_index("policy")
     fig, axs = plt.subplots(1, 2, figsize=(W2 * MM, 80 * MM), gridspec_kw=dict(width_ratios=[1.55, 1]))
     ax = axs[0]
     sav = lambda f: (hb - f) / hb * 100
@@ -346,6 +352,8 @@ def fig4():
         ax.plot(r.ue_share * 100, sav(r.fuel_L), marker=mk, color=c, mfc="white", mew=0.8, ms=4.2, ls="none")
         s = s51.loc[m]
         ax.plot(s.ue_share * 100, sav(s.fuel_L), marker=mk, color=c, mec="white", mew=0.4, ms=4.2, ls="none")
+        x = xh.loc[m]
+        ax.plot(x.ue_share * 100, sav(x.fuel_L), marker=mk, color=c, mec=INK, mew=0.9, ms=4.6, ls="none", zorder=4)
     ax.plot(0, 0, marker="o", color=INK, ms=4, ls="none", clip_on=False, zorder=5)
     # label placed right of the A-R markers so it overlaps no marker
     ax.annotate("Handbook rule (origin)", (0, 0), (0.0085, -0.13), fontsize=6, color=INK, va="center",
@@ -359,9 +367,10 @@ def fig4():
     grid(ax, "both"); panel(ax, "a")
     ax.plot([], [], marker="o", color=MUTED, mfc="white", ls="none", label="A-R level (open)")
     ax.plot([], [], marker="o", color=MUTED, ls="none", label="A-D controller (filled)")
+    ax.plot([], [], marker="o", color=MUTED, mec=INK, mew=0.9, ls="none", label="XH static level (black edge)")
     ax.set_xticks([0, 0.005, 0.01, 0.015, 0.02]); ax.set_xticklabels(["0", "0.005", "0.010", "0.015", "0.020"])
     h_, l_ = ax.get_legend_handles_labels()
-    fig.legend(h_, l_, loc="lower center", ncol=5, bbox_to_anchor=(0.5, 0.0), handlelength=2.4, columnspacing=1.2)
+    fig.legend(h_, l_, loc="lower center", ncol=4, bbox_to_anchor=(0.5, 0.0), handlelength=2.4, columnspacing=1.2)
     # (b) share of the handbook-to-oracle gap captured at the target, six folds
     fr = pd.read_csv(src("S7E/frontier_F.csv"))
     fr = fr[(fr.h == 3) & (fr.scenario == "main")]
@@ -384,21 +393,36 @@ def fig4():
     ax.set_xlim(min(-0.1, lo - 0.05), 1.05); grid(ax, "x"); panel(ax, "b", x=-0.02)
     fig.subplots_adjust(left=0.065, right=0.99, top=0.95, bottom=0.33, wspace=0.62)
     med = {m: round(float(np.median(cap[m])), 2) for m in POL}
-    check("fig4 gap medians 0.65/0.65/0.65/0.52/0.38/0.14/0.01",
+    check("fig4 gap medians 0.76/0.76/0.76/0.56/0.46/0.39/0.44 (v2.1)",
           [med[m] for m in ("raw_q", "cqr", "mondrian_cqr", "nicp_var", "frac_pv", "icp", "mondrian")]
-          == [0.65, 0.65, 0.65, 0.52, 0.38, 0.14, 0.01], str(med))
+          == [0.76, 0.76, 0.76, 0.56, 0.46, 0.39, 0.44], str(med))
+    check("fig4 (b) order in the alt text: quantile, var.-norm. ICP, fixed fraction, Mondrian ICP, time-of-day, marginal ICP",
+          order[3:] == ["nicp_var", "frac_pv", "mondrian", "tod_q", "icp"] and med["mondrian"] > med["tod_q"] > med["icp"], str(order))
+    check("fig4 (a) oracle line of fold 2024 near 1.05% (alt text; range 1.05 to 1.37) and inside the axis",
+          round(float(sav(orc)), 2) == 1.05 and sav(orc) < 1.2, "%.4f" % sav(orc))
+    xq = xh.loc[["raw_q", "cqr", "mondrian_cqr"]]
+    check("fig4 (a) XH markers: 8 policies, fold 2024 shape A; 7 meet the target (the fixed fraction misses); quantile XH "
+          "savings 0.58 to 0.63% and UE below the A-D markers (alt text)",
+          len(xh) == 8 and int(xh.meets.sum()) == 7 and not bool(xh.loc["frac_pv"].meets)
+          and (round(float(xq.saving_pct.min()), 2), round(float(xq.saving_pct.max()), 2)) == (0.58, 0.63)
+          and float(xh.drop("frac_pv").ue_share.max()) < float(s51.ue_share.min())
+          and bool((xh.fuel_L > 0).all()) and bool((xh.ue_share * 100 < 0.02).all()),
+          f"met {int(xh.meets.sum())}, quantile {xq.saving_pct.min():.3f}-{xq.saving_pct.max():.3f}, ue max {xh.ue_share.max():.2e}")
     check("fig4 panel (a) envelope reproduces frontier F at the target (fold 2024)",
           all(abs(np.interp(TARGET * 100, *envelope(U[p == m] / L[p == m] * 100, F[p == m])) -
                   fr[(fr.fold == fold) & (fr.policy == m)].F.iloc[0]) < 0.02 * (hb - orc) for m in POL))
     save(fig, "fig4", W2,
          "Panel (a) is a step chart of fuel saving against the 100%-of-PV handbook rule versus test-year "
          "unserved energy for eight reserve policies, fold 2024, 15 min, load shape A. The handbook rule sits at "
-         "the origin, the oracle is a dotted horizontal line near 0.7%, and a dashed vertical line marks the "
+         "the origin, the oracle is a dotted horizontal line near 1.05%, and a dashed vertical line marks the "
          "0.002% target. Open markers show the level chosen a year ahead (A-R), filled markers the daily "
-         "controller (A-D), which sits closer to zero unserved energy. Panel (b) is a dot plot of the share of "
-         "the handbook-to-oracle gap captured at the target over six folds: the quantile policies lead with "
-         "medians of 0.65, then variability-normalized ICP 0.52, fixed fraction 0.38, marginal ICP 0.14 and "
-         "Mondrian ICP 0.01.")
+         "controller (A-D), which sits closer to zero unserved energy, and black-edged markers the XH static level, "
+         "which lies left of the controller at lower unserved energy for the seven level-based policies, with savings of "
+         "0.58 to 0.63% for the three quantile policies, while the fixed fraction's XH level sits right of the target. "
+         "Panel (b) is a dot plot of the share of "
+         "the handbook-to-oracle gap captured at the target over six folds, an ex post quantity on the test year: the quantile policies lead with "
+         "medians of 0.76, then variability-normalized ICP 0.56, fixed fraction 0.46, Mondrian ICP 0.44, "
+         "the time-of-day rule just below it and marginal ICP 0.39.")
 
 
 def fig5():
@@ -428,7 +452,8 @@ def fig5():
     ax.axhspan(1, 8, color="#f4f4f4", zorder=0, lw=0)
     ax.set_yticks([zero_y, 0.02, 0.1, 1]); ax.set_yticklabels(["0", "0.02", "0.1", "1"])
     ax.yaxis.set_minor_locator(mticker.NullLocator())
-    ax.text(len(POL) - 0.5, 1.08, "above target", fontsize=6, color=MUTED, ha="right", va="bottom")
+    # the note sits at the top of the shaded band, clear of the time-of-day markers
+    ax.text(len(POL) - 0.5, 7.0, "above target", fontsize=6, color=MUTED, ha="right", va="top")
     SHORT = {"raw_q": "Raw\nquantile", "cqr": "CQR", "mondrian_cqr": "Mondrian-\nCQR", "nicp_var": "Var.-norm.\nICP",
               "frac_pv": "Fixed\nfraction", "icp": "Marginal\nICP", "mondrian": "Mondrian\nICP", "tod_q": "Time-of-\nday rule"}
     ax.set_xticks(range(len(POL))); ax.set_xticklabels([SHORT[m] for m in POL], fontsize=6)
@@ -444,11 +469,12 @@ def fig5():
     ad_all = c.ue_share.values / TARGET
     k_ = int(np.argmax(ad_all)); m_ = c.policy.values[k_]
     i_ = POL.index(m_)
-    ax.annotate("%.2f" % ad_all[k_], (i_ + 0.18, ad_all[k_]), (i_ + 0.55, 0.62), fontsize=6, color=INK, ha="left",
+    ax.annotate("%.3f" % ad_all[k_], (i_ + 0.18, ad_all[k_]), (i_ + 0.3, 0.3), fontsize=6, color=INK, ha="center",
                 va="center", arrowprops=dict(arrowstyle="-", lw=0.5, color=MUTED, shrinkA=0, shrinkB=2))
-    check("fig5 highest A-D value is marginal ICP at 0.97 of the target (below 1)",
-          m_ == "icp" and round(float(ad_all[k_]), 2) == 0.97 and ad_all[k_] < 1, "%s %.4f" % (m_, ad_all[k_]))
-    # (b) one A-D level path: fold with the median days at the limit for CQR
+    check("fig5 highest A-D value is the time-of-day quantile at 0.999 of the target (below 1)",
+          m_ == "tod_q" and "%.3f" % ad_all[k_] == "0.999" and ad_all[k_] < 1, "%s %.4f" % (m_, ad_all[k_]))
+    # (b) one A-D level path for CQR, shape A: fold 2022, one of the two folds whose days at the limit lie nearest the
+    # six-fold median (2019 at 268 and 2022 at 283 around a median of 275.5; checked below).
     fold, pol = 2022, "cqr"
     d = np.load(src("S51/f%d_h3_paths.npz" % fold))
     k = list(d["specs"]).index("%s|0.005|0.5" % pol)
@@ -473,35 +499,41 @@ def fig5():
     # own panel, one axis, the limit drawn as a line (no second y-axis)
     axl.plot(np.arange(1, len(lat) + 1), lat, color=INK, lw=0.7, ls=(0, (2, 1.5)))
     axl.axhline(1.0, color="#D55E00", lw=0.6, ls=(0, (1, 1.2)))
-    axl.text(len(lev) * 0.98, 1.0 + 0.03, "limit", fontsize=6, color="#D55E00", ha="right", va="bottom")
+    axl.text(len(lev) * 0.98, 1.0 + 0.03, "limit", fontsize=6, color="#D55E00", ha="right", va="bottom",
+             bbox=dict(fc="white", ec="none", pad=0.6), zorder=4)  # white box keeps the label clear of the latent line
     axl.set_ylim(np.floor(float(lat.min()) * 10) / 10, np.ceil(float(lat.max()) * 10) / 10 + 0.05)
     axl.set_ylabel("Latent level")
     axl.set_xlabel("Day of test year %d" % fold)
     grid(ax); grid(axl); panel(ax, "b")
     fig.subplots_adjust(left=0.07, right=0.99, top=0.95, bottom=0.18, wspace=0.3)
     cs = c[c.policy.isin(["icp", "mondrian", "cqr", "mondrian_cqr"])]
-    check("fig5 conformal 48/48 A-D vs 25/48 A-R; all 96/96 vs 58/96",
+    check("fig5 conformal 48/48 A-D vs 21/48 A-R; all 96/96 vs 45/96 (v2.1)",
           ((cs.ue_share <= TARGET).sum(), (cs.ue_share_AR <= TARGET).sum(), (c.ue_share <= TARGET).sum(), (c.ue_share_AR <= TARGET).sum(), len(c))
-          == (48, 25, 96, 58, 96))
+          == (48, 21, 96, 45, 96))
+    _dl = c[(c.policy == pol) & (c.scenario == "main")].set_index("fold").days_at_limit
+    _gap = (_dl - _dl.median()).abs()
+    check("fig5 (b) fold %d is one of the folds nearest the six-fold median of CQR days at the limit" % fold,
+          abs(_gap.loc[fold] - _gap.min()) < 1e-9, str(_dl.to_dict()))
+    check("fig5 (a) highest A-R value below 4 times the target (alt text 'up to about four times')",
+          3 < float((c.ue_share_AR / TARGET).max()) < 4, "%.3f" % float((c.ue_share_AR / TARGET).max()))
     r = c[(c.fold == fold) & (c.scenario == "main") & (c.policy == pol)].iloc[0]
     check("fig5 path days at limit equals S51 cells (%d)" % r.days_at_limit, int((lev >= 1).sum()) == int(r.days_at_limit))
     check("fig5 path UE equals S51 cells", abs(float(ue.sum()) - r.ue_kWh) < 1e-3 * max(1, r.ue_kWh))
     check("fig5 latent path starts at the A-R level and the applied level is at or above it (capped at the limit)",
           abs(float(lat[0]) - float(r.theta0)) < 1e-6 and bool(np.all(lev >= np.minimum(lat[:-1], 1.0) - 1e-6)))
 
-    q = c[c.policy.isin(["raw_q", "cqr", "mondrian_cqr"]) & (c.scenario == "main")].groupby("policy").days_at_limit.median()
-    check("fig5 median days at limit 247-254 over quantile policies",
-          (int(c[c.policy.isin(["raw_q", "cqr", "mondrian_cqr"])].groupby("policy").days_at_limit.median().min()),
-           int(c[c.policy.isin(["raw_q", "cqr", "mondrian_cqr"])].groupby("policy").days_at_limit.median().max())) == (247, 254))
+    _md = c[c.policy.isin(["raw_q", "cqr", "mondrian_cqr"])].groupby("policy").days_at_limit.median()
+    check("fig5 median days at limit 255-271 over quantile policies (v2.1; 270.5 printed as 271, half days rounded up)",
+          (int(np.floor(_md.min() + 0.5)), int(np.floor(_md.max() + 0.5))) == (255, 271), str(_md.to_dict()))
     save(fig, "fig5", W2,
          "Panel (a) is a dot plot on a logarithmic axis of test-year unserved energy divided by the target for "
          "eight policies, six folds and two load shapes, 15 min, with cases of zero unserved energy on a strip at the "
          "bottom. Open markers (level chosen a year ahead) are often above the dashed target line at 1, up to about "
-         "four times the target. Filled markers (daily controller) are all below 1, the highest at 0.97. Panel (b) has two "
+         "four times the target. Filled markers (daily controller) are all below 1, the highest at 0.999. Panel (b) has two "
          "stacked charts over the days of test year 2022: above, a step chart of the reserve level the controller applied "
-         "to CQR, with tick marks on the days that had unserved energy, and below it the unclipped latent level as a dashed "
-         "line with the limit at 1: after an unserved-energy event the latent level jumps above the limit and the "
-         "applied level stays at the handbook limit until the latent level decays below it.")
+         "to CQR in load shape A, with tick marks on the days that had unserved energy, and below it the unclipped latent level as a dashed "
+         "line, with the limit at 1. After an unserved-energy event the latent level jumps above the limit, and the "
+         "applied level stays at the handbook level until the latent level decays below the limit.")
 
 
 def fig6():
@@ -527,7 +559,7 @@ def fig6():
                    alpha=0.85, label=lab, zorder=3)
     ax.axhline(0, color=INK, lw=0.6, ls=(0, (4, 2)))
     ax.set_xlim(np.floor(Q.nb.min() * 50) / 50 - 0.005, 1.005)
-    ax.set_ylim(np.floor(Q.d.min() * 50) / 50 - 0.01, 0.03)
+    ax.set_ylim(np.floor(Q.d.min() * 50) / 50 - 0.01, 0.01)  # largest rise 0.002: no band above 0.01
     ax.set_xlabel("A-R level without battery"); ax.set_ylabel("Level with battery minus without")
     grid(ax, "both"); panel(ax, "a")
     h_, l_ = ax.get_legend_handles_labels()
@@ -559,35 +591,49 @@ def fig6():
     for i_, fo in enumerate(g.index):
         for dx_, col_, nmiss in ((0.0, "forecast_alone_pct", int(miss_nb.loc[fo])), (0.26, "combined_pct", int(miss_wb.loc[fo]))):
             if nmiss:
-                ax.text(i_ + dx_, g[col_].loc[fo] + 0.04, "%d" % nmiss, fontsize=6, color="#D55E00", ha="center", va="bottom",
+                # on the dark combined bar the digit sits inside the bar top in white, so it never meets the sum dash
+                _in = bool(dx_)
+                ax.text(i_ + dx_, g[col_].loc[fo] - 0.04 if _in else g[col_].loc[fo] + 0.04, "%d" % nmiss, fontsize=6,
+                        color="white" if _in else "#D55E00", ha="center", va="top" if _in else "bottom",
                         fontweight="bold")
     grid(ax); panel(ax, "b")
     fig.subplots_adjust(left=0.08, right=0.99, top=0.93, bottom=0.17, wspace=0.62)  # panel letters inside the canvas
-    check("fig6 (a) difference range within -0.21 and +0.01 (drawn limits)", Q.d.min() > -0.21 and Q.d.max() < 0.02, "%s %s" % (Q.d.min(), Q.d.max()))
-    check("fig6 DR4 380 lower, 2 equal, 2 higher of 384",
-          ((P.wb < P.nb).sum(), (P.wb == P.nb).sum(), (P.wb > P.nb).sum(), len(P)) == (380, 2, 2, 384))
+    _yl = axs[0].get_ylim()
+    check("fig6 (a) largest rise below the fixed upper axis limit %.2f (the lower limit follows the data)" % _yl[1], Q.d.max() < _yl[1], "%s" % Q.d.max())
+    check("fig6 DR4 289 lower, 93 equal, 2 higher of 384 (v2.1)",
+          ((P.wb < P.nb).sum(), (P.wb == P.nb).sum(), (P.wb > P.nb).sum(), len(P)) == (289, 93, 2, 384))
+    _gq = Q.groupby(["policy", "nb", "d"]).size()
+    check("fig6 (a) alt text: drawn falls of at most 0.04, median fall 0.001 to 0.01 per policy, two rises, most markers single cases",
+          round(float(Q.d.min()), 2) == -0.04 and Q.d.max() <= 0.01 and float(Q.groupby("policy").d.median().min()) >= -0.0105
+          and float(Q.groupby("policy").d.median().max()) <= -0.0005 and (_gq == 1).sum() > len(_gq) / 2
+          and int((Q.d > 0).sum()) == 2 and float(Q.d.max()) <= 0.0025 and (Q.d < 0).sum() > len(Q) / 2,
+          "%s %s %d of %d" % (Q.d.min(), Q.groupby("policy").d.median().to_dict(), (_gq == 1).sum(), len(_gq)))
     s = pd.read_csv(src("WP52/summary.csv"))
     s = s[(s.h_min == 15) & (s["shape"] == "A") & (s.policy == "quantile_pooled")].iloc[0]
-    check("fig6 pooled medians 0.73 / 0.59 / 1.27 (1.03-1.43)",
+    check("fig6 pooled medians 0.40 / 0.93 / 1.07 (0.90-1.20) (v2.1)",
           (round(s.battery_alone_pct_median, 2), round(s.forecast_alone_pct_median, 2), round(s.combined_pct_median, 2),
-           round(s.combined_pct_min, 2), round(s.combined_pct_max, 2)) == (0.73, 0.59, 1.27, 1.03, 1.43))
-    check("fig6 plain medians over the 18 cells = main text 0.73 / 0.61 / 1.27",
-          (round(q.battery_alone_pct.median(), 2), round(q.forecast_alone_pct.median(), 2), round(q.combined_pct.median(), 2)) == (0.73, 0.61, 1.27))
-    check("fig6 misses marked: no battery 3 in 2020 and 2021; with battery 3, 3 and 1 in 2020, 2021, 2024 (11 of 18 met, Table S7.3)",
-          {int(k): int(v) for k, v in miss_nb.items() if v} == {2020: 3, 2021: 3}
-          and {int(k): int(v) for k, v in miss_wb.items() if v} == {2020: 3, 2021: 3, 2024: 1}
-          and int(q.target_met_wb.astype(bool).sum()) == 11 and len(q) == 18)
+           round(s.combined_pct_min, 2), round(s.combined_pct_max, 2)) == (0.40, 0.93, 1.07, 0.90, 1.20))
+    check("fig6 forecast alone, plain median over the 18 cells 0.93",
+          (round(q.forecast_alone_pct.median(), 2), len(q)) == (0.93, 18))
+    check("fig6 misses marked: no battery 3 in 2020, 2021 and 2023; with battery 2 in 2019 and 3 in 2020, 2021, 2023, 2024 (4 and 9 of 18 met)",
+          {int(k): int(v) for k, v in miss_nb.items() if v} == {2020: 3, 2021: 3, 2023: 3}
+          and {int(k): int(v) for k, v in miss_wb.items() if v} == {2019: 2, 2020: 3, 2021: 3, 2023: 3, 2024: 3}
+          and int(q.target_met_wb.astype(bool).sum()) == 4 and int(q.target_met_nb.astype(bool).sum()) == 9 and len(q) == 18)
+    check("fig6 (b) alt text ranges: battery alone 0.35 to 0.45, forecast alone 0.75 to 1.1, combined 0.9 to 1.2, combined below the sum",
+          0.35 <= g.battery_alone_pct.round(2).min() and g.battery_alone_pct.round(2).max() <= 0.45 and 0.75 <= g.forecast_alone_pct.round(2).min()
+          and g.forecast_alone_pct.round(2).max() <= 1.1 and 0.9 <= g.combined_pct.round(2).min() and g.combined_pct.round(2).max() <= 1.2
+          and bool((g.combined_pct < g.battery_alone_pct + g.forecast_alone_pct).all()), g.round(3).to_dict())
     check("fig6 bars within the pooled range", g.combined_pct.min() >= s.combined_pct_min - 1e-9 and g.combined_pct.max() <= s.combined_pct_max + 1e-9)
     save(fig, "fig6", W2,
-         "Panel (a) is a scatter of the change in the reserve level chosen a year ahead when the hypothetical battery "
-         "is added (level with minus level without) against the level without it, for the seven level-based policies "
+         "Panel (a) is a scatter of the change in the year-ahead reserve level when the hypothetical battery "
+         "is added (with minus without) against the level without it, seven level-based policies "
          "over folds, horizons and both load shapes, with marker area proportional to the number of identical cases "
-         "and a dashed line at zero. Almost every point lies below zero, with a median fall of about 0.025 and falls "
-         "of up to about 0.2 for CQR and Mondrian-CQR at levels of about 0.955 to 0.97. Panel (b) is a grouped bar chart for each test "
-         "year 2019 to 2024 of the fuel saving against the handbook rule without a battery: battery alone about "
-         "0.6 to 0.8%, forecast alone about 0.35 to 0.8%, and both together about 1.0 to 1.4%, close to the sum of "
-         "the two, marked by a dash. Red digits count the quantile policies whose year-ahead level misses the target: three "
-         "of three in 2020 and 2021 without and with the battery, and one of three in 2024 with the battery.")
+         "and a dashed line at zero. Most points lie below zero, many on it and two just above it. Falls are small, a median of "
+         "0.001 to 0.01 per policy and at most about 0.04. Panel (b) is a grouped bar chart for each test "
+         "year 2019 to 2024 of the fuel saving against the handbook rule without a battery, under A-R at 15 min in load shape A, median of the three quantile policies, misses included: battery alone about "
+         "0.35 to 0.45%, forecast alone about 0.75 to 1.1%, and both together about 0.9 to 1.2%, below the sum of "
+         "the two, marked by a dash. Digits count the quantile policies whose year-ahead level misses the target: three "
+         "of three in 2020, 2021 and 2023 without and with the battery, and with the battery also two of three in 2019 and three of three in 2024.")
 
 
 def graphical_abstract():
@@ -606,87 +652,53 @@ def graphical_abstract():
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import ce1_s64 as _S64
     su_txt = "%.2f to %.1f L" % (_S64.su_litres("low"), _S64.su_litres("high"))
-    check("graphical abstract strings read from source: 5 of 6 complete-day years, ceiling 0.5-1.2%, start-up 0.85 to 8.5 L",
-          (cd_years, len(_cd), ceil_txt, su_txt) == (5, 6, "0.5-1.2%", "0.85 to 8.5 L"), (cd_years, len(_cd), ceil_txt, su_txt))
+    check("graphical abstract source strings, not drawn since kept as regression pins: 5 of 6 complete-day years, ceiling 0.9-1.4% (v2.1), start-up 0.85 to 8.5 L",
+          (cd_years, len(_cd), ceil_txt, su_txt) == (5, 6, "0.9-1.4%", "0.85 to 8.5 L"), (cd_years, len(_cd), ceil_txt, su_txt))
     fig = plt.figure(figsize=(13.28, 5.31))
     ax = fig.add_axes([0, 0, 1, 1]); ax.set_xlim(0, 13.28); ax.set_ylim(0, 5.31); ax.axis("off")
     fig.patch.set_facecolor("white")
-    GA_TITLE = "Can probabilistic irradiance forecasts replace the full-PV spinning-reserve rule?"
-    GA_SUB = "Yulara PV-diesel mini-grid model, central Australia: six held-out test years, 5-min data, 15-min horizon"
-    ax.text(0.45, 4.75, GA_TITLE,
-            fontsize=21, fontweight="bold", color=INK, va="center")
-    ax.text(0.45, 4.25, GA_SUB,
-            fontsize=14, color=MUTED, va="center")
-    steps = [("GHI record", "#ffffff"), ("Quantile\nforecast", "#ffffff"), ("Conformal\ncalibration", "#e8f1f8"),
+    GA_TITLE = "Can probabilistic irradiance forecasts replace\nthe full-PV spinning-reserve rule?"
+    GA_SUB = "Yulara PV-diesel mini-grid model, six held-out test years, 15-min horizon"
+    ax.text(0.4, 4.72, GA_TITLE, fontsize=26, fontweight="bold", color=INK, va="center", linespacing=1.1)
+    ax.text(0.4, 3.98, GA_SUB, fontsize=21, color=MUTED, va="center")
+    steps = [("GHI\nrecord", "#ffffff"), ("Quantile\nforecast", "#ffffff"), ("Conformal\ncalibration", "#e8f1f8"),
              ("Reserve at\nlevel $\\theta$", "#fde9d9"), ("Diesel\ncommitment", "#e3e3e3")]
-    x0, w, gap, y, h = 0.45, 1.36, 0.36, 2.55, 1.05
-    for i, (t, fc) in enumerate(steps):
-        x = x0 + i * (w + gap)
-        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=0.08", fc=fc, ec=INK, lw=1.3))
-        ax.text(x + w / 2, y + h / 2, t, ha="center", va="center", fontsize=14.5, color=INK, linespacing=1.15)
+    widths = [1.45, 2.05, 2.45, 2.15, 2.45]
+    gap, y, h = 0.42, 2.18, 1.0
+    x = 0.4
+    for i, ((t, fc), w) in enumerate(zip(steps, widths)):
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=0.08", fc=fc, ec=INK, lw=1.4))
+        ax.text(x + w / 2, y + h / 2, t, ha="center", va="center", fontsize=21, color=INK, linespacing=1.05)
         if i:
-            ax.add_patch(FancyArrowPatch((x - gap, y + h / 2), (x, y + h / 2), arrowstyle="-|>", mutation_scale=16, lw=1.5, color=INK))
+            ax.add_patch(FancyArrowPatch((x - gap + 0.04, y + h / 2), (x - 0.04, y + h / 2), arrowstyle="-|>",
+                                         mutation_scale=20, lw=1.8, color=INK))
         if i == 2:  # calibration shapes coverage, not fuel (DR2, DR3)
-            ax.text(x + w / 2, y + h + 0.2, "shapes coverage, not fuel", ha="center", va="center", fontsize=11.5,
+            ax.text(x + w / 2, y + h + 0.25, "shapes coverage, not fuel", ha="center", va="center", fontsize=21,
                     color="#0072B2", style="italic")
-    # the two ways of holding the margin are drawn distinctly. A static level is an input fixed
-    # before the test year (dashed, no feedback). Only the daily controller feeds back from observed unserved energy.
-    xr = x0 + 3 * (w + gap)  # reserve box, left edge
-    xd = x0 + 4 * (w + gap)  # diesel box, left edge
-    ax.add_patch(FancyArrowPatch((xr + 0.3 * w, 1.72), (xr + 0.3 * w, y), arrowstyle="-|>", mutation_scale=16, lw=1.8,
-                                 color="#0072B2", linestyle=(0, (4, 2))))
-    LBL_STATIC = "margin of half the allowance:\nstatic level fixed before the test year"
-    LBL_FEED = "or daily controller:\nfeedback from observed\nunserved energy"
-    ax.text(xr + 0.3 * w - 0.1, 1.5, LBL_STATIC, fontsize=12,
-            color="#0072B2", ha="right", va="center", linespacing=1.15)
-    yl = 2.05
-    ax.plot([xd + 0.5 * w, xd + 0.5 * w, xr + 0.75 * w], [y, yl, yl], color=MUTED, lw=1.5)
-    ax.add_patch(FancyArrowPatch((xr + 0.75 * w, yl), (xr + 0.75 * w, y), arrowstyle="-|>", mutation_scale=16, lw=1.5, color=MUTED))
-    ax.text(xr + 0.75 * w + 0.05, 1.6, LBL_FEED, fontsize=12,
-            color=MUTED, ha="left", va="center", linespacing=1.15)
-    nums = [("%d of %d" % (ar.met, ar.n), "conformal cases meet the 0.002%\ntarget with year-ahead levels\n(registered test)", "#D55E00"),
-            ("%d of 6" % ylv["years_met"], "test years met on measured steps,\nexploratory static margin,\nquantile policies (bound %.2f,\n%d of %d cases, %d of 6 on\ncomplete days)" % (ylv["cp"], xf.met, xf.n, cd_years), "#0072B2"),
-            ("%.2f%%" % xf.saving_median_pct, "median saving, quantile policies,\nbefore start-ups (break-even %.1f L\nper start, modelled %s)" % (xf.breakeven_L_per_start, su_txt), INK)]
+        x += w + gap
+    LBL_STATIC = LBL_FEED = None  # no arrow labels
+    nums = [("%d of %d" % (ar.met, ar.n), "conformal cases meet the\ntarget, year-ahead levels\n(registered test)", "#D55E00"),
+            ("%d of 6" % ylv["years_met"], "test years met on measured\nsteps, exploratory static\nlevel with a margin", "#0072B2"),
+            ("%.2f%%" % xf.saving_median_pct, "median fuel saving, quantile\npolicies, before start-ups\n(break-even %.1f L per start)" % xf.breakeven_L_per_start, INK)]
     for i, (n, t, c) in enumerate(nums):
-        xx = 10.6
-        yy = 3.45 - i * 1.12
-        ax.text(xx - 0.12, yy, n, fontsize=25 if i < 2 else 21, fontweight="bold", color=c, ha="right", va="center")
-        ax.text(xx + 0.08, yy, t, fontsize=12, color=INK, ha="left", va="center", linespacing=1.15)
-    ax.plot([8.85, 8.85], [0.95, 3.95], color=GRID, lw=1.2)
-    s69 = pd.read_csv(src("S69/cases.csv"))
-    na = s69[(s69.construction == "n1a") & (s69.rule == "XH") & s69.policy.isin(["raw_q", "cqr", "mondrian_cqr"])].saving_pct
-    inc = json.loads(src("S69/readings.json").read_text())["anchors_median_increase_pct"]["n1a"]
-    pfr = json.loads(src("S69b/readings.json").read_text())["pfr_median_saving_pct"]
-    an = pd.read_csv(src("S69/anchors.csv")).set_index(["fold", "shape", "construction"]).handbook_fuel_L
-    nr = s69[(s69.construction == "n1a") & (s69.rule == "XH") & s69.policy.isin(["raw_q", "cqr", "mondrian_cqr"])]
-    vs_plain = float(pd.Series(100 * (nr.fuel_L.values / an.loc[list(zip(nr["fold"], nr["shape"], ["plain"] * len(nr)))].values - 1)).median())
-    ld = pd.read_csv(src("WP74/leads.csv")).set_index(["construction", "policy"]).loc[("n1a", "pooled")]  # paired lead
-    GA_FOOT = ("Calibrating within issue-time sky regimes brings transitional coverage close to nominal in most years, but the fuel\n"
-               "value comes from the quantile model (oracle ceiling %s at the registered load scale). A largest-unit reserve held beside\n"
-               "the PV reserve adds %.1f%% to the fuel of the full-PV rule. Against that rule, levels near the median save %.1f-%.1f%% (persistence\n"
-               "%.1f%%, a median %.2f points less per case), still %.1f%% above the full-PV rule without it. Held as the larger of two terms, the forecast rarely sets the reserve."
-               % (ceil_txt, inc, na.min(), na.max(), pfr, ld.paired_median, vs_plain))
-    ax.text(0.45, 0.52, GA_FOOT, fontsize=11.5, color=MUTED, va="center", linespacing=1.3)
-    check("graphical abstract paired lead equals (0.22, D-142 item 2)", "%.2f" % ld.paired_median == "0.22")
-    check("graphical abstract: 6 of 6 years, bound 0.61, break-even 7.9 L, 3.8% above the plain rule",
-          (int(ylv["years_met"]), "%.2f" % ylv["cp"], "%.1f" % xf.breakeven_L_per_start, "%.1f" % vs_plain) == (6, "0.61", "7.9", "3.8"))
-    check("graphical abstract additive N-1 equals (8.8%, 3.9-5.4%, persistence 4.4%)",
-          ("%.1f" % inc, "%.1f" % na.min(), "%.1f" % na.max(), "%.1f" % pfr) == ("8.8", "3.9", "5.4", "4.4"))
-    check("graphical abstract numbers equal Table 3 and the abstract (25 of 48; 36 of 36; 0.26%)",
-          (int(ar.met), int(ar.n), int(xf.met), int(xf.n), "%.2f" % xf.saving_median_pct) == (25, 48, 36, 36, "0.26"))
+        xx = 0.4 + i * 4.35
+        ax.text(xx, 1.5, n, fontsize=30, fontweight="bold", color=c, ha="left", va="center")
+        ax.text(xx, 0.74, t, fontsize=21, color=INK, ha="left", va="center", linespacing=1.05)
+    check("graphical abstract: 6 of 6 years, break-even 27.8 L (v2.1)", (int(ylv["years_met"]), "%.1f" % xf.breakeven_L_per_start) == (6, "27.8"))
+    check("graphical abstract numbers equal the result tables (21 of 48; 36 of 36; 0.76%; v2.1)",
+          (int(ar.met), int(ar.n), int(xf.met), int(xf.n), "%.2f" % xf.saving_median_pct) == (21, 48, 36, 36, "0.76"))
+    check("graphical abstract complete-day years read from source (5 of 6)", (cd_years, len(_cd)) == (5, 6))
     flat = lambda t: " ".join(t.replace("\n", " ").split()).replace("$\\theta$", "theta")
-    # the alt text carries every drawn string, the subtitle and both arrow labels included
-    alt = ("Graphical abstract titled '" + GA_TITLE + "' Subtitle: " + GA_SUB + ". A five-step chain ("
+    alt = ("Graphical abstract titled '" + flat(GA_TITLE) + "' Subtitle: " + GA_SUB + ". A five-step chain ("
            + ", ".join(flat(t) for t, _ in steps)
-           + ") shows calibration, labelled 'shapes coverage, not fuel'. Two arrows set the reserve level: "
-           + flat(LBL_STATIC) + ", " + flat(LBL_FEED) + ". At 15 min: "
-           + ", ".join(n + " " + flat(t) for n, t, _ in nums) + ". Footnote: " + flat(GA_FOOT))
-    check("graphical abstract alt text carries every drawn string", all(flat(x) in alt for x in [GA_TITLE, GA_SUB, GA_FOOT, LBL_STATIC, LBL_FEED, "shapes coverage, not fuel"]
-                                                                                 + [t for t, _ in steps] + [n for n, _, _ in nums] + [t for _, t, _ in nums]), True)
+           + ") shows conformal calibration labelled 'shapes coverage, not fuel'. Three results at 15 min: "
+           + ". ".join(n + " " + flat(t) for n, t, _ in nums) + ".")
     _drawn = [t_.get_text() for t_ in ax.texts if t_.get_text().strip()]
     _miss = [d for d in _drawn if flat(d) not in alt]
     check("graphical abstract alt text carries every text object drawn on the figure (%d read from the axes)" % len(_drawn),
           not _miss, _miss)
+    _pt = [t_.get_fontsize() * 130.0 / (13.28 * 25.4) for t_ in ax.texts if t_.get_text().strip()]
+    check("graphical abstract smallest text %.1f pt when shown 13 cm wide (min %.1f)" % (min(_pt), GA_MIN_PT), min(_pt) >= GA_MIN_PT - 1e-9)
     save(fig, "graphical_abstract", 1328 / 300 * 25.4, alt, px=(1328, 531))
 
 
@@ -725,7 +737,7 @@ def main(argv):
                                          "\n\n".join("**%s.** %s" % (n, ALT[n]) for n in ALT) + "\n", encoding="utf-8")
     fails = 0
     for l, o, d in CHECKS:
-        print("  %-4s %s%s" % ("ok" if o else "FAIL", l, "" if o else "  [%s]" % d))
+        print("  %-4s %s%s" % ("ok" if o else "FAIL", l, "" if o else "  [%s]" % (d,)))
         fails += not o
     for l, o in figure_checker():
         print("  %-4s %s" % ("ok" if o else "FAIL", l))

@@ -4,7 +4,7 @@ Code and result tables for the article:
 
 > M. Abdelmagid, T. H. M. El-Fouly, M. Maalouf. *Can probabilistic irradiance forecasts replace the full-PV spinning-reserve rule? A six-year evaluation for a remote PV-diesel mini-grid*.
 
-Version 2.0.0. MIT licence. Archived on Zenodo: https://doi.org/10.5281/zenodo.23125766.
+Version 2.1.0. MIT licence. Archived on Zenodo: https://doi.org/10.5281/zenodo.23262936.
 
 The pipeline rebuilds the irradiance and plant records from the public source files, fits point and quantile
 forecasters year by year with causal inputs, calibrates prediction intervals (split conformal, CQR, Mondrian

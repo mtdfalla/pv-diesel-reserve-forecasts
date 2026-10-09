@@ -848,7 +848,7 @@ def analyse(root: Path, skip_rearranged: bool = False) -> bool:
                pvlib=__import__("pvlib").__version__, scipy=__import__("scipy").__version__)
     json.dump(dict(checks=checks, inputs=inputs, outputs=outs, code=code, env=env), open(out / "checks.json", "w"), indent=1)
     (R / "_runs").mkdir(exist_ok=True)
-    detail = dict(stage="S63", ok=ok, seconds=round(time.time() - t0, 1), checks=checks, inputs=inputs, outputs=outs,
+    detail = dict(simulator=LM.sim_defaults(), stage="S63", ok=ok, seconds=round(time.time() - t0, 1), checks=checks, inputs=inputs, outputs=outs,
                   code=code, env=env)
     json.dump(detail, open(R / "_runs" / "S63.detail.json", "w"), indent=1)
     json.dump(dict(stage="S63", ok=ok, error="", started=started, finished=time.strftime("%Y-%m-%dT%H:%M:%S"),

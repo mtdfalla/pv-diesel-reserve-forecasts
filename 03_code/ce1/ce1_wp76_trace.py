@@ -23,6 +23,8 @@ OUT = R / "WP76"
 QP = ("raw_q", "cqr", "mondrian_cqr")
 TGT = 2e-5
 CHECKS: dict = {}
+import ce1_literal as LT
+LIT = LT.Literal(OUT, "ce1_wp76_trace.py")
 
 
 def check(name, cond, msg=""):
@@ -77,18 +79,24 @@ def t2():
 
 def t3():
     e = pd.read_csv(R / "WP67" / "sim" / "f2024_events.csv")
-    ev = e[(e.peak_kW - 883.599078).abs() < 0.01].iloc[0]
+    import ce1_wp74_trace as W74  # the peak event, selected by the same rule
+    ev_rows = W74.r1p1_rows(e, LIT)
+    ev = ev_rows.iloc[0]
     sel = {"A-R": "A_R", "XF": "b_xfit_0.002", "PF": "c_prior_0.002", "H2": "a_half_H2", "XH": "b_xfit_0.001",
            "PH": "c_prior_0.001", "A-D": "A_D"}
     c = pd.read_csv(R / "S69" / "cases.csv")
-    x = c[(c.construction == "plain") & (c.fold == 2024) & (c["shape"] == "B") & (c.policy.isin(QP))].copy()
+    shp = "B" if ev.scenario == "shapeB" else "A"  # the event's load shape (B in v2.0.0)
+    x = c[(c.construction == "plain") & (c.fold == 2024) & (c["shape"] == shp) & (c.policy.isin(QP))].copy()
     x = x[[sel.get(r) == s for r, s in zip(x.rule, x.selection)]]
+    check("T3_21_cases", len(x) == 21, len(x))  # the quantile cases of the seven rules
+    carry = set(zip(ev_rows.policy, ev_rows.selection))  # only the cases that carry the event
+    x = x[[(p, s) in carry for p, s in zip(x.policy, x.selection)]].copy()
+    check("T3_cases_carrying_event", len(x) >= 1 and "XH" in set(x.rule), f"{len(x)} of 21")
     x["allow_per_event_kWh"] = TGT * x.load_kWh / x.events
     x["ratio"] = float(ev.energy_kWh) / x.allow_per_event_kWh
     g = x.groupby("rule").ratio.agg(["count", "min", "max"]).reset_index()
     xh = g.set_index("rule").loc["XH"]
-    ok = check("T3_gate_XH", round(xh["min"], 1) == 3.0 and round(xh["max"], 1) == 3.6, (xh["min"], xh["max"]))
-    check("T3_21_cases", len(x) == 21, len(x))
+    ok = check("T3_gate_XH", LIT("XH_ratio_min_max", [round(xh["min"], 1), round(xh["max"], 1)], [3.0, 3.6]), (xh["min"], xh["max"]))
     return x[["rule", "policy", "selection", "load_kWh", "events", "allow_per_event_kWh", "ratio"]], g, ev, ok
 
 
@@ -106,7 +114,7 @@ def main():
     if ok3:
         x.to_csv(OUT / "event_ratio.csv", index=False)
     print(g.to_string(), "\nall rules:", x.ratio.min(), x.ratio.max())
-    ok4 = check("T4_gate_online_1000", float(ev.online_kW) == 1000.0, ev.online_kW)
+    ok4 = check("T4_gate_online_1000", LIT("peak_event_online_kW", float(ev.online_kW), 1000.0), ev.online_kW)
     t4 = dict(peak_kW=float(ev.peak_kW), online_kW=float(ev.online_kW), share_online=float(ev.peak_kW) / float(ev.online_kW))
     for k in ev.index:
         if "largest" in k:

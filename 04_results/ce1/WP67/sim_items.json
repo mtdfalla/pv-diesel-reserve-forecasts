@@ -9,141 +9,141 @@
    "share": 0.884
   },
   "A-R|quantile": {
-   "ev_med": 24.0,
-   "ev_max": 63,
+   "ev_med": 26.5,
+   "ev_max": 54,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "XF|conformal": {
-   "ev_med": 18.5,
-   "ev_max": 46,
+   "ev_med": 23.0,
+   "ev_max": 45,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "XF|quantile": {
-   "ev_med": 23.5,
-   "ev_max": 46,
+   "ev_med": 22.0,
+   "ev_max": 45,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "PF|conformal": {
-   "ev_med": 23.0,
-   "ev_max": 49,
+   "ev_med": 25.0,
+   "ev_max": 46,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "PF|quantile": {
-   "ev_med": 23.5,
-   "ev_max": 47,
+   "ev_med": 27.0,
+   "ev_max": 45,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "H2|conformal": {
-   "ev_med": 14.0,
-   "ev_max": 57,
+   "ev_med": 16.5,
+   "ev_max": 60,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "H2|quantile": {
-   "ev_med": 14.5,
-   "ev_max": 40,
+   "ev_med": 15.0,
+   "ev_max": 38,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "XH|conformal": {
-   "ev_med": 7.0,
-   "ev_max": 25,
+   "ev_med": 12.5,
+   "ev_max": 22,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "XH|quantile": {
-   "ev_med": 14.5,
-   "ev_max": 25,
+   "ev_med": 13.5,
+   "ev_max": 22,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "PH|conformal": {
-   "ev_med": 14.0,
-   "ev_max": 36,
+   "ev_med": 15.5,
+   "ev_max": 29,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "PH|quantile": {
    "ev_med": 16.0,
-   "ev_max": 36,
+   "ev_max": 23,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "A-D|conformal": {
-   "ev_med": 12.0,
-   "ev_max": 25,
+   "ev_med": 11.5,
+   "ev_max": 29,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "A-D|quantile": {
-   "ev_med": 16.0,
-   "ev_max": 22,
+   "ev_med": 13.0,
+   "ev_max": 29,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "CL|conformal": {
-   "ev_med": 55.5,
-   "ev_max": 95,
+   "ev_med": 57.5,
+   "ev_max": 97,
    "peak_kW": 883.6,
    "share": 0.884
   },
   "CL|quantile": {
-   "ev_med": 52.0,
-   "ev_max": 57,
+   "ev_med": 50.5,
+   "ev_max": 59,
    "peak_kW": 883.6,
    "share": 0.884
   }
  },
  "item5": {
   "A-R|conformal": {
-   "met": 25,
-   "met_cd": 23,
-   "main": false
-  },
-  "A-R|quantile": {
-   "met": 21,
-   "met_cd": 18,
-   "main": true
-  },
-  "XF|conformal": {
-   "met": 34,
-   "met_cd": 34,
-   "main": false
-  },
-  "XF|quantile": {
    "met": 21,
    "met_cd": 21,
    "main": false
   },
-  "PF|conformal": {
-   "met": 26,
-   "met_cd": 27,
+  "A-R|quantile": {
+   "met": 18,
+   "met_cd": 18,
    "main": false
   },
+  "XF|conformal": {
+   "met": 31,
+   "met_cd": 27,
+   "main": true
+  },
+  "XF|quantile": {
+   "met": 27,
+   "met_cd": 21,
+   "main": true
+  },
+  "PF|conformal": {
+   "met": 24,
+   "met_cd": 21,
+   "main": true
+  },
   "PF|quantile": {
-   "met": 22,
-   "met_cd": 22,
-   "main": false
+   "met": 23,
+   "met_cd": 20,
+   "main": true
   },
   "H2|conformal": {
    "met": 42,
-   "met_cd": 42,
+   "met_cd": 40,
    "main": false
   },
   "H2|quantile": {
-   "met": 33,
-   "met_cd": 33,
+   "met": 35,
+   "met_cd": 35,
    "main": false
   },
   "XH|conformal": {
    "met": 48,
-   "met_cd": 46,
-   "main": false
+   "met_cd": 45,
+   "main": true
   },
   "XH|quantile": {
    "met": 36,
@@ -151,9 +151,9 @@
    "main": true
   },
   "PH|conformal": {
-   "met": 47,
+   "met": 48,
    "met_cd": 45,
-   "main": false
+   "main": true
   },
   "PH|quantile": {
    "met": 36,
@@ -171,187 +171,192 @@
    "main": false
   },
   "CL|conformal": {
-   "met": 0,
-   "met_cd": 0,
+   "met": 2,
+   "met_cd": 2,
    "main": false
   },
   "CL|quantile": {
-   "met": 0,
-   "met_cd": 0,
+   "met": 3,
+   "met_cd": 3,
    "main": false
   }
  },
  "item5_main_text": [
-  "A-R|quantile",
+  "XF|conformal",
+  "XF|quantile",
+  "PF|conformal",
+  "PF|quantile",
+  "XH|conformal",
   "XH|quantile",
+  "PH|conformal",
   "PH|quantile"
  ],
  "item7": {
   "A-R|conformal": {
    "met": 48,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0
   },
   "A-R|quantile": {
    "met": 36,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0002
   },
   "XF|conformal": {
    "met": 48,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0
   },
   "XF|quantile": {
    "met": 36,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0002
   },
   "PF|conformal": {
    "met": 48,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0
   },
   "PF|quantile": {
    "met": 36,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0002
   },
   "H2|conformal": {
    "met": 48,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0
   },
   "H2|quantile": {
    "met": 36,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0002
   },
   "XH|conformal": {
    "met": 48,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0
   },
   "XH|quantile": {
    "met": 36,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0002
   },
   "PH|conformal": {
    "met": 48,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0
   },
   "PH|quantile": {
    "met": 36,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0002
   },
   "A-D|conformal": {
    "met": 48,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0
   },
   "A-D|quantile": {
    "met": 36,
-   "sav": 0.4075,
+   "sav": 0.3881,
    "ev": 0.0,
    "binds": 0.0002
   }
  },
  "item13": {
   "A-R|conformal": {
-   "met_cov": 10,
-   "sav_cov": 0.5811,
-   "sav": 0.2165
+   "met_cov": 5,
+   "sav_cov": 1.9354,
+   "sav": 0.7048
   },
   "A-R|quantile": {
-   "met_cov": 2,
-   "sav_cov": 1.3139,
-   "sav": 0.4579
+   "met_cov": 0,
+   "sav_cov": 2.3904,
+   "sav": 0.8716
   },
   "XF|conformal": {
-   "met_cov": 17,
-   "sav_cov": 0.4354,
-   "sav": 0.1634
+   "met_cov": 1,
+   "sav_cov": 1.9354,
+   "sav": 0.656
   },
   "XF|quantile": {
-   "met_cov": 4,
-   "sav_cov": 1.2371,
-   "sav": 0.434
+   "met_cov": 0,
+   "sav_cov": 2.3104,
+   "sav": 0.8636
   },
   "PF|conformal": {
-   "met_cov": 8,
-   "sav_cov": 0.5441,
-   "sav": 0.1807
+   "met_cov": 1,
+   "sav_cov": 1.9354,
+   "sav": 0.664
   },
   "PF|quantile": {
-   "met_cov": 1,
-   "sav_cov": 1.2163,
-   "sav": 0.4275
+   "met_cov": 0,
+   "sav_cov": 2.313,
+   "sav": 0.8669
   },
   "H2|conformal": {
-   "met_cov": 30,
-   "sav_cov": 0.1198,
-   "sav": 0.0219
+   "met_cov": 18,
+   "sav_cov": 1.5716,
+   "sav": 0.5888
   },
   "H2|quantile": {
-   "met_cov": 18,
-   "sav_cov": 0.7925,
-   "sav": 0.2955
+   "met_cov": 14,
+   "sav_cov": 2.1478,
+   "sav": 0.7906
   },
   "XH|conformal": {
-   "met_cov": 37,
-   "sav_cov": 0.1517,
-   "sav": 0.0382
+   "met_cov": 32,
+   "sav_cov": 1.4163,
+   "sav": 0.5274
   },
   "XH|quantile": {
-   "met_cov": 22,
-   "sav_cov": 0.7803,
-   "sav": 0.2635
+   "met_cov": 21,
+   "sav_cov": 2.1561,
+   "sav": 0.7565
   },
   "PH|conformal": {
-   "met_cov": 30,
-   "sav_cov": 0.2709,
-   "sav": 0.0834
+   "met_cov": 24,
+   "sav_cov": 1.7484,
+   "sav": 0.6157
   },
   "PH|quantile": {
-   "met_cov": 17,
-   "sav_cov": 0.8857,
-   "sav": 0.3259
+   "met_cov": 18,
+   "sav_cov": 2.1381,
+   "sav": 0.8092
   },
   "A-D|conformal": {
    "met_cov": 0,
-   "sav_cov": 0.3473,
-   "sav": 0.1325
+   "sav_cov": 0.4773,
+   "sav": 0.1811
   },
   "A-D|quantile": {
    "met_cov": 0,
-   "sav_cov": 0.4969,
-   "sav": 0.1765
+   "sav_cov": 0.8273,
+   "sav": 0.3138
   },
   "CL|conformal": {
    "met_cov": 0,
-   "sav_cov": 1.3046,
-   "sav": 0.4801
+   "sav_cov": 2.1057,
+   "sav": 0.7747
   },
   "CL|quantile": {
    "met_cov": 0,
-   "sav_cov": 1.4274,
-   "sav": 0.5175
+   "sav_cov": 2.3282,
+   "sav": 0.8524
   }
  }
 }

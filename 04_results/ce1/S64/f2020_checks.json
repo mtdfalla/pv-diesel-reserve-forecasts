@@ -1,9 +1,17 @@
 {
  "fold": 2020,
  "ok": true,
- "seconds": 725.0,
+ "seconds": 3759.4,
  "checks": {
   "selftest_loop_copy_equals_simulate": {
+   "ok": true,
+   "msg": ""
+  },
+  "selftest_loop_copy_equals_simulate_v21": {
+   "ok": true,
+   "msg": ""
+  },
+  "selftest_v21_minfeas_av_all_available_equals_ce1_load": {
    "ok": true,
    "msg": ""
   },
@@ -19,7 +27,15 @@
    "ok": true,
    "msg": ""
   },
+  "selftest_events_equal_wp55_v21": {
+   "ok": true,
+   "msg": ""
+  },
   "selftest_constraints_equal_plain_reference": {
+   "ok": true,
+   "msg": ""
+  },
+  "selftest_v21_constraints_equal_plain_reference": {
    "ok": true,
    "msg": ""
   },
@@ -45,7 +61,7 @@
   },
   "spillA_reproduces_S6E_spill_f2020_H2": {
    "ok": true,
-   "msg": "(worst 3.9e-16)"
+   "msg": "(worst 0.0e+00)"
   },
   "handbook_zero_ue_spillA_f2020_H2": {
    "ok": true,
@@ -53,7 +69,7 @@
   },
   "spillA_reproduces_S6E_spill_f2020_test": {
    "ok": true,
-   "msg": "(worst 3.2e-16)"
+   "msg": "(worst 0.0e+00)"
   },
   "handbook_zero_ue_spillA_f2020_test": {
    "ok": true,
@@ -85,11 +101,11 @@
   },
   "loop_copy_reproduces_S6E_H2_all_rows_f2020_main": {
    "ok": true,
-   "msg": "(824 rows, worst 4.4e-16)"
+   "msg": "(824 rows, worst 0.0e+00)"
   },
   "loop_copy_reproduces_S6E_H2_all_rows_f2020_shapeB": {
    "ok": true,
-   "msg": "(824 rows, worst 7.0e-15)"
+   "msg": "(824 rows, worst 0.0e+00)"
   },
   "events_test_row_equals_S6E_f2020_main_icp_A_R_events": {
    "ok": true,
@@ -293,7 +309,7 @@
   },
   "constrained_handbook_ue_min_down_f2020_main": {
    "ok": true,
-   "msg": "(handbook UE 13.849 kWh, starts 3977)"
+   "msg": "(handbook UE 13.849 kWh, starts 3871)"
   },
   "fixed_point_min_down_f2020_main": {
    "ok": true,
@@ -301,7 +317,7 @@
   },
   "constrained_handbook_ue_min_down_f2020_shapeB": {
    "ok": true,
-   "msg": "(handbook UE 0.000 kWh, starts 2484)"
+   "msg": "(handbook UE 0.000 kWh, starts 2477)"
   },
   "fixed_point_min_down_f2020_shapeB": {
    "ok": true,
@@ -309,7 +325,7 @@
   },
   "constrained_handbook_ue_deadband_f2020_main": {
    "ok": true,
-   "msg": "(handbook UE 0.000 kWh, starts 3742)"
+   "msg": "(handbook UE 0.000 kWh, starts 3825)"
   },
   "fixed_point_deadband_f2020_main": {
    "ok": true,
@@ -317,7 +333,7 @@
   },
   "constrained_handbook_ue_deadband_f2020_shapeB": {
    "ok": true,
-   "msg": "(handbook UE 0.000 kWh, starts 2402)"
+   "msg": "(handbook UE 0.000 kWh, starts 2435)"
   },
   "fixed_point_deadband_f2020_shapeB": {
    "ok": true,
@@ -361,7 +377,7 @@
   },
   "fixed_point_battery_f2020_battery_day": {
    "ok": true,
-   "msg": "(20 passes, 94 row-years)"
+   "msg": "(21 passes, 132 row-years)"
   },
   "battery_AD_reproduces_S61B_f2020_battery_day": {
    "ok": true,
@@ -405,7 +421,7 @@
   },
   "fixed_point_battery_f2020_batteryB_day": {
    "ok": true,
-   "msg": "(22 passes, 98 row-years)"
+   "msg": "(23 passes, 122 row-years)"
   },
   "battery_AD_reproduces_S61B_f2020_batteryB_day": {
    "ok": true,
@@ -427,25 +443,25 @@
   "S1L/load_scales.json": "952756850b20ea4e6fd36ceef3c33b69",
   "S2/yulara_f2020_h3.parquet": "79a8eaa4110bf946855505cf2c513534",
   "S2X/yulara_f2020_h3.parquet": "f293a3fcbd7e96c4a853f96001f8bfba",
-  "S6E/f2020_h3_totals.parquet": "84de095f7abf006e9d080fd63933e176",
-  "S6E/f2020_h3_select.json": "3e61ccf0522776606efcde1f6325f229",
-  "S57/f2020_h3_H1x.parquet": "935a4c0f64caa277f4fc16ed4a6d572c",
-  "S61B/f2020_h3_totals.parquet": "8effb76477805891b681254694a08022",
-  "S61B/ad_cells.csv": "a014d1fabb2dcd329d8a395b7275ee17",
-  "S61B/f2020_h3_select.json": "4f3be1ebb0637a208d88b69a5b38ae2d"
+  "S6E/f2020_h3_totals.parquet": "0791de8c2fac53ab10df1fc26aeb481c",
+  "S6E/f2020_h3_select.json": "1a429b9cf9096c2ce0efdb97b584677a",
+  "S57/f2020_h3_H1x.parquet": "ad85342b780e27eae8f7f5f6bc50a23b",
+  "S61B/f2020_h3_totals.parquet": "b87f44efee0186b4784b1781ed11b059",
+  "S61B/ad_cells.csv": "0ade05cd7161c05611c06df3f9edabe0",
+  "S61B/f2020_h3_select.json": "d20904fad9bfe51ca00a89124be94c5b"
  },
  "outputs": {
-  "f2020_totals.parquet": "3e54023f086789dd060aa3bdcb991933",
-  "f2020_cells.csv": "1c4b6c98ce74cc46a7ebbfb6e3837427",
-  "f2020_battery.csv": "b9304fb1ea28dd94e24ec7236e290f95"
+  "f2020_totals.parquet": "3a89ea1174571cc2637ddfdda8087a5d",
+  "f2020_cells.csv": "d76521072a7747643860e9bc116f801e",
+  "f2020_battery.csv": "66630919f4dee911683e0ce26cc7cd36"
  },
  "code": {
-  "ce1_s64.py": "3ce55b672399562109ba1ca99e839500",
-  "ce1_load.py": "9e2e45e68ef1e037dbab7b5936713a9a",
-  "ce1_s6.py": "f29e8758c77e8bd45a99bd55572a78b7",
-  "ce1_adaptive.py": "b46bbcb33a2d08a987a729e2e56c87f9",
-  "ce1_wp57.py": "dd230d0258e2852032a0d356e2ab4e6e",
-  "ce1_wp61b.py": "14d0c447f362c540c91ca299d21a05f5",
+  "ce1_s64.py": "332c98ee0379f84064e25b9927581e6c",
+  "ce1_load.py": "88d0d16b815401cef43128bc6bd80a55",
+  "ce1_s6.py": "2ea79342422bfb5bbe55f71e9cfa421f",
+  "ce1_adaptive.py": "cb430b52c10aa11c6dcb19b24340e480",
+  "ce1_wp57.py": "1308f63e1513fc3b17ec83493f4d3d8f",
+  "ce1_wp61b.py": "34b94a2d799d3fd7d7357d7b4cffba7f",
   "ce1_dispatch.py": "17642502de89994cdf31f6f1f5948226"
  }
 }

@@ -14,11 +14,11 @@
   },
   "B_handbook_reproduces_S6_f2019_main": {
    "ok": true,
-   "msg": "(np.float64(4113902.084313749), 4113902.084313749)"
+   "msg": "(np.float64(4093706.2152449093), 4093706.2152449093)"
   },
   "B_oracle_reproduces_S6_f2019_main": {
    "ok": true,
-   "msg": "(np.float64(4063561.823323869), 4063561.823323869)"
+   "msg": "(np.float64(4037436.538058699), 4037436.538058699)"
   },
   "B_full_oracle_zero_ue_f2019_main": {
    "ok": true,
@@ -34,11 +34,11 @@
   },
   "B_handbook_reproduces_S6_f2019_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4109620.566815893), 4109620.566815893)"
+   "msg": "(np.float64(4100224.12248382), 4100224.12248382)"
   },
   "B_oracle_reproduces_S6_f2019_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4068139.106872794), 4068139.106872794)"
+   "msg": "(np.float64(4051157.3375986693), 4051157.3375986693)"
   },
   "B_full_oracle_zero_ue_f2019_shapeB": {
    "ok": true,
@@ -58,11 +58,11 @@
   },
   "B_handbook_reproduces_S6_f2020_main": {
    "ok": true,
-   "msg": "(np.float64(4295770.003648362), 4295770.003648362)"
+   "msg": "(np.float64(4276139.0428109085), 4276139.0428109085)"
   },
   "B_oracle_reproduces_S6_f2020_main": {
    "ok": true,
-   "msg": "(np.float64(4252707.47769729), 4252707.47769729)"
+   "msg": "(np.float64(4221082.933112852), 4221082.933112852)"
   },
   "B_full_oracle_zero_ue_f2020_main": {
    "ok": true,
@@ -78,11 +78,11 @@
   },
   "B_handbook_reproduces_S6_f2020_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4276251.401927484), 4276251.401927483)"
+   "msg": "(np.float64(4266711.521609208), 4266711.521609208)"
   },
   "B_oracle_reproduces_S6_f2020_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4240461.9519814), 4240461.9519814)"
+   "msg": "(np.float64(4217971.2884948235), 4217971.2884948235)"
   },
   "B_full_oracle_zero_ue_f2020_shapeB": {
    "ok": true,
@@ -102,11 +102,11 @@
   },
   "B_handbook_reproduces_S6_f2021_main": {
    "ok": true,
-   "msg": "(np.float64(4268878.09365023), 4268878.09365023)"
+   "msg": "(np.float64(4248920.702857623), 4248920.702857623)"
   },
   "B_oracle_reproduces_S6_f2021_main": {
    "ok": true,
-   "msg": "(np.float64(4227998.036899623), 4227998.036899623)"
+   "msg": "(np.float64(4194982.939304699), 4194982.939304699)"
   },
   "B_full_oracle_zero_ue_f2021_main": {
    "ok": true,
@@ -122,11 +122,11 @@
   },
   "B_handbook_reproduces_S6_f2021_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4249531.15213768), 4249531.15213768)"
+   "msg": "(np.float64(4240464.618235314), 4240464.618235314)"
   },
   "B_oracle_reproduces_S6_f2021_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4217835.6140303565), 4217835.6140303565)"
+   "msg": "(np.float64(4192604.288416869), 4192604.288416869)"
   },
   "B_full_oracle_zero_ue_f2021_shapeB": {
    "ok": true,
@@ -146,11 +146,11 @@
   },
   "B_handbook_reproduces_S6_f2022_main": {
    "ok": true,
-   "msg": "(np.float64(4229921.820730486), 4229921.820730486)"
+   "msg": "(np.float64(4211159.43049933), 4211159.43049933)"
   },
   "B_oracle_reproduces_S6_f2022_main": {
    "ok": true,
-   "msg": "(np.float64(4196498.648426555), 4196498.648426555)"
+   "msg": "(np.float64(4162510.30890977), 4162510.30890977)"
   },
   "B_full_oracle_zero_ue_f2022_main": {
    "ok": true,
@@ -166,11 +166,11 @@
   },
   "B_handbook_reproduces_S6_f2022_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4223763.971387317), 4223763.971387317)"
+   "msg": "(np.float64(4215119.394144747), 4215119.394144747)"
   },
   "B_oracle_reproduces_S6_f2022_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4196394.317207438), 4196394.317207438)"
+   "msg": "(np.float64(4171680.629347305), 4171680.629347305)"
   },
   "B_full_oracle_zero_ue_f2022_shapeB": {
    "ok": true,
@@ -190,11 +190,11 @@
   },
   "B_handbook_reproduces_S6_f2023_main": {
    "ok": true,
-   "msg": "(np.float64(4048331.688141592), 4048331.688141592)"
+   "msg": "(np.float64(4027851.1907921787), 4027851.1907921787)"
   },
   "B_oracle_reproduces_S6_f2023_main": {
    "ok": true,
-   "msg": "(np.float64(4009775.957328908), 4009775.957328908)"
+   "msg": "(np.float64(3983283.5049354527), 3983283.5049354527)"
   },
   "B_full_oracle_zero_ue_f2023_main": {
    "ok": true,
@@ -210,11 +210,11 @@
   },
   "B_handbook_reproduces_S6_f2023_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4057160.512995977), 4057160.512995977)"
+   "msg": "(np.float64(4048618.984966984), 4048618.984966984)"
   },
   "B_oracle_reproduces_S6_f2023_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4029437.715445429), 4029437.715445429)"
+   "msg": "(np.float64(4008886.774421868), 4008886.774421868)"
   },
   "B_full_oracle_zero_ue_f2023_shapeB": {
    "ok": true,
@@ -234,11 +234,11 @@
   },
   "B_handbook_reproduces_S6_f2024_main": {
    "ok": true,
-   "msg": "(np.float64(4058293.4367337343), 4058293.4367337343)"
+   "msg": "(np.float64(4040581.3783916603), 4040581.3783916603)"
   },
   "B_oracle_reproduces_S6_f2024_main": {
    "ok": true,
-   "msg": "(np.float64(4029515.8777068835), 4029515.8777068835)"
+   "msg": "(np.float64(3997974.428565521), 3997974.428565521)"
   },
   "B_full_oracle_zero_ue_f2024_main": {
    "ok": true,
@@ -254,11 +254,11 @@
   },
   "B_handbook_reproduces_S6_f2024_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4072332.8407051037), 4072332.8407051037)"
+   "msg": "(np.float64(4064102.8781808703), 4064102.8781808703)"
   },
   "B_oracle_reproduces_S6_f2024_shapeB": {
    "ok": true,
-   "msg": "(np.float64(4052905.746571271), 4052905.746571271)"
+   "msg": "(np.float64(4026681.6636510184), 4026681.6636510184)"
   },
   "B_full_oracle_zero_ue_f2024_shapeB": {
    "ok": true,

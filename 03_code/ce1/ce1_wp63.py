@@ -19,6 +19,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+import ce1_literal as LT
+
 FOLDS = [2019, 2020, 2021, 2022, 2023, 2024]
 SCEN = ("main", "shapeB")
 CP = ["icp", "mondrian", "cqr", "mondrian_cqr"]
@@ -118,6 +120,7 @@ def analyse(root: Path) -> bool:
     out = R / "WP63"
     out.mkdir(parents=True, exist_ok=True)
     checks, inputs = {}, {}
+    LIT = LT.Literal(out, "ce1_wp63.py")
 
     def check(name, cond, msg=""):
         checks[name] = dict(ok=bool(cond), msg=str(msg))
@@ -141,8 +144,9 @@ def analyse(root: Path) -> bool:
     awc = aw[np.isclose(aw.clip_h.astype(float), 1.0)].copy()
     awcp = awc[awc.policy.isin(CP)]
     check("AW_clip_reproduces_body_row", len(awcp) == 48 and int(awcp.passes.sum() if "passes" in awcp else 0) >= 0
-          and int((awcp.ue_share <= TGT + EPS).sum()) == 0
-          and [round(awcp[awcp.policy == p].saving_pct.median(), 2) for p in CP] == [0.41, 0.39, 0.51, 0.52],
+          and LIT("AW_clip_conformal_met", int((awcp.ue_share <= TGT + EPS).sum()), 0)
+          and LIT("AW_clip_saving_median_pct_by_CP", [round(awcp[awcp.policy == p].saving_pct.median(), 2) for p in CP],
+                  [0.41, 0.39, 0.51, 0.52]),
           [round(awcp[awcp.policy == p].saving_pct.median(), 2) for p in CP])
 
     recs, daily_rows = [], {}
@@ -279,11 +283,11 @@ def analyse(root: Path) -> bool:
     ts = pd.DataFrame(rows)
     ts.to_csv(out / "table4_sets.csv", index=False)
     T = ts.set_index(["selection", "set"])
-    check("met_nonzero_xfit_half_conformal_is_26", int(T.loc[("b_xfit_0.001", "conformal"), "met_nonzero"]) == 26,
+    check("met_nonzero_xfit_half_conformal_is_26", LIT("met_nonzero_xfit_half_conformal", int(T.loc[("b_xfit_0.001", "conformal"), "met_nonzero"]), 26),
           int(T.loc[("b_xfit_0.001", "conformal"), "met_nonzero"]))
-    check("met_nonzero_AD_conformal_is_46", int(T.loc[("A_D", "conformal"), "met_nonzero"]) == 46,
+    check("met_nonzero_AD_conformal_is_46", LIT("met_nonzero_AD_conformal", int(T.loc[("A_D", "conformal"), "met_nonzero"]), 46),
           int(T.loc[("A_D", "conformal"), "met_nonzero"]))
-    check("c_prior_full_meets_26_of_48", int(T.loc[("c_prior_0.002", "conformal"), "met"]) == 26)
+    check("c_prior_full_meets_26_of_48", LIT("c_prior_full_conformal_met", int(T.loc[("c_prior_0.002", "conformal"), "met"]), 26))
     # the WP55 PR-1 numbers reproduce from this record (A-D quantile set, 36 cells)
     q = df[(df.selection == "A_D") & df.policy.isin(QP)]
     check("reproduces_WP55_net_central_median", abs(q.net_pct_central.median() - wp55["PR1"]["net_median_pct_central"]) < 1e-9,
@@ -307,7 +311,6 @@ def analyse(root: Path) -> bool:
                                             p_positive_one_sided=sign_p_upper(k, 6))
     pyd = pd.concat(py_rows, ignore_index=True)
     pyd.to_csv(out / "per_year.csv", index=False)
-    # fixed fraction against the best quantile policy, per case (fold x shape)
     v3 = {}
     for sel, _, _ in SELECTIONS:
         g = df[df.selection == sel]
@@ -315,11 +318,17 @@ def analyse(root: Path) -> bool:
         mt = g.pivot_table(index=["fold", "scenario"], columns="policy", values="meets")
         best = pv[QP].max(axis=1)
         wins = int((pv["frac_pv"] > best).sum())
+        yq = g[g.policy.isin(QP)].groupby("fold").saving_L.sum() / len(QP)
+        yf = g[g.policy == "frac_pv"].groupby("fold").agg(s=("saving_L", "sum"), h=("fuel_handbook", "sum"))
+        yd = 100 * (yf.s - yq) / yf.h
+        ky = int((yd > 0).sum())
         v3[sel] = dict(frac_median_pct=float(pv["frac_pv"].median()), frac_met=int(mt["frac_pv"].sum()),
                        **{f"{p}_median_pct": float(pv[p].median()) for p in QP},
                        **{f"{p}_met": int(mt[p].sum()) for p in QP},
-                       frac_beats_best_quantile=wins, n=len(pv), p_two_sided=sign_p_two(wins, len(pv)),
-                       best_minus_frac_median_points=float((best - pv["frac_pv"]).median()))
+                       frac_beats_best_quantile=wins, n=len(pv),
+                       best_minus_frac_median_points=float((best - pv["frac_pv"]).median()),
+                       year_frac_minus_quantile_points={int(y): float(v) for y, v in yd.items()},
+                       years_frac_ahead_pooled=ky, n_years=int(len(yd)), p_two_sided_years=sign_p_two(ky, int(len(yd))))
     signs["fixed_fraction_vs_best_quantile"] = v3
     want = {"A_R": (0.31, 6, 0.45, 0.46, 0.44, 1), "b_xfit_0.001": (0.25, 11, 0.28, 0.26, 0.28, 3),
             "c_prior_0.001": (0.28, 12, 0.32, 0.29, 0.33, 2), "A_D": (0.27, 12, 0.23, 0.18, 0.16, 9)}
@@ -327,17 +336,43 @@ def analyse(root: Path) -> bool:
         v = v3[sel]
         got = (round(v["frac_median_pct"], 2), v["frac_met"], round(v["raw_q_median_pct"], 2), round(v["cqr_median_pct"], 2),
                round(v["mondrian_cqr_median_pct"], 2), v["frac_beats_best_quantile"])
-        check(f"reproduces_recorded_selection_{sel}", got == w, got)
-    # static cross-fitted (half) against A-D, per case, quantile and conformal sets
+        check(f"reproduces_recorded_selection_{sel}", LIT(f"recorded_selection_{sel}", got, w), got)
     xs = {}
     for sname_, pols in (("quantile", QP), ("conformal", CP), ("all", POLICIES)):
         a = df[(df.selection == "b_xfit_0.001") & df.policy.isin(pols)].set_index(["fold", "scenario", "policy"])
         b = df[(df.selection == "A_D") & df.policy.isin(pols)].set_index(["fold", "scenario", "policy"])
         dd = (a.saving_pct - b.saving_pct)
         k = int((dd > 0).sum())
-        xs[sname_] = dict(static_saves_more=k, n=len(dd), p_two_sided=sign_p_two(k, len(dd)),
-                          median_difference_points=float(dd.median()),
-                          years_static_ahead=int((dd.groupby(level="fold").median() > 0).sum()))
+        ya, yb = a.groupby(level="fold").saving_L.sum(), b.groupby(level="fold").saving_L.sum()
+        yd = 100 * (ya - yb) / a.groupby(level="fold").fuel_handbook.sum()
+        ky = int((dd.groupby(level="fold").median() > 0).sum())
+        ds = (a.saving_L - b.saving_L); dn = (a.starts - b.starts); fh = a.fuel_handbook
+        cross = (ds / dn).where(dn > 0)
+        pm = lambda L: float((100 * (ds - L * dn) / fh).median())  # noqa: E731
+        lo, hi = 0.0, 200.0
+        if pm(lo) > 0 and pm(hi) < 0:
+            for _ in range(60):
+                mid = 0.5 * (lo + hi)
+                lo, hi = (mid, hi) if pm(mid) > 0 else (lo, mid)
+            pm_cross = 0.5 * (lo + hi)
+        else:
+            pm_cross = float("nan")
+        xs[sname_] = dict(static_saves_more=k, n=len(dd), median_difference_points=float(dd.median()),
+                          years_static_ahead=ky, n_years=int(dd.index.get_level_values("fold").nunique()),
+                          p_two_sided_years=sign_p_two(ky, int(dd.index.get_level_values("fold").nunique())),
+                          year_difference_points={int(y): float(v) for y, v in yd.items()},
+                          median_year_difference_points=float(yd.median()),
+                          net_all_cases_dn_positive=bool((dn > 0).all()),
+                          net_cases_static_ahead_at_high_L=int(((ds - su_litres("high") * dn) > 0).sum()),
+                          net_min_case_crossover_L=float(cross.min()), net_every_case_ahead_below_L=int(np.floor(cross.min())),
+                          net_paired_median_crossover_L=pm_cross,
+                          net_paired_median_difference_at_high_L=pm(su_litres("high")))
+    check("starts_xh_starts_more_than_AD_in_every_quantile_case", xs["quantile"]["net_all_cases_dn_positive"])
+    check("starts_every_quantile_case_ahead_at_8.5L", xs["quantile"]["net_cases_static_ahead_at_high_L"] == xs["quantile"]["n"],
+          f"({xs['quantile']['net_cases_static_ahead_at_high_L']} of {xs['quantile']['n']})")
+    check("starts_paired_median_crossover_above_min_case_crossover",
+          xs["quantile"]["net_paired_median_crossover_L"] > xs["quantile"]["net_min_case_crossover_L"] > su_litres("high"),
+          f"(median {xs['quantile']['net_paired_median_crossover_L']:.2f} L, min case {xs['quantile']['net_min_case_crossover_L']:.2f} L)")
     signs["xfit_half_vs_AD"] = xs
     json.dump(signs, open(out / "signtests.json", "w"), indent=1, default=float)
 
@@ -364,8 +399,9 @@ def analyse(root: Path) -> bool:
     evd = pd.DataFrame(erows)
     evd.to_csv(out / "events.csv", index=False)
     e = evd.set_index(["protocol", "policy"])
-    check("events_reproduce", (e.loc[("A-D", "set:conformal"), "events_per_year_median"], e.loc[("A-R", "set:conformal"), "events_per_year_median"])
-          == (12.0, 27.5) and round(e.loc[("A-D", "set:conformal"), "peak_kW_median"]) == 85,
+    check("events_reproduce", LIT("events_per_year_median_AD_AR_and_AD_peak_kW",
+                                       (e.loc[("A-D", "set:conformal"), "events_per_year_median"], e.loc[("A-R", "set:conformal"), "events_per_year_median"],
+                                        round(e.loc[("A-D", "set:conformal"), "peak_kW_median"])), (12.0, 27.5, 85)),
           (e.loc[("A-D", "set:conformal"), "events_per_year_median"], e.loc[("A-R", "set:conformal"), "events_per_year_median"]))
 
     # ---- paired DR2 / DR3 contrasts at fixed levels (main, 15 min), fuel and UE, 1- and 7-day blocks
@@ -414,14 +450,16 @@ def analyse(root: Path) -> bool:
     tr["days_at_limit_median_quantile_range"] = [float(dl[QP].min()), float(dl[QP].max())]
     tr["days_at_limit_median_conformal_pooled"] = float(ad[ad.policy.isin(CP)].days_at_limit.median())
     tr["days_at_limit_frac_pv_max"] = int(ad[ad.policy == "frac_pv"].days_at_limit.max())
-    check("trace_247_254_and_277.5", tr["days_at_limit_median_quantile_range"] == [247.0, 254.0]
-          and tr["days_at_limit_median_conformal_pooled"] == 277.5, tr["days_at_limit_median_quantile_range"])
+    check("trace_247_254_and_277.5", LIT("days_at_limit_quantile_range_and_conformal_pooled",
+                                         [tr["days_at_limit_median_quantile_range"], tr["days_at_limit_median_conformal_pooled"]],
+                                         [[247.0, 254.0], 277.5]), tr["days_at_limit_median_quantile_range"])
     # (b) the A-D quantile-policy saving minimum (fold 2024, shape A)
     q = df[(df.selection == "A_D") & df.policy.isin(QP)]
     mn = q.loc[q.saving_pct.idxmin()]
     tr["AD_quantile_min"] = dict(fold=int(mn.fold), scenario=mn.scenario, policy=mn.policy, saving_pct=float(mn.saving_pct),
                                  negative_cases=q[q.saving_pct < 0][["fold", "scenario", "policy", "saving_pct"]].to_dict("records"))
-    check("trace_minus_0.02_is_fold2024_main", int(mn.fold) == 2024 and mn.scenario == "main", tr["AD_quantile_min"])
+    check("trace_minus_0.02_is_fold2024_main", LIT("AD_quantile_min_fold_scenario", [int(mn.fold), mn.scenario], [2024, "main"]),
+          tr["AD_quantile_min"])
     # (c) committed diesel capacity with the battery (15 min, shape A, A-R): handbook and quantile policies
     cap = dict(handbook=[], quantile=[])
     for yr in FOLDS:
@@ -438,8 +476,9 @@ def analyse(root: Path) -> bool:
                                                   quantile_median=float(np.median(cap["quantile"])),
                                                   handbook_range=[float(min(cap["handbook"])), float(max(cap["handbook"]))],
                                                   quantile_range=[float(min(cap["quantile"])), float(max(cap["quantile"]))])
-    check("trace_3.1_and_3.5", (round(tr["committed_capacity_reduction_pct"]["handbook_median"], 1),
-                                round(tr["committed_capacity_reduction_pct"]["quantile_median"], 1)) == (3.1, 3.5),
+    check("trace_3.1_and_3.5", LIT("committed_capacity_reduction_pct_handbook_quantile",
+                                   (round(tr["committed_capacity_reduction_pct"]["handbook_median"], 1),
+                                    round(tr["committed_capacity_reduction_pct"]["quantile_median"], 1)), (3.1, 3.5)),
           tr["committed_capacity_reduction_pct"])
     b6 = pd.read_csv(inp("S61B/ad_cells.csv"))
     b6 = b6[b6.primary & b6.scenario.isin(["battery_day", "batteryB_day"]) & b6.policy.isin(QP)].copy()
@@ -451,7 +490,8 @@ def analyse(root: Path) -> bool:
     tr["battery_day_AD_quantile_combined_median_pct"] = float(b6.sav.median())
     tr["battery_day_AD_quantile_cells"] = len(b6)
     tr["battery_day_AD_basis"] = "S61B/ad_cells.csv primary, battery_day and batteryB_day, quantile policies, 36 cells"
-    check("trace_0.93", round(tr["battery_day_AD_quantile_combined_median_pct"], 2) == 0.93 and len(b6) == 36,
+    check("trace_0.93", LIT("battery_day_AD_quantile_combined_median_pct", round(tr["battery_day_AD_quantile_combined_median_pct"], 2), 0.93)
+          and len(b6) == 36,
           tr["battery_day_AD_quantile_combined_median_pct"])
     # (e): time-of-day, fold 2024, 15 min, transitional: S7 file stores PICP rounded to 4 places
     c7 = pd.read_csv(inp("S7/coverage_ci.csv"))

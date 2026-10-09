@@ -1,0 +1,88 @@
+{
+ "ce1_s69_read.py": {
+  "table3_plain_met_A-R": {
+   "old": [
+    25,
+    21
+   ],
+   "new": [
+    21,
+    18
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "table3_plain_met_XF": {
+   "old": [
+    34,
+    21
+   ],
+   "new": [
+    31,
+    27
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "table3_plain_met_PF": {
+   "old": [
+    26,
+    22
+   ],
+   "new": [
+    24,
+    23
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "table3_plain_met_H2": {
+   "old": [
+    42,
+    33
+   ],
+   "new": [
+    42,
+    35
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "table3_plain_met_XH": {
+   "old": [
+    48,
+    36
+   ],
+   "new": [
+    48,
+    36
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "table3_plain_met_PH": {
+   "old": [
+    47,
+    36
+   ],
+   "new": [
+    48,
+    36
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "table3_plain_met_A-D": {
+   "old": [
+    48,
+    36
+   ],
+   "new": [
+    48,
+    36
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  }
+ }
+}

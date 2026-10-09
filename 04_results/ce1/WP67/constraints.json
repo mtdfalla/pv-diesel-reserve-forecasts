@@ -12,228 +12,228 @@
  },
  "rows": {
   "min_down|A-R|conformal": {
-   "met": 19,
-   "unc": 25,
-   "sav": 0.5358,
-   "sav_unc": 0.2165,
-   "net_c": 0.4868,
-   "ev": 31.5
+   "met": 16,
+   "unc": 21,
+   "sav": 0.6724,
+   "sav_unc": 0.7048,
+   "net_c": 0.6275,
+   "ev": 31.0
   },
   "min_down|A-R|quantile": {
-   "met": 13,
-   "unc": 21,
-   "sav": 0.7194,
-   "sav_unc": 0.4579,
-   "net_c": 0.6793,
-   "ev": 34.0
+   "met": 10,
+   "unc": 18,
+   "sav": 0.8633,
+   "sav_unc": 0.8716,
+   "net_c": 0.8177,
+   "ev": 32.0
   },
   "min_down|XF|conformal": {
-   "met": 28,
-   "unc": 34,
-   "sav": 0.4684,
-   "sav_unc": 0.1634,
-   "net_c": 0.4104,
-   "ev": 25.0
+   "met": 26,
+   "unc": 31,
+   "sav": 0.6427,
+   "sav_unc": 0.656,
+   "net_c": 0.5982,
+   "ev": 27.0
   },
   "min_down|XF|quantile": {
    "met": 23,
-   "unc": 21,
-   "sav": 0.7024,
-   "sav_unc": 0.434,
-   "net_c": 0.648,
-   "ev": 25.0
+   "unc": 27,
+   "sav": 0.8559,
+   "sav_unc": 0.8636,
+   "net_c": 0.811,
+   "ev": 29.0
   },
   "min_down|PF|conformal": {
-   "met": 26,
-   "unc": 26,
-   "sav": 0.4945,
-   "sav_unc": 0.1807,
-   "net_c": 0.4574,
-   "ev": 25.5
+   "met": 22,
+   "unc": 24,
+   "sav": 0.6641,
+   "sav_unc": 0.664,
+   "net_c": 0.6091,
+   "ev": 28.0
   },
   "min_down|PF|quantile": {
-   "met": 24,
-   "unc": 22,
-   "sav": 0.7057,
-   "sav_unc": 0.4275,
-   "net_c": 0.6688,
-   "ev": 25.5
+   "met": 18,
+   "unc": 23,
+   "sav": 0.8611,
+   "sav_unc": 0.8669,
+   "net_c": 0.8162,
+   "ev": 30.5
   },
   "min_down|H2|conformal": {
-   "met": 39,
+   "met": 41,
    "unc": 42,
-   "sav": 0.4395,
-   "sav_unc": 0.0219,
-   "net_c": 0.3818,
-   "ev": 16.0
+   "sav": 0.5863,
+   "sav_unc": 0.5888,
+   "net_c": 0.5377,
+   "ev": 17.0
   },
   "min_down|H2|quantile": {
-   "met": 31,
-   "unc": 33,
-   "sav": 0.6253,
-   "sav_unc": 0.2955,
-   "net_c": 0.5918,
-   "ev": 17.5
+   "met": 33,
+   "unc": 35,
+   "sav": 0.7382,
+   "sav_unc": 0.7906,
+   "net_c": 0.7045,
+   "ev": 16.5
   },
   "min_down|XH|conformal": {
    "met": 46,
    "unc": 48,
-   "sav": 0.3351,
-   "sav_unc": 0.0382,
-   "net_c": 0.3063,
-   "ev": 12.5
+   "sav": 0.4824,
+   "sav_unc": 0.5274,
+   "net_c": 0.4454,
+   "ev": 14.0
   },
   "min_down|XH|quantile": {
    "met": 33,
    "unc": 36,
-   "sav": 0.5605,
-   "sav_unc": 0.2635,
-   "net_c": 0.4964,
+   "sav": 0.754,
+   "sav_unc": 0.7565,
+   "net_c": 0.7166,
    "ev": 16.0
   },
   "min_down|PH|conformal": {
-   "met": 45,
-   "unc": 47,
-   "sav": 0.3906,
-   "sav_unc": 0.0834,
-   "net_c": 0.346,
-   "ev": 13.0
+   "met": 47,
+   "unc": 48,
+   "sav": 0.5854,
+   "sav_unc": 0.6157,
+   "net_c": 0.5419,
+   "ev": 16.0
   },
   "min_down|PH|quantile": {
-   "met": 35,
+   "met": 36,
    "unc": 36,
-   "sav": 0.5876,
-   "sav_unc": 0.3259,
-   "net_c": 0.5404,
-   "ev": 14.5
+   "sav": 0.7421,
+   "sav_unc": 0.8092,
+   "net_c": 0.6833,
+   "ev": 17.0
   },
   "min_down|A-D|conformal": {
    "met": 48,
    "unc": 48,
-   "sav": 0.1436,
-   "sav_unc": 0.1325,
-   "net_c": 0.1368,
-   "ev": 12.0
+   "sav": 0.1772,
+   "sav_unc": 0.1811,
+   "net_c": 0.1735,
+   "ev": 12.5
   },
   "min_down|A-D|quantile": {
    "met": 36,
    "unc": 36,
-   "sav": 0.2082,
-   "sav_unc": 0.1765,
-   "net_c": 0.2025,
-   "ev": 14.0
+   "sav": 0.2859,
+   "sav_unc": 0.3138,
+   "net_c": 0.282,
+   "ev": 18.0
   },
   "deadband|A-R|conformal": {
-   "met": 24,
-   "unc": 25,
-   "sav": 0.319,
-   "sav_unc": 0.2165,
-   "net_c": 0.2948,
-   "ev": 25.5
+   "met": 20,
+   "unc": 21,
+   "sav": 0.4723,
+   "sav_unc": 0.7048,
+   "net_c": 0.445,
+   "ev": 27.0
   },
   "deadband|A-R|quantile": {
-   "met": 18,
-   "unc": 21,
-   "sav": 0.6894,
-   "sav_unc": 0.4579,
-   "net_c": 0.6453,
-   "ev": 26.5
+   "met": 16,
+   "unc": 18,
+   "sav": 0.8203,
+   "sav_unc": 0.8716,
+   "net_c": 0.7783,
+   "ev": 29.0
   },
   "deadband|XF|conformal": {
-   "met": 37,
-   "unc": 34,
-   "sav": 0.3296,
-   "sav_unc": 0.1634,
-   "net_c": 0.303,
-   "ev": 20.0
+   "met": 32,
+   "unc": 31,
+   "sav": 0.4986,
+   "sav_unc": 0.656,
+   "net_c": 0.4513,
+   "ev": 21.0
   },
   "deadband|XF|quantile": {
-   "met": 27,
-   "unc": 21,
-   "sav": 0.6749,
-   "sav_unc": 0.434,
-   "net_c": 0.6322,
-   "ev": 27.5
-  },
-  "deadband|PF|conformal": {
-   "met": 27,
-   "unc": 26,
-   "sav": 0.3217,
-   "sav_unc": 0.1807,
-   "net_c": 0.2821,
-   "ev": 25.5
-  },
-  "deadband|PF|quantile": {
-   "met": 18,
-   "unc": 22,
-   "sav": 0.7089,
-   "sav_unc": 0.4275,
-   "net_c": 0.6666,
+   "met": 22,
+   "unc": 27,
+   "sav": 0.8062,
+   "sav_unc": 0.8636,
+   "net_c": 0.7652,
    "ev": 28.0
   },
+  "deadband|PF|conformal": {
+   "met": 24,
+   "unc": 24,
+   "sav": 0.5148,
+   "sav_unc": 0.664,
+   "net_c": 0.476,
+   "ev": 25.0
+  },
+  "deadband|PF|quantile": {
+   "met": 17,
+   "unc": 23,
+   "sav": 0.8257,
+   "sav_unc": 0.8669,
+   "net_c": 0.7847,
+   "ev": 29.0
+  },
   "deadband|H2|conformal": {
-   "met": 44,
+   "met": 39,
    "unc": 42,
-   "sav": 0.1681,
-   "sav_unc": 0.0219,
-   "net_c": 0.1223,
-   "ev": 12.0
+   "sav": 0.3643,
+   "sav_unc": 0.5888,
+   "net_c": 0.3097,
+   "ev": 13.0
   },
   "deadband|H2|quantile": {
-   "met": 34,
-   "unc": 33,
-   "sav": 0.4917,
-   "sav_unc": 0.2955,
-   "net_c": 0.4388,
-   "ev": 13.5
+   "met": 31,
+   "unc": 35,
+   "sav": 0.6453,
+   "sav_unc": 0.7906,
+   "net_c": 0.593,
+   "ev": 13.0
   },
   "deadband|XH|conformal": {
-   "met": 48,
+   "met": 46,
    "unc": 48,
-   "sav": 0.1504,
-   "sav_unc": 0.0382,
-   "net_c": 0.1128,
-   "ev": 12.0
+   "sav": 0.3363,
+   "sav_unc": 0.5274,
+   "net_c": 0.2933,
+   "ev": 11.0
   },
   "deadband|XH|quantile": {
-   "met": 36,
+   "met": 33,
    "unc": 36,
-   "sav": 0.5522,
-   "sav_unc": 0.2635,
-   "net_c": 0.51,
-   "ev": 15.0
+   "sav": 0.692,
+   "sav_unc": 0.7565,
+   "net_c": 0.6515,
+   "ev": 13.5
   },
   "deadband|PH|conformal": {
-   "met": 46,
-   "unc": 47,
-   "sav": 0.1684,
-   "sav_unc": 0.0834,
-   "net_c": 0.1197,
-   "ev": 12.5
+   "met": 48,
+   "unc": 48,
+   "sav": 0.2993,
+   "sav_unc": 0.6157,
+   "net_c": 0.2685,
+   "ev": 12.0
   },
   "deadband|PH|quantile": {
    "met": 36,
    "unc": 36,
-   "sav": 0.6052,
-   "sav_unc": 0.3259,
-   "net_c": 0.5654,
-   "ev": 15.5
+   "sav": 0.7272,
+   "sav_unc": 0.8092,
+   "net_c": 0.6852,
+   "ev": 13.0
   },
   "deadband|A-D|conformal": {
-   "met": 48,
+   "met": 47,
    "unc": 48,
-   "sav": 0.1864,
-   "sav_unc": 0.1325,
-   "net_c": 0.1723,
-   "ev": 14.5
+   "sav": 0.2484,
+   "sav_unc": 0.1811,
+   "net_c": 0.2369,
+   "ev": 12.5
   },
   "deadband|A-D|quantile": {
    "met": 36,
    "unc": 36,
-   "sav": 0.3108,
-   "sav_unc": 0.1765,
-   "net_c": 0.2907,
-   "ev": 19.0
+   "sav": 0.2926,
+   "sav_unc": 0.3138,
+   "net_c": 0.2759,
+   "ev": 14.5
   }
  }
 }

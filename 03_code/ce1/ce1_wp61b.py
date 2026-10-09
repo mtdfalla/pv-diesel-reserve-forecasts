@@ -233,7 +233,7 @@ def main():
     outputs["ad_cells.csv"] = md5(out / "ad_cells.csv")
     ok = all(c["ok"] for c in checks.values())
     env = dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__)
-    detail = dict(stage="S61B", ok=ok, seconds=round(time.time() - t0, 1), checks=checks, inputs=inputs, outputs=outputs,
+    detail = dict(simulator=LM.sim_defaults(), stage="S61B", ok=ok, seconds=round(time.time() - t0, 1), checks=checks, inputs=inputs, outputs=outputs,
                   code={p: md5(HERE / p) for p in ("ce1_wp61b.py", "ce1_load.py", "ce1_adaptive.py", "ce1_s6.py")}, env=env)
     json.dump(detail, open(runs / "S61B.detail.json", "w"), indent=1)
     json.dump(dict(stage="S61B", ok=ok, error="", started=started, finished=time.strftime("%Y-%m-%dT%H:%M:%S"),

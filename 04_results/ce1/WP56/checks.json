@@ -2,7 +2,7 @@
  "checks": {
   "S56_stamp_ok": {
    "ok": true,
-   "msg": "(569 stage checks)"
+   "msg": "(597 stage checks)"
   },
   "S56_outputs_match_stamp": {
    "ok": true,
@@ -730,12 +730,12 @@
   }
  },
  "inputs": {
-  "S56/ad_cells.csv": "adf26b7e979239fc20efa8eccd1f1b77"
+  "S56/ad_cells.csv": "6bdbf7a27ab1909657d15d334e821eae"
  },
  "outputs": {
-  "cells.csv": "e0b0c42e42f11e7e9444e4ef704b5efe",
-  "reading.json": "5a76bbb4ae1d9f6c3d497ab7a3b5d9dd",
-  "scenario_summary.csv": "803c9c9b55c2de382b4c2770d57616b8"
+  "cells.csv": "ec95a6472af57c5f60d40889e9e10ee1",
+  "reading.json": "a843a3112452abef6259ed6a7df76256",
+  "scenario_summary.csv": "b8aa69e84f9640346a28151db507ef2c"
  },
  "code": {
   "ce1_wp56_read.py": "ca10b596dc8e7f0cfbbe122dc7314e7e"

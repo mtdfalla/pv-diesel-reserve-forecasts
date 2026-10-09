@@ -9,7 +9,7 @@
    "ok": true,
    "detail": ""
   },
-  "A-R 25 of 48, A-D 48 of 48, cross-fitted half 48 of 48 (as recorded)": {
+  "A-R, A-D and cross-fitted half met counts (v2.0.0: 25, 48 and 48 of 48, as recorded)": {
    "ok": true,
    "detail": ""
   },
@@ -17,7 +17,7 @@
    "ok": true,
    "detail": ""
   },
-  "main A-R conformal 14 of 24 and shapeB 11 of 24 (sum 25 of 48)": {
+  "main and shapeB A-R conformal met counts (v2.0.0: 14 and 11 of 24)": {
    "ok": true,
    "detail": ""
   },
@@ -27,35 +27,35 @@
   },
   "S61B stamp ok": {
    "ok": true,
-   "detail": "{'stage': 'S61B', 'ok': True, 'error': '', 'started': '2026-09-30T13:58:05', 'finished': '2026-09-30T14:57:28', 'minutes': 59.4, 'host': 'vm', 'smoke': False, 'n_checks': 243, 'verified': False}"
+   "detail": "{'stage': 'S61B', 'ok': True, 'error': '', 'started': '2026-10-07T03:13:17', 'finished': '2026-10-07T05:43:12', 'minutes': 149.9, 'host': 'KU100059835', 'smoke': False, 'n_checks': 243, 'verified': True, 'verified_on': '2026-10-07T05:43:13'}"
   }
  },
  "inputs_md5": {
-  "WP57/cases.csv": "9db368ec87dd03f969dc7ea6c33b2aa2",
-  "AW/cells.csv": "bfa6319313fdfd7d7ee0d2d0d53fc971",
-  "S6E/f2019_h3_select.json": "61a87c99e60e9445b512c5d3c5583db3",
-  "S6E/f2020_h3_select.json": "3e61ccf0522776606efcde1f6325f229",
-  "S6E/f2021_h3_select.json": "5b8246c08c44090a1aef4b9aaefda649",
-  "S6E/f2022_h3_select.json": "0de64b51f7705a453fa295ecfc3abf4a",
-  "S6E/f2023_h3_select.json": "af9222f8b33bf42c34501db1b91bb7bc",
-  "S6E/f2024_h3_select.json": "a61551bdc482278b2dab75afe4b0a7bc",
-  "WP52/cells.csv": "9225a34c275dbd7decc60298e1bf1c56",
-  "S7E/dr6.csv": "64437eec8478c92a5ceb83bb1d1f2c58",
-  "S56/ad_cells.csv": "adf26b7e979239fc20efa8eccd1f1b77",
-  "_runs/S61B.json": "a76b948d06cf68d62fe984eaf4750e12",
-  "S61B/f2019_h3_select.json": "e2352f3c8c300038e57d71018be0b23b",
-  "S61B/f2020_h3_select.json": "4f3be1ebb0637a208d88b69a5b38ae2d",
-  "S61B/f2021_h3_select.json": "aed6ea0a0cae3b8592fd177df4274716",
-  "S61B/f2022_h3_select.json": "ad3b5c2f3af2766bbceacf0ff4fbcd64",
-  "S61B/f2023_h3_select.json": "951c9b9799e3d246c640ae5857d609fc",
-  "S61B/f2024_h3_select.json": "363f9d06e74a55f80e77cf14ce99d242",
-  "S61B/ad_cells.csv": "a014d1fabb2dcd329d8a395b7275ee17",
-  "WP61/events.csv": "43d23bff0e01da0a07b79711ded266aa"
+  "WP57/cases.csv": "9bf2e2640ecef31fccf38b4acad54d41",
+  "AW/cells.csv": "01daba4de6d6bf3ab3fc66b97729bb19",
+  "S6E/f2019_h3_select.json": "d3f27d7cb20e45d6f3be0fda8ce13171",
+  "S6E/f2020_h3_select.json": "1a429b9cf9096c2ce0efdb97b584677a",
+  "S6E/f2021_h3_select.json": "14ece09b3b11976c1995433f0cbb71b9",
+  "S6E/f2022_h3_select.json": "10bbe10e8ccca3880274107fdaa9111c",
+  "S6E/f2023_h3_select.json": "3a33ef04407aaaef4ee707ef6f591d03",
+  "S6E/f2024_h3_select.json": "155895bcd6ef05de3b9922777af64076",
+  "WP52/cells.csv": "64dfb8559ffc850941df102139338718",
+  "S7E/dr6.csv": "d2d6b43ce81a1127c4cb1af07ef8bf8b",
+  "S56/ad_cells.csv": "6bdbf7a27ab1909657d15d334e821eae",
+  "_runs/S61B.json": "c53612b0e85368d489b214e1838b12b9",
+  "S61B/f2019_h3_select.json": "840f64c827b6349158a67b9c6fb5f1bd",
+  "S61B/f2020_h3_select.json": "d20904fad9bfe51ca00a89124be94c5b",
+  "S61B/f2021_h3_select.json": "0828320d229fa3a6b9922bed7951a8e5",
+  "S61B/f2022_h3_select.json": "8d97e2a140883993700a04f34f1132da",
+  "S61B/f2023_h3_select.json": "e6f40036e436fae009487e9840754690",
+  "S61B/f2024_h3_select.json": "d3f4179d3c8c4a7b51e68513d3878781",
+  "S61B/ad_cells.csv": "0ade05cd7161c05611c06df3f9edabe0",
+  "WP61/events.csv": "5acce4fbe98c61aad9f1df5a2d476dd6"
  },
  "outputs_md5": {
-  "selection.csv": "6acb24236d3b811becaf649e6438532a",
-  "load_scales.csv": "93c5a330cd64301273a35c0167b8965f",
-  "battery_day.csv": "9687e9ed00450b7a0cd8dec2b889a8cc",
-  "reading.json": "31485a46d1ac412d3d55ad7cd319d345"
+  "selection.csv": "b653a4df144dcde4e94fa0bc2570cc59",
+  "load_scales.csv": "ac08f452aa7434e0d8bb3d662cbbf9dd",
+  "battery_day.csv": "2e7791291bcbdfc80f682473dd2af85e",
+  "reading.json": "de347682d4e2aa7f9594b4b4325381e9"
  }
 }

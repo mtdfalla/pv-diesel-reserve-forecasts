@@ -24,6 +24,31 @@ R = ROOT / "04_results" / "ce1"
 OUT = R / "WP74"
 QP = ("raw_q", "cqr", "mondrian_cqr")
 CHECKS: dict = {}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ce1_literal as LT
+LIT = LT.Literal(OUT, "ce1_wp74_trace.py")
+
+
+def r1p1_rows(e, lit=None):
+    """Rows of the peak event: the largest-peak quantile-policy event (T2 as registered) and every row, under any policy
+    or rule, with the same event signature (load shape, steps, energy, capacity online, peak). v2.0.0: 883.599078 kW,
+    shape B, which this rule reproduces from the archived file. A different event within 0.01 kW of the peak is
+    a tie that stops the script.
+    """
+    lit = lit or LIT
+    q = e[e.policy.isin(QP) & e.peak_kW.notna()]
+    assert len(q), "no quantile-policy event in f2024_events.csv"
+    ev = q.loc[q.peak_kW.idxmax()]
+
+    def same(z):
+        return ((z.scenario == ev.scenario) & (z.steps == ev.steps) & np.isclose(z.energy_kWh, ev.energy_kWh, rtol=0, atol=1e-6)
+                & np.isclose(z.online_kW, ev.online_kW, rtol=0, atol=1e-6) & np.isclose(z.peak_kW, ev.peak_kW, rtol=0, atol=1e-6))
+    near = q[(q.peak_kW - ev.peak_kW).abs() < 0.01]
+    assert same(near).all(), "two different quantile-policy events within 0.01 kW of the largest peak"
+    peak = float(ev.peak_kW)
+    assert lit("peak_event_peak_kW", round(peak, 6), 883.599078, equal=abs(peak - 883.599078) < 0.01), peak
+    assert lit("peak_event_scenario", ev.scenario, "shapeB"), ev.scenario
+    return e[same(e)]
 
 
 def check(name, cond, msg=""):
@@ -54,9 +79,9 @@ def t1():
                              pfr_met=int(x[x.policy == "pfr"].meets.sum()), q_met=int(q.meets.sum())))
     L = pd.DataFrame(rows)
     g = L.set_index(["construction", "policy"])
-    check("T1_gate_N225_diff_of_medians_0.28", round(g.loc[("plain", "raw_q"), "diff_of_medians"], 2) == 0.28,
+    check("T1_gate_N225_diff_of_medians_0.28", LIT("diff_of_medians_plain_raw_q", round(g.loc[("plain", "raw_q"), "diff_of_medians"], 2), 0.28),
           g.loc[("plain", "raw_q"), "diff_of_medians"])
-    check("T1_gate_N226_diff_of_medians_0.23", round(g.loc[("n1a", "mondrian_cqr"), "diff_of_medians"], 2) == 0.23,
+    check("T1_gate_N226_diff_of_medians_0.23", LIT("diff_of_medians_n1a_mcqr", round(g.loc[("n1a", "mondrian_cqr"), "diff_of_medians"], 2), 0.23),
           g.loc[("n1a", "mondrian_cqr"), "diff_of_medians"])
     return L
 
@@ -64,10 +89,10 @@ def t1():
 # ------------------------------------------------------------------ T2
 def t2():
     e = pd.read_csv(R / "WP67" / "sim" / "f2024_events.csv")
-    big = e[(e.peak_kW - 883.599078).abs() < 0.01]
+    big = r1p1_rows(e)
     occ = big.groupby(["scenario", "policy"]).selection.apply(lambda s: ",".join(sorted(s))).reset_index()
     c = pd.read_csv(R / "WP67" / "sim" / "f2024_cases.csv")
-    cs = c[(c.selection == "b_xfit_0.001") & (c.policy.isin(QP)) & (c.scenario == "shapeB")].copy()
+    cs = c[(c.selection == "b_xfit_0.001") & (c.policy.isin(QP)) & (c.scenario == big.scenario.iloc[0])].copy()  # the event's shape (B in v2.0.0)
     cs["allow_kWh"] = 2e-5 * cs.load_kWh
     cs["allow_per_event_kWh"] = cs.allow_kWh / cs.events
     ev = big.iloc[0]
@@ -80,9 +105,9 @@ def t2():
         z = pd.read_csv(fp)
         z = z[(z.selection == "b_xfit_0.001") & (z.policy.isin(QP))]
         per += list(2e-5 * z.load_kWh / z.events)
-    check("T2_gate_N233_25kWh", len(per) == 36 and round(st.median(per)) == 25, (len(per), st.median(per)))
-    check("T2_event_steps_energy", int(ev.steps) == 2 and round(float(ev.energy_kWh), 1) == 77.9
-          and float(ev.online_kW) == 1000.0, (ev.steps, ev.energy_kWh, ev.online_kW))
+    check("T2_gate_N233_25kWh", len(per) == 36 and LIT("allowance_per_event_kWh", round(st.median(per)), 25), (len(per), st.median(per)))
+    check("T2_event_steps_energy", LIT("peak_event_steps_energy_online", [int(ev.steps), round(float(ev.energy_kWh), 1), float(ev.online_kW)],
+                                       [2, 77.9, 1000.0]), (ev.steps, ev.energy_kWh, ev.online_kW))
     cols = ["fold", "scenario", "policy", "selection", "load_kWh", "events", "ue_kWh", "allow_kWh", "allow_per_event_kWh",
             "event_kWh", "x_allow_per_event", "share_annual_allow"]
     return cs[cols], occ, ev

@@ -1,0 +1,269 @@
+{
+ "ce1_wp68_rules.py": {
+  "WP56_AD_smallest_median_saving_positive": {
+   "old": true,
+   "new": true,
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "AW_met_cp_fires_cond_i_cond_ii": {
+   "old": [
+    0,
+    false,
+    false,
+    true
+   ],
+   "new": [
+    2,
+    false,
+    false,
+    true
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "complete_days_fired": {
+   "old": [
+    [
+     "A-R",
+     "quantile"
+    ],
+    [
+     "PH",
+     "quantile"
+    ],
+    [
+     "XH",
+     "quantile"
+    ]
+   ],
+   "new": [
+    [
+     "PF",
+     "conformal"
+    ],
+    [
+     "PF",
+     "quantile"
+    ],
+    [
+     "PH",
+     "conformal"
+    ],
+    [
+     "PH",
+     "quantile"
+    ],
+    [
+     "XF",
+     "conformal"
+    ],
+    [
+     "XF",
+     "quantile"
+    ],
+    [
+     "XH",
+     "conformal"
+    ],
+    [
+     "XH",
+     "quantile"
+    ]
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "complete_days_fired_change": {
+   "old": [
+    -3,
+    -3,
+    -3
+   ],
+   "new": [
+    -3,
+    -3,
+    -3,
+    -3,
+    -4,
+    -6,
+    -3,
+    -3
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "constraints_xh_any_sign_change_and_all_net_positive": {
+   "old": [
+    false,
+    true
+   ],
+   "new": [
+    false,
+    true
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "item14_xh_quantile_met_primary_bound": {
+   "old": [
+    36,
+    0
+   ],
+   "new": [
+    36,
+    0
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "S67_pv_met_pv2_pv3_rule_i": {
+   "old": [
+    36,
+    36,
+    true
+   ],
+   "new": [
+    30,
+    33,
+    false
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "S67_pv_rule_ii_rule_iv": {
+   "old": [
+    false,
+    false
+   ],
+   "new": [
+    false,
+    false
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "S67_sorted_met_and_abstract": {
+   "old": [
+    36,
+    false
+   ],
+   "new": [
+    36,
+    false
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "S67_load2022_met_and_main_text": {
+   "old": [
+    36,
+    false
+   ],
+   "new": [
+    33,
+    true
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "S51_success": {
+   "old": [
+    48,
+    25,
+    4,
+    0,
+    "a"
+   ],
+   "new": [
+    48,
+    21,
+    4,
+    0,
+    "a"
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "f2025_C1_C2": {
+   "old": [
+    true,
+    6,
+    true
+   ],
+   "new": [
+    true,
+    6,
+    true
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "f2025_C4_met": {
+   "old": [
+    8,
+    6
+   ],
+   "new": [
+    8,
+    6
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "N1A1_fires_median": {
+   "old": [
+    true,
+    4.606
+   ],
+   "new": [
+    true,
+    4.516
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "N1A2_shortfall_met": {
+   "old": [
+    false,
+    36
+   ],
+   "new": [
+    false,
+    36
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  },
+  "PFR1_fires_met_best": {
+   "old": [
+    false,
+    12,
+    "raw_q",
+    12
+   ],
+   "new": [
+    false,
+    12,
+    "mondrian_cqr",
+    12
+   ],
+   "equal": false,
+   "simulator": "v2.1"
+  },
+  "PFRN1A_fires_met_best": {
+   "old": [
+    false,
+    12,
+    "mondrian_cqr"
+   ],
+   "new": [
+    false,
+    12,
+    "mondrian_cqr"
+   ],
+   "equal": true,
+   "simulator": "v2.1"
+  }
+ }
+}

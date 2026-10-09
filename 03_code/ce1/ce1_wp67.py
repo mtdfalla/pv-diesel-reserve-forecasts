@@ -13,6 +13,8 @@ import json
 import sys
 from pathlib import Path
 
+import ce1_literal as LT
+
 ROOT = Path.cwd()
 R = ROOT / "04_results" / "ce1"
 OUT = R / "WP67"
@@ -41,7 +43,9 @@ def c1():
                         picp_complete=r["picp_complete"], change=ch, over_0_01=abs(ch) > 0.01))
     over = [o for o in out if o["over_0_01"]]
     stored = json.loads((R / "S63" / "reading.json").read_text(encoding="utf-8"))["7_complete_days"]
-    assert len(raw) == 38 and stored["headline_cells"] == 38, "as-run list has 38 entries"
+    # ce1_s63.py counts each cell once (D-129). The v2.0.0 S63 record predates that fix and stores
+    # the as-run 38; an S63 record from the fixed code stores the 34 distinct cells. Either is the same set of cells.
+    assert len(raw) == 38 and stored["headline_cells"] in (38, len(uniq)), ("as-run list has 38 entries", stored["headline_cells"])
     assert len(uniq) == 34, len(uniq)
     assert len(over) == len(stored["cells_over_0_01"]) == 9, (len(over), len(stored["cells_over_0_01"]))
     OUT.mkdir(parents=True, exist_ok=True)
@@ -119,6 +123,7 @@ def _median(x):
 def item1():
     """D-129 step 2 item 1: years met of 6 with the one-sided Clopper-Pearson bound, sign test of the per-year median saving."""
     cases = read_cases()
+    LIT = LT.Literal(OUT, "ce1_wp67.py item1")
     out = []
     for sel, lab in RULES:
         for si, (sname, pols) in enumerate(SETS.items()):
@@ -133,8 +138,8 @@ def item1():
                 m = _median([r["saving_pct"] for r in c])
                 meds[y] = m
                 pos += m > 0
-            assert yrs_met == PRINTED_YRS[lab][si], (lab, sname, yrs_met, PRINTED_YRS[lab][si])
-            assert met_cases == PRINTED_MET[lab][si], (lab, sname, met_cases, PRINTED_MET[lab][si])
+            assert LIT(f"years_met_{lab}_{sname}", yrs_met, PRINTED_YRS[lab][si]), (lab, sname, yrs_met, PRINTED_YRS[lab][si])
+            assert LIT(f"cases_met_{lab}_{sname}", met_cases, PRINTED_MET[lab][si]), (lab, sname, met_cases, PRINTED_MET[lab][si])
             out.append(dict(rule=lab, selection=sel, set=sname, cases=n_cases, cases_met=met_cases,
                             years_met=yrs_met, years=len(FOLDS), cp_lower_95=round(cp_lower(yrs_met, 6), 4),
                             years_positive_median_saving=pos, sign_p_one_sided=sign_p(pos, 6),
@@ -159,6 +164,7 @@ def item3():
     (saving below 0.01 % or the level at the limit on every day).
     """
     cases = read_cases()
+    LIT = LT.Literal(OUT, "ce1_wp67.py item3")
     out = []
     for sel, lab in RULES:
         for si, (sname, pols) in enumerate(SETS.items()):
@@ -167,7 +173,7 @@ def item3():
             at_lim = lambda r: r["days_departing"] == 0 or (r["param"] == r["param"] and r["param"] >= LIMIT - LEVEL_TOL)  # noqa: E731
             hb = [r for r in met if r["saving_pct"] < SAV_MIN or at_lim(r)]
             sav = [r for r in met if not (r["saving_pct"] < SAV_MIN or at_lim(r))]
-            assert len(hb) + len(sav) == len(met) == PRINTED_MET[lab][si]
+            assert len(hb) + len(sav) == len(met) and LIT(f"cases_met_{lab}_{sname}", len(met), PRINTED_MET[lab][si])
             assert all(r["saving_pct"] >= SAV_MIN for r in sav)
             as_run = sum(r["meets"] and r["saving_pct"] > 0.005 for r in c)  # WP-63 'met_nonzero' (prints as 0.01)
             out.append(dict(rule=lab, selection=sel, set=sname, cases=len(c), met=len(met), met_with_saving=len(sav),
@@ -190,21 +196,22 @@ def item2():
     v = json.loads((R / "S7E" / "verdicts.json").read_text(encoding="utf-8"))
     v7d = json.loads((R / "S7D" / "verdicts.json").read_text(encoding="utf-8"))
     assert v == v7d, "S7E must reproduce S7D (D-097 context)"
+    LIT = LT.Literal(OUT, "ce1_wp67.py item2")  # outcome strings computed from the result files
     s63 = json.loads((R / "S63" / "reading.json").read_text(encoding="utf-8"))
     s64 = json.loads((R / "S64" / "reading.json").read_text(encoding="utf-8"))
     sets = {(r["selection"], r["set"]): r for r in csv.DictReader(open(R / "WP63" / "table4_sets.csv", encoding="utf-8"))}
     dr1_max = max(p["folds_passing_both_shapes"] for p in v["DR1"].values())
-    assert dr1_max == 3 and not any(p["holds"] for p in v["DR1"].values())
-    assert v["DR2"]["folds_gain"] == 0 and not v["DR2"]["credited"]
-    assert [v[k]["folds_gain"] for k in ("DR3_mcqr_vs_cqr", "DR3_mondrian_vs_icp", "DR3_mondrian_vs_nicp_var")] == [0, 0, 0]
-    assert [v[k]["folds_cost"] for k in ("DR3_mcqr_vs_cqr", "DR3_mondrian_vs_icp", "DR3_mondrian_vs_nicp_var")] == [0, 1, 6]
-    assert v["DR4"]["outcome"] == "DROPPED" and max(v["DR4"]["folds_passing"].values()) == 0
-    assert v["DR5"]["top_agree"] == 0 and v["DR5"]["n"] == 24
-    assert int(sets[("a_half_H2", "conformal")]["met"]) == 42  # PR-2 threshold 40 of 48
-    assert int(sets[("A_D", "conformal")]["met"]) == 48 and int(sets[("A_R", "conformal")]["met"]) == 25
+    assert LIT("DR1_max_folds_and_any_holds", [dr1_max, any(p["holds"] for p in v["DR1"].values())], [3, False])
+    assert LIT("DR2_folds_gain_and_credited", [v["DR2"]["folds_gain"], bool(v["DR2"]["credited"])], [0, False])
+    assert LIT("DR3_folds_gain", [v[k]["folds_gain"] for k in ("DR3_mcqr_vs_cqr", "DR3_mondrian_vs_icp", "DR3_mondrian_vs_nicp_var")], [0, 0, 0])
+    assert LIT("DR3_folds_cost", [v[k]["folds_cost"] for k in ("DR3_mcqr_vs_cqr", "DR3_mondrian_vs_icp", "DR3_mondrian_vs_nicp_var")], [0, 1, 6])
+    assert LIT("DR4_outcome_and_max_folds", [v["DR4"]["outcome"], max(v["DR4"]["folds_passing"].values())], ["DROPPED", 0])
+    assert LIT("DR5_top_agree", v["DR5"]["top_agree"], 0) and v["DR5"]["n"] == 24
+    assert LIT("PR2_H2_conformal_met", int(sets[("a_half_H2", "conformal")]["met"]), 42)  # PR-2 threshold 40 of 48
+    assert LIT("AD_AR_conformal_met", [int(sets[("A_D", "conformal")]["met"]), int(sets[("A_R", "conformal")]["met"])], [48, 25])
     import ast
     o1 = ast.literal_eval(s63["1_order_stats"]) if isinstance(s63["1_order_stats"], str) else s63["1_order_stats"]
-    assert o1["met_interpolated"] == o1["met_order_stat"] == 25
+    assert o1["met_interpolated"] == o1["met_order_stat"] and LIT("S63_order_stats_met", o1["met_order_stat"], 25)
     s5 = ast.literal_eval(s63["5_persistence"]) if isinstance(s63["5_persistence"], str) else s63["5_persistence"]
     assert s5["folds_negative"] == 0
     s7 = ast.literal_eval(s63["7_complete_days"]) if isinstance(s63["7_complete_days"], str) else s63["7_complete_days"]
@@ -212,29 +219,85 @@ def item2():
     b7 = ast.literal_eval(s63["8_blocks7"]) if isinstance(s63["8_blocks7"], str) else s63["8_blocks7"]
     assert b7["cells"] == 1008 and b7["status_changes"] == 65, (b7["cells"], b7["status_changes"])
     hold = s64["3_hold"]
-    assert hold["met_conformal"] == 44 and not hold["controller_to_supplement"] and not hold["pid_trigger_satisfied"]
+    assert LIT("S64_hold_met_conformal_and_triggers",
+               [hold["met_conformal"], bool(hold["controller_to_supplement"]), bool(hold["pid_trigger_satisfied"])], [44, False, False])
+    # outcomes computed from the verdict and reading files
+    NM = {"icp": "marginal ICP", "mondrian": "Mondrian", "cqr": "CQR", "mondrian_cqr": "Mondrian-CQR", "raw_q": "the raw quantile",
+          "tod_q": "the time-of-day quantile baseline", "nicp_var": "VN-ICP", "frac_pv": "the fixed fraction of PV"}
+
+    def joinw(xs):
+        xs = [str(x) for x in xs]
+        return xs[0] if len(xs) == 1 else ", ".join(xs[:-1]) + " and " + xs[-1]
+    hold1 = [p for p, x in v["DR1"].items() if x["holds"]]
+    rest1 = max(x["folds_passing_both_shapes"] for x in v["DR1"].values() if not x["holds"])
+    if hold1:
+        k1 = sorted({v["DR1"][p]["folds_passing_both_shapes"] for p in hold1})
+        dr1_out = (f"PASS for {joinw(NM[p] for p in hold1)} only ({joinw(k1)} of 6 folds), "
+                   f"FAIL for every other policy (at most {rest1} of 6 folds)")
+    else:
+        dr1_out = f"FAIL: no policy passes (at most {rest1} of 6 folds)"
+    assert not v["DR2"]["credited"]
+    dr2_out = f"FAIL: {v['DR2']['folds_gain']} of 6 folds (no calibration gain in fuel credited)"
+
+    def dr3_out(k):
+        g, c_ = v[k]["folds_gain"], v[k]["folds_cost"]
+        assert not (g >= 4 and c_ >= 4), k
+        return f"costs fuel: {c_} of 6 folds" if c_ >= 4 else (f"regime gain: {g} of 6 folds" if g >= 4 else f"neither: gain {g}, cost {c_} of 6")
+    fp4 = set(v["DR4"]["folds_passing"].values())
+    assert v["DR4"]["outcome"] == "DROPPED" and len(fp4) == 1, v["DR4"]
+    dr4_out = f"FAIL ({fp4.pop()} folds for every policy)"
+    assert v["DR5"]["differs_any"]
+    dr5_out = f"reported: rankings differ, top policy agrees in {v['DR5']['top_agree']} of {v['DR5']['n']} fold-horizons"
+    import statistics
+    pr1 = statistics.median(float(r_["net_pct"]) for r_ in csv.DictReader(open(R / "WP55" / "pr1_cells.csv", encoding="utf-8"))
+                            if r_["case"] == "central")
+    assert pr1 > 0, pr1
+    pr1_out = f"NOT FIRED: {pr1:.2f}% net central"
+    pr2m = int(sets[("a_half_H2", "conformal")]["met"])
+    assert pr2m >= 40, pr2m
+    p3 = json.loads((R / "WP58" / "pr3.json").read_text(encoding="utf-8"))
+    assert p3["fired"]
+    pr3_out = (f"FIRED: ICP {p3['icp_folds_ratio_gt_2']} of 6, Mondrian at most 2 in {p3['mondrian_folds_ratio_le_2']}, "
+               f"M-CQR in {p3['mondrian_cqr_folds_ratio_le_2']}")
+    assert not o1["main_text"]
+    s631_out = (f"Supplement sentence: {o1['met_order_stat']} of 48 both ways, "
+                f"{o1['median_saving_order_stat'] - o1['median_saving_interpolated']:+.3f} points")
+    mono = list(csv.DictReader(open(R / "S63" / "monotone_rearranged.csv", encoding="utf-8")))
+    mq = [r_ for r_ in mono if r_["policy"] in ("cqr", "mondrian_cqr", "raw_q")]
+    mc = [r_ for r_ in mono if r_["policy"] in ("icp", "mondrian", "cqr", "mondrian_cqr")]
+    assert (len(mq), len(mc)) == (36, 48), (len(mq), len(mc))
+    s636_out = (f"FIRED: sorted variant reported (quantile {sum(r_['meets_rearranged'] == 'True' for r_ in mq)} of 36, "
+                f"conformal {sum(r_['meets_rearranged'] == 'True' for r_ in mc)} of 48)")
+    hc = s7["headline_cells"]
+    s637_out = f"FIRED: {len(s7['cells_over_0_01'])} of 34 distinct cells" + (f" ({hc} listed as run)" if hc != 34 else "")
+    sp_ = s64["1_spill"]
+    pq = sp_["per_quantile_policy"]
+    assert not sp_["trigger_fires_any_policy"]
+    s641_out = f"NOT FIRED (XH {pq['raw_q']['static_met']}, {pq['cqr']['static_met']}, {pq['mondrian_cqr']['static_met']} of 12)"
+    assert not hold["controller_to_supplement"] and not hold["pid_trigger_satisfied"]
+    s643_out = f"neither: {hold['met_conformal']} of 48"
     t = [
-     ("DR1", "D-091 (WP-44 spec 5)", "2026-09-28", "15 min, A-R, test year: a fold passes for policy p when p's level uses less fuel than the handbook rule with UE share at most 0.002 %, main and shape B; holds for p in at least 4 of 6 folds", "FAIL: no policy passes (at most 3 of 6 folds)", "S7E/verdicts.json DR1"),
+     ("DR1", "D-091 (WP-44 spec 5)", "2026-09-28", "15 min, A-R, test year: a fold passes for policy p when p's level uses less fuel than the handbook rule with UE share at most 0.002 %, main and shape B; holds for p in at least 4 of 6 folds", dr1_out, "S7E/verdicts.json DR1"),
      ("DR1-D", "D-094", "2026-09-28", "DR1 applied unchanged to A-D", "PASS for 4 of 4 conformal policies (claim rule (a) applies)", "D-094 result, S51/S51S"),
-     ("DR2", "D-091", "2026-09-28", "F(best of CQR, M-CQR on H2) - F(raw_q) upper 95 % end below zero in at least 4 of 6 folds (main, 15 min)", "FAIL: 0 of 6 folds (no calibration gain in fuel credited)", "S7E/verdicts.json DR2"),
-     ("DR3 M-CQR vs CQR", "D-091", "2026-09-28", "regime gain if the interval lies below zero in 4 of 6 folds; costs fuel if it lies above zero in 4 of 6", "neither: gain 0, cost 0 of 6", "S7E/verdicts.json"),
-     ("DR3 Mondrian vs ICP", "D-091", "2026-09-28", "as above", "neither: gain 0, cost 1 of 6", "S7E/verdicts.json"),
-     ("DR3 Mondrian vs VN-ICP", "D-091", "2026-09-28", "as above", "costs fuel: 6 of 6 folds", "S7E/verdicts.json"),
-     ("DR4", "D-091", "2026-09-28", "battery raises the A-R level: kept if each conformal policy passes in 4 of 6 folds, dropped if none does", "FAIL: (0 folds for every policy)", "S7E/verdicts.json DR4"),
-     ("DR5", "D-091", "2026-09-28", "proxy ranking against load-model ranking, Kendall tau and top agreement; load model governs either way", "reported: rankings differ, top policy agrees in 0 of 24 fold-horizons", "S7E/verdicts.json DR5"),
+     ("DR2", "D-091", "2026-09-28", "F(best of CQR, M-CQR on H2) - F(raw_q) upper 95 % end below zero in at least 4 of 6 folds (main, 15 min)", dr2_out, "S7E/verdicts.json DR2"),
+     ("DR3 M-CQR vs CQR", "D-091", "2026-09-28", "regime gain if the interval lies below zero in 4 of 6 folds; costs fuel if it lies above zero in 4 of 6", dr3_out("DR3_mcqr_vs_cqr"), "S7E/verdicts.json"),
+     ("DR3 Mondrian vs ICP", "D-091", "2026-09-28", "as above", dr3_out("DR3_mondrian_vs_icp"), "S7E/verdicts.json"),
+     ("DR3 Mondrian vs VN-ICP", "D-091", "2026-09-28", "as above", dr3_out("DR3_mondrian_vs_nicp_var"), "S7E/verdicts.json"),
+     ("DR4", "D-091", "2026-09-28", "battery raises the A-R level: kept if each conformal policy passes in 4 of 6 folds, dropped if none does", dr4_out, "S7E/verdicts.json DR4"),
+     ("DR5", "D-091", "2026-09-28", "proxy ranking against load-model ranking, Kendall tau and top agreement; load model governs either way", dr5_out, "S7E/verdicts.json DR5"),
      ("DR6", "D-091", "2026-09-28", "each conformal policy against frac_pv and tod_q, absolute differences with intervals (A-R and A-C)", "reported (descriptive, no pass criterion)", "S7E, Supplement"),
-     ("PR-1", "D-110", "2026-09-30", "if the A-D median quantile saving at 15 min is at or below zero at the central start-up fuel, reframe title and abstract", "NOT FIRED: 0.16 % net central", "D-111"),
-     ("PR-2", "D-110 (operational D-112)", "2026-09-30", "if A-R at half the allowance meets the target in at least 40 of 48 conformal cases, credit the margin", "FIRED: 42 of 48", "WP63/table4_sets.csv"),
-     ("PR-3", "D-110 (operational D-112)", "2026-09-30", "ICP issue-time regime exceedance ratio above 2 in at least 4 of 6 folds and at most 2 for Mondrian or M-CQR", "FIRED: ICP 5 of 6, Mondrian at most 2 in 5, M-CQR in 4", "D-113"),
-     ("S63-1 order statistics", "D-122", "2026-09-30", "main text if met changes by more than 2 of 48 or median saving by more than 0.05 points", "Supplement sentence: 25 of 48 both ways, +0.001 points", "S63/reading.json"),
+     ("PR-1", "D-110", "2026-09-30", "if the A-D median quantile saving at 15 min is at or below zero at the central start-up fuel, reframe title and abstract", pr1_out, "WP55/pr1_cells.csv (rule D-110, first reading D-111)"),
+     ("PR-2", "D-110 (operational D-112)", "2026-09-30", "if A-R at half the allowance meets the target in at least 40 of 48 conformal cases, credit the margin", f"FIRED: {pr2m} of 48", "WP63/table4_sets.csv"),
+     ("PR-3", "D-110 (operational D-112)", "2026-09-30", "ICP issue-time regime exceedance ratio above 2 in at least 4 of 6 folds and at most 2 for Mondrian or M-CQR", pr3_out, "WP58/pr3.json (first reading D-113)"),
+     ("S63-1 order statistics", "D-122", "2026-09-30", "main text if met changes by more than 2 of 48 or median saving by more than 0.05 points", s631_out, "S63/reading.json"),
      ("S63-4 lower tail", "D-122", "2026-09-30", "reliable in the lower tail only if Kupiec does not reject in 2 of 3 regimes in 4 of 6 folds at every theta up to 0.99", "FAIL for every method (0 of 7)", "S63/reading.json, D-124"),
      ("S63-5 persistence reference", "D-122", "2026-09-30", "no CRPS superiority claim if M-CQR transitional skill is negative in 4 of 6 folds", "NOT FIRED: positive in 6 of 6", "S63/reading.json"),
-     ("S63-6 monotonicity", "D-122", "2026-09-30", "if any policy exceeds 0.1 % of steps, a sorted variant is reported", "FIRED: sorted variant reported (quantile 19 of 36, conformal 22 of 48)", "D-124"),
-     ("S63-7 complete days", "D-122 (D-123)", "2026-09-30", "a headline coverage value changing by more than 0.01 is given with its restricted value", "FIRED: 9 of 34 distinct cells (38 listed as run)", "WP67/complete_days_headline.json"),
+     ("S63-6 monotonicity", "D-122", "2026-09-30", "if any policy exceeds 0.1 % of steps, a sorted variant is reported", s636_out, "S63/monotone_rearranged.csv (first reading D-124)"),
+     ("S63-7 complete days", "D-122 (D-123)", "2026-09-30", "a headline coverage value changing by more than 0.01 is given with its restricted value", s637_out, "WP67/complete_days_headline.json"),
      ("S63-8 7-day blocks", "D-122", "2026-09-30", "where the class against nominal changes, cite the 7-day interval", "FIRED where the class changes (65 of 1,008 cells)", "S63/reading.json"),
-     ("S64-1 spill-matched scale", "D-122", "2026-09-30", "D-121 trigger if XH meets fewer than 10 of 12 per quantile policy while A-D meets at least 11 of 12", "NOT FIRED (XH 11, 12, 12 of 12)", "D-124"),
+     ("S64-1 spill-matched scale", "D-122", "2026-09-30", "D-121 trigger if XH meets fewer than 10 of 12 per quantile policy while A-D meets at least 11 of 12", s641_out, "S64/reading.json (first reading D-124)"),
      ("S64-2 commitment constraints", "D-122", "2026-09-30", "(i) abstract conditional if the leading rule's median quantile saving changes sign; (ii) start-up net rule", "NOT FIRED: no sign change", "D-124"),
-     ("S64-3 hold comparator", "D-122", "2026-09-30", "controller to Supplement if hold meets at least 46 of 48 and saves at least A-D; PID trigger if fewer than 42 of 48", "neither: 44 of 48", "S64/reading.json"),
+     ("S64-3 hold comparator", "D-122", "2026-09-30", "controller to Supplement if hold meets at least 46 of 48 and saves at least A-D; PID trigger if fewer than 42 of 48", s643_out, "S64/reading.json"),
     ]
     rows = [dict(rule=a, registered_in=b, registered_date=c, wording=d, outcome=e, evidence=f) for a, b, c, d, e, f in t]
     assert len(rows) == 21
@@ -243,7 +306,7 @@ def item2():
     rec = dict(item="D-129 step 2 item 2", n_rules=len(rows),
                fail_or_not_credited=[r["rule"] for r in rows if r["outcome"].startswith("FAIL")],
                fired=[r["rule"] for r in rows if r["outcome"].startswith("FIRED")],
-               main_text_sentence_basis="DR4 fails (0 folds), DR5 rankings differ (top agreement 0 of 24), DR6 descriptive",
+               main_text_sentence_basis=f"DR4 fails, DR5 rankings differ (top agreement {v['DR5']['top_agree']} of {v['DR5']['n']}), DR6 descriptive",
                scope="registered rules of D-091, D-094, D-110/D-112 and D-122 with outcomes from the verdict and reading files")
     (OUT / "registered_rules.json").write_text(json.dumps(rec, indent=1), encoding="utf-8")
     print(json.dumps(rec, indent=1))
@@ -472,11 +535,13 @@ def items_sim():
     N["meets"] = N.ue_share <= TGT + EPS
     N["saving_pct"] = 100 * (1 - N.fuel_L / N.fuel_handbook)
     base = list(csv.DictReader(open(R / "WP63" / "cases.csv", encoding="utf-8")))
+    LIT = LT.Literal(OUT, "ce1_wp67.py items_sim")
     out4, out5, out7, out13 = [], [], [], []
     for sel, lab in RULES:
         for si, (sname, pols) in enumerate(SETS.items()):
             g = C[(C.selection == sel) & C.policy.isin(pols)]
-            assert len(g) == 12 * len(pols) and int(g.meets.sum()) == PRINTED_MET[lab][si], (lab, sname, int(g.meets.sum()))
+            assert len(g) == 12 * len(pols) and LIT(f"sim_cases_met_{lab}_{sname}", int(g.meets.sum()), PRINTED_MET[lab][si]), \
+                (lab, sname, int(g.meets.sum()))
             e = E[(E.selection == sel) & E.policy.isin(pols)]
             e_share = e.peak_kW / e.online_kW
             out4.append(dict(rule=lab, set=sname, cases=len(g), events_per_year_median=float(g.events.median()),
@@ -563,7 +628,9 @@ def item12():
                         ue_kWh_median=ue, ue_cost_AUD_lo=ue * vcr_lo, ue_cost_AUD_hi=ue * vcr_hi))
     _write(out, "money_frame.csv")
     xh = [o for o in out if o["rule"] == "XH"][0]
-    assert abs(xh["saving_kL_median"] - 11.212420506531839) < 0.05, xh["saving_kL_median"]
+    assert LT.Literal(OUT, "ce1_wp67.py item12")("XH_quantile_saving_kL_median", xh["saving_kL_median"], 11.212420506531839,
+                                                 equal=abs(xh["saving_kL_median"] - 11.212420506531839) < 0.05), \
+        xh["saving_kL_median"]
     rec = dict(item="D-129 step 2 item 12", sources=ms, net_price_c_per_L=round(net, 2),
                price_range_AUD_per_L=[lo_p, hi_p], vcr_range_AUD_per_kWh=[vcr_lo, vcr_hi],
                scope="pop=quantile set (raw q, CQR, M-CQR), h=15 min, shape=both, folds=2019-2024, median case; fuel price from "

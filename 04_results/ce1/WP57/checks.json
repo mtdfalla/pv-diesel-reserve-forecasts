@@ -774,26 +774,26 @@
   }
  },
  "inputs": {
-  "S6E/f2019_h3_totals.parquet": "3a61a3e5fa524133f802fa640a496ae6",
-  "S6E/f2019_h3_select.json": "61a87c99e60e9445b512c5d3c5583db3",
-  "S6E/f2020_h3_totals.parquet": "84de095f7abf006e9d080fd63933e176",
-  "S6E/f2020_h3_select.json": "3e61ccf0522776606efcde1f6325f229",
-  "S6E/f2021_h3_totals.parquet": "73bac8dbfb20968339dcacc4dd0ccc13",
-  "S6E/f2021_h3_select.json": "5b8246c08c44090a1aef4b9aaefda649",
-  "S6E/f2022_h3_totals.parquet": "26d263308d88801b977028c627cefa5c",
-  "S6E/f2022_h3_select.json": "0de64b51f7705a453fa295ecfc3abf4a",
-  "S6E/f2023_h3_totals.parquet": "a7f18ec9768e614bf12d5fdccc5d65ab",
-  "S6E/f2023_h3_select.json": "af9222f8b33bf42c34501db1b91bb7bc",
-  "S6E/f2024_h3_totals.parquet": "6bce1d43cfb5264af8797f7dda44fc99",
-  "S6E/f2024_h3_select.json": "a61551bdc482278b2dab75afe4b0a7bc",
-  "S51/cells.csv": "21eac9e31969a791c5e7629901a82756"
+  "S6E/f2019_h3_totals.parquet": "d517fd1b03f9da8e9526db9c471f1427",
+  "S6E/f2019_h3_select.json": "d3f27d7cb20e45d6f3be0fda8ce13171",
+  "S6E/f2020_h3_totals.parquet": "0791de8c2fac53ab10df1fc26aeb481c",
+  "S6E/f2020_h3_select.json": "1a429b9cf9096c2ce0efdb97b584677a",
+  "S6E/f2021_h3_totals.parquet": "4c2b6bbe3901346484ee6e25df6b3cd9",
+  "S6E/f2021_h3_select.json": "14ece09b3b11976c1995433f0cbb71b9",
+  "S6E/f2022_h3_totals.parquet": "6eb653631164b5340be983405892b870",
+  "S6E/f2022_h3_select.json": "10bbe10e8ccca3880274107fdaa9111c",
+  "S6E/f2023_h3_totals.parquet": "39acf4a80f993ffd91a2e3aadbdd238c",
+  "S6E/f2023_h3_select.json": "3a33ef04407aaaef4ee707ef6f591d03",
+  "S6E/f2024_h3_totals.parquet": "b19b8e54abdef8af9a43359c42c70995",
+  "S6E/f2024_h3_select.json": "155895bcd6ef05de3b9922777af64076",
+  "S51/cells.csv": "78c4521a392dd61ca6b43a0f77be8d09"
  },
  "outputs": {
-  "cases.csv": "9db368ec87dd03f969dc7ea6c33b2aa2",
-  "pr2.json": "8ef33e703cb3be169306e8c8ef30ce92",
-  "selections.csv": "819fe5ca81b45ca5a3a30455e051508c"
+  "cases.csv": "9bf2e2640ecef31fccf38b4acad54d41",
+  "pr2.json": "b314d945f22ab11ab9972a87fbaa65df",
+  "selections.csv": "66ffabf9c00fef72c898d221d827884e"
  },
  "code": {
-  "ce1_wp57.py": "dd230d0258e2852032a0d356e2ab4e6e"
+  "ce1_wp57.py": "1308f63e1513fc3b17ec83493f4d3d8f"
  }
 }

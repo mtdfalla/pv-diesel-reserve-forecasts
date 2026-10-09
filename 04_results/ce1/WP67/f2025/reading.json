@@ -1,19 +1,19 @@
 {
- "scope": "pop=Yulara fold 2025 (test 2025, calibration 2024, training 2016-2023), h=15 min, shape=both, selection rules frozen (D-129), reported as a separate confirmatory row, never pooled",
+ "scope": "pop=Yulara fold 2025 (test 2025, calibration 2024, training 2016-2023), h=15 min, shape=both, selection rules frozen (D-129), reanalysis with the v2.1 dispatch (the registered confirmatory record is the release 2.0.0 run), never pooled",
  "C1": {
   "rule": "XH, quantile policies, both shapes, 6 cases: all meet 0.002% and each saves >= 0.01% of handbook fuel",
   "met": 6,
   "cases": 6,
-  "saving_min_pct": 0.05993931020484844,
-  "saving_median_pct": 0.17780890919671943,
-  "saving_max_pct": 0.3797931599626825,
-  "ue_share_max": 5.898836312187877e-06,
+  "saving_min_pct": 0.5864148451361517,
+  "saving_median_pct": 0.6551410049133177,
+  "saving_max_pct": 0.6984715804150166,
+  "ue_share_max": 7.582173235178323e-06,
   "confirmed": true
  },
  "C2": {
   "rule": "XH median saving over the C1 cases exceeds A-D's over the same cases",
-  "xh_median_pct": 0.17780890919671943,
-  "ad_median_pct": 0.11389219621849578,
+  "xh_median_pct": 0.6551410049133177,
+  "ad_median_pct": 0.22115400909819005,
   "confirmed": true
  },
  "year_level": {
@@ -71,12 +71,12 @@
   "all_static_and_AD_met": true
  },
  "inputs": {
-  "WP67/f2025/f2025_cases.csv": "3631f85dc3fec436c59170dd9944803b",
-  "WP67/f2025/f2025_n1.csv": "7c5d5f08f58c283e6dc752baef29680a",
-  "WP67/year_level.csv": "48e795d5966031b28179f5775c9b3237",
+  "WP67/f2025/f2025_cases.csv": "6cbf13f94a914772c9ca150c8e80373f",
+  "WP67/f2025/f2025_n1.csv": "e232056fe870a615d8675cbbe4e7b789",
+  "WP67/year_level.csv": "ce06b14af896d613dfda4d3062bfc179",
   "WP67/c3lag/verdict.json": "6bc4da3bfb485f392d58e11b2e82494e"
  },
  "code": {
-  "ce1_wp67_f2025_read.py": "1f3836729586e90df6c1de59386d6283"
+  "ce1_wp67_f2025_read.py": "0da70652f9e79db3b0068b259e2213c7"
  }
 }

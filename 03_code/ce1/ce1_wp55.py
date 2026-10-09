@@ -28,6 +28,7 @@ import ce1_dispatch as D  # noqa: E402
 import ce1_folds as FC  # noqa: E402
 import ce1_load as LM  # noqa: E402
 import ce1_s6 as S6  # noqa: E402
+import ce1_literal as LT  # noqa: E402  (D-164 phase-aware literal checks)
 
 H = 3
 SCEN = ("main", "shapeB")
@@ -198,6 +199,7 @@ def stage_analyse(root: Path) -> bool:
     ad = pd.read_csv(out / "ad_totals.csv")
     cells = pd.read_csv(R / "S51" / "cells.csv")
     res, checks = {}, {}
+    LIT = LT.Literal(out, "ce1_wp55.py")
 
     def check(name, cond, msg=""):
         checks[name] = dict(ok=bool(cond), msg=msg)
@@ -211,7 +213,7 @@ def stage_analyse(root: Path) -> bool:
           and np.allclose(mg.ue_kWh, mg.ue_kWh_s51, rtol=0, atol=1e-6))
     q = pr[pr.policy.isin(QP)].copy()
     q["sav_pct"] = (q.handbook_fuel_L - q.fuel_L) / q.handbook_fuel_L * 100
-    check("median_reproduced", round(q.sav_pct.median(), 2) == 0.18, f"({q.sav_pct.median():.4f}%)")
+    check("median_reproduced", LIT("median_pct", round(q.sav_pct.median(), 2), 0.18), f"({q.sav_pct.median():.4f}%)")
 
     # ---- PR-1 start-up fuel
     q["d_starts"] = q.starts - q.handbook_starts
@@ -241,7 +243,7 @@ def stage_analyse(root: Path) -> bool:
     res["PR1"] = pr1
     qa = cs[cs.policy.isin(QP) & (cs.scenario == "main")].copy()
     qa["sav_pct"] = (qa.handbook_fuel_L - qa.fuel_L) / qa.handbook_fuel_L * 100
-    check("range_reproduced", (round(qa.sav_pct.min(), 2), round(qa.sav_pct.max(), 2)) == (0.34, 0.79),
+    check("range_reproduced", LIT("range_pct", (round(qa.sav_pct.min(), 2), round(qa.sav_pct.max(), 2)), (0.34, 0.79)),
           f"({qa.sav_pct.min():.3f}-{qa.sav_pct.max():.3f}%)")
     qa["d_starts"] = qa.starts - qa.handbook_starts
     ar1 = dict(cells=len(qa), d_starts_min=float(qa.d_starts.min()), d_starts_max=float(qa.d_starts.max()))
@@ -294,8 +296,9 @@ def stage_analyse(root: Path) -> bool:
     sw = pd.DataFrame(sw)
     sw.to_csv(out / "target_sweep.csv", index=False)
     s2 = sw[sw.target_pct == 0.002].set_index("protocol")
-    check("sweep_reproduces", int(s2.loc["A-D", "met_conformal"]) == 48 and int(s2.loc["A-R", "met_conformal"]) == 25
-          and int(s2.loc["A-D", "met_all"]) == 96 and int(s2.loc["A-R", "met_all"]) == 58)
+    check("sweep_reproduces", LIT("sweep_met_AD_AR_conformal_all",
+                                       (int(s2.loc["A-D", "met_conformal"]), int(s2.loc["A-R", "met_conformal"]),
+                                        int(s2.loc["A-D", "met_all"]), int(s2.loc["A-R", "met_all"])), (48, 25, 96, 58)))
     res["target_sweep"] = sw.to_dict("records")
 
     # ---- sign tests over the six test years (fold is the unit; cells within a fold are dependent)
@@ -344,7 +347,7 @@ def stage_analyse(root: Path) -> bool:
     kt = (kg.assign(met=kg.ue_share <= TGT + 1e-15).groupby(["gamma", "kappa"]).met.agg(["sum", "count"]).reset_index())
     kt.to_csv(out / "kappa_grid_met.csv", index=False)
     k1 = kt[(kt.gamma == 0.005) & (kt.kappa == 1.0)].iloc[0]
-    check("kappa1_gamma0005_is_14_of_48", int(k1["sum"]) == 14 and int(k1["count"]) == 48, f"({int(k1['sum'])} of {int(k1['count'])})")
+    check("kappa1_gamma0005_is_14_of_48", LIT("kappa1_gamma0005_met", int(k1["sum"]), 14) and int(k1["count"]) == 48, f"({int(k1['sum'])} of {int(k1['count'])})")
     res["kappa_grid"] = kt.to_dict("records")
 
     # ---- battery additivity under A-D at matched reliability (15 min, quantile policies)
@@ -403,7 +406,7 @@ def stage_analyse(root: Path) -> bool:
     res["block"] = {int(L): dict(AR_above_zero=int((g.ci_AR_lo > 0).sum()), hb_below_zero=int((g.ci_hb_hi < 0).sum()),
                                  hb_above_zero=int((g.ci_hb_lo > 0).sum()), n=len(g))
                     for L, g in bl.groupby("block")}
-    check("block1_AR_above_zero_is_30_of_36", res["block"][1]["AR_above_zero"] == 30, f"({res['block'][1]['AR_above_zero']})")
+    check("block1_AR_above_zero_is_30_of_36", LIT("block1_AR_above_zero", res["block"][1]["AR_above_zero"], 30), f"({res['block'][1]['AR_above_zero']})")
 
     json.dump(dict(results=res, checks=checks, code={"ce1_wp55.py": md5(Path(__file__))},
                    inputs={"WP55/ad_totals.csv": md5(out / "ad_totals.csv"), "S51/cells.csv": md5(R / "S51" / "cells.csv"),

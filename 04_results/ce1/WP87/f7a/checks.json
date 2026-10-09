@@ -1,0 +1,1019 @@
+{
+ "stage": "WP87-f7a",
+ "variant": {
+  "commit": "minfeas",
+  "gap": "elapsed",
+  "extra": [
+   1150.0,
+   1150.0
+  ],
+  "internal": true
+ },
+ "ok": true,
+ "seconds": 5469.4,
+ "n_checks": 246,
+ "gate": {},
+ "gate_diffs_differ": 2176,
+ "outputs": {
+  "anchors.csv": "00ea4b574d985b07b29c4685a276bdf6",
+  "cases.csv": "c72a6fb006bfe27257d938784ee23f7c",
+  "events.csv": "9475b3a7f11e291c2c71cd4de217849b",
+  "totals.parquet": "95527cba7b1153bc3f2c3edb33a0152f"
+ },
+ "code": {
+  "wp87": "a7d66eb5ee630b0536c31a63c9d5107b",
+  "load": "88d0d16b815401cef43128bc6bd80a55",
+  "s69": "a46676d963a3a30d0efa537bc0bb1b4d"
+ },
+ "env": {
+  "python": "3.11.9",
+  "numpy": "2.3.4",
+  "pandas": "3.0.3"
+ },
+ "checks": {
+  "spf_clear_sky_scalar_constant_f2019_H2": {
+   "ok": true,
+   "msg": "(scalar 1.043159, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2019_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2019_H2": {
+   "ok": true,
+   "msg": "(19169 rows compared, 29 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2019_test": {
+   "ok": true,
+   "msg": "(scalar 1.043159, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2019_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2019_test": {
+   "ok": true,
+   "msg": "(38748 rows compared, 375 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2019_H1x": {
+   "ok": true,
+   "msg": "(scalar 1.043159, worst deviation 2.2e-16)"
+  },
+  "handbook_zero_ue_f2019_main_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_main_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_main_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2019_main": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2019_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_shapeB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_shapeB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_shapeB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2019_shapeB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2019_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_cont_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_cont_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_cont_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2019_cont": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2019_cont": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2019_cont": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_contB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_contB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_contB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2019_contB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2019_contB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2019_contB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_n1a_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_n1a_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_n1a_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2019_n1a": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2019_n1a": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2019_n1a": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_n1aB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_n1aB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2019_n1aB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2019_n1aB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2019_n1aB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2019_n1aB": {
+   "ok": true,
+   "msg": ""
+  },
+  "spf_clear_sky_scalar_constant_f2020_H2": {
+   "ok": true,
+   "msg": "(scalar 1.044575, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2020_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2020_H2": {
+   "ok": true,
+   "msg": "(19856 rows compared, 288 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2020_test": {
+   "ok": true,
+   "msg": "(scalar 1.044575, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2020_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2020_test": {
+   "ok": true,
+   "msg": "(41004 rows compared, 389 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2020_H1x": {
+   "ok": true,
+   "msg": "(scalar 1.044575, worst deviation 2.2e-16)"
+  },
+  "handbook_zero_ue_f2020_main_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_main_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_main_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2020_main": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2020_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_shapeB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_shapeB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_shapeB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2020_shapeB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2020_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_cont_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_cont_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_cont_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2020_cont": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2020_cont": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2020_cont": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_contB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_contB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_contB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2020_contB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2020_contB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2020_contB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_n1a_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_n1a_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_n1a_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2020_n1a": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2020_n1a": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2020_n1a": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_n1aB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_n1aB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2020_n1aB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2020_n1aB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2020_n1aB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2020_n1aB": {
+   "ok": true,
+   "msg": ""
+  },
+  "spf_clear_sky_scalar_constant_f2021_H2": {
+   "ok": true,
+   "msg": "(scalar 1.045168, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2021_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2021_H2": {
+   "ok": true,
+   "msg": "(20631 rows compared, 159 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2021_test": {
+   "ok": true,
+   "msg": "(scalar 1.045168, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2021_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2021_test": {
+   "ok": true,
+   "msg": "(40420 rows compared, 342 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2021_H1x": {
+   "ok": true,
+   "msg": "(scalar 1.045168, worst deviation 2.2e-16)"
+  },
+  "handbook_zero_ue_f2021_main_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_main_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_main_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2021_main": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2021_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_shapeB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_shapeB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_shapeB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2021_shapeB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2021_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_cont_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_cont_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_cont_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2021_cont": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2021_cont": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2021_cont": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_contB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_contB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_contB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2021_contB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2021_contB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2021_contB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_n1a_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_n1a_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_n1a_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2021_n1a": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2021_n1a": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2021_n1a": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_n1aB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_n1aB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2021_n1aB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2021_n1aB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2021_n1aB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2021_n1aB": {
+   "ok": true,
+   "msg": ""
+  },
+  "spf_clear_sky_scalar_constant_f2022_H2": {
+   "ok": true,
+   "msg": "(scalar 1.045347, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2022_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2022_H2": {
+   "ok": true,
+   "msg": "(20890 rows compared, 103 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2022_test": {
+   "ok": true,
+   "msg": "(scalar 1.045347, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2022_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2022_test": {
+   "ok": true,
+   "msg": "(39050 rows compared, 486 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2022_H1x": {
+   "ok": true,
+   "msg": "(scalar 1.045347, worst deviation 2.2e-16)"
+  },
+  "handbook_zero_ue_f2022_main_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_main_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_main_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2022_main": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2022_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_shapeB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_shapeB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_shapeB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2022_shapeB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2022_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_cont_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_cont_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_cont_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2022_cont": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2022_cont": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2022_cont": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_contB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_contB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_contB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2022_contB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2022_contB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2022_contB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_n1a_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_n1a_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_n1a_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2022_n1a": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2022_n1a": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2022_n1a": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_n1aB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_n1aB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2022_n1aB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2022_n1aB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2022_n1aB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2022_n1aB": {
+   "ok": true,
+   "msg": ""
+  },
+  "spf_clear_sky_scalar_constant_f2023_H2": {
+   "ok": true,
+   "msg": "(scalar 1.047313, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2023_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2023_H2": {
+   "ok": true,
+   "msg": "(20921 rows compared, 168 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2023_test": {
+   "ok": true,
+   "msg": "(scalar 1.047313, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2023_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2023_test": {
+   "ok": true,
+   "msg": "(34855 rows compared, 1325 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2023_H1x": {
+   "ok": true,
+   "msg": "(scalar 1.047313, worst deviation 2.2e-16)"
+  },
+  "handbook_zero_ue_f2023_main_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_main_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_main_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2023_main": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2023_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_shapeB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_shapeB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_shapeB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2023_shapeB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2023_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_cont_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_cont_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_cont_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2023_cont": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2023_cont": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2023_cont": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_contB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_contB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_contB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2023_contB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2023_contB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2023_contB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_n1a_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_n1a_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_n1a_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2023_n1a": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2023_n1a": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2023_n1a": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_n1aB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_n1aB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2023_n1aB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2023_n1aB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2023_n1aB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2023_n1aB": {
+   "ok": true,
+   "msg": ""
+  },
+  "spf_clear_sky_scalar_constant_f2024_H2": {
+   "ok": true,
+   "msg": "(scalar 1.048032, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2024_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2024_H2": {
+   "ok": true,
+   "msg": "(17127 rows compared, 1037 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2024_test": {
+   "ok": true,
+   "msg": "(scalar 1.048032, worst deviation 2.2e-16)"
+  },
+  "spf_missing_issue_equals_pfr_f2024_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "pfr_issue_ghi_is_measured_f2024_test": {
+   "ok": true,
+   "msg": "(34848 rows compared, 778 issue times without measured GHI)"
+  },
+  "spf_clear_sky_scalar_constant_f2024_H1x": {
+   "ok": true,
+   "msg": "(scalar 1.048032, worst deviation 2.2e-16)"
+  },
+  "handbook_zero_ue_f2024_main_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_main_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_main_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2024_main": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2024_main": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_shapeB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_shapeB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_shapeB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2024_shapeB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "record_handbook_equals_totals_f2024_shapeB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_cont_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_cont_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_cont_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2024_cont": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2024_cont": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2024_cont": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_contB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_contB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_contB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2024_contB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2024_contB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2024_contB": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_n1a_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_n1a_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_n1a_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2024_n1a": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2024_n1a": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2024_n1a": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_n1aB_H2": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_n1aB_test": {
+   "ok": true,
+   "msg": ""
+  },
+  "handbook_zero_ue_f2024_n1aB_H1x": {
+   "ok": true,
+   "msg": ""
+  },
+  "ad_converged_f2024_n1aB": {
+   "ok": true,
+   "msg": "(1 passes)"
+  },
+  "n1_holds_on_recorded_steps_f2024_n1aB": {
+   "ok": true,
+   "msg": "(0 violations)"
+  },
+  "record_handbook_equals_totals_f2024_n1aB": {
+   "ok": true,
+   "msg": ""
+  }
+ }
+}

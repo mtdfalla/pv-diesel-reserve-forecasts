@@ -243,8 +243,8 @@ def run_fold(yr: int, R: Path, out: Path) -> bool:
         # H1x under N-1
         Lx = S6.load_for(gridx, unit96, scales, sc)
         ratx = LM.fleet_for_peak(Lx.max())
-        Cex, _, _ = W56.effective_counted(Lx, Cx, Cx[det], ratx, True)
-        rx = LM.simulate(Lx, pavx, Cex, dayx, H, ratings=ratx, min_load=sc["min_load"], fuel=sc["fuel"], battery=False)
+        Cex, _, n1x = W56.n1_setup("s56", Lx, Cx, Cx[det], ratx)  # v2.1: inside simulate (D-161)
+        rx = LM.simulate(Lx, pavx, Cex, dayx, H, ratings=ratx, min_load=sc["min_load"], fuel=sc["fuel"], battery=False, **n1x)
         tx = pd.DataFrame({k: rx["total"][k] for k in ("fuel_L", "ue_kWh", "load_kWh", "ue_share", "starts")})
         tx.insert(0, "param", [x[1] for x in rows])
         tx.insert(0, "policy", [x[0] for x in rows])
@@ -256,7 +256,9 @@ def run_fold(yr: int, R: Path, out: Path) -> bool:
         L = S6.load_for(grid, unit96, scales, sc)
         ratings = np.asarray(LM.fleet_for_peak(L.max()), float)
         sim_kw = dict(ratings=list(ratings), min_load=sc["min_load"], fuel=sc["fuel"], battery=False)
-        Ce, binds, _ = W56.effective_counted(L, P["C"], P["C"][det], list(ratings), True)
+        _, binds, _ = W56.effective_counted(L, P["C"], P["C"][det], list(ratings), True)
+        Ce, _, n1kw = W56.n1_setup("s56", L, P["C"], P["C"][det], list(ratings))
+        sim_kw.update(n1kw)  # every simulate below (test grid) runs the construction
         rt = LM.simulate(L, pav, Ce, day, H, **sim_kw)
         worst = max(float(np.max(np.abs(rt["total"][k] - TT[k].to_numpy(float)) / np.maximum(np.abs(TT[k].to_numpy(float)), 1.0)))
                     for k in ("fuel_L", "ue_kWh", "starts"))

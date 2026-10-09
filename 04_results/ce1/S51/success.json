@@ -1,29 +1,29 @@
 {
  "R_AD_cp": 48,
- "R_AR_cp": 25,
+ "R_AR_cp": 21,
  "n_cp": 48,
  "R_AD_all": 96,
- "R_AR_all": 58,
+ "R_AR_all": 45,
  "n_all": 96,
  "DR1_folds": {
   "A-D": {
    "icp": 6,
    "mondrian": 6,
-   "cqr": 5,
-   "mondrian_cqr": 5,
-   "raw_q": 5,
-   "tod_q": 4,
-   "nicp_var": 5,
+   "cqr": 6,
+   "mondrian_cqr": 6,
+   "raw_q": 6,
+   "tod_q": 6,
+   "nicp_var": 6,
    "frac_pv": 6
   },
   "A-R": {
-   "icp": 0,
-   "mondrian": 0,
+   "icp": 2,
+   "mondrian": 1,
    "cqr": 3,
    "mondrian_cqr": 3,
    "raw_q": 3,
-   "tod_q": 0,
-   "nicp_var": 2,
+   "tod_q": 4,
+   "nicp_var": 1,
    "frac_pv": 3
   }
  },

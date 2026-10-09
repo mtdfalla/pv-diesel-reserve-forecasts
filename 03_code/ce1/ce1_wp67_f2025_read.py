@@ -85,7 +85,8 @@ def main():
     N1.to_csv(OUT / "f2025_n1_summary.csv", index=False)
     reading = dict(
         scope="pop=Yulara fold 2025 (test 2025, calibration 2024, training 2016-2023), h=15 min, shape=both, "
-              "selection rules frozen (D-129), reported as a separate confirmatory row, never pooled",
+              "selection rules frozen (D-129), " + ("reported as a separate confirmatory row, never pooled" if __import__("ce1_literal").registered()
+              else "reanalysis with the v2.1 dispatch (the registered confirmatory record is the release 2.0.0 run), never pooled"),
         C1=dict(rule="XH, quantile policies, both shapes, 6 cases: all meet 0.002% and each saves >= 0.01% of handbook fuel",
                 met=int(c1.meets.sum()), cases=6, saving_min_pct=float(c1.saving_pct.min()),
                 saving_median_pct=xh_med, saving_max_pct=float(c1.saving_pct.max()),
@@ -96,7 +97,8 @@ def main():
                         years_met=k7, years=7, cp_lower_95_one_sided=round(cp_lower(k7, 7), 4)),
         C3=v["c3"], C4=dict(rule="A-R met counts 2025, DR1 not re-evaluated", **c4),
         lag=v["lag"],
-        context=dict(note="every static rule and A-D meet the target in every 2025 case of both sets",
+        context=dict(note=("every static rule and A-D meet the target in every 2025 case of both sets"  # (D-170): computed
+                           if bool(d[d.selection != "AW_clip"].meets.all()) else "not every static rule and A-D meet the target in every 2025 case"),
                      all_static_and_AD_met=bool(d[d.selection != "AW_clip"].meets.all())),
         inputs={p: md5(R / p) for p in ("WP67/f2025/f2025_cases.csv", "WP67/f2025/f2025_n1.csv", "WP67/year_level.csv",
                                         "WP67/c3lag/verdict.json")},

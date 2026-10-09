@@ -49,6 +49,8 @@ SHAPES = ("A", "B")
 NAME = {("plain", "A"): "main", ("plain", "B"): "shapeB", ("s56", "A"): "cont", ("s56", "B"): "contB",
         ("n1a", "A"): "n1a", ("n1a", "B"): "n1aB"}
 PFR = "pfr"
+SPF = "spf"
+PERSIST = (PFR, SPF)
 CONSTRS = ("plain", "s56", "n1a")  # S69; S69b (D-137) runs ("n1a") with PFR_IN = {"n1a"}
 PFR_IN = {"plain"}
 REF69 = None  # S69b: S69 outputs the n1a rows must reproduce
@@ -102,15 +104,47 @@ def effective_n1a(L, C, ratings, chunk=64):
 
 
 def transform(constr, L, C, det_row, ratings):
-    if constr == "plain":
-        return C, np.zeros(C.shape, bool)
-    if constr == "s56":
-        Ce, _, inf_ = W56.effective_counted(L, C, det_row, ratings, True)
-        return Ce, inf_
-    return effective_n1a(L, C, ratings)
+    """(counted PV for simulate, infeasible mask, simulate keywords): ce1_wp56.n1_setup. Registered v2.0.0:
+    the transform (counted PV = load - k_min); v2.1: C unchanged, the construction inside simulate (D-161).
+    """
+    return W56.n1_setup(constr, L, C, det_row, ratings)
 
 
-# ================================================================ PFR rows
+# ================================================================ PFR and SPF rows
+def cal_from_cache(ev, geo, h=H):
+    """The fold's clear-sky scalar, recovered from the cache: gcs (target clear-sky) / ghi_cs_raw at the target.
+    Returns the scalar and the worst relative deviation from it over the rows (a constant: checked).
+    """
+    tgt = pd.DatetimeIndex(ev["idx"]) + pd.Timedelta(minutes=5 * h)
+    raw = geo["ghi_cs_raw"].reindex(tgt).values.astype(float)
+    g = np.asarray(ev["gcs"], float)
+    ok = np.isfinite(raw) & np.isfinite(g) & (raw > 1.0)
+    ratio = g[ok] / raw[ok]
+    cal = float(np.median(ratio))
+    return cal, float(np.max(np.abs(ratio / cal - 1))) if len(ratio) else np.inf
+
+
+def spf_ghi(ev, geo, cal):
+    """Issue-time clear-sky index (NaN without measured GHI, 0 at night) and the smart-persistence target GHI."""
+    idx = pd.DatetimeIndex(ev["idx"])
+    ghi = geo["ghi"].reindex(idx).values.astype(float)
+    cs = geo["ghi_cs_raw"].reindex(idx).values.astype(float) * cal
+    day = geo["is_day"].reindex(idx).fillna(False).values.astype(bool)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        kt = np.where(day & (cs > 0), ghi / np.where(cs > 0, cs, np.nan), 0.0)
+    kt = np.where(np.isnan(ghi), np.nan, np.clip(kt, 0.0, FC.KT_MAX))
+    return kt, kt * np.asarray(ev["gcs"], float)
+
+
+def spf_matrix(ev, geo, m, grid, cal, h=H):
+    idx = pd.DatetimeIndex(ev["idx"])
+    kt, ghat = spf_ghi(ev, geo, cal)
+    tgt = idx + pd.Timedelta(minutes=5 * h)
+    pv = S6.PVAt(tgt, m)(ghat)
+    M = np.vstack([(1.0 - float(r)) * pv for r in D.FRAC_GRID])
+    return S6.place(grid, tgt, M), kt
+
+
 def pfr_matrix(ev_idx, geo, m, grid, h=H):
     """(51, len(grid)) counted PV of the persistence fraction, placed at the target steps."""
     idx = pd.DatetimeIndex(ev_idx)
@@ -149,14 +183,14 @@ def cmp_tot(a: pd.DataFrame, b: pd.DataFrame, keys=("fuel_L", "ue_kWh", "starts"
 # ================================================================ one fold
 def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
     t0 = time.time()
-    rows = rows6 + [(PFR, float(r)) for r in D.FRAC_GRID]
+    rows = rows6 + [(PFR, float(r)) for r in D.FRAC_GRID] + [(SPF, float(r)) for r in D.FRAC_GRID]
     n6 = len(rows6)
     hb = [i for i, r in enumerate(rows) if r[0] == "handbook"][0]
     det = [i for i, r in enumerate(rows) if r[0] == "deterministic"][0]
     orc = [i for i, r in enumerate(rows) if r[0] == "oracle"][0]
     rix = {(p, round(float(x), 6)): i for i, (p, x) in enumerate(rows) if p not in S6.ANCHORS}
     pol_ix = {}
-    for pol in A.POLICIES + [PFR]:
+    for pol in A.POLICIES + list(PERSIST):
         ix = [i for i, r in enumerate(rows) if r[0] == pol]
         lv = np.array([rows[i][1] for i in ix])
         o = np.argsort(lv)
@@ -170,7 +204,11 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
     # PFR rows on H2 (issue rows of H2), test, H1x
     for part, ev in (("H2", H2d), ("test", test)):
         M, ghi_issue = pfr_matrix(ev["idx"], geo, m, prep[part]["grid"])
-        prep[part]["C"] = np.vstack([prep[part]["C"], M])
+        cal, dev = cal_from_cache(ev, geo)
+        check(f"spf_clear_sky_scalar_constant_f{yr}_{part}", dev < 1e-9, f"(scalar {cal:.6f}, worst deviation {dev:.1e})")
+        Ms, kt_issue = spf_matrix(ev, geo, m, prep[part]["grid"], cal)
+        check(f"spf_missing_issue_equals_pfr_f{yr}_{part}", np.array_equal(np.isnan(kt_issue), np.isnan(ghi_issue)))
+        prep[part]["C"] = np.vstack([prep[part]["C"], M, Ms])
         # measured GHI at issue equals the cache target GHI of the row whose target is the issue time
         tg = pd.Series(ev["y"], index=pd.DatetimeIndex(ev["idx"]) + pd.Timedelta(minutes=5 * H))
         both = tg.reindex(pd.DatetimeIndex(ev["idx"]))
@@ -186,7 +224,10 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
     pv_of = S6.PVAt(tgt, m)
     Cx = S6.place(gridx, tgt, S6.counted_matrix(rows6, H2d, H1, pv_of, pv_of(H1["y"])))
     Mx, _ = pfr_matrix(H1["idx"], geo, m, gridx)
-    Cx = np.vstack([Cx, Mx])
+    calx, devx = cal_from_cache(H1, geo)
+    check(f"spf_clear_sky_scalar_constant_f{yr}_H1x", devx < 1e-9, f"(scalar {calx:.6f}, worst deviation {devx:.1e})")
+    Msx, _ = spf_matrix(H1, geo, m, gridx, calx)
+    Cx = np.vstack([Cx, Mx, Msx])
     dayx = LM.day_ids(gridx)
     parts = {"H2": (prep["H2"]["grid"], prep["H2"]["pav"], prep["H2"]["C"], prep["H2"]["day"]),
              "test": (prep["test"]["grid"], prep["test"]["pav"], prep["test"]["C"], prep["test"]["day"]),
@@ -218,13 +259,13 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
                 sim_kw = dict(ratings=ratings, min_load=sc["min_load"], fuel=sc["fuel"], battery=False)
                 rws = rows if constr in PFR_IN else rows6
                 Cuse = C_ if constr in PFR_IN else C_[:n6]
-                Ce, inf_ = transform(constr, L, Cuse, Cuse[det], ratings)
-                r = LM.simulate(L, pv_, Ce, d_, H, **sim_kw)
+                Ce, inf_, n1kw = transform(constr, L, Cuse, Cuse[det], ratings)
+                r = LM.simulate(L, pv_, Ce, d_, H, **sim_kw, **n1kw)
                 fb = W56.fallback_counts(Cuse, pv_)
                 r["total"]["fallback_steps"] = fb.astype(float)
                 tabs[part] = tot_table(r, rws, dict(infeasible_steps=inf_[:, np.isfinite(pv_)].sum(axis=1)))
                 if part == "test":
-                    res_test, Ce_test, inf_test, L_test, rat_test = r, Ce, inf_, L, ratings
+                    res_test, Ce_test, inf_test, L_test, rat_test, n1kw_test = r, Ce, inf_, L, ratings, n1kw
                 check(f"handbook_zero_ue_f{yr}_{nm}_{part}", float(r["total"]["ue_kWh"][hb]) == 0.0)
                 if constr == "plain" and part in ("H2", "test"):
                     ref = s6e[(s6e.scenario == nm) & (s6e.set == part)]
@@ -260,8 +301,8 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
                                     handbook_infeasible_steps=int(TT.infeasible_steps.iloc[hb]),
                                     oracle_ceiling_pct=100 * (1 - float(TT.fuel_L.iloc[orc]) / hb_fuel)))
             # ---- A-D from this construction's own test record, theta0 = its A-R level
-            pols = POLS + ([PFR] if constr in PFR_IN else [])
-            sim_kw = dict(ratings=rat_test, min_load=sc["min_load"], fuel=sc["fuel"], battery=False)
+            pols = POLS + (list(PERSIST) if constr in PFR_IN else [])
+            sim_kw = dict(ratings=rat_test, min_load=sc["min_load"], fuel=sc["fuel"], battery=False, **n1kw_test)
             daily = res_test["daily"]
             load_d = daily["load_kWh"][hb]
             abar = A.h2_mean_daily_load(prep["H2"], unit96, scales, sc)
@@ -275,7 +316,7 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
             rp, idx_ad, _, passes, _ = A.run_paths(L_test, pav, day, H, sim_kw, pol_C, specs, rec_ue, load_d, abar)
             check(f"ad_converged_f{yr}_{nm}", 1 <= passes < 400 and bool(np.isfinite(rp["total"]["fuel_L"]).all()), f"({passes} passes)")
             for k, (pol, *_r) in enumerate(specs):
-                if pol == PFR:
+                if pol in PERSIST:
                     continue
                 if constr == "plain":
                     ref = s51[(s51.fold == yr) & (s51.h == H) & (s51.scenario == nm) & (s51.policy == pol) & s51.primary.astype(bool)]
@@ -301,7 +342,7 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
                     meta.append((pol, sel, float(p_)))
                     Crec.append(Ce_test[i])
                     Corig.append(parts["test"][2][i])
-                    if constr == "plain" and pol != PFR:
+                    if constr == "plain" and pol not in PERSIST:
                         ref = cases[(cases.fold == yr) & (cases.scenario == nm) & (cases.policy == pol) & (cases.selection == sel)]
                         check(f"GATE_plain_selection_equals_WP63_f{yr}_{nm}_{pol}_{sel}", len(ref) == 1 and abs(float(ref.param.iloc[0]) - p_) < 1e-9)
                     if constr == "s56":
@@ -344,10 +385,10 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
                 rec = SIM.case_record(rr, j, evs[j], keep, cov, 0, fuelstep)
                 rec["infeasible_steps"] = int(nfeas[j])
                 case_rows.append(dict(fold=yr, construction=constr, shape=shape, scenario=nm, policy=pol, selection=sel,
-                                      rule=LABEL[sel], param=par, f_registered=(1 - par) if pol == PFR and sel != "A_D" else np.nan,
+                                      rule=LABEL[sel], param=par, f_registered=(1 - par) if pol in PERSIST and sel != "A_D" else np.nan,
                                       fuel_handbook=hbf, saving_pct=100 * (1 - rec["fuel_L"] / hbf),
                                       meets=bool(rec["ue_share"] <= TGT + 1e-15), **rec))
-                if constr == "plain" and pol != PFR:
+                if constr == "plain" and pol not in PERSIST:
                     ref = simc[(simc.scenario == nm) & (simc.policy == pol) & (simc.selection == sel)]
                     okk = len(ref) == 1 and abs(rec["fuel_L"] / float(ref.fuel_L.iloc[0]) - 1) < 1e-9 \
                         and abs(rec["ue_share"] - float(ref.ue_share.iloc[0])) <= 1e-9 * max(float(ref.ue_share.iloc[0]), 1e-9) \
@@ -359,7 +400,7 @@ def run_fold(yr, R, out, geo, m, unit96, scales, rows6, check, store):
                     okk = len(ref) == 1 and abs(rec["fuel_L"] / float(ref.fuel_L.iloc[0]) - 1) < 1e-9 \
                         and rec["starts"] == float(ref.starts.iloc[0]) and rec["events"] == int(ref.events.iloc[0])
                     check(f"GATE_s56_record_equals_WP67_n1_f{yr}_{nm}_{pol}_{sel}", okk)
-                if REF69 is not None and constr == "n1a" and pol != PFR:
+                if REF69 is not None and constr == "n1a" and pol not in PERSIST:
                     c69 = REF69["cases"]
                     ref = c69[(c69.fold == yr) & (c69.scenario == nm) & (c69.policy == pol) & (c69.selection == sel)]
                     okk = len(ref) == 1 and all(float(ref[k].iloc[0]) == float(case_rows[-1][k]) for k in
@@ -429,6 +470,30 @@ def mondrian_counts(yr, calib, cases):
 
 # ================================================================ self-test
 def selftest(verbose=True):
+    """Registered self-tests under the v2.0.0 simulator, then the v2.1 internal construction (D-161)."""
+    with LM.registered_v200():
+        res = _selftest(verbose)
+    with LM.primary_v21():
+        grid, Lt, pav, cs = LM._toy(1)
+        dd = LM.day_ids(grid)
+        C = LM._counted(pav, cs, np.random.default_rng(5))
+        Ci, inf_i, kw = transform("n1a", Lt, C, C[-1], LM.UNITS_BASE)
+        r = LM.simulate(Lt, pav, Ci, dd, 3, record=True, **kw)
+        km_t, feas_t = kmin_n1a(Lt, C, LM.UNITS_BASE)
+        sc = np.isfinite(pav)
+        fleet = np.asarray(LM.UNITS_BASE, float)
+        lg = np.where(r["rec_on"], fleet[None, None, :], 0).max(axis=2)
+        viol = (r["rec"]["KU"] - lg < (Lt[None, :] - np.nan_to_num(C)) - 1e-6) & sc[None, :] & feas_t
+        for name, cond, msg in (("v21_transform_is_internal", Ci is C and kw == {"n1": "n1a"} and np.array_equal(inf_i, ~feas_t), ""),
+                                ("v21_n1a_holds_internal", int(viol.sum()) == 0, f"({int(viol.sum())} violations)"),
+                                ("v21_online_capacity_at_least_k_min", (r["rec"]["KU"][:, sc] >= km_t[:, sc] - 1e-6).all(), "")):
+            res[name] = bool(cond)
+            if verbose:
+                print(f"  [{'PASS' if cond else 'FAIL'}] {name} {msg}")
+    return res
+
+
+def _selftest(verbose=True):
     res = {}
 
     def ok(name, cond, msg=""):
@@ -482,6 +547,18 @@ def selftest(verbose=True):
        and np.isnan(M[:, 2]).all())
     ok("frac_grid_symmetric", np.allclose(np.sort(1 - D.FRAC_GRID), D.FRAC_GRID))
     ok("conservative_param_is_max", LM.conservative_param(PFR, D.FRAC_GRID) == 1.0)
+    ix = pd.date_range("2024-03-01 05:00", periods=8, freq="5min")
+    geo_t = pd.DataFrame(dict(ghi=[0.0, np.nan, 50.0, 300.0, 900.0, 400.0, 10.0, 0.0],
+                              ghi_cs_raw=[0.0, 20.0, 100.0, 400.0, 500.0, 800.0, 5.0, 0.0],
+                              is_day=[False, True, True, True, True, True, True, False]), index=ix)
+    ev_t = dict(idx=ix.values, gcs=np.array([10.0, 50.0, 200.0, 500.0, 600.0, 900.0, 0.0, 0.0]))
+    kt, gh = spf_ghi(ev_t, geo_t, 1.25)
+    exp_kt = np.array([0.0, np.nan, 0.4, 0.6, 1.44, 0.4, FC.KT_MAX, 0.0])
+    ok("spf_kt_definition", np.allclose(kt, exp_kt, equal_nan=True) and np.allclose(gh, exp_kt * ev_t["gcs"], equal_nan=True),
+       str(kt.tolist()))
+    ev_c = dict(idx=ix.values, gcs=geo_t["ghi_cs_raw"].shift(-3).values * 1.25)
+    c_, dv = cal_from_cache(ev_c, geo_t)
+    ok("spf_scalar_recovered_from_cache", abs(c_ - 1.25) < 1e-12 and dv < 1e-12, f"({c_}, {dv})")
     return res
 
 
@@ -517,7 +594,7 @@ def main():
             checks[name] = dict(ok=bool(cond), msg=str(msg))
             if not cond:
                 log(f"FAIL  {name}  {msg}")
-                if name.startswith("CHECK"):
+                if name.startswith("GATE"):
                     (work / f"f{a.fold}_gate_fail.json").write_text(json.dumps(checks, indent=1))
                     sys.exit(f"GATE FAILED: {name} {msg}")
 
@@ -543,7 +620,7 @@ def main():
     checks = {}
     for r in recs:
         checks.update(r["checks"])
-    gate = [k for k in checks if k.startswith("CHECK")]
+    gate = [k for k in checks if k.startswith("GATE")]
     allok = all(v["ok"] for v in checks.values())
     log(f"gate: {sum(checks[k]['ok'] for k in gate)} of {len(gate)} pass; all checks {sum(v['ok'] for v in checks.values())} of {len(checks)}")
     if not allok:
@@ -556,7 +633,7 @@ def main():
     for k in ("fallback_pv", "winter", "mondrian", "pfr_missing_issue"):
         pd.DataFrame([x for r in recs for x in r[k]]).to_csv(out / f"desc_{k}.csv", index=False)
     outputs = {p.name: md5(p) for p in sorted(out.glob("*")) if p.is_file()}
-    detail = dict(stage="S69b" if a.s69b else "S69", ok=allok, seconds=round(sum(r["seconds"] for r in recs), 1), n_checks=len(checks),
+    detail = dict(simulator=LM.sim_defaults(), stage="S69b" if a.s69b else "S69", ok=allok, seconds=round(sum(r["seconds"] for r in recs), 1), n_checks=len(checks),
                   n_gate=len(gate), checks=checks, outputs=outputs, code={"ce1_s69.py": code},
                   env=dict(python=platform.python_version(), numpy=np.__version__, pandas=pd.__version__))
     (R / "_runs").mkdir(exist_ok=True)

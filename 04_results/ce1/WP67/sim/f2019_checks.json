@@ -48,27 +48,27 @@
   },
   "static_reproduces_WP63_f2019_main_icp_A_R": {
    "ok": true,
-   "msg": "(4104081.165851432, np.float64(4104081.165851432), 4503.0, np.float64(4503.0))"
+   "msg": "(4073668.0012103273, np.float64(4073668.0012103273), 4182.0, np.float64(4182.0))"
   },
   "static_reproduces_WP63_f2019_main_icp_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4104081.165851432, np.float64(4104081.165851432), 4503.0, np.float64(4503.0))"
+   "msg": "(4073668.0012103273, np.float64(4073668.0012103273), 4182.0, np.float64(4182.0))"
   },
   "static_reproduces_WP63_f2019_main_icp_c_prior_0.002": {
    "ok": true,
-   "msg": "(4104081.165851432, np.float64(4104081.165851432), 4503.0, np.float64(4503.0))"
+   "msg": "(4073668.0012103273, np.float64(4073668.0012103273), 4182.0, np.float64(4182.0))"
   },
   "static_reproduces_WP63_f2019_main_icp_a_half_H2": {
    "ok": true,
-   "msg": "(4110208.5173587096, np.float64(4110208.5173587096), 4582.0, np.float64(4582.0))"
+   "msg": "(4076350.4379246524, np.float64(4076350.437924653), 4233.0, np.float64(4233.0))"
   },
   "static_reproduces_WP63_f2019_main_icp_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4076350.4379246524, np.float64(4076350.437924653), 4233.0, np.float64(4233.0))"
   },
   "static_reproduces_WP63_f2019_main_icp_c_prior_0.001": {
    "ok": true,
-   "msg": "(4110208.5173587096, np.float64(4110208.5173587096), 4582.0, np.float64(4582.0))"
+   "msg": "(4076350.4379246524, np.float64(4076350.437924653), 4233.0, np.float64(4233.0))"
   },
   "AD_reproduces_S51_f2019_main_icp": {
    "ok": true,
@@ -76,35 +76,35 @@
   },
   "AD_reproduces_WP63_f2019_main_icp": {
    "ok": true,
-   "msg": "(4104668.5888227653, np.float64(4104668.588822765), 4051.0, np.float64(4051.0))"
+   "msg": "(4084835.263393377, np.float64(4084835.263393377), 3835.0, np.float64(3835.0))"
   },
   "CL_reproduces_AW_f2019_main_icp": {
    "ok": true,
-   "msg": "(4081542.63452472, np.float64(4081542.63452472), 7.824273676279727e-05, np.float64(7.824273676279727e-05))"
+   "msg": "(4058716.2740175896, np.float64(4058716.2740175896), 6.601268311687108e-05, np.float64(6.601268311687108e-05))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_A_R": {
    "ok": true,
-   "msg": "(4105464.993663095, np.float64(4105464.993663095), 4757.0, np.float64(4757.0))"
+   "msg": "(4064310.535398552, np.float64(4064310.535398552), 4429.0, np.float64(4429.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4100539.5083412947, np.float64(4100539.508341295), 4800.0, np.float64(4800.0))"
+   "msg": "(4066795.226470417, np.float64(4066795.226470417), 4398.0, np.float64(4398.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_c_prior_0.002": {
    "ok": true,
-   "msg": "(4105464.993663095, np.float64(4105464.993663095), 4757.0, np.float64(4757.0))"
+   "msg": "(4064310.535398552, np.float64(4064310.535398552), 4429.0, np.float64(4429.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_a_half_H2": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4078056.915974949, np.float64(4078056.915974949), 4324.0, np.float64(4324.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4078056.915974949, np.float64(4078056.915974949), 4324.0, np.float64(4324.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_c_prior_0.001": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4078056.915974949, np.float64(4078056.915974949), 4324.0, np.float64(4324.0))"
   },
   "AD_reproduces_S51_f2019_main_mondrian": {
    "ok": true,
@@ -112,35 +112,35 @@
   },
   "AD_reproduces_WP63_f2019_main_mondrian": {
    "ok": true,
-   "msg": "(4095727.835272313, np.float64(4095727.835272313), 4030.0, np.float64(4030.0))"
+   "msg": "(4087606.039726624, np.float64(4087606.039726624), 3812.0, np.float64(3812.0))"
   },
   "CL_reproduces_AW_f2019_main_mondrian": {
    "ok": true,
-   "msg": "(4078625.300554985, np.float64(4078625.300554985), 6.52527955266868e-05, np.float64(6.52527955266868e-05))"
+   "msg": "(4052641.9375038496, np.float64(4052641.9375038496), 7.387251830701489e-05, np.float64(7.387251830701489e-05))"
   },
   "static_reproduces_WP63_f2019_main_cqr_A_R": {
    "ok": true,
-   "msg": "(4084429.649849815, np.float64(4084429.649849815), 4980.0, np.float64(4980.0))"
+   "msg": "(4050703.4023403293, np.float64(4050703.402340329), 4485.0, np.float64(4485.0))"
   },
   "static_reproduces_WP63_f2019_main_cqr_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4084429.649849815, np.float64(4084429.649849815), 4980.0, np.float64(4980.0))"
+   "msg": "(4050703.4023403293, np.float64(4050703.402340329), 4485.0, np.float64(4485.0))"
   },
   "static_reproduces_WP63_f2019_main_cqr_c_prior_0.002": {
    "ok": true,
-   "msg": "(4084429.649849815, np.float64(4084429.649849815), 4980.0, np.float64(4980.0))"
+   "msg": "(4050703.4023403293, np.float64(4050703.402340329), 4485.0, np.float64(4485.0))"
   },
   "static_reproduces_WP63_f2019_main_cqr_a_half_H2": {
    "ok": true,
-   "msg": "(4084429.649849815, np.float64(4084429.649849815), 4980.0, np.float64(4980.0))"
+   "msg": "(4050703.4023403293, np.float64(4050703.402340329), 4485.0, np.float64(4485.0))"
   },
   "static_reproduces_WP63_f2019_main_cqr_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4091585.496649543, np.float64(4091585.496649543), 4990.0, np.float64(4990.0))"
+   "msg": "(4053946.743724957, np.float64(4053946.743724957), 4423.0, np.float64(4423.0))"
   },
   "static_reproduces_WP63_f2019_main_cqr_c_prior_0.001": {
    "ok": true,
-   "msg": "(4084429.649849815, np.float64(4084429.649849815), 4980.0, np.float64(4980.0))"
+   "msg": "(4050703.4023403293, np.float64(4050703.402340329), 4485.0, np.float64(4485.0))"
   },
   "AD_reproduces_S51_f2019_main_cqr": {
    "ok": true,
@@ -148,35 +148,35 @@
   },
   "AD_reproduces_WP63_f2019_main_cqr": {
    "ok": true,
-   "msg": "(4095889.88688003, np.float64(4095889.88688003), 4091.0, np.float64(4091.0))"
+   "msg": "(4075868.8183303177, np.float64(4075868.8183303177), 3909.0, np.float64(3909.0))"
   },
   "CL_reproduces_AW_f2019_main_cqr": {
    "ok": true,
-   "msg": "(4075359.8058637893, np.float64(4075359.8058637893), 3.655890420963659e-05, np.float64(3.655890420963659e-05))"
+   "msg": "(4048728.5664656833, np.float64(4048728.5664656833), 3.295899983656327e-05, np.float64(3.295899983656327e-05))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_cqr_A_R": {
    "ok": true,
-   "msg": "(4083224.1522301054, np.float64(4083224.152230106), 4977.0, np.float64(4977.0))"
+   "msg": "(4050626.6050732755, np.float64(4050626.605073276), 4504.0, np.float64(4504.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_cqr_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4083224.1522301054, np.float64(4083224.152230106), 4977.0, np.float64(4977.0))"
+   "msg": "(4050626.6050732755, np.float64(4050626.605073276), 4504.0, np.float64(4504.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_cqr_c_prior_0.002": {
    "ok": true,
-   "msg": "(4083224.1522301054, np.float64(4083224.152230106), 4977.0, np.float64(4977.0))"
+   "msg": "(4050626.6050732755, np.float64(4050626.605073276), 4504.0, np.float64(4504.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_cqr_a_half_H2": {
    "ok": true,
-   "msg": "(4083224.1522301054, np.float64(4083224.152230106), 4977.0, np.float64(4977.0))"
+   "msg": "(4051274.532598882, np.float64(4051274.532598882), 4503.0, np.float64(4503.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_cqr_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4093925.206302023, np.float64(4093925.206302023), 5038.0, np.float64(5038.0))"
+   "msg": "(4055944.231659448, np.float64(4055944.231659448), 4492.0, np.float64(4492.0))"
   },
   "static_reproduces_WP63_f2019_main_mondrian_cqr_c_prior_0.001": {
    "ok": true,
-   "msg": "(4083224.1522301054, np.float64(4083224.152230106), 4977.0, np.float64(4977.0))"
+   "msg": "(4051274.532598882, np.float64(4051274.532598882), 4503.0, np.float64(4503.0))"
   },
   "AD_reproduces_S51_f2019_main_mondrian_cqr": {
    "ok": true,
@@ -184,35 +184,35 @@
   },
   "AD_reproduces_WP63_f2019_main_mondrian_cqr": {
    "ok": true,
-   "msg": "(4095461.5040157884, np.float64(4095461.504015789), 3999.0, np.float64(3999.0))"
+   "msg": "(4075752.6516636508, np.float64(4075752.6516636503), 3898.0, np.float64(3898.0))"
   },
   "CL_reproduces_AW_f2019_main_mondrian_cqr": {
    "ok": true,
-   "msg": "(4074524.3582605356, np.float64(4074524.3582605356), 3.4750176571278084e-05, np.float64(3.4750176571278084e-05))"
+   "msg": "(4048298.8542459626, np.float64(4048298.8542459626), 3.127037543637567e-05, np.float64(3.127037543637567e-05))"
   },
   "static_reproduces_WP63_f2019_main_raw_q_A_R": {
    "ok": true,
-   "msg": "(4082676.2092388794, np.float64(4082676.20923888), 4965.0, np.float64(4965.0))"
+   "msg": "(4050376.6662283354, np.float64(4050376.666228336), 4505.0, np.float64(4505.0))"
   },
   "static_reproduces_WP63_f2019_main_raw_q_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4083902.783190842, np.float64(4083902.783190842), 4983.0, np.float64(4983.0))"
+   "msg": "(4050376.6662283354, np.float64(4050376.666228336), 4505.0, np.float64(4505.0))"
   },
   "static_reproduces_WP63_f2019_main_raw_q_c_prior_0.002": {
    "ok": true,
-   "msg": "(4082676.2092388794, np.float64(4082676.20923888), 4965.0, np.float64(4965.0))"
+   "msg": "(4050376.6662283354, np.float64(4050376.666228336), 4505.0, np.float64(4505.0))"
   },
   "static_reproduces_WP63_f2019_main_raw_q_a_half_H2": {
    "ok": true,
-   "msg": "(4082676.2092388794, np.float64(4082676.20923888), 4965.0, np.float64(4965.0))"
+   "msg": "(4050376.6662283354, np.float64(4050376.666228336), 4505.0, np.float64(4505.0))"
   },
   "static_reproduces_WP63_f2019_main_raw_q_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4093166.1167242257, np.float64(4093166.1167242257), 5013.0, np.float64(5013.0))"
+   "msg": "(4055528.340041924, np.float64(4055528.340041924), 4429.0, np.float64(4429.0))"
   },
   "static_reproduces_WP63_f2019_main_raw_q_c_prior_0.001": {
    "ok": true,
-   "msg": "(4082676.2092388794, np.float64(4082676.20923888), 4965.0, np.float64(4965.0))"
+   "msg": "(4050376.6662283354, np.float64(4050376.666228336), 4505.0, np.float64(4505.0))"
   },
   "AD_reproduces_S51_f2019_main_raw_q": {
    "ok": true,
@@ -220,35 +220,35 @@
   },
   "AD_reproduces_WP63_f2019_main_raw_q": {
    "ok": true,
-   "msg": "(4095750.451843785, np.float64(4095750.451843785), 4101.0, np.float64(4101.0))"
+   "msg": "(4075825.2558303177, np.float64(4075825.2558303177), 3903.0, np.float64(3903.0))"
   },
   "CL_reproduces_AW_f2019_main_raw_q": {
    "ok": true,
-   "msg": "(4075059.7489344752, np.float64(4075059.7489344752), 3.655463570267418e-05, np.float64(3.655463570267418e-05))"
+   "msg": "(4048743.1737466953, np.float64(4048743.1737466953), 3.4544133798027555e-05, np.float64(3.4544133798027555e-05))"
   },
   "static_reproduces_WP63_f2019_main_tod_q_A_R": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4075702.468701031, np.float64(4075702.468701031), 4320.0, np.float64(4320.0))"
   },
   "static_reproduces_WP63_f2019_main_tod_q_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4073649.15675788, np.float64(4073649.15675788), 4444.0, np.float64(4444.0))"
   },
   "static_reproduces_WP63_f2019_main_tod_q_c_prior_0.002": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4075702.468701031, np.float64(4075702.468701031), 4320.0, np.float64(4320.0))"
   },
   "static_reproduces_WP63_f2019_main_tod_q_a_half_H2": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4077641.6339564063, np.float64(4077641.6339564063), 4303.0, np.float64(4303.0))"
   },
   "static_reproduces_WP63_f2019_main_tod_q_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4075702.468701031, np.float64(4075702.468701031), 4320.0, np.float64(4320.0))"
   },
   "static_reproduces_WP63_f2019_main_tod_q_c_prior_0.001": {
    "ok": true,
-   "msg": "(4113902.084313749, np.float64(4113902.084313749), 3902.0, np.float64(3902.0))"
+   "msg": "(4077641.6339564063, np.float64(4077641.6339564063), 4303.0, np.float64(4303.0))"
   },
   "AD_reproduces_S51_f2019_main_tod_q": {
    "ok": true,
@@ -256,35 +256,35 @@
   },
   "AD_reproduces_WP63_f2019_main_tod_q": {
    "ok": true,
-   "msg": "(4098370.0748513704, np.float64(4098370.0748513695), 4030.0, np.float64(4030.0))"
+   "msg": "(4077521.465112657, np.float64(4077521.465112657), 3851.0, np.float64(3851.0))"
   },
   "CL_reproduces_AW_f2019_main_tod_q": {
    "ok": true,
-   "msg": "(4090586.7145072836, np.float64(4090586.7145072836), 5.660534375406939e-05, np.float64(5.660534375406939e-05))"
+   "msg": "(4059553.06324242, np.float64(4059553.06324242), 4.8594667088038294e-05, np.float64(4.8594667088038294e-05))"
   },
   "static_reproduces_WP63_f2019_main_nicp_var_A_R": {
    "ok": true,
-   "msg": "(4081426.209472009, np.float64(4081426.209472009), 4662.0, np.float64(4662.0))"
+   "msg": "(4056906.983099808, np.float64(4056906.983099808), 4348.0, np.float64(4348.0))"
   },
   "static_reproduces_WP63_f2019_main_nicp_var_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4087931.3659028066, np.float64(4087931.365902807), 4609.0, np.float64(4609.0))"
+   "msg": "(4062550.7839546655, np.float64(4062550.7839546655), 4343.0, np.float64(4343.0))"
   },
   "static_reproduces_WP63_f2019_main_nicp_var_c_prior_0.002": {
    "ok": true,
-   "msg": "(4081426.209472009, np.float64(4081426.209472009), 4662.0, np.float64(4662.0))"
+   "msg": "(4056906.983099808, np.float64(4056906.983099808), 4348.0, np.float64(4348.0))"
   },
   "static_reproduces_WP63_f2019_main_nicp_var_a_half_H2": {
    "ok": true,
-   "msg": "(4083562.473729129, np.float64(4083562.473729129), 4646.0, np.float64(4646.0))"
+   "msg": "(4058844.5382292136, np.float64(4058844.5382292136), 4356.0, np.float64(4356.0))"
   },
   "static_reproduces_WP63_f2019_main_nicp_var_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4093777.7213923363, np.float64(4093777.721392336), 4595.0, np.float64(4595.0))"
+   "msg": "(4066516.078546338, np.float64(4066516.078546338), 4307.0, np.float64(4307.0))"
   },
   "static_reproduces_WP63_f2019_main_nicp_var_c_prior_0.001": {
    "ok": true,
-   "msg": "(4083562.473729129, np.float64(4083562.473729129), 4646.0, np.float64(4646.0))"
+   "msg": "(4058844.5382292136, np.float64(4058844.5382292136), 4356.0, np.float64(4356.0))"
   },
   "AD_reproduces_S51_f2019_main_nicp_var": {
    "ok": true,
@@ -292,35 +292,35 @@
   },
   "AD_reproduces_WP63_f2019_main_nicp_var": {
    "ok": true,
-   "msg": "(4097006.058678249, np.float64(4097006.058678249), 4020.0, np.float64(4020.0))"
+   "msg": "(4085445.9933167845, np.float64(4085445.993316785), 3869.0, np.float64(3869.0))"
   },
   "CL_reproduces_AW_f2019_main_nicp_var": {
    "ok": true,
-   "msg": "(4075461.359188432, np.float64(4075461.359188432), 6.431664500112247e-05, np.float64(6.431664500112247e-05))"
+   "msg": "(4051524.2717879876, np.float64(4051524.2717879876), 6.057602798594523e-05, np.float64(6.057602798594523e-05))"
   },
   "static_reproduces_WP63_f2019_main_frac_pv_A_R": {
    "ok": true,
-   "msg": "(4099013.5014477205, np.float64(4099013.501447721), 3777.0, np.float64(3777.0))"
+   "msg": "(4071436.026458681, np.float64(4071436.026458681), 3872.0, np.float64(3872.0))"
   },
   "static_reproduces_WP63_f2019_main_frac_pv_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4099013.5014477205, np.float64(4099013.501447721), 3777.0, np.float64(3777.0))"
+   "msg": "(4068914.1864380753, np.float64(4068914.1864380753), 3918.0, np.float64(3918.0))"
   },
   "static_reproduces_WP63_f2019_main_frac_pv_c_prior_0.002": {
    "ok": true,
-   "msg": "(4099013.5014477205, np.float64(4099013.501447721), 3777.0, np.float64(3777.0))"
+   "msg": "(4071436.026458681, np.float64(4071436.026458681), 3872.0, np.float64(3872.0))"
   },
   "static_reproduces_WP63_f2019_main_frac_pv_a_half_H2": {
    "ok": true,
-   "msg": "(4099013.5014477205, np.float64(4099013.501447721), 3777.0, np.float64(3777.0))"
+   "msg": "(4072685.3257495994, np.float64(4072685.3257496), 3701.0, np.float64(3701.0))"
   },
   "static_reproduces_WP63_f2019_main_frac_pv_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4099013.5014477205, np.float64(4099013.501447721), 3777.0, np.float64(3777.0))"
+   "msg": "(4072055.438916279, np.float64(4072055.438916279), 3800.0, np.float64(3800.0))"
   },
   "static_reproduces_WP63_f2019_main_frac_pv_c_prior_0.001": {
    "ok": true,
-   "msg": "(4099013.5014477205, np.float64(4099013.501447721), 3777.0, np.float64(3777.0))"
+   "msg": "(4072685.3257495994, np.float64(4072685.3257496), 3701.0, np.float64(3701.0))"
   },
   "AD_reproduces_S51_f2019_main_frac_pv": {
    "ok": true,
@@ -328,11 +328,11 @@
   },
   "AD_reproduces_WP63_f2019_main_frac_pv": {
    "ok": true,
-   "msg": "(4093245.323172377, np.float64(4093245.323172377), 3898.0, np.float64(3898.0))"
+   "msg": "(4070868.5814091107, np.float64(4070868.581409111), 3751.0, np.float64(3751.0))"
   },
   "CL_reproduces_AW_f2019_main_frac_pv": {
    "ok": true,
-   "msg": "(4093690.7787862006, np.float64(4093690.7787862006), 9.04332047961853e-06, np.float64(9.04332047961853e-06))"
+   "msg": "(4070710.473380249, np.float64(4070710.473380249), 1.1564803269624785e-05, np.float64(1.1564803269624785e-05))"
   },
   "AD_level_map_f2019_shapeB_icp": {
    "ok": true,
@@ -376,27 +376,27 @@
   },
   "static_reproduces_WP63_f2019_shapeB_icp_A_R": {
    "ok": true,
-   "msg": "(4100251.9662404717, np.float64(4100251.966240472), 3819.0, np.float64(3819.0))"
+   "msg": "(4073667.282375274, np.float64(4073667.282375274), 3654.0, np.float64(3654.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_icp_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4075146.238001192, np.float64(4075146.238001192), 3638.0, np.float64(3638.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_icp_c_prior_0.002": {
    "ok": true,
-   "msg": "(4100251.9662404717, np.float64(4100251.966240472), 3819.0, np.float64(3819.0))"
+   "msg": "(4073667.282375274, np.float64(4073667.282375274), 3654.0, np.float64(3654.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_icp_a_half_H2": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4079062.632215223, np.float64(4079062.632215223), 3633.0, np.float64(3633.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_icp_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4082470.2499621618, np.float64(4082470.2499621618), 3582.0, np.float64(3582.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_icp_c_prior_0.001": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4079062.632215223, np.float64(4079062.632215223), 3633.0, np.float64(3633.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_icp": {
    "ok": true,
@@ -404,35 +404,35 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_icp": {
    "ok": true,
-   "msg": "(4097504.95869817, np.float64(4097504.95869817), 2706.0, np.float64(2706.0))"
+   "msg": "(4090054.5475104763, np.float64(4090054.547510476), 2626.0, np.float64(2626.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_icp": {
    "ok": true,
-   "msg": "(4082883.0965653243, np.float64(4082883.0965653243), 7.35676691254782e-05, np.float64(7.35676691254782e-05))"
+   "msg": "(4067006.2987383413, np.float64(4067006.2987383413), 7.127312515079872e-05, np.float64(7.127312515079872e-05))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_A_R": {
    "ok": true,
-   "msg": "(4103413.372341412, np.float64(4103413.372341412), 3950.0, np.float64(3950.0))"
+   "msg": "(4072613.5294601247, np.float64(4072613.5294601247), 3712.0, np.float64(3712.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4072613.5294601247, np.float64(4072613.5294601247), 3712.0, np.float64(3712.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_c_prior_0.002": {
    "ok": true,
-   "msg": "(4103413.372341412, np.float64(4103413.372341412), 3950.0, np.float64(3950.0))"
+   "msg": "(4072613.5294601247, np.float64(4072613.5294601247), 3712.0, np.float64(3712.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_a_half_H2": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4076107.8023824263, np.float64(4076107.8023824254), 3763.0, np.float64(3763.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4084453.38850238, np.float64(4084453.38850238), 3607.0, np.float64(3607.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_c_prior_0.001": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4076107.8023824263, np.float64(4076107.8023824254), 3763.0, np.float64(3763.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_mondrian": {
    "ok": true,
@@ -440,35 +440,35 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_mondrian": {
    "ok": true,
-   "msg": "(4097708.5519719208, np.float64(4097708.5519719208), 2709.0, np.float64(2709.0))"
+   "msg": "(4088660.2600937383, np.float64(4088660.2600937374), 2659.0, np.float64(2659.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_mondrian": {
    "ok": true,
-   "msg": "(4083331.420666815, np.float64(4083331.420666815), 4.466387547653299e-05, np.float64(4.466387547653299e-05))"
+   "msg": "(4063722.899089494, np.float64(4063722.899089494), 4.638040526118705e-05, np.float64(4.638040526118705e-05))"
   },
   "static_reproduces_WP63_f2019_shapeB_cqr_A_R": {
    "ok": true,
-   "msg": "(4087575.2489493717, np.float64(4087575.248949372), 3979.0, np.float64(3979.0))"
+   "msg": "(4061102.9679668336, np.float64(4061102.9679668336), 3783.0, np.float64(3783.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_cqr_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4090217.2233685544, np.float64(4090217.2233685534), 3994.0, np.float64(3994.0))"
+   "msg": "(4062793.428170559, np.float64(4062793.428170559), 3759.0, np.float64(3759.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_cqr_c_prior_0.002": {
    "ok": true,
-   "msg": "(4087575.2489493717, np.float64(4087575.248949372), 3979.0, np.float64(3979.0))"
+   "msg": "(4061102.9679668336, np.float64(4061102.9679668336), 3783.0, np.float64(3783.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_cqr_a_half_H2": {
    "ok": true,
-   "msg": "(4093036.7662463384, np.float64(4093036.766246339), 3994.0, np.float64(3994.0))"
+   "msg": "(4064526.003601778, np.float64(4064526.003601778), 3742.0, np.float64(3742.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_cqr_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4097919.391641246, np.float64(4097919.391641247), 3957.0, np.float64(3957.0))"
+   "msg": "(4068765.6902698292, np.float64(4068765.690269829), 3657.0, np.float64(3657.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_cqr_c_prior_0.001": {
    "ok": true,
-   "msg": "(4093036.7662463384, np.float64(4093036.766246339), 3994.0, np.float64(3994.0))"
+   "msg": "(4064526.003601778, np.float64(4064526.003601778), 3742.0, np.float64(3742.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_cqr": {
    "ok": true,
@@ -476,35 +476,35 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_cqr": {
    "ok": true,
-   "msg": "(4100795.6360675422, np.float64(4100795.6360675422), 2810.0, np.float64(2810.0))"
+   "msg": "(4082023.7555269115, np.float64(4082023.755526912), 2942.0, np.float64(2942.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_cqr": {
    "ok": true,
-   "msg": "(4081602.1314705727, np.float64(4081602.1314705727), 2.8772955322289454e-05, np.float64(2.8772955322289454e-05))"
+   "msg": "(4061262.2004779526, np.float64(4061262.2004779526), 2.7040322596467506e-05, np.float64(2.7040322596467506e-05))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_cqr_A_R": {
    "ok": true,
-   "msg": "(4087870.892799956, np.float64(4087870.892799956), 3980.0, np.float64(3980.0))"
+   "msg": "(4062343.840263961, np.float64(4062343.840263961), 3711.0, np.float64(3711.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_cqr_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4093213.2188825784, np.float64(4093213.2188825775), 4002.0, np.float64(4002.0))"
+   "msg": "(4062343.840263961, np.float64(4062343.840263961), 3711.0, np.float64(3711.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_cqr_c_prior_0.002": {
    "ok": true,
-   "msg": "(4087870.892799956, np.float64(4087870.892799956), 3980.0, np.float64(3980.0))"
+   "msg": "(4062343.840263961, np.float64(4062343.840263961), 3711.0, np.float64(3711.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_cqr_a_half_H2": {
    "ok": true,
-   "msg": "(4094601.4948871834, np.float64(4094601.494887184), 3996.0, np.float64(3996.0))"
+   "msg": "(4064691.064816617, np.float64(4064691.064816617), 3716.0, np.float64(3716.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_cqr_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4097213.465418244, np.float64(4097213.465418244), 4011.0, np.float64(4011.0))"
+   "msg": "(4066063.277080352, np.float64(4066063.277080352), 3711.0, np.float64(3711.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_mondrian_cqr_c_prior_0.001": {
    "ok": true,
-   "msg": "(4094601.4948871834, np.float64(4094601.494887184), 3996.0, np.float64(3996.0))"
+   "msg": "(4064691.064816617, np.float64(4064691.064816617), 3716.0, np.float64(3716.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_mondrian_cqr": {
    "ok": true,
@@ -512,35 +512,35 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_mondrian_cqr": {
    "ok": true,
-   "msg": "(4100365.6123852395, np.float64(4100365.61238524), 2803.0, np.float64(2803.0))"
+   "msg": "(4080841.6739725852, np.float64(4080841.673972585), 2915.0, np.float64(2915.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_mondrian_cqr": {
    "ok": true,
-   "msg": "(4082289.4257729417, np.float64(4082289.4257729417), 3.038236808859936e-05, np.float64(3.038236808859936e-05))"
+   "msg": "(4061389.4776233025, np.float64(4061389.4776233025), 2.8389959654823643e-05, np.float64(2.8389959654823643e-05))"
   },
   "static_reproduces_WP63_f2019_shapeB_raw_q_A_R": {
    "ok": true,
-   "msg": "(4092474.5866966676, np.float64(4092474.586696668), 4040.0, np.float64(4040.0))"
+   "msg": "(4061032.0721335, np.float64(4061032.0721335), 3776.0, np.float64(3776.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_raw_q_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4090179.0352124674, np.float64(4090179.0352124674), 3994.0, np.float64(3994.0))"
+   "msg": "(4062293.5537528247, np.float64(4062293.5537528247), 3763.0, np.float64(3763.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_raw_q_c_prior_0.002": {
    "ok": true,
-   "msg": "(4092474.5866966676, np.float64(4092474.586696668), 4040.0, np.float64(4040.0))"
+   "msg": "(4061032.0721335, np.float64(4061032.0721335), 3776.0, np.float64(3776.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_raw_q_a_half_H2": {
    "ok": true,
-   "msg": "(4093901.338012472, np.float64(4093901.338012472), 3986.0, np.float64(3986.0))"
+   "msg": "(4065231.0222463496, np.float64(4065231.0222463496), 3760.0, np.float64(3760.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_raw_q_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4097683.5226455242, np.float64(4097683.522645524), 3973.0, np.float64(3973.0))"
+   "msg": "(4073347.687283313, np.float64(4073347.687283313), 3585.0, np.float64(3585.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_raw_q_c_prior_0.001": {
    "ok": true,
-   "msg": "(4093901.338012472, np.float64(4093901.338012472), 3986.0, np.float64(3986.0))"
+   "msg": "(4065231.0222463496, np.float64(4065231.0222463496), 3760.0, np.float64(3760.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_raw_q": {
    "ok": true,
@@ -548,35 +548,35 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_raw_q": {
    "ok": true,
-   "msg": "(4099972.3917990336, np.float64(4099972.3917990336), 2699.0, np.float64(2699.0))"
+   "msg": "(4081940.190597778, np.float64(4081940.190597778), 2942.0, np.float64(2942.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_raw_q": {
    "ok": true,
-   "msg": "(4081646.289543612, np.float64(4081646.289543612), 2.8772955322289454e-05, np.float64(2.8772955322289454e-05))"
+   "msg": "(4061261.346311286, np.float64(4061261.346311286), 2.7040322596467506e-05, np.float64(2.7040322596467506e-05))"
   },
   "static_reproduces_WP63_f2019_shapeB_tod_q_A_R": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4082988.796228201, np.float64(4082988.796228201), 3925.0, np.float64(3925.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_tod_q_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4078221.976926866, np.float64(4078221.976926866), 3914.0, np.float64(3914.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_tod_q_c_prior_0.002": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4082988.796228201, np.float64(4082988.796228201), 3925.0, np.float64(3925.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_tod_q_a_half_H2": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4085952.783772717, np.float64(4085952.783772717), 3798.0, np.float64(3798.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_tod_q_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4085952.783772717, np.float64(4085952.783772717), 3798.0, np.float64(3798.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_tod_q_c_prior_0.001": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4085952.783772717, np.float64(4085952.783772717), 3798.0, np.float64(3798.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_tod_q": {
    "ok": true,
@@ -584,35 +584,35 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_tod_q": {
    "ok": true,
-   "msg": "(4095613.496217494, np.float64(4095613.496217494), 2867.0, np.float64(2867.0))"
+   "msg": "(4085478.825093289, np.float64(4085478.825093289), 2727.0, np.float64(2727.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_tod_q": {
    "ok": true,
-   "msg": "(4090443.0205300315, np.float64(4090443.0205300315), 5.610859777758779e-05, np.float64(5.610859777758779e-05))"
+   "msg": "(4066784.9194226107, np.float64(4066784.9194226107), 5.5040006302150006e-05, np.float64(5.5040006302150006e-05))"
   },
   "static_reproduces_WP63_f2019_shapeB_nicp_var_A_R": {
    "ok": true,
-   "msg": "(4088144.2238041516, np.float64(4088144.223804152), 3688.0, np.float64(3688.0))"
+   "msg": "(4068474.7739808224, np.float64(4068474.7739808224), 3611.0, np.float64(3611.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_nicp_var_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4092996.036345627, np.float64(4092996.036345627), 3635.0, np.float64(3635.0))"
+   "msg": "(4073001.708444618, np.float64(4073001.708444618), 3523.0, np.float64(3523.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_nicp_var_c_prior_0.002": {
    "ok": true,
-   "msg": "(4088144.2238041516, np.float64(4088144.223804152), 3688.0, np.float64(3688.0))"
+   "msg": "(4068474.7739808224, np.float64(4068474.7739808224), 3611.0, np.float64(3611.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_nicp_var_a_half_H2": {
    "ok": true,
-   "msg": "(4088144.2238041516, np.float64(4088144.223804152), 3688.0, np.float64(3688.0))"
+   "msg": "(4069423.6770308325, np.float64(4069423.677030833), 3590.0, np.float64(3590.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_nicp_var_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4109620.566815893, np.float64(4109620.566815893), 2476.0, np.float64(2476.0))"
+   "msg": "(4100224.12248382, np.float64(4100224.12248382), 2425.0, np.float64(2425.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_nicp_var_c_prior_0.001": {
    "ok": true,
-   "msg": "(4088144.2238041516, np.float64(4088144.223804152), 3688.0, np.float64(3688.0))"
+   "msg": "(4069423.6770308325, np.float64(4069423.677030833), 3590.0, np.float64(3590.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_nicp_var": {
    "ok": true,
@@ -620,35 +620,35 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_nicp_var": {
    "ok": true,
-   "msg": "(4099425.4955561436, np.float64(4099425.495556144), 2684.0, np.float64(2684.0))"
+   "msg": "(4089880.782175858, np.float64(4089880.782175858), 2633.0, np.float64(2633.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_nicp_var": {
    "ok": true,
-   "msg": "(4084703.782104468, np.float64(4084703.782104468), 4.422042340240471e-05, np.float64(4.422042340240471e-05))"
+   "msg": "(4064127.729858141, np.float64(4064127.729858141), 4.452341755760638e-05, np.float64(4.452341755760638e-05))"
   },
   "static_reproduces_WP63_f2019_shapeB_frac_pv_A_R": {
    "ok": true,
-   "msg": "(4094255.977589365, np.float64(4094255.977589365), 3376.0, np.float64(3376.0))"
+   "msg": "(4071551.064007218, np.float64(4071551.064007218), 3369.0, np.float64(3369.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_frac_pv_b_xfit_0.002": {
    "ok": true,
-   "msg": "(4094255.977589365, np.float64(4094255.977589365), 3376.0, np.float64(3376.0))"
+   "msg": "(4071551.064007218, np.float64(4071551.064007218), 3369.0, np.float64(3369.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_frac_pv_c_prior_0.002": {
    "ok": true,
-   "msg": "(4094255.977589365, np.float64(4094255.977589365), 3376.0, np.float64(3376.0))"
+   "msg": "(4071551.064007218, np.float64(4071551.064007218), 3369.0, np.float64(3369.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_frac_pv_a_half_H2": {
    "ok": true,
-   "msg": "(4097238.5272936374, np.float64(4097238.527293637), 3019.0, np.float64(3019.0))"
+   "msg": "(4075574.767291286, np.float64(4075574.767291286), 3108.0, np.float64(3108.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_frac_pv_b_xfit_0.001": {
    "ok": true,
-   "msg": "(4094808.5984546905, np.float64(4094808.5984546905), 3100.0, np.float64(3100.0))"
+   "msg": "(4075574.767291286, np.float64(4075574.767291286), 3108.0, np.float64(3108.0))"
   },
   "static_reproduces_WP63_f2019_shapeB_frac_pv_c_prior_0.001": {
    "ok": true,
-   "msg": "(4097238.5272936374, np.float64(4097238.527293637), 3019.0, np.float64(3019.0))"
+   "msg": "(4075574.767291286, np.float64(4075574.767291286), 3108.0, np.float64(3108.0))"
   },
   "AD_reproduces_S51_f2019_shapeB_frac_pv": {
    "ok": true,
@@ -656,11 +656,11 @@
   },
   "AD_reproduces_WP63_f2019_shapeB_frac_pv": {
    "ok": true,
-   "msg": "(4089957.188607805, np.float64(4089957.188607805), 3205.0, np.float64(3205.0))"
+   "msg": "(4072806.9282999737, np.float64(4072806.9282999737), 3128.0, np.float64(3128.0))"
   },
   "CL_reproduces_AW_f2019_shapeB_frac_pv": {
    "ok": true,
-   "msg": "(4089957.188607805, np.float64(4089957.188607805), 9.833434521139172e-06, np.float64(9.833434521139172e-06))"
+   "msg": "(4072806.9282999737, np.float64(4072806.9282999737), 9.844985801357884e-06, np.float64(9.844985801357884e-06))"
   },
   "n1_H1x_handbook_zero_ue_f2019_cont": {
    "ok": true,
@@ -676,7 +676,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_icp": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_AR_equals_S56_f2019_cont_mondrian": {
    "ok": true,
@@ -684,7 +684,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_mondrian": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_AR_equals_S56_f2019_cont_cqr": {
    "ok": true,
@@ -692,7 +692,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_cqr": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_AR_equals_S56_f2019_cont_mondrian_cqr": {
    "ok": true,
@@ -700,7 +700,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_mondrian_cqr": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_AR_equals_S56_f2019_cont_raw_q": {
    "ok": true,
@@ -708,7 +708,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_raw_q": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_AR_equals_S56_f2019_cont_tod_q": {
    "ok": true,
@@ -716,7 +716,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_tod_q": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_AR_equals_S56_f2019_cont_nicp_var": {
    "ok": true,
@@ -724,7 +724,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_nicp_var": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_AR_equals_S56_f2019_cont_frac_pv": {
    "ok": true,
@@ -732,7 +732,7 @@
   },
   "n1_AD_equals_S56_f2019_cont_frac_pv": {
    "ok": true,
-   "msg": "(4263625.997451314, 4263625.997451314)"
+   "msg": "(4265514.457313983, 4265514.457313983)"
   },
   "n1_handbook_equals_S56_f2019_cont": {
    "ok": true,
@@ -752,7 +752,7 @@
   },
   "n1_AD_equals_S56_f2019_contB_icp": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_AR_equals_S56_f2019_contB_mondrian": {
    "ok": true,
@@ -760,7 +760,7 @@
   },
   "n1_AD_equals_S56_f2019_contB_mondrian": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_AR_equals_S56_f2019_contB_cqr": {
    "ok": true,
@@ -768,7 +768,7 @@
   },
   "n1_AD_equals_S56_f2019_contB_cqr": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_AR_equals_S56_f2019_contB_mondrian_cqr": {
    "ok": true,
@@ -776,7 +776,7 @@
   },
   "n1_AD_equals_S56_f2019_contB_mondrian_cqr": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_AR_equals_S56_f2019_contB_raw_q": {
    "ok": true,
@@ -784,7 +784,7 @@
   },
   "n1_AD_equals_S56_f2019_contB_raw_q": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_AR_equals_S56_f2019_contB_tod_q": {
    "ok": true,
@@ -792,7 +792,7 @@
   },
   "n1_AD_equals_S56_f2019_contB_tod_q": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_AR_equals_S56_f2019_contB_nicp_var": {
    "ok": true,
@@ -800,7 +800,7 @@
   },
   "n1_AD_equals_S56_f2019_contB_nicp_var": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_AR_equals_S56_f2019_contB_frac_pv": {
    "ok": true,
@@ -808,15 +808,15 @@
   },
   "n1_AD_equals_S56_f2019_contB_frac_pv": {
    "ok": true,
-   "msg": "(4260585.40057463, 4260585.40057463)"
+   "msg": "(4261311.233836419, 4261311.233836419)"
   },
   "n1_handbook_equals_S56_f2019_contB": {
    "ok": true,
    "msg": ""
   }
  },
- "seconds": 122.68424558639526,
+ "seconds": 387.15274119377136,
  "code": {
-  "ce1_wp67_sim.py": "0e8bdb88b8f0e86d13e36698f7d3e1e7"
+  "ce1_wp67_sim.py": "1a6c6c507f89555e9b54b31bec2986d7"
  }
 }

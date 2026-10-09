@@ -16,6 +16,7 @@ sys.path.insert(0, str(HERE.parent / "utils"))
 
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
+import ce1_literal as LT  # noqa: E402  (D-164 phase-aware literal checks)
 
 R = Path("04_results/ce1")
 S = R / "S69"
@@ -53,22 +54,30 @@ def main():
     an = pd.read_csv(S / "anchors.csv", float_precision="round_trip")
     rec = {}
     # ---------------------------------------------------------------- consistency of the record
-    assert len(c) == 6 * (2 * 9 * 7 + 4 * 8 * 7), len(c)  # plain 9 policies incl. pfr; s56 and n1a 8
-    assert c[c.construction == "plain"].groupby(["fold", "shape"]).size().eq(63).all()
+    n_plain = 10 if (c.policy == "spf").any() else 9  # D-162: the v2.1 S69 adds the SPF rows to plain
+    assert n_plain == 10 or LT.registered(), "a v2.1 S69 record must carry the SPF rows (D-162)"
+    assert len(c) == 6 * (2 * n_plain * 7 + 4 * 8 * 7), len(c)  # plain 9 policies incl. pfr (10 with spf); s56 and n1a 8
+    assert c[c.construction == "plain"].groupby(["fold", "shape"]).size().eq(7 * n_plain).all()
     # ---------------------------------------------------------------- rule tables per construction
     tabs = []
     for constr in ("plain", "s56", "n1a"):
         tabs += rule_table(c, constr, SETS)
     tabs += rule_table(c, "plain", {"pfr": ["pfr"]})
+    if n_plain == 10:
+        tabs += rule_table(c, "plain", {"spf": ["spf"]})  # D-162 rows
     for q in QP:
         tabs += rule_table(c, "plain", {f"policy_{q}": [q]})
     T = pd.DataFrame(tabs)
     T.to_csv(S / "rules_by_construction.csv", index=False)
     printed = {"A-R": (25, 21), "XF": (34, 21), "PF": (26, 22), "H2": (42, 33), "XH": (48, 36), "PH": (47, 36), "A-D": (48, 36)}
+    LIT = LT.Literal(S, "ce1_s69_read.py")
+    same = True
     for rule, (mc, mq) in printed.items():
         a = T[(T.construction == "plain") & (T.rule == rule)]
-        assert int(a[a.set == "conformal"].met.iloc[0]) == mc and int(a[a.set == "quantile"].met.iloc[0]) == mq, rule
-    rec["table3_plain_reproduced"] = True
+        got = (int(a[a.set == "conformal"].met.iloc[0]), int(a[a.set == "quantile"].met.iloc[0]))
+        same &= got == (mc, mq)
+        assert LIT(f"table3_plain_met_{rule}", got, (mc, mq)), rule
+    rec["table3_plain_reproduced"] = bool(same)
 
     # ---------------------------------------------------------------- N1A-1
     xq = c[(c.construction == "n1a") & (c.rule == "XH") & c.policy.isin(QP)]

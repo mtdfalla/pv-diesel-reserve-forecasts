@@ -1,59 +1,40 @@
 {
  "days_at_limit_median_by_policy": {
-  "icp": 294.5,
-  "mondrian": 312.0,
-  "cqr": 254.0,
-  "mondrian_cqr": 254.0,
-  "raw_q": 247.0,
-  "tod_q": 263.5,
-  "nicp_var": 291.0,
+  "icp": 299.5,
+  "mondrian": 318.5,
+  "cqr": 261.0,
+  "mondrian_cqr": 270.5,
+  "raw_q": 255.0,
+  "tod_q": 278.0,
+  "nicp_var": 306.5,
   "frac_pv": 0.0
  },
  "days_at_limit_median_quantile_range": [
-  247.0,
-  254.0
+  255.0,
+  270.5
  ],
- "days_at_limit_median_conformal_pooled": 277.5,
- "days_at_limit_frac_pv_max": 46,
+ "days_at_limit_median_conformal_pooled": 286.0,
+ "days_at_limit_frac_pv_max": 42,
  "AD_quantile_min": {
   "fold": 2024,
   "scenario": "main",
   "policy": "raw_q",
-  "saving_pct": -0.01684049783035158,
-  "negative_cases": [
-   {
-    "fold": 2024,
-    "scenario": "main",
-    "policy": "cqr",
-    "saving_pct": -0.01414685540987188
-   },
-   {
-    "fold": 2024,
-    "scenario": "main",
-    "policy": "mondrian_cqr",
-    "saving_pct": -0.013162286358462203
-   },
-   {
-    "fold": 2024,
-    "scenario": "main",
-    "policy": "raw_q",
-    "saving_pct": -0.01684049783035158
-   }
-  ]
+  "saving_pct": 0.03632461207840568,
+  "negative_cases": []
  },
  "committed_capacity_reduction_pct": {
-  "handbook_median": 3.06125214494386,
-  "quantile_median": 3.4560110119003506,
+  "handbook_median": 1.860678250468989,
+  "quantile_median": 1.0493485256806712,
   "handbook_range": [
-   2.7890977777606185,
-   3.243698874425105
+   1.692027960405884,
+   1.9870024823585242
   ],
   "quantile_range": [
-   2.5148229876235217,
-   4.664125189522162
+   0.43577401574486085,
+   1.8206505869298728
   ]
  },
- "battery_day_AD_quantile_combined_median_pct": 0.9313994723181895,
+ "battery_day_AD_quantile_combined_median_pct": 0.7262444698197312,
  "battery_day_AD_quantile_cells": 36,
  "battery_day_AD_basis": "S61B/ad_cells.csv primary, battery_day and batteryB_day, quantile policies, 36 cells",
  "picp_double_rounding": {

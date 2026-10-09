@@ -3,67 +3,67 @@
  "scope": "pop=Table 3 rules x {conformal 4, quantile 3}, h=15 min, shape=both, folds=2019-2024, criterion saving >= 0.01 % of handbook fuel (D-129 literal), handbook level = saving < 0.01 % or level at the limit on every day",
  "rows": {
   "A-R|conformal": {
-   "met": 25,
-   "met_with_saving": 16,
-   "met_handbook_level": 9,
-   "met_at_limit_every_day": 7,
-   "wp63_met_nonzero_gt_0_005": 16
+   "met": 21,
+   "met_with_saving": 21,
+   "met_handbook_level": 0,
+   "met_at_limit_every_day": 0,
+   "wp63_met_nonzero_gt_0_005": 21
   },
   "A-R|quantile": {
-   "met": 21,
-   "met_with_saving": 21,
+   "met": 18,
+   "met_with_saving": 18,
    "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 21
-  },
-  "XF|conformal": {
-   "met": 34,
-   "met_with_saving": 18,
-   "met_handbook_level": 16,
-   "met_at_limit_every_day": 14,
    "wp63_met_nonzero_gt_0_005": 18
   },
-  "XF|quantile": {
-   "met": 21,
-   "met_with_saving": 21,
+  "XF|conformal": {
+   "met": 31,
+   "met_with_saving": 31,
    "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 21
+   "wp63_met_nonzero_gt_0_005": 31
+  },
+  "XF|quantile": {
+   "met": 27,
+   "met_with_saving": 27,
+   "met_handbook_level": 0,
+   "met_at_limit_every_day": 0,
+   "wp63_met_nonzero_gt_0_005": 27
   },
   "PF|conformal": {
-   "met": 26,
-   "met_with_saving": 17,
-   "met_handbook_level": 9,
-   "met_at_limit_every_day": 6,
-   "wp63_met_nonzero_gt_0_005": 17
-  },
-  "PF|quantile": {
-   "met": 22,
-   "met_with_saving": 22,
+   "met": 24,
+   "met_with_saving": 24,
    "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 22
+   "wp63_met_nonzero_gt_0_005": 24
+  },
+  "PF|quantile": {
+   "met": 23,
+   "met_with_saving": 23,
+   "met_handbook_level": 0,
+   "met_at_limit_every_day": 0,
+   "wp63_met_nonzero_gt_0_005": 23
   },
   "H2|conformal": {
    "met": 42,
-   "met_with_saving": 23,
-   "met_handbook_level": 19,
-   "met_at_limit_every_day": 14,
-   "wp63_met_nonzero_gt_0_005": 23
+   "met_with_saving": 42,
+   "met_handbook_level": 0,
+   "met_at_limit_every_day": 0,
+   "wp63_met_nonzero_gt_0_005": 42
   },
   "H2|quantile": {
-   "met": 33,
-   "met_with_saving": 30,
-   "met_handbook_level": 3,
+   "met": 35,
+   "met_with_saving": 35,
+   "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 30
+   "wp63_met_nonzero_gt_0_005": 35
   },
   "XH|conformal": {
    "met": 48,
-   "met_with_saving": 26,
-   "met_handbook_level": 22,
-   "met_at_limit_every_day": 20,
-   "wp63_met_nonzero_gt_0_005": 26
+   "met_with_saving": 48,
+   "met_handbook_level": 0,
+   "met_at_limit_every_day": 0,
+   "wp63_met_nonzero_gt_0_005": 48
   },
   "XH|quantile": {
    "met": 36,
@@ -73,11 +73,11 @@
    "wp63_met_nonzero_gt_0_005": 36
   },
   "PH|conformal": {
-   "met": 47,
-   "met_with_saving": 28,
-   "met_handbook_level": 19,
-   "met_at_limit_every_day": 14,
-   "wp63_met_nonzero_gt_0_005": 28
+   "met": 48,
+   "met_with_saving": 48,
+   "met_handbook_level": 0,
+   "met_at_limit_every_day": 0,
+   "wp63_met_nonzero_gt_0_005": 48
   },
   "PH|quantile": {
    "met": 36,
@@ -88,31 +88,31 @@
   },
   "A-D|conformal": {
    "met": 48,
-   "met_with_saving": 45,
-   "met_handbook_level": 3,
+   "met_with_saving": 48,
+   "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 46
+   "wp63_met_nonzero_gt_0_005": 48
   },
   "A-D|quantile": {
    "met": 36,
-   "met_with_saving": 33,
-   "met_handbook_level": 3,
+   "met_with_saving": 36,
+   "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 33
+   "wp63_met_nonzero_gt_0_005": 36
   },
   "CL|conformal": {
-   "met": 0,
-   "met_with_saving": 0,
+   "met": 2,
+   "met_with_saving": 2,
    "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 0
+   "wp63_met_nonzero_gt_0_005": 2
   },
   "CL|quantile": {
-   "met": 0,
-   "met_with_saving": 0,
+   "met": 3,
+   "met_with_saving": 3,
    "met_handbook_level": 0,
    "met_at_limit_every_day": 0,
-   "wp63_met_nonzero_gt_0_005": 0
+   "wp63_met_nonzero_gt_0_005": 3
   }
  }
 }

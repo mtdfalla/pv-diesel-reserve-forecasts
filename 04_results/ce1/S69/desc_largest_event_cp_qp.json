@@ -6,7 +6,7 @@
  "peak_kW": 883.5990780086893,
  "online_kW": 1000.0,
  "largest_online_kW": 1000.0,
- "cases_with_this_event": 21,
+ "cases_with_this_event": 19,
  "cases_in_fold_shape": 35,
  "rules": [
   "A_D",

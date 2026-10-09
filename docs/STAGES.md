@@ -15,6 +15,7 @@ Stages of the Windows runner (`03_code/ce1/ce1_run.ps1`), in run order:
 | S6P | `ce1_s6.py` | Load-free proxy dispatch (fold-2024 variants) |
 | S6B | `ce1_s6.py` | Battery scenarios |
 | S48 | `ce1_wp48.py` | Fold-2024 target sensitivities (records SF and B) |
+| S48D | `ce1_wp48.py` | Dispatch steps of S48 only (S6, S6B) on its stored forecast records, written into S48 |
 | S2X | `ce1_folds.py` | Additional GBM quantiles (tau 0.255 to 0.500) for theta 0.500 to 0.745, Yulara |
 | S6X | `ce1_s6.py` | Dispatch at the added low theta levels |
 | S6P2 | `ce1_s6.py` | Proxy dispatch on the extended theta set |
@@ -41,7 +42,9 @@ Scripts in `03_code/ce1/` (the two sensor analyses are in `03_code/ce1/audits/`)
 | `ce1_fig1.py` | System and method schematic (the first figure of the article), drawn in vector by code. |
 | `ce1_figures.py` | Draws every figure of the article and the graphical abstract from the stage outputs under 04_results/ce1/, asserts that the plotted values equal the reported values, and writes a manifest (source and output md5, sizes, alt text). |
 | `ce1_folds.py` | Stage S2: per-fold point and quantile caches for both sites. |
+| `ce1_literal.py` | Value checks against reference values from earlier runs. |
 | `ce1_load.py` | Load-based dispatch model of the Yulara mini-grid. |
+| `ce1_paths.py` | Resolves the result paths read by ce1_figures.py. |
 | `ce1_point.py` | Stage S4: point-forecast benchmark on the causal folds. |
 | `ce1_preprocess.py` | Stage S1: causal preprocessing for both sites. |
 | `ce1_pvmap.py` | Stage S1M: available-PV plant model for Yulara. |
@@ -61,7 +64,7 @@ Scripts in `03_code/ce1/` (the two sensor analyses are in `03_code/ce1/audits/`)
 | `ce1_wp52.py` | Storage as reserve (rule D-099): diesel capacity and fuel released by the battery, and the two-by-two decomposition of battery and forecast against the handbook rule, from stage S6E. |
 | `ce1_wp55.py` | Start-up fuel, unserved-energy steps and events, and the target sweep, from existing outputs. |
 | `ce1_wp56.py` | Stage S56: dispatch-realism sensitivities (rule D-112): contingency reserve for the largest online unit, doubled no-load fuel, and minimum loading of 30% and 50%, every policy and level, 15 min, six folds. |
-| `ce1_wp56_read.py` | Reading of stage S56 under D-112 and D-113: oracle ceiling, A-R and A-D savings, target met, and the share of steps where the PV term binds. |
+| `ce1_wp56_read.py` | Reading of stage S56 under D-112 and D-113: oracle saving, A-R and A-D savings, target met, and the share of steps where the PV term binds. |
 | `ce1_wp57.py` | Matched static baselines for Protocol A-D (rule D-112): half allowance, cross-fitted halves of the calibration year, and all earlier test years. |
 | `ce1_wp58.py` | One-sided exceedance of the lower bounds the decision uses, by regime, and the complete-history persistence ensemble as probabilistic reference (rule D-112). |
 | `ce1_wp59c.py` | Seasonal coverage of the static methods and the regime mix behind marginal ICP's transitional coverage in test year 2020, from the S2 caches and S5 records. |
@@ -87,6 +90,7 @@ Scripts in `03_code/ce1/` (the two sensor analyses are in `03_code/ce1/audits/`)
 | `ce1_wp72_trace.py` | Record counts per site and period, and the fleet's N-1 firm capacity against the representative load. |
 | `ce1_wp74_trace.py` | Paired lead of the quantile policies over the persistence fraction, unserved-energy event sizes, the 2025 record and fold tables, and the DKASC sensor tilt 2020 to 2025, from existing outputs. |
 | `ce1_wp76_trace.py` | Complete days and forecast-covered savings in fold 2025, and event-energy values, from existing files. |
+| `ce1_wp87.py` | Dispatch simulator comparison. |
 
 ## Run order
 
@@ -99,7 +103,7 @@ steps before it; scripts that check a stage's run record need that stage's compl
 | 1 | With only the 2016 to 2024 Yulara files in the raw folder: `python3 03_code/preprocessing/p2_clean.py --legacy-gapfill`, then `p3_clearsky_regimes.py` and `dkasc_prepare.py` (v1 cleaned and regime files, used by the S1 cross-checks). Add the 2025 file before step 19 |
 | 2 | runner stages `S0,S1,S1M,S1L,S2,S6,S6P,S6B,S4,S5` |
 | 3 | from `03_code`: `python ce1/ce1_stats.py --stage S7` |
-| 4 | runner stage `S48`, then `python3 03_code/ce1/ce1_wp48_read.py` |
+| 4 | runner stage `S48` (stage `S48D` reruns only its dispatch steps on the stored S48 records), then `python3 03_code/ce1/ce1_wp48_read.py` |
 | 5 | `python3 03_code/ce1/ce1_decision.py --root .` (S7D) and `python3 03_code/ce1/ce1_wp46.py --root .` (S46) |
 | 6 | runner stages `S2X,S6X,S6P2` |
 | 7 | `python3 03_code/ce1/ce1_extend.py --root .` (S6E), then `python3 03_code/ce1/ce1_decision.py --root . --s6 S6E --s6b S6E --s6p S6P2 --out S7E` |
@@ -115,8 +119,9 @@ steps before it; scripts that check a stage's run record need that stage's compl
 | 17 | `ce1_s67.py --root . --fold <year>` for 2019 to 2024, then `ce1_s67.py --root . --analyse` (S67) |
 | 18 | `ce1_wp67_sim.py --root . --all`; then `ce1_wp67.py <item>` for `c1`, `item1`, `item2`, `item3`, `item6`, `item10`, `item11`, `items_sim`, `item12`; `ce1_wp67_fc.py`; `ce1_wp67_item13.py all` |
 | 19 | `ce1_wp67_precheck2025.py`, runner stages `S1E,S2E,S5E`, then `ce1_wp67_item14.py`, `ce1_wp67_c3lag.py`, `ce1_wp67_f2025.py --root . --fold 2024` (validation), `ce1_wp67_f2025.py --root . --fold 2025`, `ce1_wp67_f2025_read.py` |
-| 20 | `ce1_s69.py --root . --fold <year>` for 2019 to 2024 in order, `ce1_s69.py --root . --assemble`, `ce1_s69.py --root . --s69b`, then `ce1_s69_read.py` and `ce1_s69_read.py --b` |
-| 21 | `ce1_wp72_trace.py`, `ce1_wp74_trace.py`, `ce1_wp76_trace.py` |
-| 22 | `ce1_figures.py` |
+| 20 | `ce1_s69.py --root . --fold <year>` for 2019 to 2024 in order, `ce1_s69.py --root . --assemble`, `ce1_s69.py --root . --s69b --fold <year>` for 2019 to 2024 in order, `ce1_s69.py --root . --s69b --assemble`, then `ce1_s69_read.py` and `ce1_s69_read.py --b` |
+| 21 | With the `04_results/ce1` folder of release 2.0.0 placed at `04_results/ce1_v200` (read by `v20`): `ce1_wp87.py --variant <v> --fold <year>` for 2019 to 2024 in order, then `ce1_wp87.py --variant <v> --assemble`, for `v20`, `c02`, `c03`, `c23`, `f7a` and `f7b`; then `ce1_wp87.py --read` (dispatch simulator comparison) |
+| 22 | `ce1_wp72_trace.py`, `ce1_wp74_trace.py`, `ce1_wp76_trace.py` |
+| 23 | `ce1_figures.py` |
 
 Scripts in steps 8 and later are in `03_code/ce1/` and are run as `python3 03_code/ce1/<script> ...`.
