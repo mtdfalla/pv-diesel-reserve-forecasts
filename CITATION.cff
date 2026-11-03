@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "pv-diesel-reserve-forecasts"
-abstract: "Code and result tables for 'Can probabilistic irradiance forecasts replace the full-PV spinning-reserve rule? A six-year evaluation for a remote PV-diesel mini-grid'."
+abstract: "Code and result tables for 'A reliability margin enables machine-learning forecasts to replace the full-PV spinning-reserve rule in a remote PV-diesel mini-grid model: a six-year chronological evaluation'."
 version: 2.1.0
 doi: 10.5281/zenodo.23262936
 date-released: 2026-10-09

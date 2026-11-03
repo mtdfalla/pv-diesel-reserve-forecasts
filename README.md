@@ -2,7 +2,7 @@
 
 Code and result tables for the article:
 
-> M. Abdelmagid, T. H. M. El-Fouly, M. Maalouf. *Can probabilistic irradiance forecasts replace the full-PV spinning-reserve rule? A six-year evaluation for a remote PV-diesel mini-grid*.
+> M. Abdelmagid, T. H. M. El-Fouly, M. Maalouf. *A reliability margin enables machine-learning forecasts to replace the full-PV spinning-reserve rule in a remote PV-diesel mini-grid model: a six-year chronological evaluation*.
 
 Version 2.1.0. MIT licence. Archived on Zenodo: https://doi.org/10.5281/zenodo.23262936.
 
